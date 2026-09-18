@@ -394,7 +394,7 @@ details.reveal .dbody{padding:0 16px 16px;font-size:14.5px;color:var(--muted)}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:15px}
 </style>
 <style>
-/* the Claude artifact host normally supplies these; standalone needs its own */
+/* base page settings for the standalone build */
 :root{color-scheme:light dark;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html,body{min-height:100%}
 img{max-width:100%}
@@ -417,7 +417,7 @@ img{max-width:100%}
     <footer class="foot">
       <div class="fr">
         <p><b>Independent practice tool.</b> Not affiliated with, endorsed by, or connected to Pearson. PTE and PTE Academic are trademarks of their respective owners and are used here only to describe the test this tool prepares for.</p>
-        <p><b>Original items.</b> Every passage, lecture, question, answer key, model answer and chart in this app was written for it. Nothing is reproduced from official, retired or third-party test material.</p>
+        <p><b>Original items.</b> Every passage, lecture, question, answer key, model answer and chart here was generated with AI specifically for this app. Nothing is reproduced from official, retired or third-party test material.</p>
         <p><b>Check current specifications.</b> Timings, word bands and trait rubrics follow the published PTE Academic format as understood when this was written. Verify the details against the official specification before relying on them.</p>
         <p><b>Practice scores only.</b> The 10&ndash;90 figures are estimates derived from your own attempts. They are not an official result and do not predict one.</p>
       </div>
@@ -1121,7 +1121,7 @@ function paintSkins(){
 /* ============================ language ============================ */
 /* The interface switches between English and Traditional Chinese from the
    dictionary below. Exam material stays in English; the Translate buttons ask
-   Claude to translate questions and explanations only when tapped, and nothing
+   AI to translate questions and explanations only when tapped, and nothing
    translated is stored. */
 const LANG_KEY = 'pte-score-lab/lang';
 let LANG = 'en';
@@ -1249,14 +1249,14 @@ const ZH = {
 "Typed responses. Summarize Written Text also scores Reading, while Summarize Spoken Text and Write from Dictation also score Listening — which means most of your Writing score is earned on questions that live in other parts of the test.": "打字作答。書面摘要同時計入閱讀，口述內容摘要和聽寫同時計入聽力——也就是說，你的寫作分數大多來自考試其他部分的題目。",
 "Five Reading-only question types from Part 2, plus the integrated ones: Summarize Written Text carries Reading marks, and Highlight Correct Summary and Highlight Incorrect Words carry them out of the Listening part.": "包含第二部分的五種純閱讀題型，以及整合題型：書面摘要計入閱讀分，選出正確摘要和標出錯誤字詞則從聽力部分計入閱讀分。",
 "The largest skill, and the one that reaches furthest. Beyond the Part 3 question types, Repeat Sentence, Re-tell Lecture, Summarize Group Discussion and Answer Short Question all score Listening from inside Part 1.": "範圍最大、牽涉最廣的技能。除了第三部分的題型外，第一部分的重述句子、重述講座、小組討論摘要和簡答題也都會計入聽力。",
-"Claude scoring was not allowed for this page, so the examiner feedback is unavailable. The model answer below still applies.": "此頁面未獲准使用 Claude 評分，因此無法提供考官回饋。下方的範例答案仍可參考。",
-"Claude scoring is not available on this account. The model answer below still applies.": "此帳戶無法使用 Claude 評分。下方的範例答案仍可參考。",
-"Claude scoring is not available in this view.": "此畫面無法使用 Claude 評分。",
+"AI marking was not allowed for this page, so the examiner feedback is unavailable. The model answer below still applies.": "此頁面未獲准使用 AI 評分，因此無法提供考官回饋。下方的範例答案仍可參考。",
+"AI marking is not available on this account. The model answer below still applies.": "此帳戶無法使用 AI 評分。下方的範例答案仍可參考。",
+"AI marking is not available in this view.": "此畫面無法使用 AI 評分。",
 "Too many scoring requests just now. Wait a minute and try again.": "評分請求過於頻繁。請稍候一分鐘再試。",
-"Your Claude session expired. Sign in again, then retry.": "你的 Claude 登入已過期。請重新登入後再試。",
+"Your session expired. Sign in again, then retry.": "你的登入已過期。請重新登入後再試。",
 "The examiner reply came back malformed. Try scoring again.": "考官回覆的格式有誤。請再評分一次。",
 "That response is too long to score. Shorten it and retry.": "回答太長，無法評分。請縮短後再試。",
-"Claude declined to score this response. Rewrite it and try again.": "Claude 拒絕為此回答評分。請改寫後再試。",
+"The AI examiner declined to score this response. Rewrite it and try again.": "AI 考官拒絕為此回答評分。請改寫後再試。",
 "No feedback came back. Try scoring again.": "沒有收到回饋。請再評分一次。",
 "Scoring stopped.": "評分已停止。",
 "What a good introduction covers": "好的自我介紹應包含",
@@ -1276,7 +1276,7 @@ const ZH = {
 "Part 3 · Listening": "第三部分 · 聽力",
 "Orchid theme": "蘭紫主題",
 "Slate theme": "石板藍主題",
-"Examiner marking runs only in the Claude app version of this page. Everything else — timing, recording and all the auto-marked question types — works here, and the model answer below still applies.": "考官評分僅在此頁面的 Claude 應用程式版本中提供。其他功能——計時、錄音以及所有自動評分題型——在這裡都能使用，下方的範例答案仍可參考。",
+"AI examiner marking is not available in this version yet. Everything else — timing, recording and all the auto-marked question types — works here, and the model answer below still applies.": "此版本尚未提供 AI 考官評分。其他功能——計時、錄音以及所有自動評分題型——在這裡都能使用，下方的範例答案仍可參考。",
 "Scoring failed because of a temporary service problem. Try again.": "服務暫時發生問題，評分失敗。請再試一次。",
 "Ready": "就緒",
 "Play audio": "播放音訊",
@@ -1347,7 +1347,7 @@ const ZH = {
 "The highlighted words are the ones candidates most often stumble on in this passage. Play your recording back and listen for hesitation around them.": "標示出的字是考生在這段文字中最常卡住的地方。播放你的錄音，留意這些字附近是否有停頓。",
 "The sentence was": "原句為",
 "Key content the scoring looks for": "評分重點內容",
-"Type what you actually said, as closely as you can remember. Claude scores the content of it.": "盡量照你記得的，打出你實際說了什麼。Claude 會為其內容評分。",
+"Type what you actually said, as closely as you can remember. The AI examiner scores its content.": "盡量照你記得的，打出你實際說了什麼。AI 考官會為其內容評分。",
 "Score my content": "為我的內容評分",
 "Type at least a dozen words of what you said so there is something to score.": "請至少打出你所說的十幾個字，才有內容可以評分。",
 "Examiner is marking your content…": "考官正在評分你的內容…",
@@ -1430,7 +1430,7 @@ const ZH = {
 "Task type": "題型",
 "Avg band": "平均分數",
 "Start with one task and get a real score on it.": "從一題開始，取得實際分數。",
-"Every item here is timed the way the exam times it. Written and spoken responses are marked by Claude against the official trait rubrics; the rest are marked automatically the moment you submit.": "這裡每一題的計時方式都與正式考試相同。寫作與口說題由 Claude 依官方評分指標評分；其餘題型在你提交後立即自動評分。",
+"Every item here is timed the way the exam times it. Written and spoken responses are marked by an AI examiner against the official trait rubrics; the rest are marked automatically the moment you submit.": "這裡每一題的計時方式都與正式考試相同。寫作與口說題由 AI 考官依官方評分指標評分；其餘題型在你提交後立即自動評分。",
 "attempts logged": "已記錄的練習次數",
 "question types tried": "已練習的題型",
 "day streak": "連續練習天數",
@@ -1461,7 +1461,7 @@ const ZH = {
 "Independent practice tool.": "獨立練習工具。",
 "Not affiliated with, endorsed by, or connected to Pearson. PTE and PTE Academic are trademarks of their respective owners and are used here only to describe the test this tool prepares for.": "與 Pearson 無任何隸屬、背書或關聯。PTE 與 PTE Academic 為其各自所有者之商標，此處僅用於說明本工具所針對的考試。",
 "Original items.": "原創題目。",
-"Every passage, lecture, question, answer key, model answer and chart in this app was written for it. Nothing is reproduced from official, retired or third-party test material.": "本應用程式中的每篇文章、講座、題目、答案、範例答案與圖表皆為原創，未轉載任何官方、已停用或第三方的考試資料。",
+"Every passage, lecture, question, answer key, model answer and chart here was generated with AI specifically for this app. Nothing is reproduced from official, retired or third-party test material.": "這裡的每篇文章、講座、題目、答案、範例答案與圖表，皆由 AI 專為本應用程式生成，未轉載任何官方、已停用或第三方的考試資料。",
 "Check current specifications.": "請查閱最新規格。",
 "Timings, word bands and trait rubrics follow the published PTE Academic format as understood when this was written. Verify the details against the official specification before relying on them.": "計時、字數範圍與評分指標依撰寫時所了解的 PTE Academic 公開格式設定。使用前請對照官方規格確認細節。",
 "Practice scores only.": "僅為練習分數。",
@@ -1492,6 +1492,7 @@ const ZH_RULES = [
   [/^Back to (.+)$/, m => '返回' + zhOf(m[1])],
   [/^Say a sentence — (\d+)s$/, m => '請說一句話——' + m[1] + ' 秒'],
   [/^Silent (\d+)s$/, m => '靜默 ' + m[1] + ' 秒'],
+  [/^Starting in (\d+)s$/, m => m[1] + ' 秒後開始'],
   [/^Signal detected, peaking at (\d+)% of full scale\. Play the clip back — if you can hear yourself clearly, you are ready for the timed tasks\.$/,
      m => '已偵測到訊號，最高達滿格的 ' + m[1] + '%。請播放錄音——若能清楚聽到自己的聲音，就可以開始計時練習了。'],
   [/^You went quiet for about (\d+) seconds at one point\. In the real test, silence beyond three seconds ends the recording — keep talking, even if it means restating your last point\.$/,
@@ -1648,9 +1649,9 @@ function xlNote(btn, msg){
 }
 const XL_ERR = {
   rate_limited:'翻譯請求過於頻繁，請稍候一分鐘再試。',
-  not_granted:'未允許此頁面使用 Claude，因此無法翻譯。',
-  sampling_disabled:'此帳戶無法使用 Claude 翻譯。',
-  session_expired:'Claude 登入已過期，請重新登入後再試。'
+  not_granted:'未允許此頁面使用 AI，因此無法翻譯。',
+  sampling_disabled:'此帳戶無法使用 AI 翻譯。',
+  session_expired:'登入已過期，請重新登入後再試。'
 };
 async function translateContent(kind, btn){
   const els = segmentsFor(kind);
@@ -1710,7 +1711,7 @@ function avgFor(list){
 }
 const dayKey = ts => new Date(ts).toISOString().slice(0,10);
 
-/* ============================ Claude scoring ============================ */
+/* ============================ AI marking ============================ */
 let samplePromise = null;
 function ensureSample(){
   if (!samplePromise) samplePromise = (window.claude && window.claude.use)
@@ -1720,21 +1721,21 @@ function ensureSample(){
 ensureSample().then(s => { state.ai = s; });
 
 const AI_COPY = {
-  not_granted:'Claude scoring was not allowed for this page, so the examiner feedback is unavailable. The model answer below still applies.',
-  sampling_disabled:'Claude scoring is not available on this account. The model answer below still applies.',
-  not_declared:'Claude scoring is not available in this view.',
-  capability_disabled:'Claude scoring is not available in this view.',
-  capability_removed:'Claude scoring is not available in this view.',
+  not_granted:'AI marking was not allowed for this page, so the examiner feedback is unavailable. The model answer below still applies.',
+  sampling_disabled:'AI marking is not available on this account. The model answer below still applies.',
+  not_declared:'AI marking is not available in this view.',
+  capability_disabled:'AI marking is not available in this view.',
+  capability_removed:'AI marking is not available in this view.',
   rate_limited:'Too many scoring requests just now. Wait a minute and try again.',
-  session_expired:'Your Claude session expired. Sign in again, then retry.',
+  session_expired:'Your session expired. Sign in again, then retry.',
   invalid_json:'The examiner reply came back malformed. Try scoring again.',
   prompt_too_large:'That response is too long to score. Shorten it and retry.',
-  refused:'Claude declined to score this response. Rewrite it and try again.',
+  refused:'The AI examiner declined to score this response. Rewrite it and try again.',
   empty_completion:'No feedback came back. Try scoring again.',
   cancelled:'Scoring stopped.'
 };
 const aiCopy = code => (code === 'not_granted' && !(window.claude && window.claude.use))
-  ? 'Examiner marking runs only in the Claude app version of this page. Everything else \u2014 timing, recording and all the auto-marked question types \u2014 works here, and the model answer below still applies.'
+  ? 'AI examiner marking is not available in this version yet. Everything else \u2014 timing, recording and all the auto-marked question types \u2014 works here, and the model answer below still applies.'
   : (AI_COPY[code] || 'Scoring failed because of a temporary service problem. Try again.');
 
 async function aiRubric(prompt, tier){
@@ -1745,11 +1746,18 @@ async function aiRubric(prompt, tier){
 }
 
 /* ============================ speech ============================ */
-let stopSpeech = null, keepAlive = null;
+let stopSpeech = null, keepAlive = null, leadIn = [];
+const LEAD_IN = 2;   // seconds of quiet before any clip starts
 function stopAudio(){
+  leadIn.forEach(clearTimeout); leadIn = [];
   if (stopSpeech) { stopSpeech(); stopSpeech = null; }
   if (keepAlive) { clearInterval(keepAlive); keepAlive = null; }
-  try { window.speechSynthesis && window.speechSynthesis.cancel(); } catch(e){}
+  // only cancel real speech: cancelling an idle engine right before speaking
+  // is what makes some browsers swallow the first words of the next clip
+  try {
+    const ss = window.speechSynthesis;
+    if (ss && (ss.speaking || ss.pending)) ss.cancel();
+  } catch(e){}
 }
 /* ---- British English voices, alternating male and female ---- */
 let VOICES = [];
@@ -1888,6 +1896,16 @@ function makePlayer(text, opts){
   const play = () => {
     plays++;
     btn.disabled = true;
+    stopAudio();
+    // a short lead-in, as the real test gives, and time for the speech engine to wake
+    stat.textContent = 'Starting in ' + LEAD_IN + 's';
+    for (let k = 1; k < LEAD_IN; k++)
+      leadIn.push(setTimeout(() => { stat.textContent = 'Starting in ' + (LEAD_IN - k) + 's'; }, k * 1000));
+    leadIn.push(setTimeout(start, LEAD_IN * 1000));
+    timers.push(...leadIn);
+  };
+  const start = () => {
+    leadIn = [];
     stat.textContent = 'Playing';
     wave.on();
     let settled = false;
@@ -2250,7 +2268,7 @@ RUN.speak = ctx => {
         h('ul', { cls:'tips' }, item.keys.map(k => h('li', { text:k }))));
     }
     if (task.transcript){
-      const ta = h('textarea', { cls:'resp short', id:'tr-' + item.id, placeholder:'Type what you actually said, as closely as you can remember. Claude scores the content of it.' });
+      const ta = h('textarea', { cls:'resp short', id:'tr-' + item.id, placeholder:'Type what you actually said, as closely as you can remember. The AI examiner scores its content.' });
       const scoreBtn = h('button', { cls:'btn primary', text:'Score my content' });
       const out = h('div', {});
       scoreBtn.addEventListener('click', async () => {
@@ -3003,7 +3021,7 @@ function viewHome(){
   const hero = h('div', { cls:'hero' },
     h('h1', { cls:'h1', text: b == null ? 'Start with one task and get a real score on it.' : 'Your running estimate is ' + b + '.' }),
     h('p', { cls:'muted', style:'margin-top:8px;max-width:58ch', text: b == null
-      ? 'Every item here is timed the way the exam times it. Written and spoken responses are marked by Claude against the official trait rubrics; the rest are marked automatically the moment you submit.'
+      ? 'Every item here is timed the way the exam times it. Written and spoken responses are marked by an AI examiner against the official trait rubrics; the rest are marked automatically the moment you submit.'
       : (() => { const o = overallStats();
           return 'Weighted across every question type you have tried, by how often each appears in a real test — '
             + 'covering ' + Math.round(o.coverage * 100) + '% of a full sitting' + (o.coverage < EARLY ? ', so treat it as an early estimate.' : '.'); })() }),
