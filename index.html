@@ -13,7 +13,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='88'%3E%F0%9F%8E%A7%3C/text%3E%3C/svg%3E">
 <title>PTE Score Lab</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Serif:wght@400;600&family=Roboto+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Serif:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap">
 <style>
 :root{
   --bg:#FAF6F9; --surface:#FFFFFF; --surface-2:#F5EEF4; --surface-3:#EAE0EB;
@@ -27,9 +27,9 @@
   --shadow:0 1px 2px rgba(64,34,72,.05), 0 12px 28px -16px rgba(64,34,72,.30);
   --shadow-lift:0 2px 6px rgba(64,34,72,.07), 0 18px 40px -22px rgba(64,34,72,.42);
   --ramp-l:48%; --ramp-c:.135; --ramp-bar-l:60%; --ramp-bar-c:.155;
-  --ff-ui:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --ff-dis:"Fraunces","Iowan Old Style",Georgia,serif;
-  --ff-read:"Lora",Georgia,"Times New Roman",serif;
+  --ff-ui:"Nunito","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --ff-dis:"Fraunces","Noto Sans TC","PingFang TC","Microsoft JhengHei","Iowan Old Style",Georgia,serif;
+  --ff-read:"Lora","Noto Sans TC","PingFang TC","Microsoft JhengHei",Georgia,"Times New Roman",serif;
   --ff-num:"Roboto Mono",ui-monospace,"Segoe UI",Arial,monospace;
   --r-card:16px; --r-soft:12px; --r-pill:999px;
 }
@@ -82,9 +82,9 @@ button,input,select,textarea{font:inherit;color:inherit}
   --good:#256B52; --good-soft:#D9EDE4;
   --shadow:0 1px 2px rgba(18,32,52,.06), 0 12px 28px -16px rgba(18,32,52,.34);
   --shadow-lift:0 2px 6px rgba(18,32,52,.08), 0 18px 40px -22px rgba(18,32,52,.46);
-  --ff-ui:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --ff-dis:"Archivo",system-ui,"Segoe UI",sans-serif;
-  --ff-read:"IBM Plex Serif",Georgia,"Times New Roman",serif;
+  --ff-ui:"Archivo","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --ff-dis:"Archivo","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,"Segoe UI",sans-serif;
+  --ff-read:"IBM Plex Serif","Noto Sans TC","PingFang TC","Microsoft JhengHei",Georgia,"Times New Roman",serif;
   --r-card:10px; --r-soft:8px; --r-pill:8px;
 }
 :root[data-skin="slate"] h1,:root[data-skin="slate"] h2,
@@ -329,6 +329,30 @@ textarea.resp.short{min-height:92px}
 .ordi.ok{border-color:var(--good)}
 .ordi.no{border-color:var(--rose)}
 
+/* reorder paragraph: tap two boxes to swap them */
+.rbank{display:flex;flex-direction:column;gap:8px}
+.rcard{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start;width:100%;text-align:left;border:1px solid var(--line-strong);border-left:3px solid var(--accent);background:var(--surface);border-radius:var(--r-soft);padding:12px 14px;cursor:pointer;color:var(--ink);transition:background .13s,border-color .13s,box-shadow .13s}
+.rcard:hover{background:var(--surface-2)}
+.rcard .rpos{font-family:var(--ff-num);font-size:12px;color:var(--blush);padding-top:3px}
+.rcard .rtext{font-family:var(--ff-read);font-size:15.5px;line-height:1.55}
+.rcard[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);box-shadow:var(--shadow-lift)}
+.rcard[aria-pressed="true"] .rpos{color:inherit;opacity:.85}
+.rcard.ok{border-color:var(--good);background:var(--good-soft)}
+.rcard.no{border-color:var(--rose);background:var(--rose-soft)}
+.rcard:disabled{cursor:default}
+
+/* language switch and on-demand translation */
+.langs{display:inline-flex;gap:2px;padding:2px;border:1px solid var(--line);border-radius:var(--r-pill);background:var(--surface-2);align-self:center}
+.langb{border:0;background:none;padding:3px 10px;border-radius:var(--r-pill);font-family:var(--ff-ui);font-size:11.5px;font-weight:700;letter-spacing:0;text-transform:none;color:var(--muted);cursor:pointer}
+.langb:hover{color:var(--ink)}
+.langb[aria-pressed="true"]{background:var(--surface);color:var(--accent);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.xlate{display:none}
+:root[lang="zh-Hant"] .xlate{display:inline-flex}
+.zh{display:block;margin-top:7px;padding:7px 11px;border-left:2px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;font-family:var(--ff-ui);font-size:14.5px;font-weight:400;line-height:1.75;color:var(--ink);text-align:left;text-decoration:none}
+.rcard[aria-pressed="true"] .zh{background:rgba(255,255,255,.16);border-left-color:currentColor;color:inherit}
+.xlnote{flex-basis:100%;font-size:12.5px;line-height:1.55;color:var(--amber);margin-top:6px;max-width:60ch}
+:root[lang="zh-Hant"] .eyebrow,:root[lang="zh-Hant"] .pill,:root[lang="zh-Hant"] .clocklab,:root[lang="zh-Hant"] .astat,:root[lang="zh-Hant"] .navlab{letter-spacing:.04em}
+
 /* results */
 .result{border:1px solid var(--line);border-radius:var(--r-card);background:var(--surface);overflow:hidden;margin-top:22px;box-shadow:var(--shadow)}
 .rhead{display:flex;align-items:center;gap:20px;padding:20px 22px;background:linear-gradient(120deg,var(--accent-soft),var(--blush-soft));border-bottom:1px solid var(--line);flex-wrap:wrap}
@@ -380,11 +404,11 @@ img{max-width:100%}
 <body>
 
 
-<script>try{var _k=localStorage.getItem('pte-score-lab/skin');if(_k&&_k!=='orchid')document.documentElement.setAttribute('data-skin',_k);}catch(e){}</script>
+<script>try{var _k=localStorage.getItem('pte-score-lab/skin');if(_k&&_k!=='orchid')document.documentElement.setAttribute('data-skin',_k);if(localStorage.getItem('pte-score-lab/lang')==='zh')document.documentElement.lang='zh-Hant';}catch(e){}</script>
 <div class="skins" id="skins"></div>
 <div class="app">
   <aside class="rail">
-    <div class="brand"><b>PTE Score Lab</b><span>Academic</span></div>
+    <div class="brand"><b>PTE Score Lab</b><div class="langs" id="langs" translate="no"></div></div>
     <div class="navlab">Practice</div>
     <nav class="nav" id="nav"></nav>
   </aside>
@@ -1094,6 +1118,575 @@ function paintSkins(){
   }));
 }
 
+/* ============================ language ============================ */
+/* The interface switches between English and Traditional Chinese from the
+   dictionary below. Exam material stays in English; the Translate buttons ask
+   Claude to translate questions and explanations only when tapped, and nothing
+   translated is stored. */
+const LANG_KEY = 'pte-score-lab/lang';
+let LANG = 'en';
+try { if (localStorage.getItem(LANG_KEY) === 'zh') LANG = 'zh'; } catch(e){}
+
+const ZH = {
+"Personal Introduction": "自我介紹（Personal Introduction）",
+"Read Aloud": "朗讀（Read Aloud）",
+"Repeat Sentence": "重述句子（Repeat Sentence）",
+"Describe Image": "描述圖片（Describe Image）",
+"Re-tell Lecture": "重述講座（Re-tell Lecture）",
+"Answer Short Question": "簡答題（Answer Short Question）",
+"Summarize Group Discussion": "小組討論摘要（Summarize Group Discussion）",
+"Respond to a Situation": "情境回應（Respond to a Situation）",
+"Summarize Written Text": "書面摘要（Summarize Written Text）",
+"Write Essay": "議論文寫作（Write Essay）",
+"Fill in the Blanks (Dropdown)": "填空：下拉選單（Fill in the Blanks, Dropdown）",
+"Multiple Choice, Multiple Answers": "多選題（Multiple Choice, Multiple Answers）",
+"Reorder Paragraph": "段落排序（Reorder Paragraph）",
+"Fill in the Blanks (Drag and Drop)": "填空：拖放（Fill in the Blanks, Drag and Drop）",
+"Multiple Choice, Single Answer": "單選題（Multiple Choice, Single Answer）",
+"Summarize Spoken Text": "口述內容摘要（Summarize Spoken Text）",
+"Highlight Correct Summary": "選出正確摘要（Highlight Correct Summary）",
+"Fill in the Blanks (Type In)": "填空：輸入（Fill in the Blanks, Type In）",
+"Select Missing Word": "選出缺漏字詞（Select Missing Word）",
+"Highlight Incorrect Words": "標出錯誤字詞（Highlight Incorrect Words）",
+"Write from Dictation": "聽寫（Write from Dictation）",
+"Unscored warm-up that opens the real test. 25 s to prepare, 30 s to record.": "正式考試開頭的暖身題，不計分。準備 25 秒，錄音 30 秒。",
+"Read a short text aloud. 35 s to prepare, 40 s to record.": "大聲朗讀一段短文。準備 35 秒，錄音 40 秒。",
+"Listen once, then repeat the sentence exactly. 15 s to record.": "聽一次，然後一字不差地重述句子。錄音 15 秒。",
+"Describe a chart in detail. 25 s to prepare, 40 s to record.": "詳細描述一張圖表。準備 25 秒，錄音 40 秒。",
+"Listen to a lecture, then re-tell it in your own words. 10 s to prepare, 40 s to record.": "聽一段講座，然後用自己的話重述。準備 10 秒，錄音 40 秒。",
+"Listen to a question and answer in one or a few words.": "聽一個問題，用一個或幾個字回答。",
+"Listen to three speakers discuss a topic, then summarize it aloud. 10 s to prepare, 2 min to record.": "聽三位講者討論一個主題，然後口頭摘要。準備 10 秒，錄音 2 分鐘。",
+"Hear and read an everyday situation, then respond appropriately. 10 s to prepare, 40 s to record.": "聽並閱讀一個日常情境，然後做出適當回應。準備 10 秒，錄音 40 秒。",
+"One single sentence of 5-75 words. 10 minutes.": "只能寫一個句子，5–75 字。限時 10 分鐘。",
+"200-300 words arguing a position. 20 minutes.": "寫 200–300 字，論述一個立場。限時 20 分鐘。",
+"Choose the right word for each gap from a dropdown.": "從下拉選單中為每個空格選出正確的字。",
+"More than one option is correct. Wrong choices cancel out right ones.": "正確選項不只一個。選錯的會抵銷選對的。",
+"Put the sentences back into their original order.": "把句子排回原本的順序。",
+"Drop words from the bank into the gaps. There are more words than gaps.": "把字庫中的字放進空格。字的數量比空格多。",
+"One correct option. No penalty for a wrong guess.": "只有一個正確選項。猜錯不扣分。",
+"Listen, then write a 50-70 word summary. 10 minutes.": "聆聽後寫一段 50–70 字的摘要。限時 10 分鐘。",
+"Listen, then select every correct option. Wrong choices cancel out right ones.": "聆聽後選出所有正確選項。選錯的會抵銷選對的。",
+"Listen, then choose the paragraph that best summarises the recording.": "聆聽後選出最能概括錄音內容的段落。",
+"Type the missing word in each gap as you listen.": "邊聽邊在每個空格中輸入缺漏的字。",
+"Listen, then choose the one correct option.": "聆聽後選出唯一正確的選項。",
+"The recording is replaced by a beep at the end. Choose what was missing.": "錄音結尾會被嗶聲取代。選出被省略的內容。",
+"The transcript differs from the recording. Click every word that is wrong.": "文字稿與錄音內容有出入。點選每一個錯誤的字。",
+"Listen once and type the sentence exactly. Every correct word scores.": "聽一次，然後一字不差地打出句子。每答對一個字就得分。",
+"This one carries no marks. Use it to settle your voice, check your volume and get past the first-recording nerves.": "這題不計分。用它來穩定聲音、確認音量，並克服第一次錄音的緊張。",
+"Have a rehearsed thirty seconds ready anyway. Walking into the scored tasks having already spoken once is worth more than the item is.": "還是要準備好一段練習過的三十秒內容。在進入計分題之前先開口說過一次，比這題本身更有價值。",
+"Do not read from a script. It is audible, and the habit will cost you on Read Aloud where the scoring listens for natural phrasing.": "不要照稿念。聽得出來，而且這個習慣會在朗讀題中讓你失分，因為朗讀題的評分看重自然的斷句。",
+"Chunk the text into 3-5 sense groups and pause only at those points - pausing mid-phrase costs more than reading slowly.": "把文章分成 3–5 個意群，只在這些地方停頓——在詞組中間停頓，比念得慢更扣分。",
+"Keep going after a stumble. A self-correction is scored; a restart from the top wastes your recording window.": "念錯了就繼續念下去。自我更正仍會計分；從頭重念只會浪費錄音時間。",
+"Stress the content words (nouns, main verbs, numbers) and let the function words fall away.": "重讀實詞（名詞、主要動詞、數字），功能詞則輕輕帶過。",
+"Do not try to understand the meaning first. Hold the sound, repeat immediately, and meaning usually follows.": "不要先試著理解意思。記住聲音、立即重述，意思通常自然就跟上了。",
+"A partial repetition still scores. Say the fragments you caught rather than staying silent.": "只重述一部分也能得分。把聽到的片段說出來，不要保持沉默。",
+"Match the speaker’s rhythm - the scoring listens for stress pattern as much as for words.": "模仿講者的節奏——評分看重重音模式，不亞於字詞本身。",
+"Open with one sentence naming what the chart shows, then the highest value, the lowest value, and the trend. That template fills 40 seconds.": "先用一句話說明圖表呈現什麼，接著說最高值、最低值和趨勢。這個模板剛好填滿 40 秒。",
+"Read at least two exact figures aloud with their units. Vague description scores low on content.": "至少念出兩個精確數字及其單位。描述含糊，內容分就會偏低。",
+"Finish with a one-clause conclusion rather than trailing off mid-sentence.": "用一個子句的結論收尾，不要說到一半就沒了聲音。",
+"Take notes as a skeleton: topic, two or three supporting points, conclusion. Do not transcribe.": "筆記只記骨架：主題、兩三個支持論點、結論。不要逐字抄寫。",
+"Open with \"The lecturer discussed...\" to buy yourself a second of thinking time.": "用 \"The lecturer discussed...\" 開頭，替自己爭取一秒思考時間。",
+"Include at least three concrete details from the talk - names, numbers, examples - since content carries the marks.": "至少提到講座中的三個具體細節——人名、數字、例子——因為分數主要來自內容。",
+"One word is a complete answer here. Extra words cost time and add risk.": "這題一個字就是完整的答案。多說只會浪費時間、增加風險。",
+"If you do not know the word, say the closest thing you do know rather than nothing.": "如果不知道那個字，就說你知道最接近的說法，總比什麼都不說好。",
+"These questions test general knowledge and everyday vocabulary, not the passage.": "這類題目考的是一般常識和日常詞彙，與文章無關。",
+"Cover four things: the general topic, each speaker’s key argument, where they agree or disagree, and the final takeaway.": "涵蓋四件事：整體主題、每位講者的主要論點、彼此同意或反對之處，以及最後的結論。",
+"Attribute the views. The top band rewards expanding on each speaker’s contribution, so name who argued what rather than merging it all into one voice.": "清楚歸屬觀點。最高分等級要求你展開每位講者的論述，所以要說出誰主張什麼，而不是把所有觀點混成同一個聲音。",
+"Keep your own opinion out of it. You are reporting the discussion, not joining it.": "不要加入自己的意見。你是在報告這場討論，而不是參與討論。",
+"The recording runs up to three minutes and plays once, with no transcript. Take notes as it goes — in the test centre you get an erasable whiteboard.": "錄音最長約三分鐘，只播放一次，沒有文字稿。邊聽邊做筆記——考場會提供可擦寫的白板。",
+"There is no word limit, only the clock. Start speaking as soon as the microphone opens; more than three seconds of silence ends the recording.": "沒有字數限制，只有時間限制。麥克風一開就開始說；靜默超過三秒錄音就會結束。",
+"Accomplish the communication goal explicitly. If the situation calls for an apology and a remedy, say both out loud — implying them does not score.": "明確達成溝通目的。如果情境需要道歉並提出補救，兩者都要說出來——只是暗示不會得分。",
+"Match the register to the person addressed. A tutor, landlord or member of staff takes a formal register; a classmate or friend takes an informal one, and appropriacy to the context carries marks.": "語氣要符合說話對象。對導師、房東或職員要用正式語氣；對同學或朋友則用非正式語氣，而是否切合情境也會計分。",
+"Do not just restate the prompt. The top band rewards going beyond its language with a developed, persuasive response.": "不要只是重述題目。最高分等級要求你超越題目的用字，給出充實、具說服力的回應。",
+"Aim for about 30–35 seconds of solid content rather than stretching to fill all 40. Stop cleanly instead of trailing off.": "目標是約 30–35 秒的紮實內容，不必硬撐滿 40 秒。說完就乾脆結束，不要拖泥帶水。",
+"Start speaking as soon as the microphone opens. More than three seconds of silence ends the recording.": "麥克風一開就開始說。靜默超過三秒錄音就會結束。",
+"It must be ONE sentence. One full stop, at the very end - a second full stop scores zero for form regardless of content.": "必須只有「一個」句子。句號只能出現在最後——出現第二個句號，不論內容如何，格式分都是零分。",
+"Aim for 30-45 words. Under 5 or over 75 also scores zero.": "目標是 30–45 字。少於 5 字或超過 75 字同樣是零分。",
+"Join the main ideas with \"although\", \"which\", \"while\" or a semicolon rather than listing them with \"and\".": "用 \"although\"、\"which\"、\"while\" 或分號連接主要觀點，而不是用 \"and\" 一路列舉。",
+"Five paragraphs: introduction with a clear position, two body paragraphs each with one reason plus one concrete example, a concession, and a conclusion.": "五個段落：立場明確的引言、兩個各含一個理由與一個具體例子的主體段、一段讓步，以及結論。",
+"Stay between 200 and 300 words. Below 120 or above 380 scores zero regardless of quality.": "字數保持在 200 到 300 字之間。少於 120 字或超過 380 字，不論品質如何都是零分。",
+"Spend the last two minutes rereading for articles, subject-verb agreement and plurals - spelling and grammar are separately scored traits.": "最後兩分鐘用來檢查冠詞、主詞動詞一致和複數——拼字和文法是分開計分的項目。",
+"Read the whole sentence past the gap before choosing - collocation and grammar usually decide it, not meaning alone.": "作答前先讀完空格後的整個句子——通常是搭配詞和文法決定答案，而不只是意思。",
+"Check what the word must be: noun, verb, adjective? That eliminates two options immediately.": "先判斷空格需要什麼詞性：名詞、動詞還是形容詞？這樣馬上就能刪去兩個選項。",
+"Each correct gap earns a point on its own, so never leave one blank.": "每個空格答對都各自得分，所以千萬不要留白。",
+"Choose only what you can point to in the text. A wrong tick subtracts a mark, so two confident answers beat four hopeful ones.": "只選你能在文中找到依據的選項。選錯會扣分，所以兩個有把握的答案勝過四個碰運氣的答案。",
+"Options that overstate - \"always\", \"proves\", \"all\" - are usually the distractors.": "說得太絕對的選項——\"always\"、\"proves\"、\"all\"——通常是干擾選項。",
+"The number of correct options is not given. Two is the most common.": "題目不會告訴你有幾個正確選項。最常見的是兩個。",
+"Find the independent opener first: it names its subject in full and contains no backward reference.": "先找出能獨立成立的開頭句：它會完整點出主題，而且不指涉前文。",
+"Chain the rest on pronouns, \"this\", \"such\", \"the latter\" and repeated nouns - each one points at the sentence before it.": "依代名詞、\"this\"、\"such\"、\"the latter\" 和重複出現的名詞把其餘句子串起來——每一個都指向前一句。",
+"Scoring is by adjacent pair, so fixing one link can earn a mark even if the whole order is wrong.": "按相鄰的每一組計分，所以即使整體順序錯了，排對其中一組仍能得分。",
+"Work out the part of speech each gap needs before you look at the bank.": "看字庫之前，先判斷每個空格需要的詞性。",
+"Do the gaps you are sure of first; each one you fill shrinks the bank for the rest.": "先填有把握的空格；每填一個，剩下的選擇就少一個。",
+"The extra words are chosen to look plausible in isolation - test each candidate in the full sentence.": "多出來的字單獨看都似乎說得通——要把每個候選字放進完整句子中檢驗。",
+"The question usually asks for the author’s purpose or tone, not a fact. Answer the question that was asked.": "題目通常問的是作者的目的或語氣，而不是事實。要回答題目真正問的問題。",
+"Distractors are typically true statements that are not the answer. Truth is not enough - it must be responsive.": "干擾選項通常是正確的敘述，但不是答案。光是正確還不夠——必須回應題目。",
+"There is no negative marking here, so always select something.": "這題不倒扣，所以一定要選一個答案。",
+"Stay inside 50-70 words. Outside that band the form mark is zero.": "字數保持在 50–70 字之間。超出範圍，格式分為零分。",
+"Note the structure while listening - claim, evidence, qualification - rather than individual words.": "聆聽時記下結構——主張、證據、限定條件——而不是個別的字。",
+"Two or three sentences is normal here; unlike the written summary, it does not have to be one.": "這題寫兩三個句子很正常；與書面摘要不同，不必限定一句。",
+"Read the options before the audio starts. You then listen for confirmation rather than meaning.": "音訊開始前先讀選項。這樣你聆聽時是在求證，而不是理解意思。",
+"Mark only what you actually heard stated. Negative marking punishes guessing.": "只選你確實聽到的內容。倒扣機制會懲罰猜測。",
+"Distractors often use a word from the recording in a claim the speaker did not make.": "干擾選項常用錄音中出現過的字，組成講者並沒有說過的主張。",
+"Eliminate on errors of fact first, then on omissions - the best summary covers the whole recording, not just its opening.": "先刪去事實錯誤的選項，再刪去有遺漏的——最佳摘要涵蓋整段錄音，而不只是開頭。",
+"A summary that is entirely true but covers only one point is still wrong.": "一段完全正確但只涵蓋一個重點的摘要，仍然是錯的。",
+"Note the recording’s conclusion. The correct option almost always reflects it.": "留意錄音的結論。正確選項幾乎都會反映它。",
+"Type what you hear, exactly. Spelling is scored, and a near-miss earns nothing.": "聽到什麼就一字不差地打出來。拼字會計分，差一點也不給分。",
+"Read ahead of the audio so you know what is coming and can type without looking back.": "搶在音訊前面往下讀，預先知道接下來的內容，打字時就不用回頭看。",
+"If you miss one, leave it and keep pace with the recording rather than falling behind.": "漏掉一個就先跳過，跟上錄音的速度，不要落後。",
+"Listen for the speaker’s attitude, not only the facts - many questions ask what they imply.": "除了事實，也要聽出講者的態度——很多題目問的是言外之意。",
+"A contrast marker - \"but\", \"however\", \"in fact\" - usually signals the sentence the question is about.": "轉折詞——\"but\"、\"however\"、\"in fact\"——通常標示出題目所問的那一句。",
+"No penalty for a wrong answer, so never leave it blank.": "答錯不扣分，所以千萬不要空著。",
+"The answer must fit the grammar of the sentence and the direction of the argument.": "答案必須符合句子的文法和論點的走向。",
+"Listen for the final contrast marker - it tells you whether the ending agrees or reverses.": "留意最後出現的轉折詞——它會告訴你結尾是順著說還是反轉。",
+"Eliminate options that repeat what was already said; the ending adds something.": "刪去重複前面內容的選項；結尾總會帶出新的東西。",
+"Follow the text with your eyes at the speaker’s pace. If you lose your place you will miss the remaining errors.": "眼睛跟著講者的速度看文字。一旦跟丟，就會漏掉後面的錯誤。",
+"Every wrong click cancels a correct one, so click only what you clearly heard differ.": "每一次點錯都會抵銷一次點對，所以只點你清楚聽到不同的字。",
+"Substituted words usually sound similar to the original - listen for the mismatch, not for nonsense.": "被替換的字通常和原字發音相近——要聽的是不一致之處，而不是不通順之處。",
+"Type every word you caught, even in the wrong order - scoring is word by word, not sentence by sentence.": "聽到的每個字都打出來，即使順序不對——評分是逐字計算，而不是整句。",
+"Write the content words first, then fill in the articles and prepositions around them.": "先寫下實詞，再補上周圍的冠詞和介系詞。",
+"Check capitals and plurals before moving on; a missing \"s\" loses that word.": "進入下一題前檢查大寫和複數；少一個 \"s\"，那個字就不給分。",
+"Spoken responses, recorded to a fixed clock. Three of these are integrated: Repeat Sentence, Re-tell Lecture and Summarize Group Discussion score Listening at the same time, so every mark you earn on them lands in both skills.": "口頭作答，依固定時間錄音。其中三種為整合題型：重述句子、重述講座和小組討論摘要會同時計入聽力，所以在這些題目上得到的每一分都會計入兩項技能。",
+"Typed responses. Summarize Written Text also scores Reading, while Summarize Spoken Text and Write from Dictation also score Listening — which means most of your Writing score is earned on questions that live in other parts of the test.": "打字作答。書面摘要同時計入閱讀，口述內容摘要和聽寫同時計入聽力——也就是說，你的寫作分數大多來自考試其他部分的題目。",
+"Five Reading-only question types from Part 2, plus the integrated ones: Summarize Written Text carries Reading marks, and Highlight Correct Summary and Highlight Incorrect Words carry them out of the Listening part.": "包含第二部分的五種純閱讀題型，以及整合題型：書面摘要計入閱讀分，選出正確摘要和標出錯誤字詞則從聽力部分計入閱讀分。",
+"The largest skill, and the one that reaches furthest. Beyond the Part 3 question types, Repeat Sentence, Re-tell Lecture, Summarize Group Discussion and Answer Short Question all score Listening from inside Part 1.": "範圍最大、牽涉最廣的技能。除了第三部分的題型外，第一部分的重述句子、重述講座、小組討論摘要和簡答題也都會計入聽力。",
+"Claude scoring was not allowed for this page, so the examiner feedback is unavailable. The model answer below still applies.": "此頁面未獲准使用 Claude 評分，因此無法提供考官回饋。下方的範例答案仍可參考。",
+"Claude scoring is not available on this account. The model answer below still applies.": "此帳戶無法使用 Claude 評分。下方的範例答案仍可參考。",
+"Claude scoring is not available in this view.": "此畫面無法使用 Claude 評分。",
+"Too many scoring requests just now. Wait a minute and try again.": "評分請求過於頻繁。請稍候一分鐘再試。",
+"Your Claude session expired. Sign in again, then retry.": "你的 Claude 登入已過期。請重新登入後再試。",
+"The examiner reply came back malformed. Try scoring again.": "考官回覆的格式有誤。請再評分一次。",
+"That response is too long to score. Shorten it and retry.": "回答太長，無法評分。請縮短後再試。",
+"Claude declined to score this response. Rewrite it and try again.": "Claude 拒絕為此回答評分。請改寫後再試。",
+"No feedback came back. Try scoring again.": "沒有收到回饋。請再評分一次。",
+"Scoring stopped.": "評分已停止。",
+"What a good introduction covers": "好的自我介紹應包含",
+"Grouped bar chart comparing the share of electricity from renewable sources in 2015 and 2023.": "分組長條圖，比較 2015 與 2023 年再生能源發電所占的比例。",
+"Line chart of library building visits and e-resource downloads per student per year, 2014 to 2023.": "折線圖，呈現 2014 至 2023 年每位學生每年到館次數與電子資源下載次數。",
+"In the real test this also scores Oral Fluency and Pronunciation out of 5 each, from the audio. A transcript cannot show either, so only Content is marked here.": "在正式考試中，這題還會依錄音評分口語流暢度與發音，各 5 分。文字稿無法呈現這兩項，因此這裡只評內容。",
+"Dashboard": "總覽",
+"Speaking": "口說",
+"Writing": "寫作",
+"Reading": "閱讀",
+"Listening": "聽力",
+"Daily Drill": "每日練習",
+"Progress": "進度",
+"Practice": "練習",
+"Part 1 · Speaking & Writing": "第一部分 · 口說與寫作",
+"Part 2 · Reading": "第二部分 · 閱讀",
+"Part 3 · Listening": "第三部分 · 聽力",
+"Orchid theme": "蘭紫主題",
+"Slate theme": "石板藍主題",
+"Examiner marking runs only in the Claude app version of this page. Everything else — timing, recording and all the auto-marked question types — works here, and the model answer below still applies.": "考官評分僅在此頁面的 Claude 應用程式版本中提供。其他功能——計時、錄音以及所有自動評分題型——在這裡都能使用，下方的範例答案仍可參考。",
+"Scoring failed because of a temporary service problem. Try again.": "服務暫時發生問題，評分失敗。請再試一次。",
+"Ready": "就緒",
+"Play audio": "播放音訊",
+"female voices": "女聲",
+"male voices": "男聲",
+"male voice": "男聲",
+"female voice": "女聲",
+"no British voice installed in this browser — using the closest available": "此瀏覽器未安裝英式英語語音——改用最接近的語音",
+"Playing": "播放中",
+"Beep": "嗶聲",
+"Finished": "播放完畢",
+"Replay": "重播",
+"No microphone detected. Please connect a microphone or headset, then test again.": "未偵測到麥克風。請連接麥克風或耳機後再測試一次。",
+"Another app is using the microphone. Close it, then test again.": "麥克風正被其他應用程式使用中。請關閉該程式後再測試一次。",
+"Microphone access is blocked. Click the microphone icon in the address bar and choose Allow, then test again. If there is no icon there, open this page in its own browser tab and test again.": "麥克風存取已被封鎖。請點選網址列上的麥克風圖示並選擇「允許」，然後再測試一次。若網址列上沒有這個圖示，請在瀏覽器的新分頁中開啟此頁面後再測試。",
+"Could not open the microphone. Check that it is connected and allowed for this site, then test again.": "無法開啟麥克風。請確認麥克風已連接並已允許此網站使用，然後再測試一次。",
+"Not tested": "尚未測試",
+"Test microphone": "測試麥克風",
+"Asking permission": "請求權限中",
+"None found": "找不到裝置",
+"Blocked": "已封鎖",
+"Speaking tasks still run their timers without a microphone, so you can practise to the clock and self-check afterwards.": "即使沒有麥克風，口說題仍會照常計時，你可以跟著時間練習，事後再自我檢查。",
+"Test again": "再測一次",
+"Checking": "檢查中",
+"No signal": "無訊號",
+"Done": "完成",
+"The microphone opened but almost no sound came through. Check that this is the device you meant to use, that its level is not at zero, and that the headset’s inline mute switch is off — then test again.": "麥克風已開啟，但幾乎沒有收到聲音。請確認這是你要使用的裝置、音量沒有調到零，而且耳機線控上的靜音開關已關閉——然後再測試一次。",
+"The microphone opened and recording ran. Play the clip back to confirm you can hear yourself.": "麥克風已開啟並完成錄音。請播放錄音，確認能聽到自己的聲音。",
+"Captured from": "錄音來源：",
+". If that is not your headset, change the default input device in Windows Sound settings and test again.": "。若這不是你的耳機，請在 Windows 音效設定中變更預設輸入裝置，然後再測試一次。",
+"Playback": "播放錄音",
+"Before you start": "開始之前",
+"Microphone check": "麥克風檢查",
+"Five seconds of recording with a live level meter, then playback. Worth doing once per sitting — a speaking task gives you one take and will not tell you the mic was dead.": "錄音五秒並顯示即時音量，之後播放。建議每次練習前做一次——口說題只能錄一次，而且不會提醒你麥克風沒有收音。",
+"Not recording": "未錄音",
+"Recording": "錄音中",
+"Completed": "已完成",
+"No microphone": "沒有麥克風",
+"No microphone in this view, so nothing was captured. The timer still runs — speak aloud against it, then use the self-check below.": "此畫面無法使用麥克風，因此沒有錄到任何內容。計時仍會進行——請跟著時間大聲說出來，然後使用下方的自我檢查。",
+"Your recording": "你的錄音",
+"Recording is not supported in this view. The timer still runs — speak aloud against it.": "此畫面不支援錄音。計時仍會進行——請跟著時間大聲說出來。",
+"In the real test, more than three seconds of silence ends the recording. Here it only warns you.": "在正式考試中，靜默超過三秒錄音就會結束。這裡只會提醒你。",
+"this attempt": "本次作答",
+"estimated band": "預估分數",
+"on target": "達標",
+"close": "接近",
+"needs work": "待加強",
+"correct": "正確",
+"incorrect": "錯誤",
+"wrong": "錯誤",
+"self-marked": "自評",
+"not attempted": "未作答",
+"unscored": "不計分",
+"done": "已完成",
+"to do": "待完成",
+"What worked": "做得好的地方",
+"Fix next time": "下次改進",
+"Model answer": "範例答案",
+"Begin task": "開始作答",
+"In the real exam the sentence plays once, automatically. Play it, then repeat immediately.": "在正式考試中，句子會自動播放一次。請播放後立即重述。",
+"The situation is read aloud and shown on screen, as in the real test.": "情境會被朗讀出來並顯示在螢幕上，與正式考試相同。",
+"Three speakers. Note who says what — the mark rewards attributing views, not merging them.": "共有三位講者。記下誰說了什麼——評分看重清楚歸屬各方觀點，而不是把它們混在一起。",
+"Play the lecture once, taking notes. Replay only while you are still building the skill.": "播放講座一次並做筆記。只有在仍在練習的階段才重播。",
+"Prepare": "準備",
+"Scratch notes while you listen — topic, 3 points, conclusion": "邊聽邊做筆記——主題、三個重點、結論",
+"No speech was picked up at all. In the real test this is marked as unattempted.": "完全沒有收到語音。在正式考試中，這會被判定為未作答。",
+"Check yourself against the text": "對照原文自我檢查",
+"The highlighted words are the ones candidates most often stumble on in this passage. Play your recording back and listen for hesitation around them.": "標示出的字是考生在這段文字中最常卡住的地方。播放你的錄音，留意這些字附近是否有停頓。",
+"The sentence was": "原句為",
+"Key content the scoring looks for": "評分重點內容",
+"Type what you actually said, as closely as you can remember. Claude scores the content of it.": "盡量照你記得的，打出你實際說了什麼。Claude 會為其內容評分。",
+"Score my content": "為我的內容評分",
+"Type at least a dozen words of what you said so there is something to score.": "請至少打出你所說的十幾個字，才有內容可以評分。",
+"Examiner is marking your content…": "考官正在評分你的內容…",
+"Content": "內容",
+"Organisation": "組織",
+"Vocabulary": "詞彙",
+"Grammar": "文法",
+"Spelling": "拼字",
+"Form": "格式",
+"Development, Structure and Coherence": "發展、結構與連貫",
+"General Linguistic Range": "語言運用廣度",
+"Vocabulary Range": "詞彙廣度",
+"Oral Fluency": "口語流暢度",
+"Pronunciation": "發音",
+"Covered": "已涵蓋",
+"Missed": "遺漏",
+"Nothing significant.": "沒有重大遺漏。",
+"scored without the examiner": "未經考官評分",
+"Transcribe your answer": "打出你的答案",
+"your own judgement of the recording": "依你自己對錄音的判斷",
+"You judged this fluent — repeat it once more at speed to lock it in.": "你判斷這次很流暢——用正常速度再練一次，加深印象。",
+"You noticed the problem yourself, which is most of the work.": "你自己發現了問題，這已經完成大半功夫了。",
+"How did that go?": "表現如何？",
+"Fluent, no hesitation": "流暢，沒有停頓",
+"A few stumbles": "有幾處卡住",
+"Struggled": "很吃力",
+"One or two words": "一兩個字",
+"Submit answer": "提交答案",
+"Answer within": "作答時間",
+"Play question": "播放題目",
+"Your answer": "你的答案",
+"The real test gives you 10 seconds to speak a one-word answer, with no tone before the microphone opens. Typing it here marks it instantly.": "正式考試中你有 10 秒鐘說出一個字的答案，而且麥克風開啟前沒有提示音。在這裡輸入答案可立即評分。",
+"Right word, and short — exactly what this item rewards.": "用字正確又簡短——正是這類題目要的。",
+"One sentence, 5–75 words.": "一個句子，5–75 字。",
+"Words": "字數",
+"Sentences": "句數",
+"Submit summary": "提交摘要",
+"Time left": "剩餘時間",
+"Your summary": "你的摘要",
+"Examiner is marking against the four traits…": "考官正依四項評分指標評分…",
+"More than one sentence. In the real exam this scores zero for the whole item.": "超過一個句子。在正式考試中，整題會得零分。",
+"Length is outside the 5–75 word band, which scores zero for form.": "字數不在 5–75 字範圍內，格式分為零分。",
+"Rewrite it as a single sentence joined with \"although\", \"which\" or a semicolon.": "請改寫成一個句子，用 \"although\"、\"which\" 或分號連接。",
+"200–300 words.": "200–300 字。",
+"Submit essay": "提交文章",
+"Essay prompt": "作文題目",
+"Plan it first (open only if you are stuck)": "先規劃（卡住時再打開）",
+"Too short to mark. Write at least a paragraph and try again.": "內容太短，無法評分。請至少寫一段後再試一次。",
+"Examiner is marking seven traits — this takes up to a minute…": "考官正在評分七項指標——最多需要一分鐘…",
+"One sentence, rewritten": "改寫一個句子",
+"50–70 words.": "50–70 字。",
+"Notes while listening": "邊聽邊做筆記",
+"Notes": "筆記",
+"Examiner is marking your summary…": "考官正在評分你的摘要…",
+"Points you left out": "你遺漏的重點",
+"— select —": "— 請選擇 —",
+"Submit": "提交",
+"Why each word fits": "每個字為何適合",
+"Clean sweep. Try the next passage at speed.": "全部答對！試著用更快的速度做下一篇。",
+"Word bank — tap a word, then tap a gap": "字庫——先點一個字，再點一個空格",
+"Spelling counts. Replay the audio and type the corrected words twice from memory.": "拼字會計分。重播音訊，憑記憶把訂正後的字各打兩遍。",
+"Every option you ticked has to be traceable to a specific line. Reread the passage and underline the line that licenses each correct option.": "你勾選的每個選項都必須能在文中找到對應的句子。重讀文章，畫出支持每個正確選項的那一句。",
+"Right — and there is no penalty here, so always commit to an option.": "答對了——這題答錯不扣分，所以一定要選一個答案。",
+"The correct option is highlighted. Find the exact sentence that supports it, and name why your choice was true-but-unresponsive.": "正確選項已標示出來。找出支持它的那一句，並說明你選的答案為何「內容正確卻沒有回答問題」。",
+"The recording stops at a beep. Choose the words that complete it.": "錄音會在嗶聲處中斷。請選出能完成句子的字詞。",
+"The full ending": "完整結尾",
+"Track the direction of the argument, not just the grammar. The last clause before the beep usually reverses or confirms what came before.": "留意論點的走向，而不只是文法。嗶聲前的最後一個子句通常會反轉或確認前面的內容。",
+"Follow the text while it plays. Click each word that does not match what you hear.": "播放時跟著文字看。點選每一個和你聽到的內容不符的字。",
+"What was actually said": "實際說的內容",
+"Keep your eyes moving at the speaker’s pace. Missed errors usually come after you have lost your place.": "眼睛要跟上講者的速度。漏掉的錯字通常出現在你跟丟之後。",
+"Type the sentence": "打出句子",
+"In the exam this plays exactly once.": "考試中只會播放一次。",
+"Word by word": "逐字比對",
+"Green words were in your answer somewhere; red were missing. Order does not affect the mark, but spelling does.": "綠色的字出現在你的答案中；紅色的是遺漏的字。順序不影響分數，但拼字會。",
+"Replay it and type only the words you missed, three times each. These sentences reuse the same academic vocabulary.": "重播一次，只把漏掉的字各打三遍。這些句子會重複使用同樣的學術詞彙。",
+"Tap a paragraph, then tap another to swap their places. Marks are awarded for each correctly ordered adjacent pair.": "點一個段落，再點另一個段落，兩者就會交換位置。每一組順序正確的相鄰段落可得一分。",
+"The correct order, and the cue that fixes each sentence": "正確順序，以及確定每個句子位置的線索",
+"Correct order": "正確順序",
+"Find the opener first — it names its subject in full with no backward reference — then chain the rest on pronouns and repeated nouns.": "先找出開頭句——它會完整點出主題，而且不指涉前文——再依代名詞和重複出現的名詞把其餘句子串起來。",
+"Task type": "題型",
+"Avg band": "平均分數",
+"Start with one task and get a real score on it.": "從一題開始，取得實際分數。",
+"Every item here is timed the way the exam times it. Written and spoken responses are marked by Claude against the official trait rubrics; the rest are marked automatically the moment you submit.": "這裡每一題的計時方式都與正式考試相同。寫作與口說題由 Claude 依官方評分指標評分；其餘題型在你提交後立即自動評分。",
+"attempts logged": "已記錄的練習次數",
+"question types tried": "已練習的題型",
+"day streak": "連續練習天數",
+"Where you stand — open a part for its task types": "你目前的程度——點開各部分查看題型",
+"Open today’s drill": "開啟今日練習",
+"Estimate only.": "僅供參考。",
+"These scores come from your practice here and are a guide, not a prediction.": "這些分數來自你在這裡的練習，只是參考，並非預測。",
+"Your actual PTE score may be higher or lower.": "你的實際 PTE 成績可能更高或更低。",
+"Communicative skill": "溝通技能",
+"Part average": "平均分數",
+"Nothing attempted yet": "尚未作答",
+"Today’s drill": "今日練習",
+"Nothing logged yet. Finish one task and it will appear here.": "尚無記錄。完成一題後就會顯示在這裡。",
+"Start with Write from Dictation": "從聽寫（Write from Dictation）開始",
+"Clear history": "清除記錄",
+"Tap again to erase everything": "再點一次以清除全部",
+"Estimated overall band · weighted by the real test": "預估總分 · 依正式考試加權",
+"Last 24 attempts": "最近 24 次練習",
+"By part": "各部分",
+"Weakest task types first": "最弱題型優先",
+"previous item": "上一題",
+"next item": "下一題",
+"Task.": "任務。",
+"How this item is actually scored": "這一題實際如何計分",
+"Try this item again": "再做一次這題",
+"Next item": "下一題",
+"This task type is not wired up.": "此題型尚未啟用。",
+"Independent practice tool.": "獨立練習工具。",
+"Not affiliated with, endorsed by, or connected to Pearson. PTE and PTE Academic are trademarks of their respective owners and are used here only to describe the test this tool prepares for.": "與 Pearson 無任何隸屬、背書或關聯。PTE 與 PTE Academic 為其各自所有者之商標，此處僅用於說明本工具所針對的考試。",
+"Original items.": "原創題目。",
+"Every passage, lecture, question, answer key, model answer and chart in this app was written for it. Nothing is reproduced from official, retired or third-party test material.": "本應用程式中的每篇文章、講座、題目、答案、範例答案與圖表皆為原創，未轉載任何官方、已停用或第三方的考試資料。",
+"Check current specifications.": "請查閱最新規格。",
+"Timings, word bands and trait rubrics follow the published PTE Academic format as understood when this was written. Verify the details against the official specification before relying on them.": "計時、字數範圍與評分指標依撰寫時所了解的 PTE Academic 公開格式設定。使用前請對照官方規格確認細節。",
+"Practice scores only.": "僅為練習分數。",
+"The 10–90 figures are estimates derived from your own attempts. They are not an official result and do not predict one.": "10–90 的分數是根據你自己的練習估算而來，並非正式成績，也不代表對正式成績的預測。"
+};
+const zhOf = s => (ZH[s] != null ? ZH[s] : s);
+const SKILL_ZH = { Speaking:'口說', Writing:'寫作', Reading:'閱讀', Listening:'聽力' };
+const earlyZh = flag => (flag ? ' · 初步估計' : '');
+
+/* strings the app builds from numbers or names */
+const ZH_RULES = [
+  [/^Item (\d+) of (\d+)$/, m => '第 ' + m[1] + ' 題，共 ' + m[2] + ' 題'],
+  [/^(\d+) attempts? · best (\d+)$/, m => m[1] + ' 次練習 · 最佳 ' + m[2]],
+  [/^based on (\d+)% of the section( · early estimate)?$/, m => '依據本部分 ' + m[1] + '% 的題型' + earlyZh(m[2])],
+  [/^(\d+) question types · not started$/, m => m[1] + ' 種題型 · 尚未開始'],
+  [/^(\d+) attempts? across (\d+) of (\d+) question types · based on (\d+)% of the section( · early estimate)?$/,
+     m => '已練習 ' + m[3] + ' 種題型中的 ' + m[2] + ' 種，共 ' + m[1] + ' 次 · 依據本部分 ' + m[4] + '% 的題型' + earlyZh(m[5])],
+  [/^Your running estimate is (\d+)\.$/, m => '你目前的預估分數是 ' + m[1] + '。'],
+  [/^Weighted across every question type you have tried, by how often each appears in a real test — covering (\d+)% of a full sitting(\.|, so treat it as an early estimate\.)$/,
+     m => '依你練習過的每種題型在正式考試中出現的頻率加權計算——涵蓋完整考試的 ' + m[1] + '%' + (m[2] === '.' ? '。' : '，因此僅為初步估計。')],
+  [/^(\d+) question types$/, m => m[1] + ' 種題型'],
+  [/^(\d+) items$/, m => m[1] + ' 題'],
+  [/^scores (.+)$/, m => '計分：' + m[1].split(' + ').map(x => SKILL_ZH[x] || x).join(' + ')],
+  [/^([\d-]+) in the real test$/, m => '正式考試 ' + m[1] + ' 題'],
+  [/^(\d+) min$/, m => m[1] + ' 分鐘'],
+  [/^(\d+) s recording$/, m => '錄音 ' + m[1] + ' 秒'],
+  [/^(\d+) s prep$/, m => '準備 ' + m[1] + ' 秒'],
+  [/^Back to (.+)$/, m => '返回' + zhOf(m[1])],
+  [/^Say a sentence — (\d+)s$/, m => '請說一句話——' + m[1] + ' 秒'],
+  [/^Silent (\d+)s$/, m => '靜默 ' + m[1] + ' 秒'],
+  [/^Signal detected, peaking at (\d+)% of full scale\. Play the clip back — if you can hear yourself clearly, you are ready for the timed tasks\.$/,
+     m => '已偵測到訊號，最高達滿格的 ' + m[1] + '%。請播放錄音——若能清楚聽到自己的聲音，就可以開始計時練習了。'],
+  [/^You went quiet for about (\d+) seconds at one point\. In the real test, silence beyond three seconds ends the recording — keep talking, even if it means restating your last point\.$/,
+     m => '你曾經安靜了大約 ' + m[1] + ' 秒。在正式考試中，靜默超過三秒錄音就會結束——請持續說下去，即使只是重述上一個重點。'],
+  [/^(\d+) \/ (\d+) content marks$/, m => '內容分 ' + m[1] + ' / ' + m[2]],
+  [/^(\d+) \/ (\d+) marks$/, m => m[1] + ' / ' + m[2] + ' 分'],
+  [/^the question was: (.+)$/, m => '題目是：' + m[1]],
+  [/^Accepted answers: (.+)$/, m => '可接受的答案：' + m[1]],
+  [/^One sentence, (\d+) words — inside the 5–75 band\.$/, m => '一個句子，' + m[1] + ' 字——在 5–75 字範圍內。'],
+  [/^(\d+) words — inside the 200–300 band\.$/, m => m[1] + ' 字——在 200–300 字範圍內。'],
+  [/^(\d+) words — outside 200–300, which costs a form mark\.$/, m => m[1] + ' 字——超出 200–300 字範圍，扣一分格式分。'],
+  [/^(\d+) words — far outside the band; in the real exam this zeroes the item\.$/, m => m[1] + ' 字——遠超出範圍；在正式考試中整題為零分。'],
+  [/^(\d+) words — inside the 50–70 band\.$/, m => m[1] + ' 字——在 50–70 字範圍內。'],
+  [/^(\d+) words — outside the 50–70 band\.$/, m => m[1] + ' 字——不在 50–70 字範圍內。'],
+  [/^(\d+) of (\d+) gaps correct$/, m => m[2] + ' 個空格中答對 ' + m[1] + ' 個'],
+  [/^Gap (\d+) · (.+)$/, m => '空格 ' + m[1] + ' · ' + m[2]],
+  [/^(\d+) of (\d+) words correct$/, m => m[2] + ' 個字中答對 ' + m[1] + ' 個'],
+  [/^(\d+) of (\d+) marks \(wrong picks subtract\)$/, m => m[2] + ' 分中得 ' + m[1] + ' 分（選錯會扣分）'],
+  [/^(\d+) found, (\d+) false alarms, (\d+) errors in total$/, m => '找到 ' + m[1] + ' 個，誤選 ' + m[2] + ' 個，共 ' + m[3] + ' 個錯誤'],
+  [/^“(.+)” should have been “(.+)”$/, m => '「' + m[1] + '」應為「' + m[2] + '」'],
+  [/^You clicked (\d+) correct words?\. Each false alarm cancels a find, so click only when you clearly heard a mismatch\.$/,
+     m => '你點選了 ' + m[1] + ' 個其實正確的字。每一次誤選都會抵銷一個正確找到的錯誤，所以只有在清楚聽到不符時才點選。'],
+  [/^(\d+) of (\d+) words captured$/, m => m[2] + ' 個字中聽寫出 ' + m[1] + ' 個'],
+  [/^(\d+) of (\d+) adjacent pairs correct$/, m => m[2] + ' 組相鄰段落中答對 ' + m[1] + ' 組'],
+  [/^Six items across all four parts, fixed for the day\. About twenty-five minutes\. (\d+) of 6 done\.$/,
+     m => '涵蓋四大技能的六題，當天固定不變，約需二十五分鐘。已完成 ' + m[1] + ' / 6。'],
+  [/^(Part \d · .+) · item (\d+)$/, m => zhOf(m[1]) + ' · 第 ' + m[2] + ' 題'],
+  [/^(\d+) tried$/, m => '練習 ' + m[1] + ' 次'],
+  [/^British English · (.+)$/, m => '英式英語 · ' + (ZH[m[1]] || m[1].replace(/^(\d+) female, (\d+) male$/, '$1 女 $2 男'))]
+];
+
+/* exam material is never touched by the dictionary */
+const NO_TR = '.prose,.hw,.chip,.rtext,.fig,.zh,.xlnote,.langs,.otext > div:first-child,[translate="no"]';
+const TR_ATTRS = ['placeholder', 'title', 'aria-label'];
+
+function trText(s){
+  if (s == null) return null;
+  const core = s.trim();
+  if (!core || !/[A-Za-z]/.test(core)) return null;
+  const at = s.indexOf(core);
+  let out = ZH[core];
+  if (out == null) for (const [re, fn] of ZH_RULES){ const m = core.match(re); if (m){ out = fn(m); break; } }
+  return out == null ? null : s.slice(0, at) + out + s.slice(at + core.length);
+}
+function trNode(n){
+  const p = n.parentElement;
+  if (!p || p.closest(NO_TR) || p.closest('script,style')) return;
+  const t = trText(n.nodeValue);
+  if (t != null && t !== n.nodeValue){ if (n.__en == null) n.__en = n.nodeValue; n.nodeValue = t; }
+}
+function trAttrs(el){
+  if (!el.closest || el.closest(NO_TR)) return;
+  TR_ATTRS.forEach(a => {
+    const v = el.getAttribute(a);
+    if (!v) return;
+    const t = trText(v);
+    if (t != null && t !== v){
+      el.__enAttrs = el.__enAttrs || {};
+      if (el.__enAttrs[a] == null) el.__enAttrs[a] = v;
+      el.setAttribute(a, t);
+    }
+  });
+}
+function translateTree(root){
+  if (LANG !== 'zh' || !root) return;
+  if (root.nodeType === 3){ trNode(root); return; }
+  if (root.nodeType !== 1) return;
+  const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  const nodes = [];
+  for (let n = w.nextNode(); n; n = w.nextNode()) nodes.push(n);
+  nodes.forEach(trNode);
+  [root, ...root.querySelectorAll('[placeholder],[title],[aria-label]')].forEach(trAttrs);
+}
+function restoreEnglish(root){
+  const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  for (let n = w.nextNode(); n; n = w.nextNode()) if (n.__en != null){ n.nodeValue = n.__en; n.__en = null; }
+  root.querySelectorAll('*').forEach(el => {
+    if (el.__enAttrs){ for (const a in el.__enAttrs) el.setAttribute(a, el.__enAttrs[a]); el.__enAttrs = null; }
+  });
+}
+
+let i18nObs = null;
+function startI18n(){
+  document.documentElement.lang = LANG === 'zh' ? 'zh-Hant' : 'en';
+  if (!i18nObs && 'MutationObserver' in window){
+    i18nObs = new MutationObserver(muts => {
+      if (LANG !== 'zh') return;
+      muts.forEach(m => {
+        if (m.type === 'characterData') trNode(m.target);
+        else if (m.type === 'attributes') trAttrs(m.target);
+        else m.addedNodes.forEach(translateTree);
+      });
+    });
+    i18nObs.observe(document.body, { childList:true, subtree:true, characterData:true, attributes:true, attributeFilter:TR_ATTRS });
+  }
+  translateTree(document.body);
+}
+function setLang(id){
+  if (id === LANG) return;
+  LANG = id;
+  try { localStorage.setItem(LANG_KEY, id); } catch(e){}
+  document.documentElement.lang = id === 'zh' ? 'zh-Hant' : 'en';
+  if (id === 'en'){
+    document.querySelectorAll('.zh, .xlnote').forEach(n => n.remove());
+    document.querySelectorAll('[data-zh]').forEach(n => n.removeAttribute('data-zh'));
+    restoreEnglish(document.body);
+  }
+  if (state.route.view !== 'task') render();   // never rebuild a task in progress
+  translateTree(document.body);
+  paintLangs();
+}
+function paintLangs(){
+  const host = document.getElementById('langs');
+  if (!host) return;
+  host.replaceChildren(...[['en', 'EN', 'English'], ['zh', '繁中', '繁體中文']].map(([id, label, name]) => {
+    const b = h('button', { cls:'langb', type:'button', 'aria-pressed': String(LANG === id), title:name, 'aria-label':name }, label);
+    b.addEventListener('click', () => setLang(id));
+    return b;
+  }));
+}
+
+/* ---------- translate on demand: questions and explanations ---------- */
+function plainText(el){
+  const c = el.cloneNode(true);
+  c.querySelectorAll('.zh, .tag, .xlnote').forEach(x => x.remove());
+  c.querySelectorAll('select, input, .gapslot').forEach(x => x.replaceWith(document.createTextNode(' ____ ')));
+  return c.textContent.replace(/\s+/g, ' ').trim();
+}
+function segmentsFor(kind){
+  const root = document.getElementById('view');
+  const pick = kind === 'q'
+    ? '.prose, .otext > div:first-child, .rcard .rtext, details.reveal .dbody li'
+    : '.whyline, .whytext, .tnote, .result .tips li, .card .tips li, .result .prose, .result .model > div:not(.eyebrow)';
+  let els = Array.from(root.querySelectorAll(pick)).filter(el =>
+    !el.closest('.wshead') && (kind === 'q' ? !el.closest('.result') : true));
+  // a passage made of paragraphs is translated paragraph by paragraph
+  els = els.flatMap(el => (el.matches('.prose') && el.querySelector(':scope > p')) ? Array.from(el.querySelectorAll(':scope > p')) : [el]);
+  return [...new Set(els)].filter(el => {
+    if (el.dataset.zh) return false;
+    const t = plainText(el);
+    return /[A-Za-z]{2}/.test(t) && !/[一-鿿]/.test(t);
+  });
+}
+function putZh(el, text){
+  const z = h(el.closest('button') ? 'span' : 'div', { cls:'zh', translate:'no' }, text);
+  if (el.matches('li, .whytext, .whyline, .tnote, .rtext, .otext > div:first-child, .model > div')) el.append(z);
+  else el.after(z);
+  el.dataset.zh = '1';
+}
+function xlNote(btn, msg){
+  let n = btn.nextElementSibling;
+  if (!n || !n.classList.contains('xlnote')){ n = h('div', { cls:'xlnote', translate:'no' }); btn.after(n); }
+  n.textContent = msg;
+}
+const XL_ERR = {
+  rate_limited:'翻譯請求過於頻繁，請稍候一分鐘再試。',
+  not_granted:'未允許此頁面使用 Claude，因此無法翻譯。',
+  sampling_disabled:'此帳戶無法使用 Claude 翻譯。',
+  session_expired:'Claude 登入已過期，請重新登入後再試。'
+};
+async function translateContent(kind, btn){
+  const els = segmentsFor(kind);
+  if (!els.length){ btn.textContent = '✓ 已翻譯'; return; }
+  const s = await ensureSample();
+  if (!s){
+    xlNote(btn, '此版本無法即時翻譯題目與解說。請使用瀏覽器內建的翻譯功能：iPhone Safari 點網址列的「aA」圖示；電腦版 Chrome 在頁面上按右鍵選擇「翻譯」。');
+    return;
+  }
+  const label = btn.textContent;
+  btn.disabled = true; btn.textContent = '譯 翻譯中…';
+  try {
+    const out = await s.json(
+      'Translate each English string in the JSON array below into Traditional Chinese (繁體中文) as used in Taiwan, for a student preparing for the PTE Academic English test.\n' +
+      '- Translate faithfully and naturally. Do not summarise, explain or add anything.\n' +
+      '- Keep any English inside quotation marks (“…” or "…") exactly as written, and translate the words around it.\n' +
+      '- Keep numbers, names and ____ blanks unchanged.\n' +
+      'Reply with only a JSON array of strings, the same length and in the same order as the input.\n\n' +
+      JSON.stringify(els.map(plainText)),
+      { modelTier:'quick', cache:{ gcTime:86400000 } });
+    if (!Array.isArray(out) || out.length !== els.length) throw { code:'invalid_json' };
+    els.forEach((el, i) => putZh(el, String(out[i] == null ? '' : out[i])));
+    btn.textContent = '✓ 已翻譯';
+  } catch(e){
+    btn.textContent = label;
+    xlNote(btn, XL_ERR[e && e.code] || '翻譯失敗，請再試一次。');
+  } finally {
+    btn.disabled = false;
+  }
+}
+function xlateButton(kind){
+  const b = h('button', { cls:'btn sm xlate', type:'button', translate:'no' }, kind === 'q' ? '譯 翻譯題目' : '譯 翻譯解說');
+  b.addEventListener('click', () => translateContent(kind, b));
+  return b;
+}
+
 /* ============================ state + storage ============================ */
 const LSK = 'pte-score-lab/attempts/v1';
 const state = { route:{ view:'home' }, attempts:[], ai:undefined };
@@ -1147,6 +1740,7 @@ const aiCopy = code => (code === 'not_granted' && !(window.claude && window.clau
 async function aiRubric(prompt, tier){
   const s = await ensureSample();
   if (!s) throw { code:'not_granted' };
+  if (LANG === 'zh') prompt += '\n\nLANGUAGE: write every "note", and every item in "good", "fix", "covered" and "missed", in Traditional Chinese (繁體中文, Taiwan usage). Keep each trait "name" exactly as given in English, keep "rewrite" in English, and keep any quotation of the candidate\u2019s own words in the original English.';
   return await s.json(prompt, { modelTier: tier || 'default', cache:{ gcTime: 86400000 } });
 }
 
@@ -1534,7 +2128,8 @@ function resultCard(o){
       h('div', { cls:'eyebrow', style:'margin-top:4px', text:'estimated band' })),
     h('div', { style:'margin-left:auto;display:flex;flex-direction:column;gap:6px;align-items:flex-end' },
       h('span', { cls:'pill ' + band(o.pct), text: o.label || (pteOf(o.pct) >= 79 ? 'on target' : pteOf(o.pct) >= 58 ? 'close' : 'needs work') }),
-      o.sub ? h('span', { cls:'small muted', text:o.sub }) : null));
+      o.sub ? h('span', { cls:'small muted', text:o.sub }) : null,
+      xlateButton('a')));
   const body = h('div', { cls:'rbody' });
   if (o.traits && o.traits.length){
     body.append(h('div', { cls:'traits' }, o.traits.map(t => h('div', { cls:'trait' },
@@ -2207,92 +2802,55 @@ RUN.wfd = ctx => {
 /* --- re-order paragraphs --- */
 RUN.reorder = ctx => {
   const { item, host } = ctx;
-  let current = shuffle(item.order.map((t,i) => i));
-  if (current.every((v,i) => v === i)) current = current.reverse();
-  const list = h('div', { cls:'ord' });
-  const submit = h('button', { cls:'btn primary', text:'Submit' });
-  let locked = false;
+  const n = item.order.length;
+  let start = shuffle(item.order.map((t,i) => i));
+  if (start.every((v,i) => v === i)) start = start.reverse();
+  let picked = null, locked = false;
+  const list = h('div', { cls:'rbank' });
 
-  /* Pointer-based dragging: one code path for mouse, pen and touch.
-     HTML5 drag-and-drop is ignored by mobile browsers, so it is no use here. */
-  let dragRow = null, startY = 0;
-  const onMove = e => {
-    if (!dragRow) return;
-    e.preventDefault();
-    dragRow.style.transform = 'translateY(' + (e.clientY - startY) + 'px)';
-    const rect = dragRow.getBoundingClientRect();
-    const mid = rect.top + rect.height / 2;
-    for (const sib of Array.from(list.children)){
-      if (sib === dragRow) continue;
-      const r = sib.getBoundingClientRect();
-      if (mid > r.top && mid < r.bottom){
-        const heldAt = rect.top;                       // where the row sits on screen right now
-        if (mid < r.top + r.height / 2) list.insertBefore(dragRow, sib);
-        else list.insertBefore(dragRow, sib.nextSibling);
-        dragRow.style.transform = '';                  // re-baseline so it stays under the finger
-        startY = e.clientY - (heldAt - dragRow.getBoundingClientRect().top);
-        dragRow.style.transform = 'translateY(' + (e.clientY - startY) + 'px)';
-        break;
-      }
-    }
-  };
-  const onUp = () => {
-    if (!dragRow) return;
-    dragRow.style.transform = '';
-    dragRow.classList.remove('dragging');
-    list.classList.remove('lifting');
-    dragRow = null;
-    current = Array.from(list.children).map(n => Number(n.dataset.orig));
-    paint();
-  };
-
-  const paint = () => {
-    list.replaceChildren();
-    current.forEach((orig, pos) => {
-      const up = h('button', { type:'button', 'aria-label':'move up', text:'▲', disabled: pos === 0 || locked });
-      const dn = h('button', { type:'button', 'aria-label':'move down', text:'▼', disabled: pos === current.length - 1 || locked });
-      up.addEventListener('click', () => { [current[pos-1], current[pos]] = [current[pos], current[pos-1]]; paint(); });
-      dn.addEventListener('click', () => { [current[pos+1], current[pos]] = [current[pos], current[pos+1]]; paint(); });
-      const grip = h('div', { cls:'grip', 'aria-hidden':'true', title:'Drag to reorder', text:'⠿' });
-      const row = h('div', { cls:'ordi' },
-        h('div', { cls:'pos mono', text:String(pos+1) }),
-        h('div', { style:'font-family:var(--ff-read);font-size:15.5px;line-height:1.55', text:item.order[orig] }),
-        grip,
-        h('div', { cls:'mv' }, up, dn));
-      row.dataset.orig = orig;
-      if (locked){ row.classList.add(current[pos] === pos ? 'ok' : 'no'); grip.style.visibility = 'hidden'; }
-      else {
-        grip.addEventListener('pointerdown', e => {
-          if (locked) return;
-          e.preventDefault();
-          dragRow = row; startY = e.clientY;
-          row.classList.add('dragging');
-          list.classList.add('lifting');
-          try { grip.setPointerCapture(e.pointerId); } catch(err){}
-        });
-        grip.addEventListener('pointermove', onMove);
-        grip.addEventListener('pointerup', onUp);
-        grip.addEventListener('pointercancel', onUp);
-      }
-      list.append(row);
+  /* one box per paragraph; tapping two boxes swaps them. Boxes are moved rather
+     than rebuilt, so anything attached to a paragraph travels with it. */
+  const cards = start.map(orig => {
+    const b = h('button', { cls:'rcard', type:'button', 'aria-pressed':'false' },
+      h('span', { cls:'rpos mono' }), h('span', { cls:'rtext', text:item.order[orig] }));
+    b.dataset.orig = String(orig);
+    b.addEventListener('click', () => {
+      if (locked) return;
+      if (!picked){ picked = b; b.setAttribute('aria-pressed', 'true'); return; }
+      if (picked === b){ picked = null; b.setAttribute('aria-pressed', 'false'); return; }
+      const i = cards.indexOf(picked), j = cards.indexOf(b);
+      [cards[i], cards[j]] = [cards[j], cards[i]];
+      picked.setAttribute('aria-pressed', 'false'); picked = null;
+      layout();
     });
+    return b;
+  });
+  const layout = () => {
+    list.append(...cards);
+    cards.forEach((c,i) => { c.querySelector('.rpos').textContent = String(i + 1); });
   };
-  paint();
+  layout();
+
+  const submit = h('button', { cls:'btn primary', text:'Submit' });
   host.append(h('div', { style:'display:flex;flex-direction:column;gap:16px' },
-    h('div', { cls:'small muted', text:'Drag a paragraph by its handle to reorder, or use the arrows. Marks are awarded for each correctly ordered adjacent pair.' }),
+    h('div', { cls:'small muted', text:'Tap a paragraph, then tap another to swap their places. Marks are awarded for each correctly ordered adjacent pair.' }),
     list, h('div', { cls:'row' }, submit)));
+
   submit.addEventListener('click', () => {
-    locked = true; submit.disabled = true; paint();
+    locked = true; submit.disabled = true;
+    if (picked){ picked.setAttribute('aria-pressed', 'false'); picked = null; }
+    const got = cards.map(c => Number(c.dataset.orig));
     let pairs = 0;
-    for (let i = 0; i < current.length - 1; i++) if (current[i+1] === current[i] + 1) pairs++;
-    const p = pct(pairs, current.length - 1);
-    ctx.finish(p, resultCard({ pct:p, sub: pairs + ' of ' + (current.length - 1) + ' adjacent pairs correct',
+    for (let i = 0; i < n - 1; i++) if (got[i + 1] === got[i] + 1) pairs++;
+    cards.forEach((c,i) => { c.classList.add(got[i] === i ? 'ok' : 'no'); c.disabled = true; });
+    const p = pct(pairs, n - 1);
+    ctx.finish(p, resultCard({ pct:p, sub: pairs + ' of ' + (n - 1) + ' adjacent pairs correct',
       extra: item.why
         ? whyPanel('The correct order, and the cue that fixes each sentence', item.order.map((t,i) => ({
-            key: String(i+1), ok: current[i] === i, text: t + ' \u2014 ' + item.why[i] })))
+            key: String(i + 1), ok: got[i] === i, text: t + ' \u2014 ' + item.why[i] })))
         : h('div', { cls:'model' }, h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'Correct order' }),
             h('ol', { cls:'tips', style:'padding-left:20px' }, item.order.map(t => h('li', { text:t })))),
-      fix: pairs < current.length - 1 ? ['Find the opener first — it names its subject in full with no backward reference — then chain the rest on pronouns and repeated nouns.'] : null }));
+      fix: pairs < n - 1 ? ['Find the opener first \u2014 it names its subject in full with no backward reference \u2014 then chain the rest on pronouns and repeated nouns.'] : null }));
   });
 };
 
@@ -2547,7 +3105,7 @@ function viewDrill(){
   }));
   view.replaceChildren(
     h('div', { cls:'hero' },
-      h('div', { cls:'eyebrow', text: new Date().toLocaleDateString(undefined, { weekday:'long', day:'numeric', month:'long' }) }),
+      h('div', { cls:'eyebrow', text: new Date().toLocaleDateString(LANG === 'zh' ? 'zh-TW' : undefined, { weekday:'long', day:'numeric', month:'long' }) }),
       h('h1', { cls:'h1', style:'margin-top:6px', text:'Today’s drill' }),
       h('p', { cls:'muted', style:'margin-top:8px;max-width:58ch', text:'Six items across all four parts, fixed for the day. About twenty-five minutes. ' + n + ' of 6 done.' }),
       h('div', { cls:'row', style:'margin-top:12px' },
@@ -2632,7 +3190,8 @@ function viewTask(){
       h('span', { cls:'pill', text: task.count + ' in the real test' }),
       task.time ? h('span', { cls:'pill', text: (task.time/60) + ' min' }) : null,
       (task.rec && task.kind === 'speak') ? h('span', { cls:'pill', text: task.rec + ' s recording' }) : null,
-      task.prep ? h('span', { cls:'pill', text: task.prep + ' s prep' }) : null),
+      task.prep ? h('span', { cls:'pill', text: task.prep + ' s prep' }) : null,
+      xlateButton('q')),
     h('div', { cls:'brief' }, h('b', { text:'Task. ' }), task.brief),
     h('details', { cls:'reveal' }, h('summary', { text:'How this item is actually scored' }),
       h('div', { cls:'dbody' }, h('ul', { cls:'tips' }, task.tips.map(t => h('li', { text:t }))))));
@@ -2665,6 +3224,8 @@ function render(){
 }
 window.addEventListener('pagehide', () => { stopAudio(); releaseMic(); });
 paintSkins();
+paintLangs();
+startI18n();
 render();
 </script>
 
