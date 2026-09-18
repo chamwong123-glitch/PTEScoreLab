@@ -2311,8 +2311,10 @@ function paintNav(){
   }));
 }
 
+function overallStats(){ return weighted(TASKS.filter(t => !t.unscored)); }
 function overallBand(){
-  return state.attempts.length ? pteOf(avgFor(state.attempts)) : null;
+  const o = overallStats();
+  return o.pct == null ? null : pteOf(o.pct);
 }
 
 function scaleWidget(value){
@@ -2356,10 +2358,40 @@ function scoreRow(cls, main, avg, indent){
 }
 
 const PARTS = () => SECTIONS.filter(s => TASKS.some(t => t.skills && t.skills.includes(s.id)));
+/* ---------- scoring model ----------
+   Question type: the mean of its last 10 attempts, 0-100.
+   Skill:   those question-type scores, weighted by how many of each question
+            appear in a real sitting (midpoint of the Score Guide's range).
+   Overall: the same weighting across every question type, each counted once,
+            so integrated types are not double-counted. Per the Score Guide the
+            overall is not an average of the four skill scores.
+   Untried question types are left out, and coverage reports how much of the
+   section the figure rests on. */
+function perSitting(t){
+  const m = String(t.count || '1').split('-').map(Number);
+  return m.length > 1 ? (m[0] + m[1]) / 2 : m[0];
+}
+function typePct(id){
+  const r = attemptsFor(id).slice(-RECENT);
+  return r.length ? r.reduce((s, x) => s + x.p, 0) / r.length : null;
+}
+function weighted(types){
+  let num = 0, den = 0, all = 0;
+  types.forEach(t => {
+    const w = perSitting(t), p = typePct(t.id);
+    all += w;
+    if (p != null){ num += w * p; den += w; }
+  });
+  return { pct: den ? num / den : null, coverage: all ? den / all : 0 };
+}
+const EARLY = 1 / 3;   // below this share of a section, call it an early estimate
+const coverageNote = c => 'based on ' + Math.round(c * 100) + '% of the section' + (c < EARLY ? ' · early estimate' : '');
 function partStats(id){
   const ts = TASKS.filter(t => t.skills.includes(id) && !t.unscored);
   const att = state.attempts.filter(x => TASK_BY_ID[x.t] && TASK_BY_ID[x.t].skills.includes(id));
-  return { ts, att, avg: avgFor(att), tried: ts.filter(t => attemptsFor(t.id).length).length,
+  const w = weighted(ts);
+  return { ts, att, avg: w.pct, coverage: w.coverage,
+           tried: ts.filter(t => attemptsFor(t.id).length).length,
            items: ts.reduce((n,t) => n + t.items.length, 0) };
 }
 
@@ -2374,7 +2406,7 @@ function areaCards(){
       h('div', { cls:'an', text: s.label }), num, h('div', { cls:'bbar' }, bar),
       h('div', { cls:'as', text: st.avg == null
         ? st.ts.length + ' question types · not started'
-        : st.tried + ' of ' + st.ts.length + ' tried · ' + st.att.length + ' attempt' + (st.att.length === 1 ? '' : 's') }));
+        : coverageNote(st.coverage) }));
     card.addEventListener('click', () => go({ view: s.id }));
     return card;
   }));
@@ -2412,7 +2444,9 @@ function viewHome(){
     h('h1', { cls:'h1', text: b == null ? 'Start with one task and get a real score on it.' : 'Your running estimate is ' + b + '.' }),
     h('p', { cls:'muted', style:'margin-top:8px;max-width:58ch', text: b == null
       ? 'Every item here is timed the way the exam times it. Written and spoken responses are marked by Claude against the official trait rubrics; the rest are marked automatically the moment you submit.'
-      : 'A rolling average of your last ' + Math.min(RECENT, done) + ' attempts, across ' + covered + ' task types tried. The exam scores each part separately, so pick your ground below.' }),
+      : (() => { const o = overallStats();
+          return 'Weighted across every question type you have tried, by how often each appears in a real test — '
+            + 'covering ' + Math.round(o.coverage * 100) + '% of a full sitting' + (o.coverage < EARLY ? ', so treat it as an early estimate.' : '.'); })() }),
     scaleWidget(b));
 
   const tiles = h('div', { cls:'tiles' },
@@ -2435,7 +2469,7 @@ function viewHome(){
     h('div', { cls:'legendnote' },
       h('span', { text:'Estimated PTE band \u00b7 marks at 50, 58, 65 and 79' })),
     h('div', { style:'height:14px' }),
-    h('div', { cls:'notice', text: 'Every figure here is an estimated PTE band on the exam’s own 10–90 scale, averaged over your latest 10 attempts. Integrated question types are scored under two skills at once — Re-tell Lecture counts toward Listening and Speaking, Write from Dictation toward Listening and Writing — so they appear under both cards and feed both averages, which is why the four cards add up to more than 22 question types.' }));
+    h('div', { cls:'notice', text: 'Each question type’s score is the average of your last 10 attempts. A skill’s score weights its question types by how many of each appear in a real test, so Repeat Sentence (about 11 per sitting) counts eleven times as much as Summarize Spoken Text (one). Integrated question types count toward both skills they test. The headline uses the same weighting across every question type, counting each once — which is why it is not simply the average of the four cards. All figures are estimated PTE bands on the 10–90 scale.' }));
 }
 
 function streak(){
@@ -2467,7 +2501,9 @@ function viewSection(id){
         h('div', { style:'flex:1;min-width:120px;padding-bottom:6px' },
           h('div', { cls:'bbar', style:'height:8px;border-radius:4px' }, bar),
           h('div', { cls:'small faint', style:'margin-top:6px',
-            text: st.avg == null ? 'Nothing attempted yet' : st.att.length + ' attempt' + (st.att.length === 1 ? '' : 's') + ' across ' + st.tried + ' of ' + st.ts.length + ' task types' })),
+            text: st.avg == null ? 'Nothing attempted yet'
+              : st.att.length + ' attempt' + (st.att.length === 1 ? '' : 's') + ' across ' + st.tried + ' of ' + st.ts.length
+                + ' question types · ' + coverageNote(st.coverage) })),
         h('div', { cls:'row', style:'padding-bottom:6px' },
           h('span', { cls:'pill acc', text: st.ts.length + ' question types' }),
           h('span', { cls:'pill', text: st.items + ' items' })))),
@@ -2545,7 +2581,7 @@ function viewProgress(){
   });
   view.replaceChildren(
     h('div', { cls:'hero' },
-      h('div', { cls:'eyebrow', text:'Estimated band from your last 10 attempts' }),
+      h('div', { cls:'eyebrow', text:'Estimated overall band · weighted by the real test' }),
       h('h1', { cls:'h1', style:'margin-top:6px', text: String(overallBand()) }),
       scaleWidget(overallBand())),
     h('div', { cls:'grid2' },
