@@ -192,7 +192,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .scalebar{position:relative;height:28px;border-radius:var(--r-pill);background:linear-gradient(90deg,var(--rose-soft),var(--amber-soft) 48%,var(--good-soft));border:1px solid var(--line)}
 .scalebar i{position:absolute;top:-1px;bottom:-1px;width:1px;background:var(--line-strong)}
 .scalebar b{position:absolute;top:-5px;bottom:-5px;width:4px;background:var(--accent);border-radius:var(--r-pill);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent)}
-.scaleticks{position:relative;height:30px;margin-top:5px}
+.scaleticks{position:relative;height:16px;margin-top:5px}
 .scaleticks span{position:absolute;transform:translateX(-50%);font-family:var(--ff-num);font-size:10px;color:var(--faint);text-align:center;line-height:1.35;white-space:nowrap}
 .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden}
 .tile{background:var(--surface);padding:16px 18px}
@@ -2323,7 +2323,7 @@ function scaleWidget(value){
     value != null ? h('b', { style:'left:calc(' + posOf(value) + '% - 1.5px)' }) : null);
   const ticks = h('div', { cls:'scaleticks' },
     h('span', { style:'left:0%;transform:none', text:'10' }),
-    marks.map(m => h('span', { style:'left:' + posOf(m) + '%', html: m + '<br>' + ({50:'many visas',58:'most unis',65:'competitive',79:'top band'})[m] })),
+    marks.map(m => h('span', { style:'left:' + posOf(m) + '%', text: String(m) })),
     h('span', { style:'left:100%;transform:translateX(-100%)', text:'90' }));
   return h('div', { cls:'scalewrap' }, bar, ticks);
 }
