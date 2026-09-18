@@ -2461,14 +2461,7 @@ function viewHome(){
       h('div', { cls:'eyebrow', text:'Where you stand — open a part for its task types' }),
       h('button', { cls:'btn sm', text:'Open today’s drill', onclick:() => go({ view:'drill' }) })),
     areaCards(),
-    h('div', { cls:'legend' },
-      h('span', { text:'10' }),
-      h('div', { cls:'lg', style:'background:' + rampGradient() },
-        [50,58,65,79].map(m => h('i', { style:'left:' + ((m - 10) / 80 * 100) + '%', title:'band ' + m }))),
-      h('span', { text:'90' })),
-    h('div', { cls:'legendnote' },
-      h('span', { text:'Estimated PTE band \u00b7 marks at 50, 58, 65 and 79' })),
-    h('div', { style:'height:14px' }),
+    h('div', { style:'height:18px' }),
     h('div', { cls:'notice', text: 'Each question type’s score is the average of your last 10 attempts. A skill’s score weights its question types by how many of each appear in a real test, so Repeat Sentence (about 11 per sitting) counts eleven times as much as Summarize Spoken Text (one). Integrated question types count toward both skills they test. The headline uses the same weighting across every question type, counting each once — which is why it is not simply the average of the four cards. All figures are estimated PTE bands on the 10–90 scale.' }));
 }
 
