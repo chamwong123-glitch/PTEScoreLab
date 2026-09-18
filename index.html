@@ -1,0 +1,2638 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Timed practice for all 22 PTE Academic question types.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="PTE Score Lab">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#FAF6F9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15111C" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='88'%3E%F0%9F%8E%A7%3C/text%3E%3C/svg%3E">
+<title>PTE Score Lab</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Serif:wght@400;600&family=Roboto+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FAF6F9; --surface:#FFFFFF; --surface-2:#F5EEF4; --surface-3:#EAE0EB;
+  --ink:#2B2130; --muted:#6B5E73; --faint:#9B8DA2;
+  --line:#EBE0EB; --line-strong:#D8C9DB;
+  --accent:#8A4FA8; --accent-ink:#FFFFFF; --accent-soft:#F4E7F8;
+  --blush:#D9578C; --blush-soft:#FCE7F0;
+  --amber:#96631A; --amber-soft:#FAEBD2;
+  --rose:#B23A50; --rose-soft:#FBE0E4;
+  --good:#2D7D5C; --good-soft:#DCEFE5;
+  --shadow:0 1px 2px rgba(64,34,72,.05), 0 12px 28px -16px rgba(64,34,72,.30);
+  --shadow-lift:0 2px 6px rgba(64,34,72,.07), 0 18px 40px -22px rgba(64,34,72,.42);
+  --ramp-l:48%; --ramp-c:.135; --ramp-bar-l:60%; --ramp-bar-c:.155;
+  --ff-ui:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --ff-dis:"Fraunces","Iowan Old Style",Georgia,serif;
+  --ff-read:"Lora",Georgia,"Times New Roman",serif;
+  --ff-num:"Roboto Mono",ui-monospace,"Segoe UI",Arial,monospace;
+  --r-card:16px; --r-soft:12px; --r-pill:999px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#15111C; --surface:#1D1726; --surface-2:#271F33; --surface-3:#33293F;
+    --ink:#F1EAF4; --muted:#A99CB2; --faint:#7E718A;
+    --line:#302742; --line-strong:#443653;
+    --accent:#C99AE6; --accent-ink:#22102C; --accent-soft:#2F2142;
+    --blush:#F0A0C2; --blush-soft:#3B2031;
+    --amber:#E0A94C; --amber-soft:#382712;
+    --rose:#F08192; --rose-soft:#3D1D26;
+    --good:#66C79A; --good-soft:#153125;
+    --shadow:0 1px 2px rgba(0,0,0,.5), 0 14px 34px -18px rgba(0,0,0,.85);
+    --shadow-lift:0 2px 8px rgba(0,0,0,.55), 0 22px 46px -22px rgba(0,0,0,.95);
+    --ramp-l:83%; --ramp-c:.125; --ramp-bar-l:73%; --ramp-bar-c:.145;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15111C; --surface:#1D1726; --surface-2:#271F33; --surface-3:#33293F;
+  --ink:#F1EAF4; --muted:#A99CB2; --faint:#7E718A;
+  --line:#302742; --line-strong:#443653;
+  --accent:#C99AE6; --accent-ink:#22102C; --accent-soft:#2F2142;
+  --blush:#F0A0C2; --blush-soft:#3B2031;
+  --amber:#E0A94C; --amber-soft:#382712;
+  --rose:#F08192; --rose-soft:#3D1D26;
+  --good:#66C79A; --good-soft:#153125;
+  --shadow:0 1px 2px rgba(0,0,0,.5), 0 14px 34px -18px rgba(0,0,0,.85);
+  --shadow-lift:0 2px 8px rgba(0,0,0,.55), 0 22px 46px -22px rgba(0,0,0,.95);
+  --ramp-l:83%; --ramp-c:.125; --ramp-bar-l:73%; --ramp-bar-c:.145;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--ff-ui);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;font-feature-settings:"zero" 0}
+h1,h2,h3,h4{margin:0;font-family:var(--ff-dis);font-weight:600;text-wrap:balance;letter-spacing:-.01em;line-height:1.22}
+p{margin:0}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+
+
+/* ---------- Slate skin ---------- */
+:root[data-skin="slate"]{
+  --bg:#F1F4F8; --surface:#FFFFFF; --surface-2:#E7ECF3; --surface-3:#D9E0EA;
+  --ink:#121924; --muted:#535F6E; --faint:#818D9D;
+  --line:#DCE3EC; --line-strong:#C0CAD8;
+  --accent:#1F5FA8; --accent-ink:#FFFFFF; --accent-soft:#DDEAF8;
+  --blush:#4A7DB5; --blush-soft:#E6EEF7;
+  --amber:#8A6012; --amber-soft:#F6EAD1;
+  --rose:#A93A46; --rose-soft:#F8E1E3;
+  --good:#256B52; --good-soft:#D9EDE4;
+  --shadow:0 1px 2px rgba(18,32,52,.06), 0 12px 28px -16px rgba(18,32,52,.34);
+  --shadow-lift:0 2px 6px rgba(18,32,52,.08), 0 18px 40px -22px rgba(18,32,52,.46);
+  --ff-ui:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --ff-dis:"Archivo",system-ui,"Segoe UI",sans-serif;
+  --ff-read:"IBM Plex Serif",Georgia,"Times New Roman",serif;
+  --r-card:10px; --r-soft:8px; --r-pill:8px;
+}
+:root[data-skin="slate"] h1,:root[data-skin="slate"] h2,
+:root[data-skin="slate"] h3,:root[data-skin="slate"] h4{letter-spacing:-.025em;font-weight:700}
+:root[data-skin="slate"] .hero::before{opacity:.75}
+@media (prefers-color-scheme:dark){
+  :root[data-skin="slate"]:not([data-theme="light"]){
+    --bg:#0C1118; --surface:#121A23; --surface-2:#1A2530; --surface-3:#24313E;
+    --ink:#E6EDF5; --muted:#98A6B6; --faint:#6C7A8B;
+    --line:#1F2A36; --line-strong:#32404F;
+    --accent:#63A9E8; --accent-ink:#071420; --accent-soft:#16283A;
+    --blush:#7FB0DE; --blush-soft:#152431;
+    --amber:#E0A94C; --amber-soft:#342713;
+    --rose:#F0828F; --rose-soft:#3A1F24;
+    --good:#5CC091; --good-soft:#123024;
+    --shadow:0 1px 2px rgba(0,0,0,.55), 0 14px 34px -18px rgba(0,0,0,.9);
+    --shadow-lift:0 2px 8px rgba(0,0,0,.6), 0 22px 46px -22px rgba(0,0,0,.95);
+  }
+}
+:root[data-skin="slate"][data-theme="dark"]{
+    --bg:#0C1118; --surface:#121A23; --surface-2:#1A2530; --surface-3:#24313E;
+    --ink:#E6EDF5; --muted:#98A6B6; --faint:#6C7A8B;
+    --line:#1F2A36; --line-strong:#32404F;
+    --accent:#63A9E8; --accent-ink:#071420; --accent-soft:#16283A;
+    --blush:#7FB0DE; --blush-soft:#152431;
+    --amber:#E0A94C; --amber-soft:#342713;
+    --rose:#F0828F; --rose-soft:#3A1F24;
+    --good:#5CC091; --good-soft:#123024;
+    --shadow:0 1px 2px rgba(0,0,0,.55), 0 14px 34px -18px rgba(0,0,0,.9);
+    --shadow-lift:0 2px 8px rgba(0,0,0,.6), 0 22px 46px -22px rgba(0,0,0,.95);
+}
+
+.skins{position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);right:14px;z-index:60;display:flex;gap:5px;padding:5px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-pill);box-shadow:var(--shadow)}
+.skinb{width:28px;height:28px;padding:0;border:2px solid transparent;border-radius:50%;display:grid;place-items:center;cursor:pointer;background:none;transition:border-color .15s,transform .12s}
+.skinb:hover{transform:scale(1.08)}
+.skinb[aria-pressed="true"]{border-color:var(--accent)}
+.sw{width:18px;height:18px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.14)}
+
+/* shell */
+.app{display:grid;grid-template-columns:240px minmax(0,1fr);align-items:start;min-height:100%}
+.rail{position:sticky;top:env(safe-area-inset-top,0px);height:100vh;border-right:1px solid var(--line);background:var(--surface);padding:24px 16px;display:flex;flex-direction:column;gap:4px;overflow-y:auto}
+.brand{display:flex;align-items:baseline;gap:9px;padding:0 8px 16px;flex-wrap:wrap}
+.brand b{font-family:var(--ff-dis);font-size:20px;font-weight:600;letter-spacing:-.02em}
+.brand span{font-family:var(--ff-num);font-size:9.5px;color:var(--blush);letter-spacing:.14em;text-transform:uppercase}
+.navlab{font-family:var(--ff-num);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);padding:14px 10px 8px}
+.nav{display:flex;flex-direction:column;gap:3px}
+.navb{display:flex;align-items:center;gap:11px;width:100%;text-align:left;background:none;border:0;padding:9px 12px;border-radius:var(--r-pill);cursor:pointer;color:var(--muted);font-weight:600;font-size:14.5px;transition:background .15s,color .15s}
+.navb:hover{background:var(--surface-2);color:var(--ink)}
+.navb[aria-current="true"]{background:var(--accent-soft);color:var(--accent)}
+.navb .dot{width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.5;flex:none}
+.navb[aria-current="true"] .dot{opacity:1}
+.navb .cnt{margin-left:auto;font-family:var(--ff-num);font-size:11px;color:var(--faint);font-variant-numeric:tabular-nums}
+.main{min-width:0}
+.wrap{max-width:900px;padding-inline:clamp(16px,3.5vw,44px);padding-block:32px 34px}
+.foot{max-width:900px;padding-inline:clamp(16px,3.5vw,44px);padding-block:0 56px}
+.foot .fr{border-top:1px solid var(--line);padding-top:16px;display:flex;flex-direction:column;gap:6px}
+.foot p{font-size:11.5px;line-height:1.55;color:var(--faint);max-width:74ch}
+.foot b{color:var(--muted);font-weight:700}
+@media (max-width:880px){
+  .app{grid-template-columns:minmax(0,1fr)}
+  .rail{position:sticky;top:env(safe-area-inset-top,0px);height:auto;border-right:0;border-bottom:1px solid var(--line);padding:14px 0 11px;z-index:30;gap:8px}
+  .brand{padding:0 16px 8px}
+  .navlab{display:none}
+  .nav{flex-direction:row;gap:7px;overflow-x:auto;padding-inline:16px;scrollbar-width:none}
+  .nav::-webkit-scrollbar{display:none}
+  .navb{width:auto;white-space:nowrap;border:1px solid var(--line);padding:7px 14px}
+  .navb[aria-current="true"]{border-color:transparent}
+  .navb .cnt{display:none}
+  .wrap{padding-block:24px 28px}
+  .foot{padding-block:0 48px}
+}
+
+/* primitives */
+.eyebrow{font-family:var(--ff-num);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:22px}
+.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.spread{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.muted{color:var(--muted)}
+.faint{color:var(--faint)}
+.small{font-size:13px}
+.mono{font-family:var(--ff-num);font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);padding:9px 18px;border-radius:var(--r-pill);cursor:pointer;font-weight:700;font-size:14.5px;transition:background .15s,border-color .15s,transform .12s}
+.btn:hover:not(:disabled){background:var(--surface-2);border-color:var(--accent)}
+.btn:active:not(:disabled){transform:translateY(1px)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);box-shadow:0 6px 16px -10px var(--accent)}
+.btn.primary:hover:not(:disabled){filter:brightness(1.1);background:var(--accent)}
+.btn.ghost{border-color:transparent;background:none;color:var(--muted);font-weight:600}
+.btn.ghost:hover:not(:disabled){background:var(--surface-2);color:var(--ink);border-color:transparent}
+.btn.sm{padding:6px 13px;font-size:13px}
+.pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--ff-num);font-size:10.5px;letter-spacing:.05em;padding:4px 11px;border-radius:var(--r-pill);background:var(--surface-2);color:var(--muted);text-transform:uppercase}
+.pill.good{background:var(--good-soft);color:var(--good)}
+.pill.warn{background:var(--amber-soft);color:var(--amber)}
+.pill.bad{background:var(--rose-soft);color:var(--rose)}
+.pill.acc{background:var(--accent-soft);color:var(--accent)}
+.prose{font-family:var(--ff-read);font-size:17px;line-height:1.68;max-width:64ch}
+.prose p+p{margin-top:.85em}
+
+/* dashboard */
+.hero{position:relative;padding-bottom:22px}
+.hero::before{content:"";position:absolute;inset:-40px -30px auto -30px;height:230px;z-index:-1;pointer-events:none;
+  background:radial-gradient(60% 80% at 12% 0%, var(--accent-soft), transparent 70%), radial-gradient(45% 70% at 78% 10%, var(--blush-soft), transparent 72%)}
+.h1{font-family:var(--ff-dis);font-size:clamp(28px,4.6vw,40px);font-weight:600;letter-spacing:-.02em}
+.scalewrap{margin-top:20px}
+.scalebar{position:relative;height:28px;border-radius:var(--r-pill);background:linear-gradient(90deg,var(--rose-soft),var(--amber-soft) 48%,var(--good-soft));border:1px solid var(--line)}
+.scalebar i{position:absolute;top:-1px;bottom:-1px;width:1px;background:var(--line-strong)}
+.scalebar b{position:absolute;top:-5px;bottom:-5px;width:4px;background:var(--accent);border-radius:var(--r-pill);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent)}
+.scaleticks{position:relative;height:30px;margin-top:5px}
+.scaleticks span{position:absolute;transform:translateX(-50%);font-family:var(--ff-num);font-size:10px;color:var(--faint);text-align:center;line-height:1.35;white-space:nowrap}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden}
+.tile{background:var(--surface);padding:16px 18px}
+.tile .n{font-family:var(--ff-num);font-size:26px;font-weight:500;letter-spacing:-.04em;font-variant-numeric:tabular-nums;line-height:1.1}
+.tile .l{font-size:12px;color:var(--muted);margin-top:3px}
+
+/* the four parts, as cards */
+.areas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+.area{display:flex;flex-direction:column;gap:10px;padding:18px;border:1px solid var(--line);border-radius:var(--r-card);background:var(--surface);text-align:left;cursor:pointer;font:inherit;color:inherit;transition:border-color .16s,box-shadow .16s,transform .16s}
+.area:hover{border-color:var(--accent);box-shadow:var(--shadow-lift);transform:translateY(-2px)}
+.area .an{font-family:var(--ff-dis);font-size:17px;font-weight:600;letter-spacing:-.015em}
+.area .an::after{content:" \203A";color:var(--blush);font-weight:600}
+.area .as{font-size:11.5px;color:var(--muted);margin-top:-3px}
+.av{font-family:var(--ff-num);font-size:32px;font-weight:500;letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums;color:var(--faint)}
+@media (max-width:780px){ .areas{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:400px){ .areas{grid-template-columns:minmax(0,1fr)} }
+
+/* task-type scoreboard, shown inside a part */
+.board{border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden;background:var(--surface)}
+.bhead,.brow{display:grid;grid-template-columns:minmax(0,1fr) 72px 3.9em;gap:14px;align-items:center;text-align:left}
+.bhead{padding:10px 18px;border-bottom:1px solid var(--line);background:var(--surface-2)}
+.bhead span{font-family:var(--ff-num);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);text-align:right}
+.bhead span:first-child{text-align:left}
+.brow{width:100%;padding:13px 18px;border:0;border-top:1px solid var(--line);background:none;color:inherit;font:inherit;cursor:pointer;transition:background .14s}
+.bhead + .brow{border-top:0}
+.brow:hover{background:var(--surface-2)}
+.brow .bn{font-weight:700;font-size:14.5px;letter-spacing:-.005em}
+.bn .also.warm{color:var(--amber);background:var(--amber-soft)}
+.bn .also{display:inline-block;font-family:var(--ff-num);font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);border-radius:var(--r-pill);padding:3px 9px;margin-left:8px;vertical-align:2px}
+.brow .bt{font-size:11.5px;color:var(--faint);margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bnum{font-family:var(--ff-num);font-size:13.5px;font-weight:500;font-variant-numeric:tabular-nums;color:var(--faint);text-align:right}
+.bbar{height:7px;border-radius:var(--r-pill);background:var(--surface-3);overflow:hidden}
+.bbar>i{display:block;height:100%;border-radius:var(--r-pill);background:var(--line-strong)}
+.legend{display:flex;align-items:center;gap:10px;margin-top:14px}
+.legend .lg{position:relative;flex:1;height:10px;border-radius:var(--r-pill);min-width:80px}
+.legend .lg i{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink);opacity:.34;border-radius:2px}
+.legendnote{margin-top:6px;text-align:center;font-family:var(--ff-num);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.legend span{font-family:var(--ff-num);font-size:10px;color:var(--faint);white-space:nowrap}
+@media (max-width:560px){
+  .bhead,.brow{grid-template-columns:minmax(0,1fr) 44px 3.7em;gap:10px}
+}
+
+/* daily drill list */
+.tlist{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden;background:var(--surface)}
+.trow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;padding:14px 18px;border:0;border-top:1px solid var(--line);background:none;text-align:left;cursor:pointer;color:inherit;width:100%;font:inherit;transition:background .14s}
+.trow:first-child{border-top:0}
+.trow:hover{background:var(--surface-2)}
+.tnum{font-family:var(--ff-num);font-size:12px;color:var(--blush);width:2.2em;font-variant-numeric:tabular-nums}
+.tname{font-weight:700;letter-spacing:-.005em}
+.tbrief{font-size:12.5px;color:var(--muted);margin-top:1px}
+.tmeter{display:flex;align-items:center;gap:9px;flex:none}
+.bar{width:56px;height:7px;border-radius:var(--r-pill);background:var(--surface-3);overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--accent);border-radius:var(--r-pill)}
+.tscore{font-family:var(--ff-num);font-size:12px;color:var(--muted);width:3.4em;text-align:right;font-variant-numeric:tabular-nums}
+
+/* workspace */
+.wshead{display:flex;flex-direction:column;gap:9px;padding-bottom:18px}
+.crumbs{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--faint);flex-wrap:wrap}
+.crumbs button{background:none;border:0;padding:0;color:var(--accent);cursor:pointer;font:inherit;font-weight:700}
+.crumbs button:hover{text-decoration:underline}
+.brief{background:var(--blush-soft);border-left:3px solid var(--blush);border-radius:0 var(--r-soft) var(--r-soft) 0;padding:12px 16px;font-size:13.5px;color:var(--muted)}
+.brief b{color:var(--ink);font-weight:700}
+.clockbar{position:sticky;top:calc(env(safe-area-inset-top,0px) + 8px);z-index:20;display:flex;align-items:center;gap:13px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-pill);padding:10px 18px;box-shadow:var(--shadow-lift);margin-bottom:18px}
+.clock{font-family:var(--ff-num);font-size:19px;font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.clock.low{color:var(--rose)}
+.clocklab{font-family:var(--ff-num);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.tprog{flex:1;min-width:40px;height:5px;border-radius:var(--r-pill);background:var(--surface-3);overflow:hidden}
+.tprog>i{display:block;height:100%;background:var(--accent);border-radius:var(--r-pill);transition:width .3s linear}
+.tprog.low>i{background:var(--rose)}
+textarea.resp{width:100%;min-height:180px;resize:vertical;padding:16px 18px;border:1px solid var(--line-strong);border-radius:var(--r-card);background:var(--surface);font-family:var(--ff-read);font-size:16px;line-height:1.65}
+textarea.resp:focus{border-color:var(--accent)}
+textarea.resp.short{min-height:92px}
+.counter{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--ff-num);font-size:12px;color:var(--muted);margin-top:9px;font-variant-numeric:tabular-nums}
+.counter b{color:var(--ink);font-weight:500}
+.counter .off b{color:var(--rose)}
+
+/* audio */
+.audio{display:flex;align-items:center;gap:15px;background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-card);padding:15px 18px;flex-wrap:wrap}
+.wave{flex:1;display:flex;align-items:center;gap:2px;height:28px;min-width:70px}
+.wave i{flex:1;background:var(--line-strong);border-radius:var(--r-pill);height:18%;transition:height .13s ease,background .2s}
+.wave.on i{background:var(--accent)}
+.astat{font-family:var(--ff-num);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);flex:none}
+.vlab{display:flex;gap:10px;flex-wrap:wrap;font-family:var(--ff-num);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-top:2px}
+.vlab .warnvoice{color:var(--amber)}
+
+/* answer widgets */
+.opt{display:flex;gap:12px;align-items:flex-start;padding:13px 16px;border:1px solid var(--line);border-radius:var(--r-soft);cursor:pointer;background:var(--surface);margin-top:9px;transition:border-color .13s,background .13s}
+.opt:hover{border-color:var(--accent)}
+.opt input{margin:5px 0 0;accent-color:var(--accent);flex:none;width:16px;height:16px}
+.opt.is-correct{border-color:var(--good);background:var(--good-soft)}
+.opt.is-wrong{border-color:var(--rose);background:var(--rose-soft)}
+.otext{flex:1;min-width:0}
+.whyline{margin-top:8px;padding-top:8px;border-top:1px dashed var(--line-strong);font-size:12.5px;line-height:1.55;color:var(--muted)}
+.whylist{display:flex;flex-direction:column;gap:11px}
+.whyrow{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start}
+.whykey{font-family:var(--ff-num);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--good);background:var(--good-soft);border-radius:var(--r-pill);padding:4px 10px;white-space:nowrap}
+.whykey.bad{color:var(--rose);background:var(--rose-soft)}
+.whytext{font-size:13px;line-height:1.6;color:var(--muted)}
+@media (max-width:520px){ .whyrow{grid-template-columns:minmax(0,1fr);gap:4px} }
+.opt .tag{margin-left:auto;font-family:var(--ff-num);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;flex:none;padding-top:3px}
+.gapsel{min-width:112px;border:1px solid var(--line-strong);border-bottom:2px solid var(--accent);background:var(--accent-soft);color:var(--ink);border-radius:8px;padding:3px 7px;font-size:14px;margin:0 3px}
+.gapsel.ok{border-bottom-color:var(--good);background:var(--good-soft)}
+.gapsel.no{border-bottom-color:var(--rose);background:var(--rose-soft)}
+.gapin{width:118px;border:1px solid var(--line-strong);border-bottom:2px solid var(--accent);background:var(--accent-soft);color:var(--ink);border-radius:8px;padding:3px 9px;font-family:var(--ff-ui);font-size:14.5px;margin:0 3px;text-align:center}
+.gapin.ok{border-bottom-color:var(--good);background:var(--good-soft)}
+.gapin.no{border-bottom-color:var(--rose);background:var(--rose-soft)}
+.gapslot{display:inline-block;min-width:112px;border:1px dashed var(--line-strong);border-bottom:2px solid var(--accent);background:var(--surface-2);border-radius:8px;padding:2px 9px;margin:0 3px;cursor:pointer;text-align:center;font-family:var(--ff-ui);font-size:14.5px;color:var(--muted)}
+.gapslot.filled{border-style:solid;background:var(--accent-soft);color:var(--ink)}
+.gapslot.ok{border-bottom-color:var(--good);background:var(--good-soft);color:var(--ink)}
+.gapslot.no{border-bottom-color:var(--rose);background:var(--rose-soft);color:var(--ink)}
+.bank{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
+.chip{border:1px solid var(--line-strong);background:var(--surface);border-radius:var(--r-pill);padding:6px 15px;cursor:pointer;font-size:14px;font-weight:600;transition:background .13s,border-color .13s}
+.chip:hover{background:var(--surface-2);border-color:var(--accent)}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.chip.used{opacity:.3;pointer-events:none;text-decoration:line-through}
+.hw{cursor:pointer;border-radius:5px;padding:0 2px;border:0;background:none;font:inherit;color:inherit}
+.hw:hover{background:var(--surface-3)}
+.hw[aria-pressed="true"]{background:var(--amber-soft);box-shadow:inset 0 -2px 0 var(--amber)}
+.hw.hit{background:var(--good-soft);box-shadow:inset 0 -2px 0 var(--good)}
+.hw.miss{background:var(--rose-soft);box-shadow:inset 0 -2px 0 var(--rose)}
+.hw.fp{background:var(--rose-soft);text-decoration:line-through var(--rose)}
+.ord{display:flex;flex-direction:column;gap:9px;margin-top:6px}
+.ordi{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:13px;align-items:center;border:1px solid var(--line);border-radius:var(--r-soft);padding:13px 15px;background:var(--surface)}
+.ordi .pos{font-family:var(--ff-num);font-size:12px;color:var(--blush);width:1.4em}
+.grip{display:grid;place-items:center;width:30px;height:34px;border-radius:9px;color:var(--faint);font-size:17px;line-height:1;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;transition:background .13s,color .13s}
+.grip:hover{background:var(--accent-soft);color:var(--accent)}
+.ordi.dragging{box-shadow:var(--shadow-lift);border-color:var(--accent);position:relative;z-index:5;cursor:grabbing}
+.ordi.dragging .grip{cursor:grabbing;background:var(--accent-soft);color:var(--accent)}
+.ord.lifting .ordi:not(.dragging){opacity:.72}
+.ordi .mv{display:flex;flex-direction:column;gap:4px}
+.ordi .mv button{border:1px solid var(--line);background:var(--surface);border-radius:7px;width:28px;height:21px;cursor:pointer;line-height:1;font-size:11px;color:var(--muted);display:grid;place-items:center}
+.ordi .mv button:hover:not(:disabled){background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}
+.ordi .mv button:disabled{opacity:.28;cursor:not-allowed}
+.ordi.ok{border-color:var(--good)}
+.ordi.no{border-color:var(--rose)}
+
+/* results */
+.result{border:1px solid var(--line);border-radius:var(--r-card);background:var(--surface);overflow:hidden;margin-top:22px;box-shadow:var(--shadow)}
+.rhead{display:flex;align-items:center;gap:20px;padding:20px 22px;background:linear-gradient(120deg,var(--accent-soft),var(--blush-soft));border-bottom:1px solid var(--line);flex-wrap:wrap}
+.bigscore{font-family:var(--ff-num);font-size:38px;font-weight:500;letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums}
+.rbody{padding:20px 22px;display:flex;flex-direction:column;gap:18px}
+.traits{display:flex;flex-direction:column;gap:13px}
+.trait{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px 14px;align-items:baseline}
+.trait .tn{font-weight:700;font-size:13.5px}
+.trait .tv{font-family:var(--ff-num);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.trait .tnote{grid-column:1/-1;font-size:13px;color:var(--muted)}
+.tbar{grid-column:1/-1;height:5px;border-radius:var(--r-pill);background:var(--surface-3);overflow:hidden}
+.tbar>i{display:block;height:100%;border-radius:var(--r-pill);background:var(--accent)}
+.model{background:var(--surface-2);border-radius:var(--r-soft);padding:15px 17px}
+details.reveal{border:1px solid var(--line);border-radius:var(--r-soft);overflow:hidden}
+details.reveal>summary{cursor:pointer;padding:12px 16px;font-weight:700;font-size:13.5px;list-style:none;display:flex;align-items:center;gap:8px}
+details.reveal>summary:hover{background:var(--surface-2)}
+details.reveal>summary::after{content:"+";margin-left:auto;font-family:var(--ff-num);color:var(--accent)}
+details.reveal[open]>summary::after{content:"\2212"}
+details.reveal>summary::-webkit-details-marker{display:none}
+details.reveal .dbody{padding:0 16px 16px;font-size:14.5px;color:var(--muted)}
+.tips{display:flex;flex-direction:column;gap:8px;margin:0;padding-left:20px}
+.tips li{font-size:13.5px;color:var(--muted)}
+.tips li::marker{color:var(--blush)}
+.notice{border:1px dashed var(--line-strong);border-radius:var(--r-soft);padding:12px 15px;font-size:13px;color:var(--muted);background:var(--surface-2)}
+.fig{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:18px;overflow-x:auto}
+.fig svg{display:block;width:100%;height:auto;min-width:360px}
+.hist{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden;background:var(--surface)}
+.hrow{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:12px;align-items:center;padding:12px 18px;border-top:1px solid var(--line);font-size:13.5px;transition:background .14s}
+.hrow:first-child{border-top:0}
+.hrow:hover{background:var(--surface-2)}
+.spark{display:flex;align-items:flex-end;gap:4px;height:48px}
+.spark i{width:9px;background:var(--accent-soft);border-radius:var(--r-pill) var(--r-pill) 2px 2px;min-height:3px}
+.spark i.last{background:var(--accent)}
+.empty{text-align:center;padding:38px 20px;color:var(--muted)}
+.load{display:inline-block;width:13px;height:13px;border:2px solid var(--line-strong);border-top-color:var(--accent);border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px}
+@keyframes sp{to{transform:rotate(360deg)}}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:15px}
+</style>
+<style>
+/* the Claude artifact host normally supplies these; standalone needs its own */
+:root{color-scheme:light dark;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html,body{min-height:100%}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+
+
+<script>try{var _k=localStorage.getItem('pte-score-lab/skin');if(_k&&_k!=='orchid')document.documentElement.setAttribute('data-skin',_k);}catch(e){}</script>
+<div class="skins" id="skins"></div>
+<div class="app">
+  <aside class="rail">
+    <div class="brand"><b>PTE Score Lab</b><span>Academic</span></div>
+    <div class="navlab">Practice</div>
+    <nav class="nav" id="nav"></nav>
+  </aside>
+  <main class="main">
+    <div class="wrap" id="view"></div>
+    <footer class="foot">
+      <div class="fr">
+        <p><b>Independent practice tool.</b> Not affiliated with, endorsed by, or connected to Pearson. PTE and PTE Academic are trademarks of their respective owners and are used here only to describe the test this tool prepares for.</p>
+        <p><b>Original items.</b> Every passage, lecture, question, answer key, model answer and chart in this app was written for it. Nothing is reproduced from official, retired or third-party test material.</p>
+        <p><b>Check the current specification.</b> Timings, word bands and trait rubrics follow the published PTE Academic format as understood when this was written. The test has been revised before; verify the details against the official specification before relying on them.</p>
+        <p><b>Practice scores only.</b> The 10&ndash;90 figures are estimates derived from your own attempts. They are not an official result and do not predict one.</p>
+      </div>
+    </footer>
+  </main>
+</div>
+<script>
+/* ============================ helpers ============================ */
+function h(tag, p, ...kids){
+  const e = document.createElement(tag);
+  if (p) for (const k in p){
+    const v = p[k];
+    if (v == null || v === false) continue;
+    if (k === 'cls') e.className = v;
+    else if (k === 'text') e.textContent = v;
+    else if (k === 'html') e.innerHTML = v;
+    else if (k.slice(0,2) === 'on') e.addEventListener(k.slice(2).toLowerCase(), v);
+    else e.setAttribute(k, v === true ? '' : v);
+  }
+  for (const k of kids.flat(9)){
+    if (k == null || k === false) continue;
+    e.append(k.nodeType ? k : document.createTextNode(String(k)));
+  }
+  return e;
+}
+const words = s => (s || '').trim().split(/\s+/).filter(Boolean);
+const norm  = s => (s || '').toLowerCase().replace(/[^a-z0-9'\s-]/g, ' ').replace(/\s+/g, ' ').trim();
+const pct   = (a, b) => b <= 0 ? 0 : Math.max(0, Math.min(100, Math.round(a / b * 100)));
+const pteOf = p => Math.round(10 + p * 0.8);               // practice % -> estimated 10-90 band
+const mmss  = s => Math.floor(s / 60) + ':' + String(Math.max(0, s % 60)).padStart(2, '0');
+const shuffle = a => { const r = a.slice(); for (let i = r.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; };
+
+/* ============================ figures ============================ */
+const FIG_RENEW = `<svg viewBox="0 0 560 300" role="img" aria-label="Grouped bar chart: share of electricity from renewables in 2015 and 2023 for Germany, Brazil, Japan and Australia.">
+<text x="0" y="14" fill="var(--ink)" font-family="Archivo,sans-serif" font-size="13" font-weight="600">Electricity generated from renewable sources (%)</text>
+<g stroke="var(--line)" stroke-width="1">
+<line x1="62" y1="244" x2="545" y2="244"/><line x1="62" y1="189" x2="545" y2="189"/><line x1="62" y1="134" x2="545" y2="134"/><line x1="62" y1="79" x2="545" y2="79"/><line x1="62" y1="24" x2="545" y2="24"/></g>
+<g fill="var(--faint)" font-family="IBM Plex Mono,monospace" font-size="10" text-anchor="end">
+<text x="54" y="248">0</text><text x="54" y="193">25</text><text x="54" y="138">50</text><text x="54" y="83">75</text><text x="54" y="28">100</text></g>
+<g fill="var(--line-strong)">
+<rect x="88" y="178" width="30" height="66" rx="2"/><rect x="208" y="81" width="30" height="163" rx="2"/><rect x="327" y="209" width="30" height="35" rx="2"/><rect x="447" y="213" width="30" height="31" rx="2"/></g>
+<g fill="var(--accent)">
+<rect x="126" y="130" width="30" height="114" rx="2"/><rect x="245" y="48" width="30" height="196" rx="2"/><rect x="365" y="187" width="30" height="57" rx="2"/><rect x="485" y="158" width="30" height="86" rx="2"/></g>
+<g fill="var(--muted)" font-family="IBM Plex Mono,monospace" font-size="10" text-anchor="middle">
+<text x="103" y="174">30</text><text x="223" y="77">74</text><text x="342" y="205">16</text><text x="462" y="209">14</text></g>
+<g fill="var(--accent)" font-family="IBM Plex Mono,monospace" font-size="10" text-anchor="middle" font-weight="600">
+<text x="141" y="126">52</text><text x="260" y="44">89</text><text x="380" y="183">26</text><text x="500" y="154">39</text></g>
+<g fill="var(--ink)" font-family="Archivo,sans-serif" font-size="12" text-anchor="middle">
+<text x="122" y="262">Germany</text><text x="241" y="262">Brazil</text><text x="361" y="262">Japan</text><text x="481" y="262">Australia</text></g>
+<g font-family="Archivo,sans-serif" font-size="11"><rect x="62" y="278" width="11" height="11" rx="2" fill="var(--line-strong)"/><text x="79" y="288" fill="var(--muted)">2015</text><rect x="126" y="278" width="11" height="11" rx="2" fill="var(--accent)"/><text x="143" y="288" fill="var(--muted)">2023</text></g></svg>`;
+
+const FIG_LIB = `<svg viewBox="0 0 560 300" role="img" aria-label="Line chart: library building visits per student fall from 42 to 23 a year between 2014 and 2023 while e-resource downloads rise from 30 to 121.">
+<text x="0" y="14" fill="var(--ink)" font-family="Archivo,sans-serif" font-size="13" font-weight="600">Library use per student per year, 2014-2023</text>
+<g stroke="var(--line)" stroke-width="1">
+<line x1="60" y1="240" x2="545" y2="240"/><line x1="60" y1="190" x2="545" y2="190"/><line x1="60" y1="139" x2="545" y2="139"/><line x1="60" y1="89" x2="545" y2="89"/><line x1="60" y1="38" x2="545" y2="38"/></g>
+<g fill="var(--faint)" font-family="IBM Plex Mono,monospace" font-size="10" text-anchor="end">
+<text x="52" y="244">0</text><text x="52" y="194">31</text><text x="52" y="143">62</text><text x="52" y="93">93</text><text x="52" y="42">125</text></g>
+<polyline fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round" points="60,192 113,232 167,169 220,155 274,139 327,126 380,86 433,72 487,60 540,45"/>
+<polyline fill="none" stroke="var(--line-strong)" stroke-width="2.5" stroke-dasharray="5 4" stroke-linejoin="round" points="60,172 113,175 167,180 220,187 274,192 327,198 380,221 433,211 487,206 540,203"/>
+<g fill="var(--accent)"><circle cx="380" cy="86" r="4"/><circle cx="540" cy="45" r="4"/><circle cx="60" cy="192" r="4"/></g>
+<g fill="var(--line-strong)"><circle cx="380" cy="221" r="4"/><circle cx="540" cy="203" r="4"/><circle cx="60" cy="172" r="4"/></g>
+<g font-family="IBM Plex Mono,monospace" font-size="10">
+<text x="60" y="186" fill="var(--accent)" text-anchor="start" font-weight="600">30</text><text x="540" y="38" fill="var(--accent)" text-anchor="end" font-weight="600">121</text><text x="380" y="80" fill="var(--accent)" text-anchor="middle" font-weight="600">95</text>
+<text x="60" y="165" fill="var(--muted)" text-anchor="start">42</text><text x="540" y="219" fill="var(--muted)" text-anchor="end">23</text><text x="380" y="236" fill="var(--muted)" text-anchor="middle">12</text></g>
+<g fill="var(--ink)" font-family="Archivo,sans-serif" font-size="11" text-anchor="middle">
+<text x="60" y="258">2014</text><text x="167" y="258">2016</text><text x="274" y="258">2018</text><text x="380" y="258">2020</text><text x="487" y="258">2022</text></g>
+<g font-family="Archivo,sans-serif" font-size="11"><line x1="60" y1="283" x2="82" y2="283" stroke="var(--accent)" stroke-width="2.5"/><text x="88" y="287" fill="var(--muted)">E-resource downloads</text><line x1="240" y1="283" x2="262" y2="283" stroke="var(--line-strong)" stroke-width="2.5" stroke-dasharray="5 4"/><text x="268" y="287" fill="var(--muted)">Visits to the building</text></g></svg>`;
+
+/* ============================ item bank ============================ */
+const SECTIONS = [
+  { id:'home',      label:'Dashboard' },
+  { id:'speaking',  label:'Speaking' },
+  { id:'writing',   label:'Writing' },
+  { id:'reading',   label:'Reading' },
+  { id:'listening', label:'Listening' },
+  { id:'drill',     label:'Daily Drill' },
+  { id:'progress',  label:'Progress' }
+];
+
+const TASKS = [
+/* ---------------- SPEAKING ---------------- */
+{
+  id:'personal_intro', section:'speaking', kind:'speak', name:'Personal Introduction',
+  brief:'Unscored warm-up that opens the real test. 25 s to prepare, 30 s to record.',
+  scores:'Nothing — familiarization only', prep:25, rec:30, unscored:true,
+  checkLabel:'What a good introduction covers',
+  tips:['This one carries no marks. Use it to settle your voice, check your volume and get past the first-recording nerves.',
+        'Have a rehearsed thirty seconds ready anyway. Walking into the scored tasks having already spoken once is worth more than the item is.',
+        'Do not read from a script. It is audible, and the habit will cost you on Read Aloud where the scoring listens for natural phrasing.'],
+  items:[
+    { id:'pi1',
+      text:'Read the prompt, then introduce yourself. You might mention: your reasons for taking the test, your interests, your plans for future study, and why you want to study abroad.',
+      keys:['open with who you are and what you study or do','give one reason for taking the test','name a concrete plan — a course, a country, a career','finish a sentence rather than trailing off when time runs out','speak at a natural pace, not a rehearsed gallop'] }
+  ]
+},
+{
+  id:'read_aloud', section:'speaking', kind:'speak', name:'Read Aloud',
+  brief:'Read a short text aloud. 35 s to prepare, 40 s to record.',
+  scores:'Reading + Speaking', prep:35, rec:40,
+  tips:['Chunk the text into 3-5 sense groups and pause only at those points - pausing mid-phrase costs more than reading slowly.',
+        'Keep going after a stumble. A self-correction is scored; a restart from the top wastes your recording window.',
+        'Stress the content words (nouns, main verbs, numbers) and let the function words fall away.'],
+  items:[
+    { id:'ra1', text:'Coral reefs occupy less than one percent of the ocean floor, yet they shelter roughly a quarter of all marine species. That density earns them the name rainforests of the sea, and it is also what makes them fragile. A rise of one or two degrees can trigger bleaching, in which corals expel the algae that feed them.',
+      focus:['roughly','fragile','bleaching','algae','temperature'] },
+    { id:'ra2', text:'The shipping container did more to shrink the world than any treaty of the same era. By standardising the box, ports could load a vessel in hours rather than days, and the cost of moving goods across an ocean fell so sharply that manufacturers stopped asking where their components were made and began asking only what they cost.',
+      focus:['standardising','vessel','manufacturers','components','sharply'] }
+  ]
+},
+{
+  id:'repeat_sentence', section:'speaking', kind:'speak', name:'Repeat Sentence',
+  brief:'Listen once, then repeat the sentence exactly. 15 s to record.',
+  scores:'Listening + Speaking', prep:0, rec:15, audio:true,
+  tips:['Do not try to understand the meaning first. Hold the sound, repeat immediately, and meaning usually follows.',
+        'A partial repetition still scores. Say the fragments you caught rather than staying silent.',
+        'Match the speaker’s rhythm - the scoring listens for stress pattern as much as for words.'],
+  items:[
+    { id:'rs1', text:'The seminar on research methods has been moved to the main lecture theatre.' },
+    { id:'rs2', text:'Students must submit their assignments before the end of next week.' },
+    { id:'rs3', text:'The library extends its opening hours during the examination period.' },
+    { id:'rs4', text:'All laboratory equipment should be returned to the storage cupboard after use.' },
+    { id:'rs5', text:'Attendance at the first tutorial is compulsory for every new postgraduate.' }
+  ]
+},
+{
+  id:'describe_image', section:'speaking', kind:'speak', name:'Describe Image',
+  brief:'Describe a chart in detail. 25 s to prepare, 40 s to record.',
+  scores:'Speaking', prep:25, rec:40, transcript:true,
+  tips:['Open with one sentence naming what the chart shows, then the highest value, the lowest value, and the trend. That template fills 40 seconds.',
+        'Read at least two exact figures aloud with their units. Vague description scores low on content.',
+        'Finish with a one-clause conclusion rather than trailing off mid-sentence.'],
+  items:[
+    { id:'di1', fig:FIG_RENEW,
+      caption:'Grouped bar chart comparing the share of electricity from renewable sources in 2015 and 2023.',
+      keys:['all four countries increased','Brazil highest at 89% in 2023','Japan lowest at 26%','Australia grew fastest, 14% to 39%','Germany rose from 30% to 52%'],
+      model:'The bar chart compares the share of electricity generated from renewable sources in four countries in 2015 and 2023. Every country increased its share over the period. Brazil is by far the highest, rising from 74 per cent to 89 per cent, while Japan remains the lowest at 26 per cent. The sharpest growth is in Australia, where the share almost tripled from 14 to 39 per cent, and Germany moved from 30 to 52 per cent, crossing the halfway point. Overall, renewables expanded everywhere, but the gap between the leader and the laggard stayed wide.' },
+    { id:'di2', fig:FIG_LIB,
+      caption:'Line chart of library building visits and e-resource downloads per student per year, 2014 to 2023.',
+      keys:['downloads rose from 30 to 121','visits fell from 42 to 23','lines cross around 2015','sharp 2020 dip in visits to 12','visits recover only partially'],
+      model:'The line graph shows two measures of library use per student each year between 2014 and 2023. Electronic downloads climbed steadily from 30 to 121 per student, roughly a fourfold increase, whereas physical visits to the building declined from 42 to 23. The two lines cross early in the period, after which digital use dominates. Visits collapsed to a low of 12 in 2020 and then recovered only partially, never returning to their earlier level. Overall, the data suggest that students have substituted online access for time spent in the library itself.' }
+  ]
+},
+{
+  id:'retell_lecture', section:'speaking', kind:'speak', name:'Re-tell Lecture',
+  brief:'Listen to a lecture, then re-tell it in your own words. 10 s to prepare, 40 s to record.',
+  scores:'Listening + Speaking', prep:10, rec:40, audio:true, transcript:true,
+  tips:['Take notes as a skeleton: topic, two or three supporting points, conclusion. Do not transcribe.',
+        'Open with "The lecturer discussed..." to buy yourself a second of thinking time.',
+        'Include at least three concrete details from the talk - names, numbers, examples - since content carries the marks.'],
+  items:[
+    { id:'rl1', voice:'f', text:'Sleep researchers used to treat the night as downtime, but we now know the sleeping brain is doing some of its hardest work. During slow-wave sleep, the hippocampus replays the day’s experiences to the cortex, and this replay is what turns a fragile memory into a durable one. In one well-known study, students who learned a list of word pairs and then slept for eight hours recalled about forty per cent more than students who stayed awake for the same interval. The effect is strongest for material that was deliberately learned, and it collapses when slow-wave sleep is interrupted. So the practical lesson for students is uncomfortable but clear: an all-night study session does not just tire you, it removes the very process that would have consolidated what you studied.',
+      keys:['sleeping brain consolidates memory','hippocampus replays to cortex in slow-wave sleep','study: sleepers recalled 40% more','effect breaks if slow-wave sleep interrupted','all-nighters remove consolidation'],
+      model:'The lecturer explained that sleep is not downtime but an active stage of learning. During slow-wave sleep the hippocampus replays the day’s experiences to the cortex, which converts fragile memories into durable ones. She cited a study in which students who slept for eight hours after learning word pairs recalled about forty per cent more than those who stayed awake. The effect disappears when slow-wave sleep is disrupted, so her conclusion was that pulling an all-nighter removes the very process that would have consolidated the material.' },
+    { id:'rl2', voice:'m', text:'Anyone who has walked from a park into a city centre on a summer afternoon has felt the urban heat island. Cities run between three and seven degrees warmer than the countryside around them, and at night the gap can be wider still. The cause is mostly material. Asphalt and dark roofing absorb solar radiation through the day and release it slowly after sunset, while the loss of vegetation removes the cooling that evaporation from leaves would otherwise provide. Waste heat from vehicles and air conditioning adds a further increment. The consequences are not merely uncomfortable. Heat islands raise peak electricity demand, worsen ground-level ozone, and concentrate the health risk in exactly the neighbourhoods that have the fewest trees. The remedies are well understood: reflective roofing, permeable surfaces, and above all more canopy cover.',
+      keys:['cities 3-7 degrees warmer than surroundings','asphalt and dark roofs store and release heat','loss of vegetation removes evaporative cooling','waste heat from cars and air conditioning','raises power demand, ozone, health risk','remedies: reflective roofs, permeable surfaces, tree canopy'],
+      model:'The talk was about the urban heat island effect. The lecturer said cities are typically three to seven degrees warmer than the surrounding countryside, and the gap widens at night. The main causes are material: asphalt and dark roofs absorb solar radiation and release it after sunset, vegetation loss removes evaporative cooling, and vehicles and air conditioning add waste heat. The consequences include higher peak electricity demand, more ground-level ozone, and health risks concentrated in the least leafy neighbourhoods. He ended with the remedies - reflective roofing, permeable surfaces and, most importantly, greater tree canopy cover.' }
+  ]
+},
+{
+  id:'short_question', section:'speaking', kind:'asq', name:'Answer Short Question',
+  brief:'Listen to a question and answer in one or a few words.',
+  scores:'Listening + Speaking', rec:10, audio:true,
+  tips:['One word is a complete answer here. Extra words cost time and add risk.',
+        'If you do not know the word, say the closest thing you do know rather than nothing.',
+        'These questions test general knowledge and everyday vocabulary, not the passage.'],
+  items:[
+    { id:'sq1', q:'What do we call the frozen form of water?', a:['ice'] },
+    { id:'sq2', q:'If you want to borrow a book from a library, which member of staff do you ask?', a:['librarian','the librarian'] },
+    { id:'sq3', q:'What instrument does a doctor use to listen to a patient’s heartbeat?', a:['stethoscope','a stethoscope'] },
+    { id:'sq4', q:'Which meal do people normally eat in the morning?', a:['breakfast'] },
+    { id:'sq5', q:'What do we call the scientific study of the earth’s physical structure?', a:['geology'] },
+    { id:'sq6', q:'If a lecture starts at nine o’clock and lasts ninety minutes, at what time does it end?', a:['ten thirty','10:30','half past ten','1030'] },
+    { id:'sq7', q:'What is the person called who draws the plans for a new building?', a:['architect','an architect'] },
+    { id:'sq8', q:'In a university, what do we call a piece of written work submitted for assessment?', a:['assignment','an assignment','essay','an essay','paper'] }
+  ]
+},
+
+{
+  id:'sgd', section:'speaking', kind:'speak', name:'Summarize Group Discussion',
+  brief:'Listen to three speakers discuss a topic, then summarize it aloud. 10 s to prepare, 2 min to record.',
+  scores:'Listening + Speaking', prep:10, rec:120, audio:true, transcript:true,
+  rubric:[{ name:'Content', max:6 }],
+  traitNote:'In the real test this also scores Oral Fluency and Pronunciation out of 5 each, from the audio. A transcript cannot show either, so only Content is marked here.',
+  tips:['Cover four things: the general topic, each speaker’s key argument, where they agree or disagree, and the final takeaway.',
+        'Attribute the views. The top band rewards expanding on each speaker’s contribution, so name who argued what rather than merging it all into one voice.',
+        'Keep your own opinion out of it. You are reporting the discussion, not joining it.',
+        'The recording runs up to three minutes and plays once, with no transcript. Take notes as it goes — in the test centre you get an erasable whiteboard.',
+        'There is no word limit, only the clock. Start speaking as soon as the microphone opens; more than three seconds of silence ends the recording.'],
+  items:[
+    { id:'gd1', title:'Should lectures be recorded?',
+      turns:[
+        { who:'Priya', sex:'f', text:'I’ll start, since I proposed it. Recording every lecture is basic accessibility. Students with caring responsibilities, or a disability, or a job, cannot always be in the room at eleven on a Tuesday, and a recording costs the department nothing once the system is installed.' },
+        { who:'Daniel', sex:'m', text:'Nothing except attendance. Our own figures showed a twenty per cent drop in the term after we started recording, and attendance correlates with attainment. I’m not against access, I’m against pretending the trade-off does not exist.' },
+        { who:'Mei', sex:'f', text:'I think you’re both arguing about the wrong thing. The correlation Daniel cites does not tell us that watching a recording causes worse results — the students who stop attending may already have been struggling. What the evidence does show is that recordings help most when they are used for revision rather than as a substitute, so the question is how we design around that.' },
+        { who:'Priya', sex:'f', text:'Which points to making them available after a delay, say a week.' },
+        { who:'Daniel', sex:'m', text:'I could live with that. It keeps the safety net without making the lecture optional.' },
+        { who:'Mei', sex:'f', text:'And we should measure it properly this time, rather than reading a correlation as a cause.' }
+      ],
+      keys:['Priya: recording is an accessibility issue and costs little',
+            'Daniel: attendance fell 20% and attendance correlates with attainment',
+            'Mei: correlation is not causation; recordings help as revision, not substitute',
+            'group converges on a delayed release, about a week',
+            'Mei closes by calling for proper measurement'],
+      model:'The group discussed whether university lectures should be recorded. Priya argued for it on accessibility grounds, pointing out that students with jobs, disabilities or caring responsibilities cannot always attend, and that recording costs almost nothing once installed. Daniel resisted, citing a twenty per cent fall in attendance and the link between attendance and attainment. Mei reframed the disagreement, arguing that the correlation does not establish causation and that recordings help most when used for revision rather than as a substitute. The three converged on releasing recordings after a delay of about a week, with Mei adding that the effect should be measured properly rather than inferred.' },
+    { id:'gd2', title:'Funding basic research',
+      turns:[
+        { who:'Tomas', sex:'m', text:'The pressure to show impact within five years is quietly destroying basic research. The work that eventually mattered most — the laser, the web, mRNA — had no visible application when it was funded.' },
+        { who:'Anneke', sex:'f', text:'That argument gets made a lot, and I notice it is always made with hindsight. For every laser there are a thousand lines of enquiry that led nowhere, and we never hear about those. Public money has to be accountable to someone.' },
+        { who:'Ruth', sex:'f', text:'Accountable, yes, but accountable for what? If we measure a grant by whether it produced a marketable product, we are measuring luck. Measure it by whether the work was competently done and honestly reported, and you get a standard a researcher can actually meet.' },
+        { who:'Tomas', sex:'m', text:'That is the distinction I wanted. Judge the process, not the jackpot.' },
+        { who:'Anneke', sex:'f', text:'I accept that for a portion of the budget. I would still ring-fence a share for directed research, because some problems are urgent and will not solve themselves while we wait for serendipity.' }
+      ],
+      keys:['Tomas: short-term impact requirements damage basic research; laser, web, mRNA had no obvious application',
+            'Anneke: the argument relies on hindsight and ignores dead ends; public money needs accountability',
+            'Ruth: reframes accountability — judge competence and honest reporting, not marketable output',
+            'Tomas accepts: judge the process, not the jackpot',
+            'Anneke concedes partly but wants a ring-fenced share for directed, urgent research'],
+      model:'The speakers debated how basic research should be funded and judged. Tomas argued that demanding impact within five years harms fundamental work, noting that the laser, the web and mRNA all had no visible application when funded. Anneke countered that this reasoning depends on hindsight and ignores the many lines of enquiry that lead nowhere, insisting public money must be accountable. Ruth reframed the question by asking what accountability should measure, proposing that grants be judged on competent execution and honest reporting rather than marketable output, since the latter measures luck. Tomas accepted that distinction, and Anneke agreed in part while arguing that a share of the budget should still be ring-fenced for urgent, directed problems.' }
+  ]
+},
+{
+  id:'rts', section:'speaking', kind:'speak', name:'Respond to a Situation',
+  brief:'Hear and read an everyday situation, then respond appropriately. 10 s to prepare, 40 s to record.',
+  scores:'Speaking', prep:10, rec:40, audio:true, transcript:true, showPrompt:true,
+  rubric:[{ name:'Content', max:6 }],
+  traitNote:'In the real test this also scores Oral Fluency and Pronunciation out of 5 each, from the audio. A transcript cannot show either, so only Content is marked here.',
+  tips:['Accomplish the communication goal explicitly. If the situation calls for an apology and a remedy, say both out loud — implying them does not score.',
+        'Match the register to the person addressed. A tutor, landlord or member of staff takes a formal register; a classmate or friend takes an informal one, and appropriacy to the context carries marks.',
+        'Do not just restate the prompt. The top band rewards going beyond its language with a developed, persuasive response.',
+        'Aim for about 30–35 seconds of solid content rather than stretching to fill all 40. Stop cleanly instead of trailing off.',
+        'Start speaking as soon as the microphone opens. More than three seconds of silence ends the recording.'],
+  items:[
+    { id:'rt1',
+      text:'You borrowed a textbook from a classmate and spilled coffee on it, staining several pages. You are returning it to her today. What do you say?',
+      keys:['acknowledge the damage plainly, without burying it','apologise sincerely','offer a concrete remedy — replace it, or pay for it','acknowledge the inconvenience to her','keep the register friendly but accountable'],
+      model:'Hi Sara, I need to own up to something before I hand this back. I spilled coffee on it while I was working on Thursday, and a few of the pages near the middle are stained. I am really sorry — it was careless of me, and I know you need it for the exam. I have already found the same edition online and I would like to order you a replacement copy, or just transfer you what it costs, whichever is easier. In the meantime, if you need to read those chapters this week, take my notes on them. Again, I am sorry about this.' },
+    { id:'rt2',
+      text:'Your partner on a group assignment has not contributed anything with three days left before the deadline. You need to raise it with him directly. What do you say?',
+      keys:['raise the problem directly but without hostility','state the specific facts — what is outstanding, how long is left','ask for his side before assuming','propose a concrete split and a deadline','name the next step if nothing changes'],
+      model:'Ravi, can we talk about the assignment for a minute? We are three days out and the methods section is still empty, which is the part we agreed you would take. I wanted to check in before I assume anything — is something going on that has got in the way? If you are able to get it done, I would need a draft by Friday morning so I have time to fold it into the rest. If you are not, tell me now and I will write it myself, but then I do think we need to flag the split to the tutor. I would much rather sort it out between us.' },
+    { id:'rt3',
+      text:'You have been ill for a week and cannot finish an essay due tomorrow. You are speaking to your tutor to ask for an extension. What do you say?',
+      keys:['open politely and state the request clearly','give the reason concisely, without over-explaining','show what you have already done','propose a specific new date','offer evidence or ask what the process requires'],
+      model:'Good morning, Dr Whelan, do you have a moment? I wanted to ask about the essay due tomorrow. I have been ill since last Monday and I have not been able to work on it properly — I have the reading done and an outline, but the writing is only about a third finished. I would like to ask for an extension of one week, until the fourteenth, which I am confident would be enough. I can get a note from the health centre if that is needed, and I am happy to follow whatever the formal process is. I did not want to just miss the deadline without speaking to you first.' }
+  ]
+},
+
+/* ---------------- WRITING ---------------- */
+{
+  id:'swt', section:'writing', kind:'swt', name:'Summarize Written Text',
+  brief:'One single sentence of 5-75 words. 10 minutes.',
+  scores:'Reading + Writing', time:600,
+  tips:['It must be ONE sentence. One full stop, at the very end - a second full stop scores zero for form regardless of content.',
+        'Aim for 30-45 words. Under 5 or over 75 also scores zero.',
+        'Join the main ideas with "although", "which", "while" or a semicolon rather than listing them with "and".'],
+  items:[
+    { id:'sw1', title:'The night-shift economy',
+      passage:'The idea that a city never sleeps is barely a century old. Before cheap artificial light, most economic activity stopped at dusk for the simple reason that it could not continue. Gas lighting in the nineteenth century, and electric lighting after it, decoupled work from daylight and made the night shift possible. Factories that had been idle for half of every day could run continuously, and the capital tied up in machinery began to earn its keep around the clock.\n\nThe consequences went well beyond the factory gate. A workforce awake at three in the morning needed transport, food and policing, so the night shift propagated outwards into services that had no industrial reason to exist after dark. Within a generation, entire supporting economies had grown up around the simple fact that some people were now awake when their grandparents had been asleep.\n\nThe costs, however, were displaced rather than avoided. Epidemiological work over the past forty years has consistently linked long-term night work to disrupted circadian rhythms, elevated cardiovascular risk and higher rates of certain cancers. The gains in productive capacity were real, but they were purchased partly with the health of the people who kept the lights on, and that bill has never appeared on any balance sheet.',
+      model:'Although cheap artificial light decoupled work from daylight and allowed factories and the service economies around them to operate continuously, raising productive capacity, the resulting night work has been consistently linked to disrupted circadian rhythms and serious long-term health costs that were never counted.' },
+    { id:'sw2', title:'Why languages lose speakers',
+      passage:'Linguists estimate that of the roughly seven thousand languages spoken today, close to half will have no native speakers by the end of this century. The mechanism of loss is rarely dramatic. Languages seldom disappear because their last speaker dies in isolation; they disappear because a generation of parents makes a rational decision not to pass them on.\n\nThat decision is usually made under pressure. Where schooling, employment and government are conducted in a dominant language, fluency in it is the price of participation, and the minority language comes to be associated with the very disadvantage that families are trying to escape. Children raised in this environment typically become passive bilinguals: they understand the older language but answer in the newer one, and their own children hear it only as background.\n\nRevitalisation efforts that ignore this economic logic tend to fail. Dictionaries and archives preserve a record, but a language survives only if it retains a domain in which it is genuinely useful. The most successful programmes, in Wales, in New Zealand and among the Hawaiian community, have therefore worked by creating such domains deliberately - immersion schooling, broadcasting and public administration - so that speaking the language is once again the practical choice rather than the sentimental one.',
+      model:'Nearly half of the world’s languages face extinction not through sudden loss but because parents under economic and educational pressure stop transmitting them, which is why successful revitalisation depends less on archives than on deliberately creating domains such as immersion schooling and broadcasting where the language is practically useful.' }
+  ]
+},
+{
+  id:'essay', section:'writing', kind:'essay', name:'Write Essay',
+  brief:'200-300 words arguing a position. 20 minutes.',
+  scores:'Writing', time:1200,
+  tips:['Five paragraphs: introduction with a clear position, two body paragraphs each with one reason plus one concrete example, a concession, and a conclusion.',
+        'Stay between 200 and 300 words. Below 120 or above 380 scores zero regardless of quality.',
+        'Spend the last two minutes rereading for articles, subject-verb agreement and plurals - spelling and grammar are separately scored traits.'],
+  items:[
+    { id:'es1', prompt:'Some people believe that universities should only admit students on the basis of academic results, while others argue that broader factors such as background, interests and character should also be considered. Discuss both views and give your own opinion.',
+      plan:['Position stated in the first paragraph, not withheld until the conclusion.','Body 1: the case for pure academic selection - transparency, comparability, resistance to manipulation.','Body 2: the case for broader criteria - unequal preparation, predictive weakness of a single exam, institutional purpose.','Concession then resolution: a weighted model, with worked examples such as contextual admissions.','Conclusion that answers the question rather than summarising the essay.'] },
+    { id:'es2', prompt:'The increasing use of automation and artificial intelligence in the workplace will do more harm than good to employees. To what extent do you agree or disagree?',
+      plan:['State the degree of agreement precisely in the introduction - "largely disagree" is stronger than a fence-sit.','Body 1: which tasks are displaced and which are augmented; name a sector.','Body 2: distributional effect - who bears the cost, retraining, wage polarisation.','Address the strongest counter-argument honestly before dismissing it.','Conclusion tied to policy rather than technology.'] }
+  ]
+},
+
+/* ---------------- READING ---------------- */
+{
+  id:'rw_fib', section:'reading', kind:'rwfib', name:'Fill in the Blanks (Dropdown)',
+  brief:'Choose the right word for each gap from a dropdown.',
+  scores:'Reading + Writing',
+  tips:['Read the whole sentence past the gap before choosing - collocation and grammar usually decide it, not meaning alone.',
+        'Check what the word must be: noun, verb, adjective? That eliminates two options immediately.',
+        'Each correct gap earns a point on its own, so never leave one blank.'],
+  items:[
+    { id:'rw1', title:'Peer review',
+      parts:['Peer review is often described as the gold standard of science, but the practice is more recent and more ',
+             ' than that phrase suggests. Formal refereeing became routine at most journals only in the middle of the twentieth century, and studies have repeatedly shown that reviewers ',
+             ' poorly with one another when asked to judge the same manuscript. Its defenders argue that the system is not meant to guarantee truth but to filter out work that is obviously ',
+             '. On that more modest ',
+             ', it continues to earn its place.'],
+      gaps:[{o:['contested','celebrated','obedient','frequent'],a:'contested'},
+            {o:['agree','differ','compete','argue'],a:'agree'},
+            {o:['unpopular','flawed','lengthy','expensive'],a:'flawed'},
+            {o:['occasion','measure','account','opinion'],a:'measure'}],
+      why:['“but” sets up a contrast with “gold standard”, so the gap has to undercut the praise — and the sentences that follow report reviewers disagreeing. “celebrated” would repeat the praise the “but” is turning away from.',
+           'Collocation settles this. You agree WITH one another; you do not differ, compete or argue “poorly with” anyone. “agree poorly with one another” is the only phrase English allows here.',
+           'The defence being described is filtering out bad science — “not meant to guarantee truth but to filter out”. Unpopular, lengthy or expensive work is not what a referee screens for.',
+           'Idiom: “on that measure” means by that standard. “on that account” exists, but means for that reason, which does not follow from “more modest”.'] },
+    { id:'rw2', title:'The economics of vaccination',
+      parts:['Vaccination produces benefits that spill beyond the individual who receives it, which is why economists treat it as a classic ',
+             ' good. Once enough of a population is immune, transmission slows and even the unvaccinated are ',
+             ' protected. Left to the market, however, individuals weigh only their own costs and benefits, so uptake tends to settle ',
+             ' the socially optimal level. Public subsidy is the standard ',
+             ' to that gap.'],
+      gaps:[{o:['public','private','luxury','inferior'],a:'public'},
+            {o:['partly','rarely','falsely','equally'],a:'partly'},
+            {o:['below','beyond','against','within'],a:'below'},
+            {o:['barrier','response','objection','alternative'],a:'response'}],
+      why:['A term of art. Benefits that \u201cspill beyond the individual\u201d define a public good in economics; the sentence is naming the category, not describing quality.',
+           'Herd immunity gives the unvaccinated some protection, not total. \u201cequally\u201d overstates it, and \u201crarely\u201d and \u201cfalsely\u201d both contradict transmission slowing.',
+           'The standard result is under-provision: individuals weigh only private benefit, so uptake lands under the social optimum. \u201csettle below\u201d also collocates, where \u201csettle beyond\u201d does not.',
+           'A subsidy closes the gap, so it is a response to it. A barrier or objection would work against the gap, and an alternative needs something to be an alternative to.'] }
+  ]
+},
+{
+  id:'mcq_multi_r', section:'reading', kind:'mcqm', name:'Multiple Choice, Multiple Answers',
+  brief:'More than one option is correct. Wrong choices cancel out right ones.',
+  scores:'Reading',
+  tips:['Choose only what you can point to in the text. A wrong tick subtracts a mark, so two confident answers beat four hopeful ones.',
+        'Options that overstate - "always", "proves", "all" - are usually the distractors.',
+        'The number of correct options is not given. Two is the most common.'],
+  items:[
+    { id:'rm1',
+      passage:'Attempts to measure the economic value of unpaid domestic work run into a definitional problem before they reach a statistical one. National accounts were designed to capture market transactions, and household labour produces no invoice. The conventional workaround is to price the hours at what it would cost to hire someone to do the same tasks, a method that yields figures equivalent to between a quarter and a half of measured GDP in most wealthy countries. Critics point out that this replacement-cost approach flatters the result, since it values an hour of a parent’s childcare at the wage of a professional childminder while ignoring that the two activities differ in quality, motivation and joint production - a parent cooks dinner and supervises homework at once. Yet the alternative, valuing the hours at the earnings the carer forgoes, produces the perverse conclusion that the same load of laundry is worth more when a surgeon does it. Neither method is defensible in isolation, and statistical agencies that publish satellite accounts now generally report both.',
+      q:'Which of the following are stated in the passage?',
+      o:['Household labour is excluded from conventional national accounts because it generates no market transaction.',
+         'Replacement-cost estimates put unpaid domestic work at roughly 25 to 50 per cent of measured GDP.',
+         'The opportunity-cost method values identical tasks differently depending on who performs them.',
+         'Statistical agencies have agreed that the replacement-cost method is the more accurate of the two.',
+         'Professional childminders and parents have been shown to provide care of equivalent quality.'],
+      why:[
+        'Correct. \u201cNational accounts were designed to capture market transactions, and household labour produces no invoice.\u201d That is the exclusion, and the reason for it.',
+        'Correct. \u201cfigures equivalent to between a quarter and a half of measured GDP in most wealthy countries\u201d \u2014 a quarter to a half is 25 to 50 per cent.',
+        'Correct. \u201cthe same load of laundry is worth more when a surgeon does it.\u201d Identical task, different value, because the earnings forgone differ.',
+        'Wrong. The passage says the opposite: \u201cNeither method is defensible in isolation\u201d, and agencies \u201cnow generally report both\u201d. Be wary of options claiming agreement where the text reports unresolved disagreement.',
+        'Wrong. The passage states they differ \u2014 the two activities \u201cdiffer in quality, motivation and joint production\u201d. This option reverses the sentence it is built from.'
+      ],
+      a:[0,1,2] },
+    { id:'rm2',
+      passage:'The archaeology of the Silk Roads has been reshaped less by spectacular finds than by unglamorous laboratory work. Isotope analysis of human remains now allows researchers to distinguish between people who grew up where they were buried and those who arrived later in life, and the results have been consistently surprising. At several oasis sites in the Tarim Basin, a majority of the interred individuals turn out to be locals, not the cosmopolitan traders of popular imagination. What moved along these routes, it seems, was goods and ideas rather than large numbers of people; merchants typically worked a single leg of the journey and handed cargo onward, so that a bolt of silk might change hands a dozen times between workshop and buyer without any individual travelling the full distance. This relay structure has consequences for how we read the spread of religion and technology along the same corridors, since an idea passed through twelve intermediaries is rarely the idea that set out.',
+      q:'Which of the following can be concluded from the passage?',
+      o:['Isotope analysis can distinguish lifelong residents from later arrivals at a burial site.',
+         'Most individuals buried at the Tarim Basin oasis sites were long-distance migrants.',
+         'Goods often crossed the Silk Roads through a series of intermediaries rather than a single traveller.',
+         'The relay structure of trade affects how the transmission of ideas should be interpreted.',
+         'Spectacular archaeological finds have driven most recent advances in Silk Road studies.'],
+      why:[
+        'Correct. \u201cIsotope analysis of human remains now allows researchers to distinguish between people who grew up where they were buried and those who arrived later in life.\u201d',
+        'Wrong, and exactly backwards: \u201ca majority of the interred individuals turn out to be locals, not the cosmopolitan traders of popular imagination.\u201d',
+        'Correct. \u201cmerchants typically worked a single leg of the journey and handed cargo onward, so that a bolt of silk might change hands a dozen times.\u201d',
+        'Correct. \u201cThis relay structure has consequences for how we read the spread of religion and technology along the same corridors.\u201d',
+        'Wrong. The opening sentence says the field was reshaped \u201cless by spectacular finds than by unglamorous laboratory work\u201d. This option picks the half the sentence rules out.'
+      ],
+      a:[0,2,3] }
+  ]
+},
+{
+  id:'reorder', section:'reading', kind:'reorder', name:'Reorder Paragraph',
+  brief:'Put the sentences back into their original order.',
+  scores:'Reading',
+  tips:['Find the independent opener first: it names its subject in full and contains no backward reference.',
+        'Chain the rest on pronouns, "this", "such", "the latter" and repeated nouns - each one points at the sentence before it.',
+        'Scoring is by adjacent pair, so fixing one link can earn a mark even if the whole order is wrong.'],
+  items:[
+    { id:'ro1', order:[
+      'The Antikythera mechanism was recovered in 1901 from a Roman-era shipwreck off a small Greek island.',
+      'For decades it sat in a museum as an unremarkable lump of corroded bronze, catalogued and largely ignored.',
+      'Only when X-ray imaging revealed more than thirty interlocking gears did its true character become clear.',
+      'It was an analogue computer, built to predict the positions of the sun and moon and the timing of eclipses.',
+      'Nothing of comparable mechanical sophistication is known to have been produced again for well over a thousand years.'],
+      why:['The opener. It names its subject in full \u2014 \u201cThe Antikythera mechanism\u201d \u2014 gives a date, and refers back to nothing.',
+           '\u201cit sat in a museum\u201d needs an antecedent, and \u201cFor decades\u201d only makes sense once the 1901 recovery has been stated.',
+           '\u201cOnly when\u201d answers the neglect just described. This is the turn from \u201clargely ignored\u201d to discovery.',
+           '\u201cIt was an analogue computer\u201d delivers the \u201ctrue character\u201d that the previous sentence announced but withheld.',
+           'The closer. It steps back to place the object in history, and nothing could follow it.'] },
+    { id:'ro2', order:[
+      'Bees returning to the hive perform a looping movement on the vertical comb that Karl von Frisch named the waggle dance.',
+      'The angle of the straight run relative to gravity encodes the direction of the food source in relation to the sun.',
+      'Its duration, meanwhile, corresponds closely to the distance the forager has flown.',
+      'Sceptics long argued that hive-mates were simply following the scent carried back on the dancer’s body.',
+      'That objection was finally settled by robotic bees, which recruited foragers to sites they had never visited.'],
+      why:['The opener. Full subject, and it names the waggle dance that every later sentence depends on.',
+           '\u201cthe straight run\u201d is a part of the dance just introduced, so this cannot come before it.',
+           '\u201cIts duration, meanwhile\u201d points back to the straight run, and \u201cmeanwhile\u201d pairs this measure with the angle in the sentence before.',
+           'The turn. Having described the mechanism, the paragraph raises the challenge to it.',
+           '\u201cThat objection\u201d can only refer to the scepticism immediately before, and \u201cfinally settled\u201d closes the paragraph.'] }
+  ]
+},
+{
+  id:'r_fib', section:'reading', kind:'rfib', name:'Fill in the Blanks (Drag and Drop)',
+  brief:'Drop words from the bank into the gaps. There are more words than gaps.',
+  scores:'Reading',
+  tips:['Work out the part of speech each gap needs before you look at the bank.',
+        'Do the gaps you are sure of first; each one you fill shrinks the bank for the rest.',
+        'The extra words are chosen to look plausible in isolation - test each candidate in the full sentence.'],
+  items:[
+    { id:'rf1', title:'Antarctic ice cores',
+      parts:['Ice cores drilled from the Antarctic plateau contain air bubbles that were ',
+             ' from the atmosphere at the moment the snow compacted. Because the layers accumulate annually, they can be counted like tree rings, giving a continuous ',
+             ' of atmospheric composition reaching back more than eight hundred thousand years. The record shows carbon dioxide oscillating within a narrow band through successive glacial cycles, and then rising ',
+             ' outside that band in the industrial era. No ',
+             ' explanation for the departure has survived scrutiny.'],
+      ans:['sealed','record','abruptly','natural'],
+      bank:['sealed','record','abruptly','natural','melted','distance','gradually','artificial','frozen'],
+      why:['The bubbles were shut off from the atmosphere as the snow compacted. \u201cfrozen from the atmosphere\u201d is not English, and \u201cmelted\u201d would destroy the very thing being preserved.',
+           '\u201ccontinuous\u201d and \u201creaching back more than eight hundred thousand years\u201d both want a noun meaning an unbroken account. A record reaches back; a distance does not.',
+           'Set against the narrow band of the glacial cycles, the industrial-era rise is the exception. \u201cgradually\u201d would describe the oscillation it is being contrasted with.',
+           'The sentence dismisses non-human explanations, which is what makes the departure significant. \u201cartificial\u201d inverts the argument entirely.'] },
+    { id:'rf2', title:'Placebo in clinical trials',
+      parts:['A trial is described as double-blind when neither the participants nor the clinicians assessing them know who has received the active ',
+             '. The design exists because expectation alone can produce measurable physiological change, and because assessors unconsciously ',
+             ' ambiguous results in the direction they hope for. Blinding is harder to maintain than it sounds: a drug with a distinctive side effect will ',
+             ' itself to attentive patients, and the trial then quietly loses the protection it was designed to ',
+             '.'],
+      ans:['treatment','interpret','reveal','provide'],
+      bank:['treatment','interpret','reveal','provide','diagnosis','ignore','conceal','request','measure'],
+      why:['\u201cthe active treatment\u201d is the standard phrase in trial design, and it is what participants receive. You are given a diagnosis, not the active one.',
+           'The clause ends \u201cin the direction they hope for\u201d, which needs a verb of judgement. You cannot ignore something in a direction.',
+           'Reflexive: a distinctive side effect reveals itself. \u201cconceal itself\u201d would mean the blinding held, which is the opposite of the problem described.',
+           'Blinding was designed to provide protection \u2014 and the sentence says the trial then loses it. Measure and request do not take \u201cprotection\u201d as an object here.'] }
+  ]
+},
+{
+  id:'mcq_single_r', section:'reading', kind:'mcqs', name:'Multiple Choice, Single Answer',
+  brief:'One correct option. No penalty for a wrong guess.',
+  scores:'Reading',
+  tips:['The question usually asks for the author’s purpose or tone, not a fact. Answer the question that was asked.',
+        'Distractors are typically true statements that are not the answer. Truth is not enough - it must be responsive.',
+        'There is no negative marking here, so always select something.'],
+  items:[
+    { id:'rs1q',
+      passage:'It is tempting to read the collapse of the Norse settlement in Greenland as a straightforward parable of environmental mismanagement: a farming people arrive, overgraze a fragile landscape, refuse to adopt Inuit techniques, and starve as the climate cools. The evidence is less obliging. Midden analysis shows that the Norse diet shifted substantially towards marine resources over the settlement’s five centuries, which is hardly the behaviour of a community incapable of adaptation. What changed decisively in the fifteenth century was not the weather but the market: the European demand for walrus ivory, on which the colony’s trade depended, collapsed when elephant ivory became available through expanding African routes. A settlement that had been marginal but viable as a trading outpost became simply marginal.',
+      q:'What is the author’s main purpose in this passage?',
+      o:['To demonstrate that climate change had no role in the fate of the Norse settlement.',
+         'To qualify a popular environmental explanation by introducing economic evidence.',
+         'To argue that the Norse should have adopted Inuit hunting techniques earlier.',
+         'To describe the range of foods consumed at the Greenland settlement over time.'],
+      why:[
+        'Too absolute. The author disputes that climate is the whole story, not that it played no part \u2014 the claim is only that what changed \u201cdecisively in the fifteenth century was not the weather but the market\u201d.',
+        'Correct. The passage opens with \u201cIt is tempting to read\u201d the collapse as environmental mismanagement, answers \u201cThe evidence is less obliging\u201d, then supplies the ivory-market collapse. That is a qualification supported by economic evidence.',
+        'This reverses how the author uses the evidence. The shift toward marine resources is cited to show the Norse did adapt \u2014 \u201chardly the behaviour of a community incapable of adaptation\u201d.',
+        'True but not the purpose. The diet detail is evidence inside the argument, not the reason the passage was written. Ask what the paragraph is doing, not what it mentions.'
+      ],
+      a:1 },
+    { id:'rs2q',
+      passage:'Every introductory statistics course warns that correlation does not imply causation, and every working researcher knows the warning is insufficient. The harder problem is that the absence of correlation does not rule causation out either. Where two causal pathways operate in opposite directions - a drug that both reduces inflammation and suppresses appetite, say - their effects on an outcome can cancel, leaving a correlation indistinguishable from zero in the aggregate while a real and clinically significant mechanism operates in each direction. This is why methodologists increasingly insist that a causal question be stated as an explicit model before the data are examined, rather than inferred from whatever associations the data happen to display.',
+      q:'The example of the drug is used primarily to illustrate',
+      o:['how side effects complicate the approval of new medicines.',
+         'why aggregate data can conceal genuine causal relationships.',
+         'that inflammation and appetite are physiologically connected.',
+         'the difficulty of recruiting participants for clinical trials.'],
+      why:[
+        'The side effects are the machinery of the example, not its point. The passage is not about drug approval at all.',
+        'Correct. \u201ctheir effects on an outcome can cancel, leaving a correlation indistinguishable from zero in the aggregate while a real and clinically significant mechanism operates in each direction.\u201d',
+        'The drug is hypothetical \u2014 note the \u201csay\u201d. No physiological claim is being made about inflammation and appetite.',
+        'Never mentioned. Recruitment does not come up anywhere in the passage.'
+      ],
+      a:1 }
+  ]
+},
+
+/* ---------------- LISTENING ---------------- */
+{
+  id:'sst', section:'listening', kind:'sst', name:'Summarize Spoken Text',
+  brief:'Listen, then write a 50-70 word summary. 10 minutes.',
+  scores:'Listening + Writing', time:600, audio:true,
+  tips:['Stay inside 50-70 words. Outside that band the form mark is zero.',
+        'Note the structure while listening - claim, evidence, qualification - rather than individual words.',
+        'Two or three sentences is normal here; unlike the written summary, it does not have to be one.'],
+  items:[
+    { id:'ss1', voice:'m', title:'Lecture: why cities keep flooding',
+      text:'One of the counter-intuitive findings in urban hydrology is that flood damage has risen fastest in cities that have invested most heavily in flood defence. The explanation is behavioural rather than hydrological, and it has a name: the levee effect. When a city builds a substantial embankment, the land behind it is reclassified as safe, insurance becomes cheaper, and development follows. Twenty years later the floodplain that was sparsely occupied is dense with housing and infrastructure. The defence has genuinely reduced the frequency of flooding, but it has enormously increased the value of what is exposed when a flood does exceed the design threshold. And because these structures are built to a specified return period, exceedance is not a failure of engineering, it is an expected event. The policy implication that hydrologists draw is not that defences should not be built, but that they must be paired with restrictions on what may be built behind them - a condition that is politically far harder to sustain than the concrete itself.',
+      keys:['flood damage rises fastest where defences are strongest','the levee effect: protection encourages development on floodplains','defences reduce flood frequency but raise exposed value','exceedance is expected, not engineering failure','defences need paired development restrictions, which are politically hard'],
+      model:'The lecturer described the levee effect, in which building flood defences makes the land behind them appear safe, encouraging dense development on the floodplain. Although defences reduce how often flooding occurs, they sharply increase the value exposed when a flood exceeds the design threshold, which is an expected event rather than a failure. He concluded that defences must be paired with restrictions on development, which is politically difficult.' },
+    { id:'ss2', voice:'f', title:'Lecture: the replication problem',
+      text:'In two thousand and fifteen a large collaboration attempted to repeat one hundred published psychology experiments using the original materials and, wherever possible, the original authors’ advice. Fewer than forty per cent produced a statistically significant result in the same direction, and the average effect size was roughly half the published figure. It would be a mistake to read this as evidence of widespread fraud. The far more mundane explanation is a set of incentives that reward novelty over verification. Journals prefer surprising positive findings, hiring committees count publications, and a researcher with flexibility over which measures to report and when to stop collecting data can arrive at a significant result without ever consciously cheating. The reforms that followed target the incentives rather than the individuals: pre-registration of hypotheses, mandatory data sharing, and registered reports in which a journal commits to publishing on the basis of the method, before the result is known. Early evidence suggests these measures work, though they have spread unevenly across disciplines.',
+      keys:['replication of 100 psychology studies','under 40% replicated; effects about half the size','cause is incentives, not fraud','novelty rewarded over verification; flexible analysis','reforms: pre-registration, data sharing, registered reports','uneven uptake across disciplines'],
+      model:'The speaker reported a large replication project in which fewer than forty per cent of one hundred psychology experiments reproduced the original significant result, with effects around half the published size. She argued that the cause is not fraud but incentives that reward novelty and allow flexible analysis. Reforms such as pre-registration, data sharing and registered reports target those incentives, though uptake varies by discipline.' }
+  ]
+},
+{
+  id:'l_mcq_multi', section:'listening', kind:'lmcqm', name:'Multiple Choice, Multiple Answers',
+  brief:'Listen, then select every correct option. Wrong choices cancel out right ones.',
+  scores:'Listening', audio:true,
+  tips:['Read the options before the audio starts. You then listen for confirmation rather than meaning.',
+        'Mark only what you actually heard stated. Negative marking punishes guessing.',
+        'Distractors often use a word from the recording in a claim the speaker did not make.'],
+  items:[
+    { id:'lm1', text:'Before we break, a word about the field trip, because every year somebody turns up without the right kit and every year somebody loses marks for the same avoidable reason. We leave from the science car park at seven, not from the main gate, and the coach will not wait. Bring waterproofs whatever the forecast says, because the site is exposed and we will be out for most of the day regardless of the weather. Now, a note on how we assess the trip. There are three components and they are weighted unequally. The field notebook is worth forty per cent, and I will collect it on the last morning, not afterwards, so write it up each evening. The group presentation is thirty per cent and is marked as a group, with no individual adjustment, so choose your collaborators carefully. The remaining thirty per cent is the individual reflective report, due two weeks after we return. One thing that catches people out every year: the notebook must include your raw measurements, not a tidied version. Transcribed notebooks lose marks. One more thing on referencing: if you draw on the site guide or on last year’s published survey, cite them properly in the reflective report. The notebook itself does not need a bibliography, but the report does, and the usual penalties apply.',
+      q:'Which statements are consistent with the recording?',
+      o:['The field notebook carries the largest single weighting.',
+         'The group presentation receives a single mark for the whole group.',
+         'The reflective report is due on the last morning of the trip.',
+         'Raw measurements must appear in the notebook.',
+         'The notebook is collected two weeks after the group returns.'],
+      a:[0,1,3] },
+    { id:'lm2', text:'For most of the last century, coastal protection meant concrete, and the engineering question was simply how high and how thick. That assumption has been unravelling for about twenty years, and mangroves are the main reason why. What makes the mangrove such an effective coastal defence is not its size but its architecture. The prop roots slow the water, and slowing the water is what causes suspended sediment to drop out of it. Over decades this builds elevation, so a healthy mangrove belt actually grows upward as sea level rises, which no sea wall can do. Field measurements put wave energy reduction at somewhere between fifty and seventy per cent across a hundred metres of forest. The catch is that this only holds where the sediment supply is intact. Dam a river upstream, cut off the sediment, and the same forest will drown in place within a few decades. There is also a cost argument that tends to settle the debate in practice: restoration typically runs at a fraction of the capital cost of a comparable barrier, and unlike a barrier it needs no maintenance budget once it establishes. Add the fisheries value and the carbon stored in the sediment, and the accounting stops being close.',
+      q:'Which points does the speaker make?',
+      o:['Mangroves can raise their own ground level over time.',
+         'A hundred metres of mangrove can cut wave energy by 50 to 70 per cent.',
+         'Sea walls adapt to rising sea levels better than mangroves do.',
+         'Upstream dams can undermine a mangrove belt by removing sediment.',
+         'The defensive value of mangroves comes mainly from the height of the trees.'],
+      a:[0,1,3] }
+  ]
+},
+{
+  id:'hcs', section:'listening', kind:'mcqs', name:'Highlight Correct Summary',
+  brief:'Listen, then choose the paragraph that best summarises the recording.',
+  scores:'Listening + Reading', audio:true,
+  tips:['Eliminate on errors of fact first, then on omissions - the best summary covers the whole recording, not just its opening.',
+        'A summary that is entirely true but covers only one point is still wrong.',
+        'Note the recording’s conclusion. The correct option almost always reflects it.'],
+  items:[
+    { id:'hc1', text:'There is a persistent belief that the Great Wall of China is visible from space with the naked eye. It is not, and a moment’s thought about its dimensions explains why. The wall is long, but it is only a few metres wide and it is built from local materials that match the surrounding terrain in colour. From low earth orbit, resolving it unaided would be like spotting a human hair from two kilometres away against a background of the same shade. Astronauts have confirmed this repeatedly. What can be seen from orbit are things that contrast sharply with their surroundings: motorways, airports, greenhouse complexes, and above all the lights of cities at night. The lesson is that visibility from orbit is governed by contrast and width, not by historical importance.',
+      q:'Which summary best represents the recording?',
+      o:['The Great Wall cannot be seen from orbit unaided because it is narrow and matches the colour of the surrounding land; what is visible from space depends on contrast and width rather than on a structure’s significance.',
+         'Astronauts have often tried and failed to photograph the Great Wall of China from low earth orbit, and modern cameras are now used instead to record historical monuments from space.',
+         'The Great Wall of China is one of the longest structures ever built, stretching for thousands of kilometres across varied terrain and constructed from materials gathered locally along its route.',
+         'Cities, motorways and airports are visible from orbit at night, which shows how far human settlement has expanded since the Great Wall was first constructed.'],
+      a:0 },
+    { id:'hc2', text:'I want to challenge the way we talk about note-taking in lectures. The assumption is that the purpose is to create a record you will later revise from. But the studies comparing longhand with laptop note-taking point somewhere else. Students typing notes produce far more words and capture the lecture more completely, yet they perform worse on conceptual questions a week later. Students writing by hand cannot keep up, so they are forced to select, compress and paraphrase in real time - and that processing, not the resulting document, is what produces the learning. The practical implication is uncomfortable for anyone who records lectures and promises to listen again later. The value was in the effort of the first pass.',
+      q:'Which summary best represents the recording?',
+      o:['Laptop users take more complete lecture notes than longhand writers, so students who type are generally better prepared for examinations.',
+         'The benefit of note-taking lies in the mental processing required to select and paraphrase while listening, which is why slower longhand notes outperform more complete typed ones on later conceptual tests.',
+         'Recording lectures and listening to them again is an efficient substitute for taking notes during the lecture itself.',
+         'Handwriting is a declining skill among university students, and this has measurable consequences for how quickly they can record information in lectures.'],
+      a:1 }
+  ]
+},
+{
+  id:'l_fib', section:'listening', kind:'lfib', name:'Fill in the Blanks (Type In)',
+  brief:'Type the missing word in each gap as you listen.',
+  scores:'Listening + Writing',
+  tips:['Type what you hear, exactly. Spelling is scored, and a near-miss earns nothing.',
+        'Read ahead of the audio so you know what is coming and can type without looking back.',
+        'If you miss one, leave it and keep pace with the recording rather than falling behind.'],
+  items:[
+    { id:'lf1', title:'Bird migration',
+      parts:['Migrating songbirds navigate using at least three separate systems. They read the position of the setting ',
+             ', they use the pattern of stars around the celestial pole, and they can detect the earth’s magnetic ',
+             '. When researchers place a bird in a planetarium and rotate the artificial sky, the bird reorients ',
+             '. That is about as direct a demonstration as experimental biology ever ',
+             '.'],
+      ans:['sun','field','accordingly','provides'] },
+    { id:'lf2', title:'Concrete',
+      parts:['Concrete is the second most consumed substance on earth after ',
+             '. Its manufacture accounts for roughly eight per cent of global carbon ',
+             ', most of which comes not from the kiln fuel but from the chemistry of turning limestone into ',
+             '. Reducing that figure therefore requires changing the material itself, not simply the energy ',
+             ' that heats it.'],
+      ans:['water','emissions','clinker','source'] }
+  ]
+},
+{
+  id:'l_mcq_single', section:'listening', kind:'mcqs', name:'Multiple Choice, Single Answer',
+  brief:'Listen, then choose the one correct option.',
+  scores:'Listening', audio:true,
+  tips:['Listen for the speaker’s attitude, not only the facts - many questions ask what they imply.',
+        'A contrast marker - "but", "however", "in fact" - usually signals the sentence the question is about.',
+        'No penalty for a wrong answer, so never leave it blank.'],
+  items:[
+    { id:'ls1', text:'I am often asked whether learning a second language as an adult is a waste of time, given how much easier it is for children. My answer is that the question is framed badly. Children are better at acquiring native-like pronunciation, that much is settled. But adults are considerably faster at the early stages - they already have literacy, they understand grammatical abstraction, and they can use explicit strategies a four-year-old cannot. What adults lack is not capacity but exposure. A child gets thousands of hours of unavoidable immersion. An adult gets three hours a week and a busy job.',
+      q:'What is the speaker’s main point?',
+      o:['Adults cannot achieve a native-like accent and should not attempt to.',
+         'The real disadvantage adults face is limited exposure rather than reduced learning capacity.',
+         'Children learn second languages faster than adults at every stage.',
+         'Explicit grammar instruction is ineffective for adult learners.'],
+      a:1 },
+    { id:'ls2', text:'A word about how I want your reading lists used. I do not expect you to read every item, and I would be worried if you tried. The list is a map of a conversation, not a queue of tasks. Start with the two items I have starred, because they disagree with each other, and everything else on the list is a move in the argument between them. If you can explain why those two authors reach different conclusions from broadly the same evidence, you have understood the seminar topic, whether or not you have opened anything else.',
+      q:'What does the lecturer want students to do with the reading list?',
+      o:['Read every item on the list before the seminar.',
+         'Focus on two contrasting starred texts and understand the disagreement between them.',
+         'Choose any two items that interest them personally.',
+         'Read the list in the order in which it is printed.'],
+      a:1 }
+  ]
+},
+{
+  id:'smw', section:'listening', kind:'smw', name:'Select Missing Word',
+  brief:'The recording is replaced by a beep at the end. Choose what was missing.',
+  scores:'Listening', audio:true,
+  tips:['The answer must fit the grammar of the sentence and the direction of the argument.',
+        'Listen for the final contrast marker - it tells you whether the ending agrees or reverses.',
+        'Eliminate options that repeat what was already said; the ending adds something.'],
+  items:[
+    { id:'sm1', text:'Before you design your own questionnaire for the coursework, I want you to sit with a finding that has embarrassed this department more than once. The gap between what people tell a researcher and what they actually do is not a minor measurement problem; it is the central one. The pattern in the survey data is clear enough. Households told us they were willing to pay more for produce grown locally, and a large majority said environmental impact influenced their choices. At the checkout, however, the same households bought whichever option was',
+      o:['cheapest','organic','locally grown','best packaged'], a:0 },
+    { id:'sm2', text:'The history of the museum is, among other things, a history of what counts as prestige, and that has shifted more than once. For most of the twentieth century, museums competed on the size of their collections. The measure of a great institution was how much it held. That logic has now been quietly reversed, and the institutions attracting the most attention are those willing to give objects',
+      o:['back','away for free','a higher valuation','more storage space'], a:0 },
+    { id:'sm3', text:'Whenever somebody tells you that a new communication technology is destroying our manners, it is worth asking what the manners were before it arrived, and where they came from. It is worth remembering that the first users of the telephone were advised to shout into it, and that early etiquette guides debated whether it was rude to call someone without writing first. Every communication technology arrives without conventions, and those conventions have to be',
+      o:['invented','abandoned','translated','purchased'], a:0 }
+  ]
+},
+{
+  id:'hiw', section:'listening', kind:'hiw', name:'Highlight Incorrect Words',
+  brief:'The transcript differs from the recording. Click every word that is wrong.',
+  scores:'Listening + Reading', audio:true,
+  tips:['Follow the text with your eyes at the speaker’s pace. If you lose your place you will miss the remaining errors.',
+        'Every wrong click cancels a correct one, so click only what you clearly heard differ.',
+        'Substituted words usually sound similar to the original - listen for the mismatch, not for nonsense.'],
+  items:[
+    { id:'hi1',
+      spoken:'The domestication of the horse transformed warfare, trade and agriculture across the steppe. Genetic evidence now points to a single population in the lower Volga region as the source of nearly all modern domestic horses, spreading rapidly from around four thousand years ago.',
+      shown: 'The domestication of the horse transformed warfare, trade and agriculture across the steppe. Genetic evidence now points to a single population in the lower Volga region as the source of nearly all modern domestic horses, spreading rapidly from around four hundred years ago.',
+      errors:[40] },
+    { id:'hi2',
+      spoken:'Tidal power has one decisive advantage over wind and solar: it is entirely predictable. Engineers can say with confidence what a tidal barrage will generate on a particular afternoon in twenty years. The obstacle has always been cost, and the ecological damage to estuaries.',
+      shown: 'Tidal power has one decisive advantage over wind and solar: it is entirely predictable. Engineers can say with confidence what a tidal barrage will generate on a particular morning in twenty years. The obstacle has always been cost, and the ecological damage to industries.',
+      errors:[28,43] }
+  ]
+},
+{
+  id:'wfd', section:'listening', kind:'wfd', name:'Write from Dictation',
+  brief:'Listen once and type the sentence exactly. Every correct word scores.',
+  scores:'Listening + Writing',
+  tips:['Type every word you caught, even in the wrong order - scoring is word by word, not sentence by sentence.',
+        'Write the content words first, then fill in the articles and prepositions around them.',
+        'Check capitals and plurals before moving on; a missing "s" loses that word.'],
+  items:[
+    { id:'wd1', text:'The university library provides access to a wide range of electronic journals.' },
+    { id:'wd2', text:'Students are advised to consult their tutor before changing their subject.' },
+    { id:'wd3', text:'Experimental results must be recorded immediately in the laboratory notebook.' },
+    { id:'wd4', text:'The department has announced a series of lectures on environmental policy.' },
+    { id:'wd5', text:'Financial support is available for postgraduates attending international conferences.' },
+    { id:'wd6', text:'All applications for extension must be submitted through the online portal.' }
+  ]
+}
+];
+
+/* Communicative skills, question counts and test part, taken from the
+   official Test Taker Score Guide. Integrated question types score two
+   skills and their marks count toward both. */
+const SPEC = {
+  personal_intro:  { skills:['speaking'],              count:'1',     part:1 },
+  read_aloud:      { skills:['speaking'],              count:'6-7',   part:1 },
+  repeat_sentence: { skills:['listening','speaking'],  count:'10-12', part:1 },
+  describe_image:  { skills:['speaking'],              count:'5-6',   part:1 },
+  retell_lecture:  { skills:['listening','speaking'],  count:'2-3',   part:1 },
+  short_question:  { skills:['listening'],             count:'5-6',   part:1 },
+  sgd:             { skills:['listening','speaking'],  count:'2-3',   part:1 },
+  rts:             { skills:['speaking'],              count:'2-3',   part:1 },
+  swt:             { skills:['reading','writing'],     count:'2',     part:1 },
+  essay:           { skills:['writing'],               count:'1',     part:1 },
+  rw_fib:          { skills:['reading'],               count:'5-6',   part:2 },
+  mcq_multi_r:     { skills:['reading'],               count:'2-3',   part:2 },
+  reorder:         { skills:['reading'],               count:'2-3',   part:2 },
+  r_fib:           { skills:['reading'],               count:'4-5',   part:2 },
+  mcq_single_r:    { skills:['reading'],               count:'2-3',   part:2 },
+  sst:             { skills:['listening','writing'],   count:'1',     part:3 },
+  l_mcq_multi:     { skills:['listening'],             count:'2-3',   part:3 },
+  l_fib:           { skills:['listening'],             count:'2-3',   part:3 },
+  hcs:             { skills:['listening','reading'],   count:'2-3',   part:3 },
+  l_mcq_single:    { skills:['listening'],             count:'2-3',   part:3 },
+  smw:             { skills:['listening'],             count:'1-2',   part:3 },
+  hiw:             { skills:['listening','reading'],   count:'2-3',   part:3 },
+  wfd:             { skills:['listening','writing'],   count:'3-4',   part:3 }
+};
+TASKS.forEach(t => {
+  Object.assign(t, SPEC[t.id]);
+  if (t.kind === 'speak') t.silence = true;
+  t.items.forEach(i => { if (i.turns) i.text = i.turns.map(x => x.who + ': ' + x.text).join(' '); });
+});
+const PART_NAME = { 1:'Part 1 · Speaking & Writing', 2:'Part 2 · Reading', 3:'Part 3 · Listening' };
+const skillLabel = id => (SECTIONS.find(s => s.id === id) || { label:id }).label;
+
+const TASK_BY_ID = Object.fromEntries(TASKS.map(t => [t.id, t]));
+
+/* ============================ appearance ============================ */
+const SKINS = [
+  { id:'orchid', label:'Orchid', swatch:'linear-gradient(135deg,#8A4FA8,#D9578C)' },
+  { id:'slate',  label:'Slate',  swatch:'linear-gradient(135deg,#1F5FA8,#63A9E8)' }
+];
+const SKIN_KEY = 'pte-score-lab/skin';
+let skin = 'orchid';
+try { skin = localStorage.getItem(SKIN_KEY) || 'orchid'; } catch(e){}
+if (!SKINS.some(x => x.id === skin)) skin = 'orchid';
+function applySkin(id){
+  skin = id;
+  if (id === 'orchid') document.documentElement.removeAttribute('data-skin');
+  else document.documentElement.setAttribute('data-skin', id);
+  try { localStorage.setItem(SKIN_KEY, id); } catch(e){}
+  paintSkins();
+}
+function paintSkins(){
+  const host = document.getElementById('skins');
+  if (!host) return;
+  host.replaceChildren(...SKINS.map(sk => {
+    const b = h('button', { cls:'skinb', 'aria-pressed': String(sk.id === skin),
+      title: sk.label + ' theme', 'aria-label': sk.label + ' theme' },
+      h('span', { cls:'sw', style:'background:' + sk.swatch }));
+    b.addEventListener('click', () => applySkin(sk.id));
+    return b;
+  }));
+}
+
+/* ============================ state + storage ============================ */
+const LSK = 'pte-score-lab/attempts/v1';
+const state = { route:{ view:'home' }, attempts:[], ai:undefined };
+
+// carry over any history stored under the app's former name
+try {
+  state.attempts = JSON.parse(localStorage.getItem(LSK)
+    || localStorage.getItem('pte-drill-room/attempts/v1') || '[]');
+} catch(e){ state.attempts = []; }
+function persist(){ try { localStorage.setItem(LSK, JSON.stringify(state.attempts.slice(-600))); } catch(e){} }
+function record(taskId, itemId, p){
+  state.attempts.push({ t:taskId, i:itemId, p:Math.round(p), ts:Date.now() });
+  persist(); paintNav();
+}
+const RECENT = 10;  // every average is over the latest 10 attempts only
+const attemptsFor = id => state.attempts.filter(a => a.t === id);
+function bestFor(id){ const a = attemptsFor(id); return a.length ? Math.max(...a.map(x => x.p)) : null; }
+function avgFor(list){
+  const r = list.slice(-RECENT);   // attempts are stored oldest-first
+  return r.length ? Math.round(r.reduce((s,x) => s + x.p, 0) / r.length) : null;
+}
+const dayKey = ts => new Date(ts).toISOString().slice(0,10);
+
+/* ============================ Claude scoring ============================ */
+let samplePromise = null;
+function ensureSample(){
+  if (!samplePromise) samplePromise = (window.claude && window.claude.use)
+    ? window.claude.use('sample').catch(() => null) : Promise.resolve(null);
+  return samplePromise;
+}
+ensureSample().then(s => { state.ai = s; });
+
+const AI_COPY = {
+  not_granted:'Claude scoring was not allowed for this page, so the examiner feedback is unavailable. The model answer below still applies.',
+  sampling_disabled:'Claude scoring is not available on this account. The model answer below still applies.',
+  not_declared:'Claude scoring is not available in this view.',
+  capability_disabled:'Claude scoring is not available in this view.',
+  capability_removed:'Claude scoring is not available in this view.',
+  rate_limited:'Too many scoring requests just now. Wait a minute and try again.',
+  session_expired:'Your Claude session expired. Sign in again, then retry.',
+  invalid_json:'The examiner reply came back malformed. Try scoring again.',
+  prompt_too_large:'That response is too long to score. Shorten it and retry.',
+  refused:'Claude declined to score this response. Rewrite it and try again.',
+  empty_completion:'No feedback came back. Try scoring again.',
+  cancelled:'Scoring stopped.'
+};
+const aiCopy = code => (code === 'not_granted' && !(window.claude && window.claude.use))
+  ? 'Examiner marking runs only in the Claude app version of this page. Everything else \u2014 timing, recording and all the auto-marked question types \u2014 works here, and the model answer below still applies.'
+  : (AI_COPY[code] || 'Scoring failed because of a temporary service problem. Try again.');
+
+async function aiRubric(prompt, tier){
+  const s = await ensureSample();
+  if (!s) throw { code:'not_granted' };
+  return await s.json(prompt, { modelTier: tier || 'default', cache:{ gcTime: 86400000 } });
+}
+
+/* ============================ speech ============================ */
+let stopSpeech = null, keepAlive = null;
+function stopAudio(){
+  if (stopSpeech) { stopSpeech(); stopSpeech = null; }
+  if (keepAlive) { clearInterval(keepAlive); keepAlive = null; }
+  try { window.speechSynthesis && window.speechSynthesis.cancel(); } catch(e){}
+}
+/* ---- British English voices, alternating male and female ---- */
+let VOICES = [];
+function loadVoices(){ try { VOICES = window.speechSynthesis.getVoices() || []; } catch(e){ VOICES = []; } }
+if ('speechSynthesis' in window){
+  loadVoices();
+  try { window.speechSynthesis.addEventListener('voiceschanged', loadVoices); }
+  catch(e){ window.speechSynthesis.onvoiceschanged = loadVoices; }
+}
+const F_NAMES = ['hazel','susan','kate','serena','martha','libby','sonia','fiona','stephanie','maisie','abbi','bella','olivia','emma','amy','joanna','karen','moira','tessa','alice','anna','nicky','samantha','zira','catherine','clara','elizabeth'];
+const M_NAMES = ['george','daniel','arthur','ryan','oliver','thomas','graham','alfie','elliot','noah','brian','james','david','mark','guy','oren','rishi','aaron','fred','gordon','lee'];
+function voiceSex(v){
+  const n = ((v && v.name) || '').toLowerCase();
+  if (/female|woman/.test(n)) return 'f';        // test female first: "male" is inside "female"
+  if (/\bmale\b|\bman\b/.test(n)) return 'm';
+  if (F_NAMES.some(x => n.indexOf(x) >= 0)) return 'f';
+  if (M_NAMES.some(x => n.indexOf(x) >= 0)) return 'm';
+  return '';
+}
+const britishVoices = () => VOICES.filter(v => /^en[-_]GB/i.test(v.lang || ''));
+function hasBritish(){ return britishVoices().length > 0; }
+/* Resolve a voice for the requested sex. Falls back through: British of that
+   sex -> any British -> any English -> browser default, and reports whether it
+   actually matched so the caller can shift pitch instead. */
+function resolveVoice(sex){
+  const gb = britishVoices();
+  const pool = gb.length ? gb : VOICES.filter(v => /^en/i.test(v.lang || ''));
+  if (!pool.length) return { voice:null, matched:false, british:false };
+  const hit = pool.filter(v => voiceSex(v) === sex);
+  const voice = hit.length ? hit[0] : pool[0];
+  return { voice, matched: hit.length > 0, british: gb.length > 0 };
+}
+
+/* `input` is a string, or [{text, sex}] so a discussion can use three voices. */
+function speak(input, opts){
+  opts = opts || {};
+  stopAudio();
+  if (!('speechSynthesis' in window)) { opts.onEnd && opts.onEnd(false); return; }
+  const segs = typeof input === 'string' ? [{ text:input, sex:opts.sex }] : input;
+  const parts = [];
+  segs.forEach(sg => (String(sg.text).match(/[^.!?;:]+[.!?;:]*/g) || [String(sg.text)])
+    .forEach(t => { t = t.trim(); if (t) parts.push({ t, sex: sg.sex }); }));
+  let i = 0, dead = false;
+  const next = () => {
+    if (dead) return;
+    if (i >= parts.length) { stopAudio(); opts.onEnd && opts.onEnd(true); return; }
+    const part = parts[i++];
+    const u = new SpeechSynthesisUtterance(part.t);
+    const r = resolveVoice(part.sex || 'f');
+    if (r.voice) u.voice = r.voice;
+    u.lang = 'en-GB';
+    u.rate = opts.rate || 0.95;
+    // if no distinctly male/female voice is installed, separate the speakers by pitch
+    u.pitch = r.matched ? 1 : (part.sex === 'm' ? 0.8 : 1.2);
+    u.onend = next;
+    u.onerror = () => { if (!dead) next(); };
+    window.speechSynthesis.speak(u);
+  };
+  stopSpeech = () => { dead = true; };
+  keepAlive = setInterval(() => { try { window.speechSynthesis.resume(); } catch(e){} }, 8000);
+  next();
+}
+let actx = null;
+function beep(){
+  try {
+    actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+    const o = actx.createOscillator(), g = actx.createGain();
+    o.type = 'sine'; o.frequency.value = 760;
+    g.gain.setValueAtTime(0.0001, actx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.18, actx.currentTime + 0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001, actx.currentTime + 0.42);
+    o.connect(g); g.connect(actx.destination); o.start(); o.stop(actx.currentTime + 0.45);
+  } catch(e){}
+}
+
+/* ============================ shared widgets ============================ */
+const timers = [];
+function clearTimers(){ while (timers.length) clearInterval(timers.pop()); }
+
+function makeClock(seconds, label, onEnd){
+  const time = h('div', { cls:'clock mono', text: mmss(seconds) });
+  const lab  = h('div', { cls:'clocklab', text: label });
+  const fill = h('i', { style:'width:100%' });
+  const track = h('div', { cls:'tprog' }, fill);
+  const node = h('div', { cls:'clockbar' }, lab, time, track);
+  let left = seconds, id = null;
+  const tick = () => {
+    left--;
+    time.textContent = mmss(Math.max(0, left));
+    fill.style.width = (left / seconds * 100) + '%';
+    const low = left <= Math.max(5, seconds * 0.12);
+    time.classList.toggle('low', low); track.classList.toggle('low', low);
+    if (left <= 0) { stop(); onEnd && onEnd(); }
+  };
+  const start = () => { if (id) return; id = setInterval(tick, 1000); timers.push(id); };
+  const stop  = () => { if (id) { clearInterval(id); id = null; } };
+  return { node, start, stop, get left(){ return left; }, setLabel: t => { lab.textContent = t; } };
+}
+
+function makeWave(){
+  const bars = Array.from({ length: 28 }, () => h('i'));
+  const node = h('div', { cls:'wave' }, bars);
+  let id = null;
+  const stopAnim = () => { if (id) { clearInterval(id); id = null; } };
+  return {
+    node,
+    on(){ node.classList.add('on'); if (id) return;
+      id = setInterval(() => bars.forEach((b,k) => { b.style.height = (18 + Math.abs(Math.sin(Date.now()/230 + k*0.7)) * 70) + '%'; }), 110);
+      timers.push(id); },
+    /* drive the meter from real microphone data instead of the idle animation */
+    feed(arr){ stopAnim(); node.classList.add('on');
+      bars.forEach((b,k) => { const v = (arr[Math.min(arr.length - 1, k)] || 0) / 255; b.style.height = (14 + v * 86) + '%'; }); },
+    off(){ node.classList.remove('on'); stopAnim(); bars.forEach(b => b.style.height = '18%'); }
+  };
+}
+
+function makePlayer(text, opts){
+  opts = opts || {};
+  const wave = makeWave();
+  const stat = h('div', { cls:'astat', text:'Ready' });
+  const btn  = h('button', { cls:'btn primary' }, opts.playLabel || 'Play audio');
+  let plays = 0;
+  const flat = typeof text === 'string' ? text : text.map(x => x.text).join(' ');
+  const node = h('div', { cls:'audio' }, btn, wave.node, stat);
+  if (opts.voiceLabel !== false){
+    const multi = typeof text !== 'string';
+    const sexes = multi ? text.map(x => x.sex) : [opts.sex || 'f'];
+    const nF = sexes.filter(x => x === 'f').length, nM = sexes.filter(x => x === 'm').length;
+    const who = multi
+      ? (nF && nM ? nF + ' female, ' + nM + ' male' : (nF ? 'female voices' : 'male voices'))
+      : ((opts.sex || 'f') === 'm' ? 'male voice' : 'female voice');
+    node.append(h('div', { cls:'vlab', style:'flex-basis:100%' },
+      h('span', { text:'British English · ' + who }),
+      hasBritish() ? null : h('span', { cls:'warnvoice', text:'no British voice installed in this browser — using the closest available' })));
+  }
+  const play = () => {
+    plays++;
+    btn.disabled = true;
+    stat.textContent = 'Playing';
+    wave.on();
+    let settled = false;
+    const done = () => {
+      if (settled) return; settled = true;
+      clearTimeout(guard);
+      wave.off();
+      if (opts.beepAfter) { beep(); stat.textContent = 'Beep'; } else stat.textContent = 'Finished';
+      btn.disabled = false;
+      btn.textContent = 'Replay';
+      opts.onEnd && opts.onEnd(plays);
+    };
+    // if the browser silently refuses to speak, never leave the task stranded
+    const guard = setTimeout(done, words(flat).length * 520 + 9000);
+    timers.push(guard);
+    speak(text, { rate: opts.rate, sex: opts.sex || 'f', onEnd: done });
+  };
+  btn.addEventListener('click', play);
+  if (opts.note) node.append(h('div', { cls:'small faint', style:'flex-basis:100%', text: opts.note }));
+  return { node, play, get plays(){ return plays; } };
+}
+
+/* microphone -------------------------------------------------------- */
+let micStream = null, micError = null;
+async function getMic(){
+  if (micStream) return micStream;
+  micError = null;
+  if (!window.isSecureContext){ micError = { name:'SecurityError' }; return null; }
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){ micError = { name:'Unsupported' }; return null; }
+  try { micStream = await navigator.mediaDevices.getUserMedia({ audio:true }); return micStream; }
+  catch(e){ micError = { name:(e && e.name) || 'Error', message:(e && e.message) || '' }; return null; }
+}
+async function audioInputCount(){
+  try {
+    const ds = await navigator.mediaDevices.enumerateDevices();
+    return ds.filter(d => d.kind === 'audioinput').length;
+  } catch(e){ return -1; }
+}
+/* say what to do, not what went wrong */
+function micDiagnosis(){
+  const n = micError && micError.name;
+  if (n === 'NotFoundError' || n === 'OverconstrainedError')
+    return 'No microphone detected. Please connect a microphone or headset, then test again.';
+  if (n === 'NotReadableError' || n === 'AbortError')
+    return 'Another app is using the microphone. Close it, then test again.';
+  if (n === 'NotAllowedError' || n === 'SecurityError' || n === 'PermissionDeniedError' || n === 'Unsupported')
+    return 'Microphone access is blocked. Click the microphone icon in the address bar and choose Allow, then test again. If there is no icon there, open this page in its own browser tab and test again.';
+  return 'Could not open the microphone. Check that it is connected and allowed for this site, then test again.';
+}
+function releaseMic(){
+  if (!micStream) return;
+  try { micStream.getTracks().forEach(t => t.stop()); } catch(e){}
+  micStream = null;   // permission persists, so the next request does not re-prompt
+}
+
+/* microphone check, offered on the Speaking page ------------------- */
+function micTester(){
+  const bars = Array.from({ length: 28 }, () => h('i'));
+  const wave = h('div', { cls:'wave' }, bars);
+  const stat = h('div', { cls:'astat', text:'Not tested' });
+  const btn  = h('button', { cls:'btn primary', text:'Test microphone' });
+  const row  = h('div', { cls:'audio' }, btn, wave, stat);
+  const out  = h('div', {});
+  const TEST = 5;
+
+  btn.addEventListener('click', async () => {
+    btn.disabled = true; out.replaceChildren();
+    stat.textContent = 'Asking permission';
+    const stream = await getMic();
+    if (!stream){
+      const count = await audioInputCount();
+      stat.textContent = count === 0 ? 'None found' : 'Blocked';
+      out.replaceChildren(
+        h('div', { cls:'notice', style:'border-color:var(--rose);color:var(--rose)', text: count === 0
+          ? 'No microphone detected. Please connect a microphone or headset, then test again.'
+          : micDiagnosis() }),
+        h('div', { cls:'small faint', style:'margin-top:8px', text:'Speaking tasks still run their timers without a microphone, so you can practise to the clock and self-check afterwards.' }));
+      btn.disabled = false; btn.textContent = 'Test again'; return;
+    }
+    const track = stream.getAudioTracks()[0];
+    const devName = (track && track.label) || '';
+    let analyser = null, data = null;
+    try {
+      actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+      if (actx.state === 'suspended') await actx.resume();
+      analyser = actx.createAnalyser();
+      analyser.fftSize = 64;
+      actx.createMediaStreamSource(stream).connect(analyser);
+      data = new Uint8Array(analyser.frequencyBinCount);
+    } catch(e){ analyser = null; }
+
+    let peak = 0, loudTicks = 0;
+    wave.classList.add('on');
+    const meter = setInterval(() => {
+      if (!analyser) { bars.forEach((b,k) => b.style.height = (18 + Math.abs(Math.sin(Date.now()/230 + k)) * 40) + '%'); return; }
+      analyser.getByteFrequencyData(data);
+      let sum = 0;
+      bars.forEach((b,k) => { const v = (data[Math.min(data.length - 1, k)] || 0) / 255; sum += v; b.style.height = (14 + v * 86) + '%'; });
+      const level = sum / bars.length;
+      peak = Math.max(peak, level);
+      if (level > 0.06) loudTicks++;
+    }, 60);
+    timers.push(meter);
+
+    let rec = null; const chunks = [];
+    try {
+      rec = new MediaRecorder(stream);
+      rec.ondataavailable = e => { if (e.data && e.data.size) chunks.push(e.data); };
+      rec.start();
+    } catch(e){ rec = null; }
+
+    let left = TEST;
+    stat.textContent = 'Say a sentence — ' + left + 's';
+    const cd = setInterval(() => {
+      left--;
+      stat.textContent = left > 0 ? 'Say a sentence — ' + left + 's' : 'Checking';
+      if (left > 0) return;
+      clearInterval(cd); clearInterval(meter);
+      wave.classList.remove('on');
+      bars.forEach(b => b.style.height = '18%');
+
+      const report = () => {
+        const heard = analyser ? (peak > 0.05 && loudTicks > 4) : null;
+        stat.textContent = heard === false ? 'No signal' : 'Done';
+        const verdict = heard === false
+          ? h('div', { cls:'notice', style:'border-color:var(--rose);color:var(--rose)', text:'The microphone opened but almost no sound came through. Check that this is the device you meant to use, that its level is not at zero, and that the headset’s inline mute switch is off — then test again.' })
+          : h('div', { cls:'notice', style:'border-color:var(--good);color:var(--good)', text: heard === null
+              ? 'The microphone opened and recording ran. Play the clip back to confirm you can hear yourself.'
+              : 'Signal detected, peaking at ' + Math.round(peak * 100) + '% of full scale. Play the clip back — if you can hear yourself clearly, you are ready for the timed tasks.' });
+        out.append(verdict);
+        if (devName) out.append(h('div', { cls:'small faint', style:'margin-top:8px' },
+          'Captured from ', h('b', { style:'color:var(--muted)', text: devName }),
+          '. If that is not your headset, change the default input device in Windows Sound settings and test again.'));
+        if (chunks.length){
+          const blob = new Blob(chunks, { type: chunks[0].type || 'audio/webm' });
+          out.append(h('div', { cls:'eyebrow', style:'margin:12px 0 6px', text:'Playback' }),
+            h('audio', { controls:true, src: URL.createObjectURL(blob), style:'width:100%' }));
+        }
+        releaseMic();
+        btn.disabled = false; btn.textContent = 'Test again';
+      };
+      if (rec && rec.state === 'recording'){ rec.onstop = report; try { rec.stop(); } catch(e){ report(); } }
+      else report();
+    }, 1000);
+    timers.push(cd);
+  });
+
+  return h('div', { cls:'card', style:'display:flex;flex-direction:column;gap:12px;margin-bottom:22px' },
+    h('div', {},
+      h('div', { cls:'eyebrow', style:'margin-bottom:5px', text:'Before you start' }),
+      h('h3', { style:'font-size:17px', text:'Microphone check' }),
+      h('p', { cls:'muted small', style:'margin-top:4px', text:'Five seconds of recording with a live level meter, then playback. Worth doing once per sitting — a speaking task gives you one take and will not tell you the mic was dead.' })),
+    row, out);
+}
+function makeRecorder(seconds, onDone, opts){
+  opts = opts || {};
+  const wave = makeWave();
+  const stat = h('div', { cls:'astat', text:'Not recording' });
+  const clock = h('div', { cls:'clock mono', text: mmss(seconds) });
+  const bar = h('div', { cls:'audio' }, h('div', { cls:'clocklab', text:'Recording' }), clock, wave.node, stat);
+  const out = h('div', { style:'margin-top:10px' });
+  const node = h('div', {}, bar, out);
+  let rec = null, chunks = [], id = null, lvl = null, left = seconds, finished = false;
+  let spoke = false, quietMs = 0, longestQuiet = 0, measured = false;
+
+  const finish = () => {
+    if (finished) return; finished = true;
+    if (id) clearInterval(id);
+    if (lvl) clearInterval(lvl);
+    wave.off(); stat.textContent = 'Completed';
+    try { if (rec && rec.state === 'recording') rec.stop(); } catch(e){}
+    onDone && onDone({ measured, spoke, longestQuiet });
+  };
+  const run = async () => {
+    const stream = await getMic();
+    stat.textContent = stream ? 'Recording' : 'No microphone';
+    if (!stream) out.append(h('div', { cls:'notice', text:'No microphone in this view, so nothing was captured. The timer still runs — speak aloud against it, then use the self-check below.' }));
+    else {
+      try {
+        rec = new MediaRecorder(stream); chunks = [];
+        rec.ondataavailable = e => { if (e.data && e.data.size) chunks.push(e.data); };
+        rec.onstop = () => {
+          if (chunks.length){
+            const blob = new Blob(chunks, { type: chunks[0].type || 'audio/webm' });
+            const a = h('audio', { controls:true, src: URL.createObjectURL(blob), style:'width:100%' });
+            out.append(h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'Your recording' }), a);
+          }
+          releaseMic();   // don't hold the mic open between items
+        };
+        rec.start();
+      } catch(e){ rec = null; out.append(h('div', { cls:'notice', text:'Recording is not supported in this view. The timer still runs — speak aloud against it.' })); }
+    }
+    if (opts.tone !== false) beep();   // the real test plays a short tone as the mic opens
+    /* live level meter, and the exam's three-second silence rule made visible */
+    let analyser = null, data = null;
+    if (stream){
+      try {
+        actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+        if (actx.state === 'suspended') await actx.resume();
+        analyser = actx.createAnalyser(); analyser.fftSize = 64;
+        actx.createMediaStreamSource(stream).connect(analyser);
+        data = new Uint8Array(analyser.frequencyBinCount);
+        measured = true;
+      } catch(e){ analyser = null; }
+    }
+    if (analyser){
+      lvl = setInterval(() => {
+        analyser.getByteFrequencyData(data);
+        wave.feed(data);
+        let sum = 0; for (let i = 0; i < data.length; i++) sum += data[i];
+        if (sum / data.length / 255 > 0.045){ spoke = true; quietMs = 0; }
+        else { quietMs += 120; longestQuiet = Math.max(longestQuiet, quietMs); }
+        stat.textContent = (opts.silence && quietMs >= 3000)
+          ? 'Silent ' + Math.floor(quietMs / 1000) + 's' : 'Recording';
+      }, 120);
+      timers.push(lvl);
+    } else wave.on();
+    if (opts.silence) out.append(h('div', { cls:'small faint', style:'margin-bottom:8px', text:'In the real test, more than three seconds of silence ends the recording. Here it only warns you.' }));
+    id = setInterval(() => {
+      left--; clock.textContent = mmss(Math.max(0, left));
+      clock.classList.toggle('low', left <= 5);
+      if (left <= 0) finish();
+    }, 1000);
+    timers.push(id);
+  };
+  return { node, run, stop: finish };
+}
+
+/* results ------------------------------------------------------------ */
+function band(p){ const b = pteOf(p); return b >= 79 ? 'good' : b >= 58 ? 'warn' : 'bad'; }
+function resultCard(o){
+  const head = h('div', { cls:'rhead' },
+    h('div', {},
+      h('div', { cls:'bigscore', text: o.pct + '%' }),
+      h('div', { cls:'eyebrow', style:'margin-top:4px', text:'this attempt' })),
+    h('div', {},
+      h('div', { cls:'bigscore', style:'color:var(--accent)', text: String(pteOf(o.pct)) }),
+      h('div', { cls:'eyebrow', style:'margin-top:4px', text:'estimated band' })),
+    h('div', { style:'margin-left:auto;display:flex;flex-direction:column;gap:6px;align-items:flex-end' },
+      h('span', { cls:'pill ' + band(o.pct), text: o.label || (pteOf(o.pct) >= 79 ? 'on target' : pteOf(o.pct) >= 58 ? 'close' : 'needs work') }),
+      o.sub ? h('span', { cls:'small muted', text:o.sub }) : null));
+  const body = h('div', { cls:'rbody' });
+  if (o.traits && o.traits.length){
+    body.append(h('div', { cls:'traits' }, o.traits.map(t => h('div', { cls:'trait' },
+      h('div', { cls:'tn', text:t.name }),
+      h('div', { cls:'tv', text: t.score + ' / ' + t.max }),
+      h('div', { cls:'tbar' }, h('i', { style:'width:' + pct(t.score, t.max) + '%' })),
+      t.note ? h('div', { cls:'tnote', text:t.note }) : null))));
+  }
+  if (o.good && o.good.length) body.append(h('div', {},
+    h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'What worked' }),
+    h('ul', { cls:'tips' }, o.good.map(x => h('li', { text:x })))));
+  if (o.fix && o.fix.length) body.append(h('div', {},
+    h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'Fix next time' }),
+    h('ul', { cls:'tips' }, o.fix.map(x => h('li', { text:x })))));
+  if (o.extra) body.append(o.extra);
+  if (o.model) body.append(h('details', { cls:'reveal' },
+    h('summary', { text:'Model answer' }),
+    h('div', { cls:'dbody' }, h('div', { cls:'prose', style:'font-size:15.5px', text:o.model }))));
+  return h('div', { cls:'result' }, head, body);
+}
+
+/* Voice for this item: pinned where the model answer names a gender,
+   otherwise alternating so the bank is mixed. */
+const sexFor = ctx => ctx.item.voice || (ctx.idx % 2 ? 'm' : 'f');
+
+/* ============================ task runners ============================ */
+const RUN = {};
+
+/* keep the correct option from always sitting in the same slot */
+function mixOptions(opts, ans, why){
+  const order = shuffle(opts.map((_, i) => i));
+  const at = i => order.indexOf(i);
+  return { o: order.map(i => opts[i]),
+           a: Array.isArray(ans) ? ans.map(at) : at(ans),
+           why: why ? order.map(i => why[i]) : null };
+}
+
+/* a labelled list of rationales, shown under the score */
+function whyPanel(title, rows){
+  return h('div', {},
+    h('div', { cls:'eyebrow', style:'margin-bottom:8px', text:title }),
+    h('div', { cls:'whylist' }, rows.map(r => h('div', { cls:'whyrow' },
+      h('div', { cls:'whykey' + (r.ok === false ? ' bad' : '') }, r.key),
+      h('div', { cls:'whytext', text: r.text })))));
+}
+
+/* --- speaking: read aloud, repeat sentence, describe image, re-tell --- */
+RUN.speak = ctx => {
+  const { task, item, host } = ctx;
+  const stage = h('div', {});
+  const start = h('button', { cls:'btn primary', text:'Begin task' });
+  host.append(h('div', { style:'display:flex;flex-direction:column;gap:16px' }, stage, h('div', { cls:'row' }, start)));
+
+  let promptNode = null;
+  if (task.id === 'describe_image'){
+    promptNode = h('div', {}, h('div', { cls:'fig', html:item.fig }),
+      h('div', { cls:'small faint', style:'margin-top:8px', text:item.caption }));
+  } else if (task.audio){
+    const note = task.id === 'repeat_sentence'
+      ? 'In the real exam the sentence plays once, automatically. Play it, then repeat immediately.'
+      : task.id === 'rts'
+        ? 'The situation is read aloud and shown on screen, as in the real test.'
+        : task.id === 'sgd'
+          ? 'Three speakers. Note who says what — the mark rewards attributing views, not merging them.'
+          : 'Play the lecture once, taking notes. Replay only while you are still building the skill.';
+    promptNode = h('div', { style:'display:flex;flex-direction:column;gap:12px' },
+      h('div', { cls:'notice', text: note }),
+      task.showPrompt ? h('div', { cls:'prose', text: item.text }) : null);
+  } else {
+    promptNode = h('div', { cls:'prose', text:item.text });
+  }
+  stage.append(promptNode);
+
+  const runPrep = () => {
+    start.remove();
+    const rec = makeRecorder(task.rec, info => setTimeout(() => selfCheck(info), 400), { silence: !!task.silence });
+    const begin = () => { stage.append(rec.node); rec.run(); };
+
+    if (task.audio){
+      const player = makePlayer(item.turns ? item.turns.map(x => ({ text: x.who + '. ' + x.text, sex: x.sex })) : item.text,
+        { rate: task.id === 'repeat_sentence' ? 1 : 0.95, sex: sexFor(ctx), onEnd: () => {
+        if (task.prep > 0){
+          const c = makeClock(task.prep, 'Prepare', () => { c.stop(); c.node.remove(); begin(); });
+          stage.append(c.node); c.start();
+        } else begin();
+      }});
+      stage.append(player.node);
+      player.play();
+      if (task.id === 'retell_lecture') stage.append(h('textarea', { cls:'resp short', id:'notes-' + item.id, placeholder:'Scratch notes while you listen — topic, 3 points, conclusion' }));
+    } else {
+      const c = makeClock(task.prep, 'Prepare', () => { c.stop(); c.node.remove(); begin(); });
+      stage.append(c.node); c.start();
+    }
+  };
+  start.addEventListener('click', runPrep);
+
+  const selfCheck = (info) => {
+    stopAudio();
+    const box = h('div', { cls:'card', style:'margin-top:16px;display:flex;flex-direction:column;gap:14px' });
+    if (info && info.measured && task.silence){
+      if (!info.spoke) box.append(h('div', { cls:'notice', style:'border-color:var(--rose);color:var(--rose)', text:'No speech was picked up at all. In the real test this is marked as unattempted.' }));
+      else if (info.longestQuiet >= 3000) box.append(h('div', { cls:'notice', style:'border-color:var(--amber);color:var(--amber)', text:'You went quiet for about ' + Math.floor(info.longestQuiet / 1000) + ' seconds at one point. In the real test, silence beyond three seconds ends the recording — keep talking, even if it means restating your last point.' }));
+    }
+    if (task.id === 'read_aloud'){
+      const marked = item.text.split(/(\s+)/).map(w => {
+        const clean = w.replace(/[^A-Za-z'’-]/g, '').toLowerCase();
+        return item.focus.some(f => f.toLowerCase() === clean)
+          ? h('b', { style:'color:var(--accent)', text:w }) : document.createTextNode(w);
+      });
+      box.append(h('div', { cls:'eyebrow', text:'Check yourself against the text' }),
+        h('div', { cls:'prose' }, marked),
+        h('div', { cls:'small muted', text:'The highlighted words are the ones candidates most often stumble on in this passage. Play your recording back and listen for hesitation around them.' }));
+    } else if (task.id === 'repeat_sentence'){
+      box.append(h('div', { cls:'eyebrow', text:'The sentence was' }),
+        h('div', { cls:'prose', text:item.text }));
+    } else {
+      box.append(h('div', { cls:'eyebrow', text: task.checkLabel || 'Key content the scoring looks for' }),
+        h('ul', { cls:'tips' }, item.keys.map(k => h('li', { text:k }))));
+    }
+    if (task.transcript){
+      const ta = h('textarea', { cls:'resp short', id:'tr-' + item.id, placeholder:'Type what you actually said, as closely as you can remember. Claude scores the content of it.' });
+      const scoreBtn = h('button', { cls:'btn primary', text:'Score my content' });
+      const out = h('div', {});
+      scoreBtn.addEventListener('click', async () => {
+        const said = ta.value.trim();
+        if (words(said).length < 12) { out.replaceChildren(h('div', { cls:'notice', text:'Type at least a dozen words of what you said so there is something to score.' })); return; }
+        scoreBtn.disabled = true;
+        out.replaceChildren(h('div', { cls:'notice' }, h('span', { cls:'load' }), ' Examiner is marking your content…'));
+        const rub = task.rubric || [{ name:'Content', max:5 }, { name:'Organisation', max:3 }, { name:'Vocabulary', max:2 }];
+        try {
+          const r = await aiRubric(
+            'You are a PTE Academic examiner marking the CONTENT of a spoken response that the candidate has transcribed from memory. Ignore spelling and typing errors entirely; judge only ideas, coverage and organisation.\n\n' +
+            'TASK: ' + task.name + '\nSTIMULUS SUMMARY: ' + (item.caption || item.title || 'see key points') + '\n' +
+            'KEY CONTENT POINTS THE RESPONSE SHOULD COVER:\n- ' + item.keys.join('\n- ') + '\n\n' +
+            'CANDIDATE RESPONSE (' + words(said).length + ' words, spoken in ' + task.rec + ' seconds):\n' + said + '\n\n' +
+            'Mark ' + rub.map(t => t.name + ' out of ' + t.max).join(', ') + '. Award the top band only where the rubric genuinely warrants it. Each note must quote or name something specific in the candidate response.\n' +
+            'Reply with only JSON of this shape: {"traits":[' +
+              rub.map(t => '{"name":"' + t.name + '","score":<0-' + t.max + '>,"max":' + t.max + ',"note":"..."}').join(',') +
+            '],"covered":["key point they hit"],"missed":["key point they left out"],"good":["one specific thing done well"],"fix":["one concrete change for next attempt"]}',
+            'default');
+          const tot = r.traits.reduce((s,t) => s + Number(t.score||0), 0);
+          const max = r.traits.reduce((s,t) => s + Number(t.max||0), 0) || 10;
+          const p = pct(tot, max);
+          const extra = h('div', { style:'display:flex;flex-direction:column;gap:14px' },
+            task.traitNote ? h('div', { cls:'notice', text: task.traitNote }) : null,
+            h('div', { cls:'grid2' },
+            h('div', {}, h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'Covered' }),
+              h('ul', { cls:'tips' }, (r.covered||[]).map(x => h('li', { text:x })))),
+            h('div', {}, h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'Missed' }),
+              h('ul', { cls:'tips' }, (r.missed||[]).length ? r.missed.map(x => h('li', { text:x })) : [h('li', { text:'Nothing significant.' })]))));
+          out.replaceChildren();
+          ctx.finish(p, resultCard({ pct:p, sub: tot + ' / ' + max + ' content marks', traits:r.traits, good:r.good, fix:r.fix, extra, model:item.model }));
+        } catch(e){
+          out.replaceChildren(h('div', { cls:'notice', text: aiCopy(e && e.code) }));
+          scoreBtn.disabled = false;
+          ctx.finish(55, resultCard({ pct:55, label:'self-marked', sub:'scored without the examiner', model:item.model }));
+        }
+      });
+      box.append(h('div', {}, h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'Transcribe your answer' }), ta),
+        h('div', { cls:'row' }, scoreBtn), out);
+    } else {
+      const rate = (labelText, p) => h('button', { cls:'btn', text:labelText, onclick:() => {
+        ctx.finish(p, resultCard({ pct:p, label:'self-marked',
+          sub:'your own judgement of the recording',
+          good:[p >= 85 ? 'You judged this fluent — repeat it once more at speed to lock it in.' : 'You noticed the problem yourself, which is most of the work.'],
+          fix:[task.tips[0]], model: item.model || null }));
+      }});
+      box.append(h('div', {}, h('div', { cls:'eyebrow', style:'margin-bottom:8px', text:'How did that go?' }),
+        h('div', { cls:'row' }, rate('Fluent, no hesitation', 90), rate('A few stumbles', 65), rate('Struggled', 38))));
+    }
+    host.append(box);
+    box.scrollIntoView({ behavior:'smooth', block:'nearest' });
+  };
+};
+
+/* --- answer short question --- */
+RUN.asq = ctx => {
+  const { item, host } = ctx;
+  const input = h('input', { cls:'gapin', style:'width:min(320px,100%);text-align:left;padding:8px 12px', placeholder:'One or two words' });
+  const submit = h('button', { cls:'btn primary', text:'Submit answer' });
+  const out = h('div', {});
+  const clock = makeClock(10, 'Answer within', () => { if (!submit.disabled) go(); });
+  // the question plays, then the 10-second answer window opens - no tone, as in the real test
+  const player = makePlayer(item.q, { rate:1, sex: sexFor(ctx), playLabel:'Play question',
+    onEnd: plays => { if (plays === 1){ clock.start(); input.focus(); } } });
+  host.append(h('div', { style:'display:flex;flex-direction:column;gap:14px' },
+    player.node,
+    h('div', {}, h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'Your answer' }), input, clock.node),
+    h('div', { cls:'row' }, submit),
+    h('div', { cls:'small faint', text:'The real test gives you 10 seconds to speak a one-word answer, with no tone before the microphone opens. Typing it here marks it instantly.' }),
+    out));
+  player.play();
+  const go = () => {
+    clock.stop();
+    const given = norm(input.value);
+    const ok = item.a.some(a => norm(a) === given);
+    input.disabled = true; submit.disabled = true;
+    ctx.finish(ok ? 100 : 0, resultCard({
+      pct: ok ? 100 : 0, label: ok ? 'correct' : 'incorrect',
+      sub:'the question was: ' + item.q,
+      good: ok ? ['Right word, and short — exactly what this item rewards.'] : null,
+      fix: ok ? null : ['Accepted answers: ' + item.a.join(', ') + '.'] }));
+  };
+  submit.addEventListener('click', go);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') go(); });
+};
+
+/* --- summarize written text --- */
+RUN.swt = ctx => {
+  const { task, item, host } = ctx;
+  const ta = h('textarea', { cls:'resp short', id:'swt-' + item.id, placeholder:'One sentence, 5–75 words.' });
+  const wc = h('span', { text:'0' }), sc = h('span', { text:'0' });
+  const counter = h('div', { cls:'counter' },
+    h('span', {}, 'Words ', h('b', {}, wc), ' / 5–75'),
+    h('span', {}, 'Sentences ', h('b', {}, sc), ' / 1'));
+  const submit = h('button', { cls:'btn primary', text:'Submit summary' });
+  const out = h('div', {});
+  const clock = makeClock(task.time, 'Time left', () => { if (!submit.disabled) go(); });
+  host.append(clock.node,
+    h('div', { style:'display:flex;flex-direction:column;gap:16px' },
+      h('div', {}, h('div', { cls:'eyebrow', style:'margin-bottom:8px', text:item.title }),
+        h('div', { cls:'prose' }, item.passage.split('\n\n').map(p => h('p', { text:p })))),
+      h('div', {}, h('div', { cls:'eyebrow', style:'margin-bottom:8px', text:'Your summary' }), ta, counter),
+      h('div', { cls:'row' }, submit), out));
+  clock.start();
+  const sentences = t => (t.trim().match(/[.!?]+(\s|$)/g) || []).length;
+  ta.addEventListener('input', () => {
+    const w = words(ta.value).length, s = sentences(ta.value);
+    wc.textContent = w; sc.textContent = s;
+    counter.children[0].classList.toggle('off', w > 0 && (w < 5 || w > 75));
+    counter.children[1].classList.toggle('off', s > 1);
+  });
+
+  async function go(){
+    clock.stop(); submit.disabled = true; ta.disabled = true;
+    const text = ta.value.trim(), w = words(text).length, s = sentences(text);
+    const form = (w >= 5 && w <= 75 && s <= 1) ? 1 : 0;
+    out.replaceChildren(h('div', { cls:'notice' }, h('span', { cls:'load' }), ' Examiner is marking against the four traits…'));
+    let traits = null, good = null, fix = null;
+    try {
+      const r = await aiRubric(
+        'You are a PTE Academic examiner marking a Summarize Written Text response against the official trait rubric.\n\n' +
+        'SOURCE PASSAGE:\n' + item.passage + '\n\nCANDIDATE SUMMARY (' + w + ' words, ' + s + ' sentence-final punctuation marks):\n' + text + '\n\n' +
+        'Marks: Content 0-2 (does it capture the main idea and the key qualification), Grammar 0-2, Vocabulary 0-2. ' +
+        'Do NOT score Form; it is computed separately. Every note must quote the candidate’s own words.\n' +
+        'Reply with only JSON: {"traits":[{"name":"Content","score":2,"max":2,"note":"..."},{"name":"Grammar","score":1,"max":2,"note":"..."},{"name":"Vocabulary","score":2,"max":2,"note":"..."}],"good":["..."],"fix":["..."]}',
+        'default');
+      traits = r.traits; good = r.good; fix = r.fix;
+    } catch(e){
+      out.replaceChildren(h('div', { cls:'notice', text: aiCopy(e && e.code) }));
+    }
+    const all = [{ name:'Form', score:form, max:1,
+      note: form ? 'One sentence, ' + w + ' words — inside the 5–75 band.' :
+        (s > 1 ? 'More than one sentence. In the real exam this scores zero for the whole item.' : 'Length is outside the 5–75 word band, which scores zero for form.') }]
+      .concat(traits || []);
+    const tot = all.reduce((a,t) => a + Number(t.score||0), 0);
+    const max = all.reduce((a,t) => a + Number(t.max||0), 0);
+    const p = form === 0 ? Math.min(25, pct(tot, max)) : pct(tot, max);
+    if (traits) out.replaceChildren();
+    ctx.finish(p, resultCard({ pct:p, sub: tot + ' / ' + max + ' marks', traits:all, good:good,
+      fix: fix || (form ? null : ['Rewrite it as a single sentence joined with "although", "which" or a semicolon.']),
+      model:item.model }));
+  }
+  submit.addEventListener('click', go);
+};
+
+/* --- write essay --- */
+RUN.essay = ctx => {
+  const { task, item, host } = ctx;
+  const ta = h('textarea', { id:'es-' + item.id, cls:'resp', style:'min-height:260px', placeholder:'200–300 words.' });
+  const wc = h('b', { text:'0' });
+  const counter = h('div', { cls:'counter' }, h('span', {}, 'Words ', wc, ' / 200–300'));
+  const submit = h('button', { cls:'btn primary', text:'Submit essay' });
+  const out = h('div', {});
+  const clock = makeClock(task.time, 'Time left', () => { if (!submit.disabled) go(); });
+  host.append(clock.node,
+    h('div', { style:'display:flex;flex-direction:column;gap:16px' },
+      h('div', { cls:'card' }, h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'Essay prompt' }),
+        h('div', { cls:'prose', text:item.prompt })),
+      h('details', { cls:'reveal' }, h('summary', { text:'Plan it first (open only if you are stuck)' }),
+        h('div', { cls:'dbody' }, h('ul', { cls:'tips' }, item.plan.map(p => h('li', { text:p }))))),
+      ta, counter, h('div', { cls:'row' }, submit), out));
+  clock.start();
+  ta.addEventListener('input', () => {
+    const w = words(ta.value).length; wc.textContent = w;
+    counter.children[0].classList.toggle('off', w > 0 && (w < 200 || w > 300));
+  });
+
+  async function go(){
+    clock.stop(); submit.disabled = true; ta.disabled = true;
+    const text = ta.value.trim(), w = words(text).length;
+    if (w < 40){ out.replaceChildren(h('div', { cls:'notice', text:'Too short to mark. Write at least a paragraph and try again.' }));
+      ctx.finish(0, resultCard({ pct:0, label:'not attempted', sub:w + ' words' })); return; }
+    const form = w >= 200 && w <= 300 ? 2 : (w >= 120 && w <= 380 ? 1 : 0);
+    out.replaceChildren(h('div', { cls:'notice' }, h('span', { cls:'load' }), ' Examiner is marking seven traits — this takes up to a minute…'));
+    let traits = null, good = null, fix = null, rewrite = null;
+    try {
+      const r = await aiRubric(
+        'You are a PTE Academic examiner marking a Write Essay response against the official trait rubric. Be exacting: award full marks only where the rubric genuinely warrants it.\n\n' +
+        'PROMPT:\n' + item.prompt + '\n\nCANDIDATE ESSAY (' + w + ' words):\n' + text + '\n\n' +
+        'Mark these traits: Content 0-3, Development, Structure and Coherence 0-2, Grammar 0-2, General Linguistic Range 0-2, Vocabulary Range 0-2, Spelling 0-2. ' +
+        'Do NOT score Form; it is computed separately from the word count. Every note must quote the candidate’s actual wording and say what to change.\n' +
+        'Reply with only JSON: {"traits":[{"name":"Content","score":2,"max":3,"note":"..."}],"good":["..."],"fix":["..."],"rewrite":"a stronger version of the candidate’s weakest sentence, quoting the original first in the form: original -> improved"}',
+        'complex');
+      traits = r.traits; good = r.good; fix = r.fix; rewrite = r.rewrite;
+    } catch(e){
+      out.replaceChildren(h('div', { cls:'notice', text: aiCopy(e && e.code) }));
+    }
+    const all = [{ name:'Form', score:form, max:2,
+      note: form === 2 ? w + ' words — inside the 200–300 band.' : form === 1 ? w + ' words — outside 200–300, which costs a form mark.' : w + ' words — far outside the band; in the real exam this zeroes the item.' }]
+      .concat(traits || []);
+    const tot = all.reduce((a,t) => a + Number(t.score||0), 0);
+    const max = all.reduce((a,t) => a + Number(t.max||0), 0);
+    const p = form === 0 ? Math.min(25, pct(tot, max)) : pct(tot, max);
+    const extra = rewrite ? h('div', { cls:'model' },
+      h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'One sentence, rewritten' }),
+      h('div', { cls:'small', text:String(rewrite) })) : null;
+    if (traits) out.replaceChildren();
+    ctx.finish(p, resultCard({ pct:p, sub: tot + ' / ' + max + ' marks', traits:all, good:good, fix:fix, extra:extra }));
+  }
+  submit.addEventListener('click', go);
+};
+
+/* --- summarize spoken text --- */
+RUN.sst = ctx => {
+  const { task, item, host } = ctx;
+  const ta = h('textarea', { cls:'resp short', id:'sst-' + item.id, placeholder:'50–70 words.' });
+  const wc = h('b', { text:'0' });
+  const counter = h('div', { cls:'counter' }, h('span', {}, 'Words ', wc, ' / 50–70'));
+  const notes = h('textarea', { cls:'resp short', id:'sstn-' + item.id, style:'min-height:80px', placeholder:'Notes while listening' });
+  const submit = h('button', { cls:'btn primary', text:'Submit summary' });
+  const out = h('div', {});
+  const player = makePlayer(item.text, { rate:0.95, sex: sexFor(ctx) });
+  const clock = makeClock(task.time, 'Time left', () => { if (!submit.disabled) go(); });
+  host.append(clock.node,
+    h('div', { style:'display:flex;flex-direction:column;gap:16px' },
+      h('div', { cls:'eyebrow', text:item.title }), player.node,
+      h('div', {}, h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'Notes' }), notes),
+      h('div', {}, h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'Your summary' }), ta, counter),
+      h('div', { cls:'row' }, submit), out));
+  clock.start(); player.play();
+  ta.addEventListener('input', () => {
+    const w = words(ta.value).length; wc.textContent = w;
+    counter.children[0].classList.toggle('off', w > 0 && (w < 50 || w > 70));
+  });
+
+  async function go(){
+    clock.stop(); stopAudio(); submit.disabled = true; ta.disabled = true;
+    const text = ta.value.trim(), w = words(text).length;
+    const form = (w >= 50 && w <= 70) ? 2 : (w >= 40 && w <= 100 ? 1 : 0);
+    out.replaceChildren(h('div', { cls:'notice' }, h('span', { cls:'load' }), ' Examiner is marking your summary…'));
+    let traits = null, good = null, fix = null, missed = null;
+    try {
+      const r = await aiRubric(
+        'You are a PTE Academic examiner marking a Summarize Spoken Text response.\n\n' +
+        'LECTURE TRANSCRIPT:\n' + item.text + '\n\nKEY POINTS:\n- ' + item.keys.join('\n- ') +
+        '\n\nCANDIDATE SUMMARY (' + w + ' words):\n' + text + '\n\n' +
+        'Mark Content 0-2, Grammar 0-2, Vocabulary 0-2, Spelling 0-2. Do NOT score Form. Notes must quote the candidate.\n' +
+        'Reply with only JSON: {"traits":[{"name":"Content","score":1,"max":2,"note":"..."}],"missed":["key point omitted"],"good":["..."],"fix":["..."]}',
+        'default');
+      traits = r.traits; good = r.good; fix = r.fix; missed = r.missed;
+    } catch(e){ out.replaceChildren(h('div', { cls:'notice', text: aiCopy(e && e.code) })); }
+    const all = [{ name:'Form', score:form, max:2,
+      note: form === 2 ? w + ' words — inside the 50–70 band.' : w + ' words — outside the 50–70 band.' }].concat(traits || []);
+    const tot = all.reduce((a,t) => a + Number(t.score||0), 0);
+    const max = all.reduce((a,t) => a + Number(t.max||0), 0);
+    const p = pct(tot, max);
+    const extra = (missed && missed.length) ? h('div', {},
+      h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'Points you left out' }),
+      h('ul', { cls:'tips' }, missed.map(x => h('li', { text:x })))) : null;
+    if (traits) out.replaceChildren();
+    ctx.finish(p, resultCard({ pct:p, sub: tot + ' / ' + max + ' marks', traits:all, good:good, fix:fix, extra:extra, model:item.model }));
+  }
+  submit.addEventListener('click', go);
+};
+
+/* --- reading & writing fill in the blanks (dropdowns) --- */
+RUN.rwfib = ctx => {
+  const { item, host } = ctx;
+  const sels = [];
+  const frag = h('div', { cls:'prose' });
+  item.parts.forEach((txt, i) => {
+    frag.append(document.createTextNode(txt));
+    if (i < item.gaps.length){
+      const s = h('select', { cls:'gapsel' }, h('option', { value:'', text:'— select —' }),
+        shuffle(item.gaps[i].o).map(o => h('option', { value:o, text:o })));
+      sels.push(s); frag.append(s);
+    }
+  });
+  const submit = h('button', { cls:'btn primary', text:'Submit' });
+  host.append(h('div', { style:'display:flex;flex-direction:column;gap:16px' },
+    h('div', { cls:'eyebrow', text:item.title }), frag, h('div', { cls:'row' }, submit)));
+  submit.addEventListener('click', () => {
+    let right = 0;
+    sels.forEach((s,i) => {
+      const ok = s.value === item.gaps[i].a;
+      s.dataset.wasRight = ok ? '1' : '0';
+      if (ok) right++;
+      s.classList.add(ok ? 'ok' : 'no'); s.disabled = true;
+      if (!ok) s.append(h('option', { value:item.gaps[i].a, text:item.gaps[i].a, selected:true }));
+    });
+    submit.disabled = true;
+    const p = pct(right, sels.length);
+    ctx.finish(p, resultCard({ pct:p, sub: right + ' of ' + sels.length + ' gaps correct',
+      extra: item.why ? whyPanel('Why each word fits', item.gaps.map((g,i) => ({
+        key: 'Gap ' + (i+1) + ' · ' + g.a, ok: sels[i].dataset.wasRight === '1', text: item.why[i] }))) : null,
+      good: right === sels.length ? ['Clean sweep. Try the next passage at speed.'] : null }));
+  });
+};
+
+/* --- reading fill in the blanks (word bank) --- */
+RUN.rfib = ctx => {
+  const { item, host } = ctx;
+  const slots = [], used = {};
+  let picked = null, chips = [];
+  const frag = h('div', { cls:'prose' });
+  item.parts.forEach((txt, i) => {
+    frag.append(document.createTextNode(txt));
+    if (i < item.ans.length){
+      const b = h('button', { cls:'gapslot', type:'button', text:'  ' });
+      b.dataset.k = i;
+      b.addEventListener('click', () => {
+        if (b.dataset.word){ // return word to bank
+          const w = b.dataset.word; delete b.dataset.word;
+          b.textContent = '  '; b.classList.remove('filled');
+          chips.find(c => c.textContent === w && c.classList.contains('used')).classList.remove('used');
+        } else if (picked){
+          b.dataset.word = picked.textContent; b.textContent = picked.textContent;
+          b.classList.add('filled'); picked.classList.add('used');
+          picked.setAttribute('aria-pressed','false'); picked = null;
+        }
+      });
+      slots.push(b); frag.append(b);
+    }
+  });
+  const bank = h('div', { cls:'bank' });
+  chips = shuffle(item.bank).map(w => {
+    const c = h('button', { cls:'chip', type:'button', 'aria-pressed':'false', text:w });
+    c.addEventListener('click', () => {
+      if (picked) picked.setAttribute('aria-pressed','false');
+      picked = picked === c ? null : c;
+      chips.forEach(x => x.setAttribute('aria-pressed', String(x === picked)));
+    });
+    return c;
+  });
+  bank.append(...chips);
+  const submit = h('button', { cls:'btn primary', text:'Submit' });
+  host.append(h('div', { style:'display:flex;flex-direction:column;gap:16px' },
+    h('div', { cls:'eyebrow', text:item.title }), frag,
+    h('div', {}, h('div', { cls:'eyebrow', style:'margin-bottom:2px', text:'Word bank — tap a word, then tap a gap' }), bank),
+    h('div', { cls:'row' }, submit)));
+  submit.addEventListener('click', () => {
+    let right = 0;
+    slots.forEach((b,i) => {
+      const ok = b.dataset.word === item.ans[i];
+      b.dataset.wasRight = ok ? '1' : '0';
+      if (ok) right++;
+      b.classList.add(ok ? 'ok' : 'no'); b.disabled = true;
+      if (!ok) b.textContent = item.ans[i];
+    });
+    chips.forEach(c => c.disabled = true);
+    submit.disabled = true;
+    const p = pct(right, slots.length);
+    ctx.finish(p, resultCard({ pct:p, sub: right + ' of ' + slots.length + ' gaps correct',
+      extra: item.why ? whyPanel('Why each word fits', item.ans.map((w,i) => ({
+        key: 'Gap ' + (i+1) + ' · ' + w, ok: slots[i].dataset.wasRight === '1', text: item.why[i] }))) : null }));
+  });
+};
+
+/* --- listening fill in the blanks (typed) --- */
+RUN.lfib = ctx => {
+  const { item, host } = ctx;
+  const ins = [];
+  const frag = h('div', { cls:'prose' });
+  item.parts.forEach((txt, i) => {
+    frag.append(document.createTextNode(txt));
+    if (i < item.ans.length){ const inp = h('input', { cls:'gapin', 'aria-label':'gap ' + (i+1) }); ins.push(inp); frag.append(inp); }
+  });
+  const full = item.parts.reduce((s,p,i) => s + p + (item.ans[i] || ''), '');
+  const player = makePlayer(full, { rate:0.92, sex: sexFor(ctx) });
+  const submit = h('button', { cls:'btn primary', text:'Submit' });
+  host.append(h('div', { style:'display:flex;flex-direction:column;gap:16px' },
+    h('div', { cls:'eyebrow', text:item.title }), player.node, frag, h('div', { cls:'row' }, submit)));
+  player.play();
+  submit.addEventListener('click', () => {
+    stopAudio();
+    let right = 0;
+    ins.forEach((inp,i) => {
+      const ok = norm(inp.value) === norm(item.ans[i]);
+      if (ok) right++;
+      inp.classList.add(ok ? 'ok' : 'no'); inp.disabled = true;
+      if (!ok) inp.value = item.ans[i];
+    });
+    submit.disabled = true;
+    const p = pct(right, ins.length);
+    ctx.finish(p, resultCard({ pct:p, sub: right + ' of ' + ins.length + ' words correct',
+      fix: right < ins.length ? ['Spelling counts. Replay the audio and type the corrected words twice from memory.'] : null }));
+  });
+};
+
+/* --- multiple choice, multiple answers --- */
+RUN.mcqm = ctx => {
+  const { task, item, host } = ctx;
+  const mix = mixOptions(item.o, item.a, item.why);
+  const boxes = mix.o.map((txt,i) => {
+    const cb = h('input', { type:'checkbox' });
+    const body = h('div', { cls:'otext' }, h('div', { text:txt }));
+    return { cb, body, node: h('label', { cls:'opt' }, cb, body), i };
+  });
+  const submit = h('button', { cls:'btn primary', text:'Submit' });
+  const player = task.audio ? makePlayer(item.text, { rate:0.95, sex: sexFor(ctx) }) : null;
+  const head = player ? player.node : h('div', { cls:'prose' }, h('p', { text:item.passage }));
+  host.append(h('div', { style:'display:flex;flex-direction:column;gap:16px' },
+    head, h('div', {}, h('div', { style:'font-weight:600', text:item.q }), boxes.map(b => b.node)),
+    h('div', { cls:'row' }, submit)));
+  if (player) player.play();
+  submit.addEventListener('click', () => {
+    stopAudio();
+    let raw = 0;
+    boxes.forEach(b => {
+      const correct = mix.a.includes(b.i);
+      if (b.cb.checked) raw += correct ? 1 : -1;
+      if (correct) b.node.classList.add('is-correct');
+      else if (b.cb.checked) b.node.classList.add('is-wrong');
+      if (correct || b.cb.checked) b.node.append(h('span', { cls:'tag', style:'color:var(--' + (correct ? 'good' : 'rose') + ')', text: correct ? 'correct' : 'wrong' }));
+      if (mix.why && mix.why[b.i]) b.body.append(h('div', { cls:'whyline', text: mix.why[b.i] }));
+      b.cb.disabled = true;
+    });
+    submit.disabled = true;
+    const p = pct(Math.max(0, raw), mix.a.length);
+    ctx.finish(p, resultCard({ pct:p, sub: Math.max(0, raw) + ' of ' + mix.a.length + ' marks (wrong picks subtract)',
+      fix: raw < mix.a.length ? ['Every option you ticked has to be traceable to a specific line. Reread the passage and underline the line that licenses each correct option.'] : null }));
+  });
+};
+RUN.lmcqm = RUN.mcqm;
+
+/* --- multiple choice, single answer (reading passage or audio) --- */
+RUN.mcqs = ctx => {
+  const { task, item, host } = ctx;
+  const name = 'q-' + item.id;
+  const mix = mixOptions(item.o, item.a, item.why);
+  const opts = mix.o.map((txt,i) => {
+    const rb = h('input', { type:'radio', name });
+    const body = h('div', { cls:'otext' }, h('div', { text:txt }));
+    return { rb, body, node: h('label', { cls:'opt' }, rb, body), i };
+  });
+  const submit = h('button', { cls:'btn primary', text:'Submit' });
+  const player = task.audio ? makePlayer(item.text, { rate:0.95, sex: sexFor(ctx) }) : null;
+  const head = player ? player.node : h('div', { cls:'prose' }, h('p', { text:item.passage }));
+  host.append(h('div', { style:'display:flex;flex-direction:column;gap:16px' },
+    head, h('div', {}, h('div', { style:'font-weight:600', text:item.q }), opts.map(o => o.node)),
+    h('div', { cls:'row' }, submit)));
+  if (player) player.play();
+  submit.addEventListener('click', () => {
+    stopAudio();
+    const chosen = opts.findIndex(o => o.rb.checked);
+    opts.forEach(o => {
+      if (o.i === mix.a) o.node.classList.add('is-correct');
+      else if (o.i === chosen) o.node.classList.add('is-wrong');
+      if (mix.why && mix.why[o.i]) o.body.append(h('div', { cls:'whyline', text: mix.why[o.i] }));
+      o.rb.disabled = true;
+    });
+    submit.disabled = true;
+    const ok = chosen === mix.a;
+    ctx.finish(ok ? 100 : 0, resultCard({ pct: ok ? 100 : 0, label: ok ? 'correct' : 'incorrect',
+      good: ok ? ['Right — and there is no penalty here, so always commit to an option.'] : null,
+      fix: ok ? null : ['The correct option is highlighted. Find the exact sentence that supports it, and name why your choice was true-but-unresponsive.'] }));
+  });
+};
+
+/* --- select missing word --- */
+RUN.smw = ctx => {
+  const { item, host } = ctx;
+  const name = 'smw-' + item.id;
+  const mix = mixOptions(item.o, item.a);
+  const opts = mix.o.map((txt,i) => {
+    const rb = h('input', { type:'radio', name });
+    return { rb, node: h('label', { cls:'opt' }, rb, h('span', { text:txt })), i };
+  });
+  const player = makePlayer(item.text, { rate:0.95, sex: sexFor(ctx), beepAfter:true, note:'The recording stops at a beep. Choose the words that complete it.' });
+  const submit = h('button', { cls:'btn primary', text:'Submit' });
+  host.append(h('div', { style:'display:flex;flex-direction:column;gap:16px' },
+    player.node, h('div', {}, opts.map(o => o.node)), h('div', { cls:'row' }, submit)));
+  player.play();
+  submit.addEventListener('click', () => {
+    stopAudio();
+    const chosen = opts.findIndex(o => o.rb.checked);
+    opts.forEach(o => { if (o.i === mix.a) o.node.classList.add('is-correct');
+      else if (o.i === chosen) o.node.classList.add('is-wrong'); o.rb.disabled = true; });
+    submit.disabled = true;
+    const ok = chosen === mix.a;
+    ctx.finish(ok ? 100 : 0, resultCard({ pct: ok ? 100 : 0, label: ok ? 'correct' : 'incorrect',
+      extra: h('div', { cls:'model' }, h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'The full ending' }),
+        h('div', { cls:'prose', style:'font-size:15.5px', text: item.text + ' ' + item.o[item.a] + '.' })),
+      fix: ok ? null : ['Track the direction of the argument, not just the grammar. The last clause before the beep usually reverses or confirms what came before.'] }));
+  });
+};
+
+/* --- highlight incorrect words --- */
+RUN.hiw = ctx => {
+  const { item, host } = ctx;
+  const toks = item.shown.split(' ');
+  const picked = new Set();
+  const line = h('div', { cls:'prose' });
+  const btns = toks.map((w,i) => {
+    const b = h('button', { cls:'hw', type:'button', 'aria-pressed':'false', text:w });
+    b.addEventListener('click', () => {
+      if (picked.has(i)) picked.delete(i); else picked.add(i);
+      b.setAttribute('aria-pressed', String(picked.has(i)));
+    });
+    return b;
+  });
+  btns.forEach((b,i) => { line.append(b); if (i < btns.length - 1) line.append(document.createTextNode(' ')); });
+  const player = makePlayer(item.spoken, { rate:0.92, sex: sexFor(ctx), note:'Follow the text while it plays. Click each word that does not match what you hear.' });
+  const submit = h('button', { cls:'btn primary', text:'Submit' });
+  host.append(h('div', { style:'display:flex;flex-direction:column;gap:16px' },
+    player.node, line, h('div', { cls:'row' }, submit)));
+  player.play();
+  submit.addEventListener('click', () => {
+    stopAudio();
+    const errs = new Set(item.errors);
+    let hit = 0, fp = 0;
+    btns.forEach((b,i) => {
+      b.disabled = true;
+      if (errs.has(i) && picked.has(i)) { b.classList.add('hit'); hit++; }
+      else if (errs.has(i)) b.classList.add('miss');
+      else if (picked.has(i)) { b.classList.add('fp'); fp++; }
+    });
+    submit.disabled = true;
+    const p = pct(Math.max(0, hit - fp), errs.size);
+    const spokenWords = item.spoken.split(' ');
+    ctx.finish(p, resultCard({ pct:p, sub: hit + ' found, ' + fp + ' false alarms, ' + errs.size + ' errors in total',
+      extra: h('div', { cls:'model' }, h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'What was actually said' }),
+        h('div', { cls:'small' }, item.errors.map(i => h('div', { text:'“' + toks[i].replace(/[.,]$/,'') + '” should have been “' + (spokenWords[i]||'').replace(/[.,]$/,'') + '”' })))),
+      fix: fp > 0 ? ['You clicked ' + fp + ' correct word' + (fp > 1 ? 's' : '') + '. Each false alarm cancels a find, so click only when you clearly heard a mismatch.'] : (hit < errs.size ? ['Keep your eyes moving at the speaker’s pace. Missed errors usually come after you have lost your place.'] : null) }));
+  });
+};
+
+/* --- write from dictation --- */
+RUN.wfd = ctx => {
+  const { item, host } = ctx;
+  const ta = h('textarea', { cls:'resp short', id:'wfd-' + item.id, style:'min-height:80px', placeholder:'Type the sentence' });
+  const player = makePlayer(item.text, { rate:0.95, sex: sexFor(ctx), note:'In the exam this plays exactly once.' });
+  const submit = h('button', { cls:'btn primary', text:'Submit' });
+  host.append(h('div', { style:'display:flex;flex-direction:column;gap:16px' },
+    player.node, ta, h('div', { cls:'row' }, submit)));
+  player.play();
+  setTimeout(() => ta.focus(), 400);
+  submit.addEventListener('click', () => {
+    stopAudio(); ta.disabled = true; submit.disabled = true;
+    const target = norm(item.text).split(' ');
+    const given = norm(ta.value).split(' ').filter(Boolean);
+    const pool = given.slice();
+    let right = 0;
+    const marks = target.map(w => {
+      const k = pool.indexOf(w);
+      if (k >= 0) { pool.splice(k,1); right++; return { w, ok:true }; }
+      return { w, ok:false };
+    });
+    const p = pct(right, target.length);
+    const line = h('div', { cls:'prose' });
+    marks.forEach((m,i) => { line.append(h('span', { cls: m.ok ? 'hw hit' : 'hw miss', text:m.w })); if (i < marks.length-1) line.append(document.createTextNode(' ')); });
+    ctx.finish(p, resultCard({ pct:p, sub: right + ' of ' + target.length + ' words captured',
+      extra: h('div', {}, h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'Word by word' }), line,
+        h('div', { cls:'small muted', style:'margin-top:8px', text:'Green words were in your answer somewhere; red were missing. Order does not affect the mark, but spelling does.' })),
+      fix: p < 100 ? ['Replay it and type only the words you missed, three times each. These sentences reuse the same academic vocabulary.'] : null }));
+  });
+};
+
+/* --- re-order paragraphs --- */
+RUN.reorder = ctx => {
+  const { item, host } = ctx;
+  let current = shuffle(item.order.map((t,i) => i));
+  if (current.every((v,i) => v === i)) current = current.reverse();
+  const list = h('div', { cls:'ord' });
+  const submit = h('button', { cls:'btn primary', text:'Submit' });
+  let locked = false;
+
+  /* Pointer-based dragging: one code path for mouse, pen and touch.
+     HTML5 drag-and-drop is ignored by mobile browsers, so it is no use here. */
+  let dragRow = null, startY = 0;
+  const onMove = e => {
+    if (!dragRow) return;
+    e.preventDefault();
+    dragRow.style.transform = 'translateY(' + (e.clientY - startY) + 'px)';
+    const rect = dragRow.getBoundingClientRect();
+    const mid = rect.top + rect.height / 2;
+    for (const sib of Array.from(list.children)){
+      if (sib === dragRow) continue;
+      const r = sib.getBoundingClientRect();
+      if (mid > r.top && mid < r.bottom){
+        const heldAt = rect.top;                       // where the row sits on screen right now
+        if (mid < r.top + r.height / 2) list.insertBefore(dragRow, sib);
+        else list.insertBefore(dragRow, sib.nextSibling);
+        dragRow.style.transform = '';                  // re-baseline so it stays under the finger
+        startY = e.clientY - (heldAt - dragRow.getBoundingClientRect().top);
+        dragRow.style.transform = 'translateY(' + (e.clientY - startY) + 'px)';
+        break;
+      }
+    }
+  };
+  const onUp = () => {
+    if (!dragRow) return;
+    dragRow.style.transform = '';
+    dragRow.classList.remove('dragging');
+    list.classList.remove('lifting');
+    dragRow = null;
+    current = Array.from(list.children).map(n => Number(n.dataset.orig));
+    paint();
+  };
+
+  const paint = () => {
+    list.replaceChildren();
+    current.forEach((orig, pos) => {
+      const up = h('button', { type:'button', 'aria-label':'move up', text:'▲', disabled: pos === 0 || locked });
+      const dn = h('button', { type:'button', 'aria-label':'move down', text:'▼', disabled: pos === current.length - 1 || locked });
+      up.addEventListener('click', () => { [current[pos-1], current[pos]] = [current[pos], current[pos-1]]; paint(); });
+      dn.addEventListener('click', () => { [current[pos+1], current[pos]] = [current[pos], current[pos+1]]; paint(); });
+      const grip = h('div', { cls:'grip', 'aria-hidden':'true', title:'Drag to reorder', text:'⠿' });
+      const row = h('div', { cls:'ordi' },
+        h('div', { cls:'pos mono', text:String(pos+1) }),
+        h('div', { style:'font-family:var(--ff-read);font-size:15.5px;line-height:1.55', text:item.order[orig] }),
+        grip,
+        h('div', { cls:'mv' }, up, dn));
+      row.dataset.orig = orig;
+      if (locked){ row.classList.add(current[pos] === pos ? 'ok' : 'no'); grip.style.visibility = 'hidden'; }
+      else {
+        grip.addEventListener('pointerdown', e => {
+          if (locked) return;
+          e.preventDefault();
+          dragRow = row; startY = e.clientY;
+          row.classList.add('dragging');
+          list.classList.add('lifting');
+          try { grip.setPointerCapture(e.pointerId); } catch(err){}
+        });
+        grip.addEventListener('pointermove', onMove);
+        grip.addEventListener('pointerup', onUp);
+        grip.addEventListener('pointercancel', onUp);
+      }
+      list.append(row);
+    });
+  };
+  paint();
+  host.append(h('div', { style:'display:flex;flex-direction:column;gap:16px' },
+    h('div', { cls:'small muted', text:'Drag a paragraph by its handle to reorder, or use the arrows. Marks are awarded for each correctly ordered adjacent pair.' }),
+    list, h('div', { cls:'row' }, submit)));
+  submit.addEventListener('click', () => {
+    locked = true; submit.disabled = true; paint();
+    let pairs = 0;
+    for (let i = 0; i < current.length - 1; i++) if (current[i+1] === current[i] + 1) pairs++;
+    const p = pct(pairs, current.length - 1);
+    ctx.finish(p, resultCard({ pct:p, sub: pairs + ' of ' + (current.length - 1) + ' adjacent pairs correct',
+      extra: item.why
+        ? whyPanel('The correct order, and the cue that fixes each sentence', item.order.map((t,i) => ({
+            key: String(i+1), ok: current[i] === i, text: t + ' \u2014 ' + item.why[i] })))
+        : h('div', { cls:'model' }, h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'Correct order' }),
+            h('ol', { cls:'tips', style:'padding-left:20px' }, item.order.map(t => h('li', { text:t })))),
+      fix: pairs < current.length - 1 ? ['Find the opener first — it names its subject in full with no backward reference — then chain the rest on pronouns and repeated nouns.'] : null }));
+  });
+};
+
+/* ============================ views ============================ */
+const view = document.getElementById('view');
+const navEl = document.getElementById('nav');
+
+function go(route){ stopAudio(); clearTimers(); state.route = route; window.scrollTo(0,0); render(); }
+
+function paintNav(){
+  navEl.replaceChildren(...SECTIONS.map(s => {
+    const n = TASKS.filter(t => t.skills && t.skills.includes(s.id) && !t.unscored).length;
+    const b = h('button', { cls:'navb', 'aria-current': String(state.route.view === s.id) },
+      h('span', { cls:'dot' }), h('span', { text:s.label }),
+      n ? h('span', { cls:'cnt', text:String(n) }) : null);
+    b.addEventListener('click', () => go({ view:s.id }));
+    return b;
+  }));
+}
+
+function overallBand(){
+  return state.attempts.length ? pteOf(avgFor(state.attempts)) : null;
+}
+
+function scaleWidget(value){
+  const posOf = v => (v - 10) / 80 * 100;
+  const marks = [50, 58, 65, 79];
+  const bar = h('div', { cls:'scalebar' },
+    marks.map(m => h('i', { style:'left:' + posOf(m) + '%' })),
+    value != null ? h('b', { style:'left:calc(' + posOf(value) + '% - 1.5px)' }) : null);
+  const ticks = h('div', { cls:'scaleticks' },
+    h('span', { style:'left:0%;transform:none', text:'10' }),
+    marks.map(m => h('span', { style:'left:' + posOf(m) + '%', html: m + '<br>' + ({50:'many visas',58:'most unis',65:'competitive',79:'top band'})[m] })),
+    h('span', { style:'left:100%;transform:translateX(-100%)', text:'90' }));
+  return h('div', { cls:'scalewrap' }, bar, ticks);
+}
+
+/* continuous red -> green ramp. Hue carries the score; lightness and chroma
+   come from theme tokens so it reads on either ground. */
+function rampHue(p){ return 25 + Math.max(0, Math.min(100, p)) * 1.25; }
+function rampCss(p, bar){
+  const hue = rampHue(p).toFixed(1);
+  return bar ? 'oklch(var(--ramp-bar-l) var(--ramp-bar-c) ' + hue + ')'
+             : 'oklch(var(--ramp-l) var(--ramp-c) ' + hue + ')';
+}
+function tint(el, p, bar){
+  if (p == null) return el;
+  const prop = bar ? 'background' : 'color';
+  el.style[prop] = 'hsl(' + Math.round(rampHue(p) * 0.92) + ' 58% ' + (bar ? '45%' : '40%') + ')'; // fallback
+  el.style[prop] = rampCss(p, bar);                                                                // preferred
+  return el;
+}
+function rampGradient(){
+  const stops = [0, 20, 40, 60, 80, 100].map(p => rampCss(p, true) + ' ' + p + '%');
+  return 'linear-gradient(90deg,' + stops.join(',') + ')';
+}
+function scoreRow(cls, main, avg, indent){
+  const bar = h('i', { style:'width:' + (avg || 0) + '%' });
+  if (avg != null) tint(bar, avg, true);
+  const num = h('div', { cls:'bnum', text: avg == null ? '–' : String(pteOf(avg)) });
+  if (avg != null) tint(num, avg, false);
+  return h('button', { cls: cls }, main, h('div', { cls:'bbar' }, bar), num);
+}
+
+const PARTS = () => SECTIONS.filter(s => TASKS.some(t => t.skills && t.skills.includes(s.id)));
+function partStats(id){
+  const ts = TASKS.filter(t => t.skills.includes(id) && !t.unscored);
+  const att = state.attempts.filter(x => TASK_BY_ID[x.t] && TASK_BY_ID[x.t].skills.includes(id));
+  return { ts, att, avg: avgFor(att), tried: ts.filter(t => attemptsFor(t.id).length).length,
+           items: ts.reduce((n,t) => n + t.items.length, 0) };
+}
+
+/* dashboard: the four parts of the exam, one row */
+function areaCards(){
+  return h('div', { cls:'areas' }, PARTS().map(s => {
+    const st = partStats(s.id);
+    const bar = h('i', { style:'width:' + (st.avg || 0) + '%' });
+    const num = h('div', { cls:'av', text: st.avg == null ? '–' : String(pteOf(st.avg)) });
+    tint(bar, st.avg, true); tint(num, st.avg, false);
+    const card = h('button', { cls:'area' },
+      h('div', { cls:'an', text: s.label }), num, h('div', { cls:'bbar' }, bar),
+      h('div', { cls:'as', text: st.avg == null
+        ? st.ts.length + ' question types · not started'
+        : st.tried + ' of ' + st.ts.length + ' tried · ' + st.att.length + ' attempt' + (st.att.length === 1 ? '' : 's') }));
+    card.addEventListener('click', () => go({ view: s.id }));
+    return card;
+  }));
+}
+
+/* inside a part: every task type it contains */
+function taskBoard(id){
+  const rows = [h('div', { cls:'bhead' },
+    h('span', { text:'Task type' }), h('span', {}), h('span', { text:'Avg band' }))];
+  TASKS.filter(t => t.skills.includes(id)).forEach(t => {
+    const a = avgFor(attemptsFor(t.id)), n = attemptsFor(t.id).length;
+    const also = t.skills.filter(k => k !== id);
+    const row = scoreRow('brow',
+      h('div', {},
+        h('div', { cls:'bn' }, t.name,
+          t.unscored ? h('span', { cls:'also warm', text:'unscored' })
+                     : also.map(k => h('span', { cls:'also', text:'+ ' + skillLabel(k) }))),
+        h('div', { cls:'bt', text: t.unscored ? t.brief : (n
+          ? n + (n === 1 ? ' attempt · best ' : ' attempts · best ') + pteOf(bestFor(t.id))
+          : t.brief) })),
+      t.unscored ? null : a);
+    row.addEventListener('click', () => openTask(t.id, 0));
+    rows.push(row);
+  });
+  return h('div', { cls:'board' }, rows);
+}
+
+function viewHome(){
+  const b = overallBand();
+  const done = state.attempts.length;
+  const covered = new Set(state.attempts.map(a => a.t)).size;
+  const scoredCount = TASKS.filter(t => !t.unscored).length;
+
+  const hero = h('div', { cls:'hero' },
+    h('h1', { cls:'h1', text: b == null ? 'Start with one task and get a real score on it.' : 'Your running estimate is ' + b + '.' }),
+    h('p', { cls:'muted', style:'margin-top:8px;max-width:58ch', text: b == null
+      ? 'Every item here is timed the way the exam times it. Written and spoken responses are marked by Claude against the official trait rubrics; the rest are marked automatically the moment you submit.'
+      : 'A rolling average of your last ' + Math.min(RECENT, done) + ' attempts, across ' + covered + ' task types tried. The exam scores each part separately, so pick your ground below.' }),
+    scaleWidget(b));
+
+  const tiles = h('div', { cls:'tiles' },
+    h('div', { cls:'tile' }, h('div', { cls:'n', text:String(done) }), h('div', { cls:'l', text:'attempts logged' })),
+    h('div', { cls:'tile' }, h('div', { cls:'n', text: covered + '/' + scoredCount }), h('div', { cls:'l', text:'question types tried' })),
+    h('div', { cls:'tile' }, h('div', { cls:'n', text: b == null ? '–' : String(b) }), h('div', { cls:'l', text:'estimated band' })),
+    h('div', { cls:'tile' }, h('div', { cls:'n', text: String(streak()) }), h('div', { cls:'l', text:'day streak' })));
+
+  view.replaceChildren(hero, tiles,
+    h('div', { style:'height:26px' }),
+    h('div', { cls:'spread', style:'margin-bottom:10px' },
+      h('div', { cls:'eyebrow', text:'Where you stand — open a part for its task types' }),
+      h('button', { cls:'btn sm', text:'Open today’s drill', onclick:() => go({ view:'drill' }) })),
+    areaCards(),
+    h('div', { cls:'legend' },
+      h('span', { text:'10' }),
+      h('div', { cls:'lg', style:'background:' + rampGradient() },
+        [50,58,65,79].map(m => h('i', { style:'left:' + ((m - 10) / 80 * 100) + '%', title:'band ' + m }))),
+      h('span', { text:'90' })),
+    h('div', { cls:'legendnote' },
+      h('span', { text:'Estimated PTE band \u00b7 marks at 50, 58, 65 and 79' })),
+    h('div', { style:'height:14px' }),
+    h('div', { cls:'notice', text: 'Every figure here is an estimated PTE band on the exam’s own 10–90 scale, averaged over your latest 10 attempts. Integrated question types are scored under two skills at once — Re-tell Lecture counts toward Listening and Speaking, Write from Dictation toward Listening and Writing — so they appear under both cards and feed both averages, which is why the four cards add up to more than 22 question types.' }));
+}
+
+function streak(){
+  if (!state.attempts.length) return 0;
+  const days = new Set(state.attempts.map(a => dayKey(a.ts)));
+  let n = 0, d = new Date();
+  if (!days.has(dayKey(d.getTime()))) d.setDate(d.getDate() - 1);
+  for (;;){ if (days.has(dayKey(d.getTime()))) { n++; d.setDate(d.getDate() - 1); } else break; }
+  return n;
+}
+
+function viewSection(id){
+  const s = SECTIONS.find(x => x.id === id);
+  const st = partStats(id);
+  const big = h('div', { cls:'av', style:'font-size:40px' }, st.avg == null ? '–' : String(pteOf(st.avg)));
+  const bar = h('i', { style:'width:' + (st.avg || 0) + '%' });
+  tint(big, st.avg, false); tint(bar, st.avg, true);
+
+  view.replaceChildren(...[
+    h('div', { cls:'crumbs', style:'margin-bottom:14px' },
+      h('button', { text:'Dashboard', onclick:() => go({ view:'home' }) }),
+      h('span', { text:'/' }), h('span', { text:s.label })),
+    h('div', { cls:'hero' },
+      h('div', { cls:'eyebrow', text:'Communicative skill' }),
+      h('h1', { cls:'h1', style:'margin-top:6px', text:s.label }),
+      h('p', { cls:'muted', style:'margin-top:8px;max-width:58ch', text: SECTION_NOTE[id] }),
+      h('div', { cls:'row', style:'margin-top:18px;gap:18px;align-items:flex-end' },
+        h('div', {}, h('div', { cls:'eyebrow', style:'margin-bottom:4px', text:'Part average' }), big),
+        h('div', { style:'flex:1;min-width:120px;padding-bottom:6px' },
+          h('div', { cls:'bbar', style:'height:8px;border-radius:4px' }, bar),
+          h('div', { cls:'small faint', style:'margin-top:6px',
+            text: st.avg == null ? 'Nothing attempted yet' : st.att.length + ' attempt' + (st.att.length === 1 ? '' : 's') + ' across ' + st.tried + ' of ' + st.ts.length + ' task types' })),
+        h('div', { cls:'row', style:'padding-bottom:6px' },
+          h('span', { cls:'pill acc', text: st.ts.length + ' question types' }),
+          h('span', { cls:'pill', text: st.items + ' items' })))),
+    id === 'speaking' ? micTester() : null,
+    taskBoard(id)].filter(Boolean));
+}
+
+const SECTION_NOTE = {
+  speaking:'Spoken responses, recorded to a fixed clock. Three of these are integrated: Repeat Sentence, Re-tell Lecture and Summarize Group Discussion score Listening at the same time, so every mark you earn on them lands in both skills.',
+  writing:'Typed responses. Summarize Written Text also scores Reading, while Summarize Spoken Text and Write from Dictation also score Listening — which means most of your Writing score is earned on questions that live in other parts of the test.',
+  reading:'Five Reading-only question types from Part 2, plus the integrated ones: Summarize Written Text carries Reading marks, and Highlight Correct Summary and Highlight Incorrect Words carry them out of the Listening part.',
+  listening:'The largest skill, and the one that reaches furthest. Beyond the Part 3 question types, Repeat Sentence, Re-tell Lecture, Summarize Group Discussion and Answer Short Question all score Listening from inside Part 1.'
+};
+
+/* --- daily drill --- */
+function mulberry(a){ return function(){ a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function drillSet(){
+  const d = new Date();
+  const rnd = mulberry(d.getFullYear() * 10000 + (d.getMonth()+1) * 100 + d.getDate());
+  const pick = arr => arr[Math.floor(rnd() * arr.length)];
+  const picks = [];
+  ['speaking','writing','reading','listening','reading','listening'].forEach(sec => {
+    const pool = TASKS.filter(t => t.skills.includes(sec) && !t.unscored && !picks.some(p => p.taskId === t.id));
+    const t = pick(pool.length ? pool : TASKS.filter(x => x.skills.includes(sec) && !x.unscored));
+    picks.push({ taskId: t.id, idx: Math.floor(rnd() * t.items.length) });
+  });
+  return picks;
+}
+function viewDrill(){
+  const set = drillSet();
+  const today = dayKey(Date.now());
+  const doneToday = p => state.attempts.some(a => a.t === p.taskId && a.i === TASK_BY_ID[p.taskId].items[p.idx].id && dayKey(a.ts) === today);
+  const n = set.filter(doneToday).length;
+  const rows = h('div', { cls:'tlist' }, set.map((p,i) => {
+    const t = TASK_BY_ID[p.taskId], ok = doneToday(p);
+    const b = h('button', { cls:'trow' },
+      h('div', { cls:'tnum mono', text: ok ? '✓' : String(i+1) }),
+      h('div', {}, h('div', { cls:'tname', text:t.name }),
+        h('div', { cls:'tbrief', text: PART_NAME[t.part] + ' · item ' + (p.idx+1) })),
+      h('div', { cls:'tmeter' }, h('span', { cls:'pill' + (ok ? ' good' : ''), text: ok ? 'done' : 'to do' })));
+    b.addEventListener('click', () => openTask(p.taskId, p.idx, 'drill'));
+    return b;
+  }));
+  view.replaceChildren(
+    h('div', { cls:'hero' },
+      h('div', { cls:'eyebrow', text: new Date().toLocaleDateString(undefined, { weekday:'long', day:'numeric', month:'long' }) }),
+      h('h1', { cls:'h1', style:'margin-top:6px', text:'Today’s drill' }),
+      h('p', { cls:'muted', style:'margin-top:8px;max-width:58ch', text:'Six items across all four parts, fixed for the day. About twenty-five minutes. ' + n + ' of 6 done.' }),
+      h('div', { cls:'row', style:'margin-top:12px' },
+        h('div', { cls:'bar', style:'width:180px' }, h('i', { style:'width:' + pct(n,6) + '%' })),
+        h('span', { cls:'small mono muted', text: n + '/6' }))),
+    rows);
+}
+
+/* --- progress --- */
+function viewProgress(){
+  if (!state.attempts.length){
+    view.replaceChildren(h('div', { cls:'hero' }, h('h1', { cls:'h1', text:'Progress' })),
+      h('div', { cls:'card empty' }, h('p', { text:'Nothing logged yet. Finish one task and it will appear here.' }),
+        h('div', { cls:'row', style:'justify-content:center;margin-top:14px' },
+          h('button', { cls:'btn primary', text:'Start with Write from Dictation', onclick:() => openTask('wfd', 0) }))));
+    return;
+  }
+  const last = state.attempts.slice(-24);
+  const spark = h('div', { cls:'spark' }, last.map(a => tint(h('i', {
+    style:'height:' + Math.max(4, a.p) + '%', title: a.p + '%' }), a.p, true)));
+  const bySec = PARTS().map(s => ({ s, a: partStats(s.id).avg }));
+  const rows = TASKS.map(t => ({ t, a: avgFor(attemptsFor(t.id)), n: attemptsFor(t.id).length }))
+    .filter(x => x.n).sort((x,y) => x.a - y.a);
+  const clear = h('button', { cls:'btn ghost sm', text:'Clear history' });
+  let armed = false;
+  clear.addEventListener('click', () => {
+    if (!armed){ armed = true; clear.textContent = 'Tap again to erase everything'; clear.classList.add('primary'); return; }
+    state.attempts = []; persist(); paintNav(); render();
+  });
+  view.replaceChildren(
+    h('div', { cls:'hero' },
+      h('div', { cls:'eyebrow', text:'Estimated band from your last 10 attempts' }),
+      h('h1', { cls:'h1', style:'margin-top:6px', text: String(overallBand()) }),
+      scaleWidget(overallBand())),
+    h('div', { cls:'grid2' },
+      h('div', { cls:'card' }, h('div', { cls:'eyebrow', style:'margin-bottom:10px', text:'Last 24 attempts' }), spark),
+      h('div', { cls:'card' }, h('div', { cls:'eyebrow', style:'margin-bottom:10px', text:'By part' }),
+        h('div', { style:'display:flex;flex-direction:column;gap:9px' }, bySec.map(x => h('div', {},
+          h('div', { cls:'spread', style:'margin-bottom:3px' },
+            h('span', { cls:'small', text:x.s.label }),
+            tint(h('span', { cls:'small mono', text: x.a == null ? '–' : String(pteOf(x.a)) }), x.a, false)),
+          h('div', { cls:'bar', style:'width:100%' }, tint(h('i', { style:'width:' + (x.a || 0) + '%' }), x.a, true))))))),
+    h('div', { style:'height:22px' }),
+    h('div', { cls:'spread', style:'margin-bottom:10px' },
+      h('div', { cls:'eyebrow', text:'Weakest task types first' }), clear),
+    h('div', { cls:'hist' }, rows.map(r => {
+      const el = h('div', { cls:'hrow' },
+        h('span', { text:r.t.name }),
+        h('span', { cls:'small mono faint', text: r.n + ' tried' }),
+        tint(h('span', { cls:'mono', style:'font-weight:600', text: String(pteOf(r.a)) }), r.a, false));
+      el.style.cursor = 'pointer';
+      el.addEventListener('click', () => openTask(r.t.id, 0));
+      return el;
+    })));
+}
+
+/* --- task workspace --- */
+function openTask(taskId, idx, from){
+  go({ view:'task', taskId, idx: idx || 0, from: from || TASK_BY_ID[taskId].skills[0] });
+}
+function viewTask(){
+  const { taskId, idx, from } = state.route;
+  const task = TASK_BY_ID[taskId];
+  const item = task.items[idx];
+  const backLabel = from === 'drill' ? 'Today’s drill' : SECTIONS.find(s => s.id === from).label;
+  const backBtn = h('button', { text: backLabel, onclick:() => go({ view: from }) });
+  const pager = h('div', { cls:'row' },
+    h('button', { cls:'btn sm', text:'◀', 'aria-label':'previous item', disabled: idx === 0,
+      onclick:() => openTask(taskId, idx - 1, from) }),
+    h('span', { cls:'small mono muted', text:'Item ' + (idx+1) + ' of ' + task.items.length }),
+    h('button', { cls:'btn sm', text:'▶', 'aria-label':'next item', disabled: idx === task.items.length - 1,
+      onclick:() => openTask(taskId, idx + 1, from) }));
+
+  const body = h('div', {});
+  const head = h('div', { cls:'wshead' },
+    h('div', { cls:'crumbs' }, backBtn, h('span', { text:'/' }), h('span', { text:task.name })),
+    h('div', { cls:'spread' },
+      h('h1', { cls:'h1', style:'font-size:clamp(22px,3.4vw,29px)', text:task.name }), pager),
+    h('div', { cls:'row' },
+      h('span', { cls:'pill acc', text:'scores ' + task.skills.map(skillLabel).join(' + ') }),
+      h('span', { cls:'pill', text: PART_NAME[task.part] }),
+      h('span', { cls:'pill', text: task.count + ' in the real test' }),
+      task.time ? h('span', { cls:'pill', text: (task.time/60) + ' min' }) : null,
+      (task.rec && task.kind === 'speak') ? h('span', { cls:'pill', text: task.rec + ' s recording' }) : null,
+      task.prep ? h('span', { cls:'pill', text: task.prep + ' s prep' }) : null),
+    h('div', { cls:'brief' }, h('b', { text:'Task. ' }), task.brief),
+    h('details', { cls:'reveal' }, h('summary', { text:'How this item is actually scored' }),
+      h('div', { cls:'dbody' }, h('ul', { cls:'tips' }, task.tips.map(t => h('li', { text:t }))))));
+
+  const ctx = { task, item, idx, host: body, finish(p, card){
+    clearTimers(); stopAudio();
+    if (!task.unscored) record(task.id, item.id, p);
+    body.append(card);
+    const nav = h('div', { cls:'row', style:'margin-top:16px' },
+      h('button', { cls:'btn primary', text:'Try this item again', onclick:() => openTask(taskId, idx, from) }),
+      idx < task.items.length - 1 ? h('button', { cls:'btn', text:'Next item', onclick:() => openTask(taskId, idx + 1, from) }) : null,
+      h('button', { cls:'btn ghost', text:'Back to ' + backLabel, onclick:() => go({ view: from }) }));
+    body.append(nav);
+    card.scrollIntoView({ behavior:'smooth', block:'nearest' });
+  }};
+
+  view.replaceChildren(head, body);
+  (RUN[task.kind] || (() => body.append(h('div', { cls:'notice', text:'This task type is not wired up.' }))))(ctx);
+}
+
+/* ============================ boot ============================ */
+function render(){
+  paintNav();
+  const v = state.route.view;
+  if (v === 'task') viewTask();
+  else if (v === 'home') viewHome();
+  else if (v === 'drill') viewDrill();
+  else if (v === 'progress') viewProgress();
+  else viewSection(v);
+}
+window.addEventListener('pagehide', () => { stopAudio(); releaseMic(); });
+paintSkins();
+render();
+</script>
+
+</body>
+</html>
