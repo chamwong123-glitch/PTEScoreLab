@@ -100,7 +100,7 @@ All audio plays **once only, automatically**. Note-taking allowed throughout.
 
 ## Universal rules across all Speaking tasks
 - You can only record **once** — no retry, no replaying audio.
-- If you stay silent for **more than 3 seconds** after the mic opens (or after starting, then pausing), the recording auto-stops and moves to "Completed" — you lose the rest of your chance to speak.
+- **Silence ends the recording.** If you have not started speaking within **7 seconds** of the mic opening, or you pause for **more than 3 seconds** once you have started, the recording auto-stops and moves to "Completed" — you lose the rest of your chance to speak. *(The 7-second start allowance comes from the project owner; Pearson's test-format page does not state it. Pearson states 3 seconds, from the start, only for Answer Short Question.)*
 - A short tone signals when to start (except Answer Short Question, which has no tone).
 
 ## Sources

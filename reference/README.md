@@ -58,7 +58,7 @@ Checked against both documents on 19 September 2026. The **In the app** column g
 
 **Zero rule.** Per the Score Guide's scoring overview, a response scored 0 for Content or Form earns no points at all. The app applies this to Summarize Written Text, Write Essay and Summarize Spoken Text.
 
-**Silence rule.** For every speaking question type, more than 3 seconds of silence ends the recording in the real test (timing reference). The app shows a warning rather than stopping the recording.
+**Silence rule.** For every recorded speaking question type, the real test ends the recording if you have not started speaking within 7 seconds, or if you pause for more than 3 seconds once you have started (timing reference). The app shows a live countdown and a warning afterwards, rather than stopping the recording. Answer Short Question keeps Pearson's stated 3 seconds from the start; the app has you type that answer, so no recording is involved.
 
 ## Changes made during this check
 

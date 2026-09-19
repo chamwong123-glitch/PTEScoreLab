@@ -349,6 +349,7 @@ textarea.resp.short{min-height:92px}
 .langb:hover{color:var(--ink)}
 .langb[aria-pressed="true"]{background:var(--surface);color:var(--accent);box-shadow:0 1px 3px rgba(0,0,0,.12)}
 .xlate{display:none}
+.tscript p{margin:0 0 10px}.tscript p:last-child{margin-bottom:0}
 :root[lang="zh-Hant"] .xlate{display:inline-flex}
 .zh{display:block;margin-top:7px;padding:7px 11px;border-left:2px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;font-family:var(--ff-ui);font-size:14.5px;font-weight:400;line-height:1.75;color:var(--ink);text-align:left;text-decoration:none}
 .rcard[aria-pressed="true"] .zh{background:rgba(255,255,255,.16);border-left-color:currentColor;color:inherit}
@@ -524,7 +525,7 @@ const SECTIONS = [
 const TASKS = [
 /* ---------------- SPEAKING ---------------- */
 {
-  id:'personal_intro', section:'speaking', kind:'speak', name:'Personal Introduction',
+  id:'personal_intro', prefix:'PI', section:'speaking', kind:'speak', name:'Personal Introduction',
   brief:'Unscored warm-up that opens the real test. 25 s to prepare, 30 s to record.',
   scores:'Nothing — familiarization only', prep:25, rec:30, unscored:true,
   checkLabel:'What a good introduction covers',
@@ -532,42 +533,42 @@ const TASKS = [
         'Have a rehearsed thirty seconds ready anyway. Walking into the scored tasks having already spoken once is worth more than the item is.',
         'Do not read from a script. It is audible, and the habit will cost you on Read Aloud where the scoring listens for natural phrasing.'],
   items:[
-    { id:'pi1',
+    { id:'PI0001',
       text:'Read the prompt, then introduce yourself. You might mention: your reasons for taking the test, your interests, your plans for future study, and why you want to study abroad.',
       keys:['open with who you are and what you study or do','give one reason for taking the test','name a concrete plan — a course, a country, a career','finish a sentence rather than trailing off when time runs out','speak at a natural pace, not a rehearsed gallop'] }
   ]
 },
 {
-  id:'read_aloud', section:'speaking', kind:'speak', name:'Read Aloud',
+  id:'read_aloud', prefix:'RA', section:'speaking', kind:'speak', name:'Read Aloud',
   brief:'Read a short text aloud. 35 s to prepare, 40 s to record.',
   scores:'Reading + Speaking', prep:35, rec:40,
   tips:['Chunk the text into 3-5 sense groups and pause only at those points - pausing mid-phrase costs more than reading slowly.',
         'Keep going after a stumble. A self-correction is scored; a restart from the top wastes your recording window.',
         'Stress the content words (nouns, main verbs, numbers) and let the function words fall away.'],
   items:[
-    { id:'ra1', text:'Coral reefs occupy less than one percent of the ocean floor, yet they shelter roughly a quarter of all marine species. That density earns them the name rainforests of the sea, and it is also what makes them fragile. A rise of one or two degrees can trigger bleaching, in which corals expel the algae that feed them.',
+    { id:'RA0001', text:'Coral reefs occupy less than one percent of the ocean floor, yet they shelter roughly a quarter of all marine species. That density earns them the name rainforests of the sea, and it is also what makes them fragile. A rise of one or two degrees can trigger bleaching, in which corals expel the algae that feed them.',
       focus:['roughly','fragile','bleaching','algae','temperature'] },
-    { id:'ra2', text:'The shipping container did more to shrink the world than any treaty of the same era. By standardising the box, ports could load a vessel in hours rather than days, and the cost of moving goods across an ocean fell so sharply that manufacturers stopped asking where their components were made and began asking only what they cost.',
+    { id:'RA0002', text:'The shipping container did more to shrink the world than any treaty of the same era. By standardising the box, ports could load a vessel in hours rather than days, and the cost of moving goods across an ocean fell so sharply that manufacturers stopped asking where their components were made and began asking only what they cost.',
       focus:['standardising','vessel','manufacturers','components','sharply'] }
   ]
 },
 {
-  id:'repeat_sentence', section:'speaking', kind:'speak', name:'Repeat Sentence',
+  id:'repeat_sentence', prefix:'RS', section:'speaking', kind:'speak', name:'Repeat Sentence',
   brief:'Listen once, then repeat the sentence exactly. 15 s to record.',
   scores:'Listening + Speaking', prep:0, rec:15, audio:true,
   tips:['Do not try to understand the meaning first. Hold the sound, repeat immediately, and meaning usually follows.',
         'A partial repetition still scores. Say the fragments you caught rather than staying silent.',
         'Match the speaker’s rhythm - the scoring listens for stress pattern as much as for words.'],
   items:[
-    { id:'rs1', text:'The seminar on research methods has been moved to the main lecture theatre.' },
-    { id:'rs2', text:'Students must submit their assignments before the end of next week.' },
-    { id:'rs3', text:'The library extends its opening hours during the examination period.' },
-    { id:'rs4', text:'All laboratory equipment should be returned to the storage cupboard after use.' },
-    { id:'rs5', text:'Attendance at the first tutorial is compulsory for every new postgraduate.' }
+    { id:'RS0001', text:'The seminar on research methods has been moved to the main lecture theatre.' },
+    { id:'RS0002', text:'Students must submit their assignments before the end of next week.' },
+    { id:'RS0003', text:'The library extends its opening hours during the examination period.' },
+    { id:'RS0004', text:'All laboratory equipment should be returned to the storage cupboard after use.' },
+    { id:'RS0005', text:'Attendance at the first tutorial is compulsory for every new postgraduate.' }
   ]
 },
 {
-  id:'describe_image', section:'speaking', kind:'speak', name:'Describe Image',
+  id:'describe_image', prefix:'DI', section:'speaking', kind:'speak', name:'Describe Image',
   brief:'Describe a chart in detail. 25 s to prepare, 40 s to record.',
   scores:'Speaking', prep:25, rec:40, transcript:true,
   rubric:[{ name:'Content', max:6 }],
@@ -576,18 +577,18 @@ const TASKS = [
         'Read at least two exact figures aloud with their units. Vague description scores low on content.',
         'Finish with a one-clause conclusion rather than trailing off mid-sentence.'],
   items:[
-    { id:'di1', fig:FIG_RENEW,
+    { id:'DI0001', fig:FIG_RENEW,
       caption:'Grouped bar chart comparing the share of electricity from renewable sources in 2015 and 2023.',
       keys:['all four countries increased','Brazil highest at 89% in 2023','Japan lowest at 26%','Australia grew fastest, 14% to 39%','Germany rose from 30% to 52%'],
       model:'The bar chart compares the share of electricity generated from renewable sources in four countries in 2015 and 2023. Every country increased its share over the period. Brazil is by far the highest, rising from 74 per cent to 89 per cent, while Japan remains the lowest at 26 per cent. The sharpest growth is in Australia, where the share almost tripled from 14 to 39 per cent, and Germany moved from 30 to 52 per cent, crossing the halfway point. Overall, renewables expanded everywhere, but the gap between the leader and the laggard stayed wide.' },
-    { id:'di2', fig:FIG_LIB,
+    { id:'DI0002', fig:FIG_LIB,
       caption:'Line chart of library building visits and e-resource downloads per student per year, 2014 to 2023.',
       keys:['downloads rose from 30 to 121','visits fell from 42 to 23','lines cross around 2015','sharp 2020 dip in visits to 12','visits recover only partially'],
       model:'The line graph shows two measures of library use per student each year between 2014 and 2023. Electronic downloads climbed steadily from 30 to 121 per student, roughly a fourfold increase, whereas physical visits to the building declined from 42 to 23. The two lines cross early in the period, after which digital use dominates. Visits collapsed to a low of 12 in 2020 and then recovered only partially, never returning to their earlier level. Overall, the data suggest that students have substituted online access for time spent in the library itself.' }
   ]
 },
 {
-  id:'retell_lecture', section:'speaking', kind:'speak', name:'Re-tell Lecture',
+  id:'retell_lecture', prefix:'RL', section:'speaking', kind:'speak', name:'Re-tell Lecture',
   brief:'Listen to a lecture, then re-tell it in your own words. 10 s to prepare, 40 s to record.',
   scores:'Listening + Speaking', prep:10, rec:40, audio:true, transcript:true,
   rubric:[{ name:'Content', max:6 }],
@@ -596,35 +597,35 @@ const TASKS = [
         'Open with "The lecturer discussed..." to buy yourself a second of thinking time.',
         'Include at least three concrete details from the talk - names, numbers, examples - since content carries the marks.'],
   items:[
-    { id:'rl1', voice:'f', text:'Sleep researchers used to treat the night as downtime, but we now know the sleeping brain is doing some of its hardest work. During slow-wave sleep, the hippocampus replays the day’s experiences to the cortex, and this replay is what turns a fragile memory into a durable one. In one well-known study, students who learned a list of word pairs and then slept for eight hours recalled about forty per cent more than students who stayed awake for the same interval. The effect is strongest for material that was deliberately learned, and it collapses when slow-wave sleep is interrupted. So the practical lesson for students is uncomfortable but clear: an all-night study session does not just tire you, it removes the very process that would have consolidated what you studied.',
+    { id:'RL0001', voice:'f', text:'Sleep researchers used to treat the night as downtime, but we now know the sleeping brain is doing some of its hardest work. During slow-wave sleep, the hippocampus replays the day’s experiences to the cortex, and this replay is what turns a fragile memory into a durable one. In one well-known study, students who learned a list of word pairs and then slept for eight hours recalled about forty per cent more than students who stayed awake for the same interval. The effect is strongest for material that was deliberately learned, and it collapses when slow-wave sleep is interrupted. So the practical lesson for students is uncomfortable but clear: an all-night study session does not just tire you, it removes the very process that would have consolidated what you studied.',
       keys:['sleeping brain consolidates memory','hippocampus replays to cortex in slow-wave sleep','study: sleepers recalled 40% more','effect breaks if slow-wave sleep interrupted','all-nighters remove consolidation'],
       model:'The lecturer explained that sleep is not downtime but an active stage of learning. During slow-wave sleep the hippocampus replays the day’s experiences to the cortex, which converts fragile memories into durable ones. She cited a study in which students who slept for eight hours after learning word pairs recalled about forty per cent more than those who stayed awake. The effect disappears when slow-wave sleep is disrupted, so her conclusion was that pulling an all-nighter removes the very process that would have consolidated the material.' },
-    { id:'rl2', voice:'m', text:'Anyone who has walked from a park into a city centre on a summer afternoon has felt the urban heat island. Cities run between three and seven degrees warmer than the countryside around them, and at night the gap can be wider still. The cause is mostly material. Asphalt and dark roofing absorb solar radiation through the day and release it slowly after sunset, while the loss of vegetation removes the cooling that evaporation from leaves would otherwise provide. Waste heat from vehicles and air conditioning adds a further increment. The consequences are not merely uncomfortable. Heat islands raise peak electricity demand, worsen ground-level ozone, and concentrate the health risk in exactly the neighbourhoods that have the fewest trees. The remedies are well understood: reflective roofing, permeable surfaces, and above all more canopy cover.',
+    { id:'RL0002', voice:'m', text:'Anyone who has walked from a park into a city centre on a summer afternoon has felt the urban heat island. Cities run between three and seven degrees warmer than the countryside around them, and at night the gap can be wider still. The cause is mostly material. Asphalt and dark roofing absorb solar radiation through the day and release it slowly after sunset, while the loss of vegetation removes the cooling that evaporation from leaves would otherwise provide. Waste heat from vehicles and air conditioning adds a further increment. The consequences are not merely uncomfortable. Heat islands raise peak electricity demand, worsen ground-level ozone, and concentrate the health risk in exactly the neighbourhoods that have the fewest trees. The remedies are well understood: reflective roofing, permeable surfaces, and above all more canopy cover.',
       keys:['cities 3-7 degrees warmer than surroundings','asphalt and dark roofs store and release heat','loss of vegetation removes evaporative cooling','waste heat from cars and air conditioning','raises power demand, ozone, health risk','remedies: reflective roofs, permeable surfaces, tree canopy'],
       model:'The talk was about the urban heat island effect. The lecturer said cities are typically three to seven degrees warmer than the surrounding countryside, and the gap widens at night. The main causes are material: asphalt and dark roofs absorb solar radiation and release it after sunset, vegetation loss removes evaporative cooling, and vehicles and air conditioning add waste heat. The consequences include higher peak electricity demand, more ground-level ozone, and health risks concentrated in the least leafy neighbourhoods. He ended with the remedies - reflective roofing, permeable surfaces and, most importantly, greater tree canopy cover.' }
   ]
 },
 {
-  id:'short_question', section:'speaking', kind:'asq', name:'Answer Short Question',
+  id:'short_question', prefix:'ASQ', section:'speaking', kind:'asq', name:'Answer Short Question',
   brief:'Listen to a question and answer in one or a few words.',
   scores:'Listening + Speaking', rec:10, audio:true,
   tips:['One word is a complete answer here. Extra words cost time and add risk.',
         'If you do not know the word, say the closest thing you do know rather than nothing.',
         'These questions test general knowledge and everyday vocabulary, not the passage.'],
   items:[
-    { id:'sq1', q:'What do we call the frozen form of water?', a:['ice'] },
-    { id:'sq2', q:'If you want to borrow a book from a library, which member of staff do you ask?', a:['librarian','the librarian'] },
-    { id:'sq3', q:'What instrument does a doctor use to listen to a patient’s heartbeat?', a:['stethoscope','a stethoscope'] },
-    { id:'sq4', q:'Which meal do people normally eat in the morning?', a:['breakfast'] },
-    { id:'sq5', q:'What do we call the scientific study of the earth’s physical structure?', a:['geology'] },
-    { id:'sq6', q:'If a lecture starts at nine o’clock and lasts ninety minutes, at what time does it end?', a:['ten thirty','10:30','half past ten','1030'] },
-    { id:'sq7', q:'What is the person called who draws the plans for a new building?', a:['architect','an architect'] },
-    { id:'sq8', q:'In a university, what do we call a piece of written work submitted for assessment?', a:['assignment','an assignment','essay','an essay','paper'] }
+    { id:'ASQ0001', q:'What do we call the frozen form of water?', a:['ice'] },
+    { id:'ASQ0002', q:'If you want to borrow a book from a library, which member of staff do you ask?', a:['librarian','the librarian'] },
+    { id:'ASQ0003', q:'What instrument does a doctor use to listen to a patient’s heartbeat?', a:['stethoscope','a stethoscope'] },
+    { id:'ASQ0004', q:'Which meal do people normally eat in the morning?', a:['breakfast'] },
+    { id:'ASQ0005', q:'What do we call the scientific study of the earth’s physical structure?', a:['geology'] },
+    { id:'ASQ0006', q:'If a lecture starts at nine o’clock and lasts ninety minutes, at what time does it end?', a:['ten thirty','10:30','half past ten','1030'] },
+    { id:'ASQ0007', q:'What is the person called who draws the plans for a new building?', a:['architect','an architect'] },
+    { id:'ASQ0008', q:'In a university, what do we call a piece of written work submitted for assessment?', a:['assignment','an assignment','essay','an essay','paper'] }
   ]
 },
 
 {
-  id:'sgd', section:'speaking', kind:'speak', name:'Summarize Group Discussion',
+  id:'sgd', prefix:'SGD', section:'speaking', kind:'speak', name:'Summarize Group Discussion',
   brief:'Listen to three speakers discuss a topic, then summarize it aloud. 10 s to prepare, 2 min to record.',
   scores:'Listening + Speaking', prep:10, rec:120, audio:true, transcript:true,
   rubric:[{ name:'Content', max:6 }],
@@ -633,9 +634,9 @@ const TASKS = [
         'Attribute the views. The top band rewards expanding on each speaker’s contribution, so name who argued what rather than merging it all into one voice.',
         'Keep your own opinion out of it. You are reporting the discussion, not joining it.',
         'The recording runs up to three minutes and plays once, with no transcript. Take notes as it goes — in the test centre you get an erasable whiteboard.',
-        'There is no word limit, only the clock. Start speaking as soon as the microphone opens; more than three seconds of silence ends the recording.'],
+        'There is no word limit, only the clock. Start within 7 seconds of the microphone opening, and once you have started, do not pause for more than 3 seconds — either ends the recording.'],
   items:[
-    { id:'gd1', title:'Should lectures be recorded?',
+    { id:'SGD0001', title:'Should lectures be recorded?',
       turns:[
         { who:'Priya', sex:'f', text:'I’ll start, since I proposed it. Recording every lecture is basic accessibility. Students with caring responsibilities, or a disability, or a job, cannot always be in the room at eleven on a Tuesday, and a recording costs the department nothing once the system is installed.' },
         { who:'Daniel', sex:'m', text:'Nothing except attendance. Our own figures showed a twenty per cent drop in the term after we started recording, and attendance correlates with attainment. I’m not against access, I’m against pretending the trade-off does not exist.' },
@@ -650,7 +651,7 @@ const TASKS = [
             'group converges on a delayed release, about a week',
             'Mei closes by calling for proper measurement'],
       model:'The group discussed whether university lectures should be recorded. Priya argued for it on accessibility grounds, pointing out that students with jobs, disabilities or caring responsibilities cannot always attend, and that recording costs almost nothing once installed. Daniel resisted, citing a twenty per cent fall in attendance and the link between attendance and attainment. Mei reframed the disagreement, arguing that the correlation does not establish causation and that recordings help most when used for revision rather than as a substitute. The three converged on releasing recordings after a delay of about a week, with Mei adding that the effect should be measured properly rather than inferred.' },
-    { id:'gd2', title:'Funding basic research',
+    { id:'SGD0002', title:'Funding basic research',
       turns:[
         { who:'Tomas', sex:'m', text:'The pressure to show impact within five years is quietly destroying basic research. The work that eventually mattered most — the laser, the web, mRNA — had no visible application when it was funded.' },
         { who:'Anneke', sex:'f', text:'That argument gets made a lot, and I notice it is always made with hindsight. For every laser there are a thousand lines of enquiry that led nowhere, and we never hear about those. Public money has to be accountable to someone.' },
@@ -667,7 +668,7 @@ const TASKS = [
   ]
 },
 {
-  id:'rts', section:'speaking', kind:'speak', name:'Respond to a Situation',
+  id:'rts', prefix:'RTS', section:'speaking', kind:'speak', name:'Respond to a Situation',
   brief:'Hear and read an everyday situation, then respond appropriately. 10 s to prepare, 40 s to record.',
   scores:'Speaking', prep:10, rec:40, audio:true, transcript:true, showPrompt:true,
   rubric:[{ name:'Content', max:6 }],
@@ -676,17 +677,17 @@ const TASKS = [
         'Match the register to the person addressed. A tutor, landlord or member of staff takes a formal register; a classmate or friend takes an informal one, and appropriacy to the context carries marks.',
         'Do not just restate the prompt. The top band rewards going beyond its language with a developed, persuasive response.',
         'Aim for about 30–35 seconds of solid content rather than stretching to fill all 40. Stop cleanly instead of trailing off.',
-        'Start speaking as soon as the microphone opens. More than three seconds of silence ends the recording.'],
+        'Start within 7 seconds of the microphone opening, and once you have started, do not pause for more than 3 seconds — either ends the recording.'],
   items:[
-    { id:'rt1',
+    { id:'RTS0001',
       text:'You borrowed a textbook from a classmate and spilled coffee on it, staining several pages. You are returning it to her today. What do you say?',
       keys:['acknowledge the damage plainly, without burying it','apologise sincerely','offer a concrete remedy — replace it, or pay for it','acknowledge the inconvenience to her','keep the register friendly but accountable'],
       model:'Hi Sara, I need to own up to something before I hand this back. I spilled coffee on it while I was working on Thursday, and a few of the pages near the middle are stained. I am really sorry — it was careless of me, and I know you need it for the exam. I have already found the same edition online and I would like to order you a replacement copy, or just transfer you what it costs, whichever is easier. In the meantime, if you need to read those chapters this week, take my notes on them. Again, I am sorry about this.' },
-    { id:'rt2',
+    { id:'RTS0002',
       text:'Your partner on a group assignment has not contributed anything with three days left before the deadline. You need to raise it with him directly. What do you say?',
       keys:['raise the problem directly but without hostility','state the specific facts — what is outstanding, how long is left','ask for his side before assuming','propose a concrete split and a deadline','name the next step if nothing changes'],
       model:'Ravi, can we talk about the assignment for a minute? We are three days out and the methods section is still empty, which is the part we agreed you would take. I wanted to check in before I assume anything — is something going on that has got in the way? If you are able to get it done, I would need a draft by Friday morning so I have time to fold it into the rest. If you are not, tell me now and I will write it myself, but then I do think we need to flag the split to the tutor. I would much rather sort it out between us.' },
-    { id:'rt3',
+    { id:'RTS0003',
       text:'You have been ill for a week and cannot finish an essay due tomorrow. You are speaking to your tutor to ask for an extension. What do you say?',
       keys:['open politely and state the request clearly','give the reason concisely, without over-explaining','show what you have already done','propose a specific new date','offer evidence or ask what the process requires'],
       model:'Good morning, Dr Whelan, do you have a moment? I wanted to ask about the essay due tomorrow. I have been ill since last Monday and I have not been able to work on it properly — I have the reading done and an outline, but the writing is only about a third finished. I would like to ask for an extension of one week, until the fourteenth, which I am confident would be enough. I can get a note from the health centre if that is needed, and I am happy to follow whatever the formal process is. I did not want to just miss the deadline without speaking to you first.' }
@@ -695,46 +696,46 @@ const TASKS = [
 
 /* ---------------- WRITING ---------------- */
 {
-  id:'swt', section:'writing', kind:'swt', name:'Summarize Written Text',
+  id:'swt', prefix:'SWT', section:'writing', kind:'swt', name:'Summarize Written Text',
   brief:'One single sentence of 5-75 words. 10 minutes.',
   scores:'Reading + Writing', time:600,
   tips:['It must be ONE sentence. One full stop, at the very end - a second full stop scores zero for form regardless of content.',
         'Aim for 30-45 words. Under 5 or over 75 also scores zero.',
         'Join the main ideas with "although", "which", "while" or a semicolon rather than listing them with "and".'],
   items:[
-    { id:'sw1', title:'The night-shift economy',
+    { id:'SWT0001', title:'The night-shift economy',
       passage:'The idea that a city never sleeps is barely a century old. Before cheap artificial light, most economic activity stopped at dusk for the simple reason that it could not continue. Gas lighting in the nineteenth century, and electric lighting after it, decoupled work from daylight and made the night shift possible. Factories that had been idle for half of every day could run continuously, and the capital tied up in machinery began to earn its keep around the clock.\n\nThe consequences went well beyond the factory gate. A workforce awake at three in the morning needed transport, food and policing, so the night shift propagated outwards into services that had no industrial reason to exist after dark. Within a generation, entire supporting economies had grown up around the simple fact that some people were now awake when their grandparents had been asleep.\n\nThe costs, however, were displaced rather than avoided. Epidemiological work over the past forty years has consistently linked long-term night work to disrupted circadian rhythms, elevated cardiovascular risk and higher rates of certain cancers. The gains in productive capacity were real, but they were purchased partly with the health of the people who kept the lights on, and that bill has never appeared on any balance sheet.',
       model:'Although cheap artificial light decoupled work from daylight and allowed factories and the service economies around them to operate continuously, raising productive capacity, the resulting night work has been consistently linked to disrupted circadian rhythms and serious long-term health costs that were never counted.' },
-    { id:'sw2', title:'Why languages lose speakers',
+    { id:'SWT0002', title:'Why languages lose speakers',
       passage:'Linguists estimate that of the roughly seven thousand languages spoken today, close to half will have no native speakers by the end of this century. The mechanism of loss is rarely dramatic. Languages seldom disappear because their last speaker dies in isolation; they disappear because a generation of parents makes a rational decision not to pass them on.\n\nThat decision is usually made under pressure. Where schooling, employment and government are conducted in a dominant language, fluency in it is the price of participation, and the minority language comes to be associated with the very disadvantage that families are trying to escape. Children raised in this environment typically become passive bilinguals: they understand the older language but answer in the newer one, and their own children hear it only as background.\n\nRevitalisation efforts that ignore this economic logic tend to fail. Dictionaries and archives preserve a record, but a language survives only if it retains a domain in which it is genuinely useful. The most successful programmes, in Wales, in New Zealand and among the Hawaiian community, have therefore worked by creating such domains deliberately - immersion schooling, broadcasting and public administration - so that speaking the language is once again the practical choice rather than the sentimental one.',
       model:'Nearly half of the world’s languages face extinction not through sudden loss but because parents under economic and educational pressure stop transmitting them, which is why successful revitalisation depends less on archives than on deliberately creating domains such as immersion schooling and broadcasting where the language is practically useful.' }
   ]
 },
 {
-  id:'essay', section:'writing', kind:'essay', name:'Write Essay',
+  id:'essay', prefix:'WE', section:'writing', kind:'essay', name:'Write Essay',
   brief:'200-300 words arguing a position. 20 minutes.',
   scores:'Writing', time:1200,
   tips:['Five paragraphs: introduction with a clear position, two body paragraphs each with one reason plus one concrete example, a concession, and a conclusion.',
         'Stay between 200 and 300 words. Below 120 or above 380 scores zero regardless of quality.',
         'Spend the last two minutes rereading for articles, subject-verb agreement and plurals - spelling and grammar are separately scored traits.'],
   items:[
-    { id:'es1', prompt:'Some people believe that universities should only admit students on the basis of academic results, while others argue that broader factors such as background, interests and character should also be considered. Discuss both views and give your own opinion.',
+    { id:'WE0001', prompt:'Some people believe that universities should only admit students on the basis of academic results, while others argue that broader factors such as background, interests and character should also be considered. Discuss both views and give your own opinion.',
       plan:['Position stated in the first paragraph, not withheld until the conclusion.','Body 1: the case for pure academic selection - transparency, comparability, resistance to manipulation.','Body 2: the case for broader criteria - unequal preparation, predictive weakness of a single exam, institutional purpose.','Concession then resolution: a weighted model, with worked examples such as contextual admissions.','Conclusion that answers the question rather than summarising the essay.'] },
-    { id:'es2', prompt:'The increasing use of automation and artificial intelligence in the workplace will do more harm than good to employees. To what extent do you agree or disagree?',
+    { id:'WE0002', prompt:'The increasing use of automation and artificial intelligence in the workplace will do more harm than good to employees. To what extent do you agree or disagree?',
       plan:['State the degree of agreement precisely in the introduction - "largely disagree" is stronger than a fence-sit.','Body 1: which tasks are displaced and which are augmented; name a sector.','Body 2: distributional effect - who bears the cost, retraining, wage polarisation.','Address the strongest counter-argument honestly before dismissing it.','Conclusion tied to policy rather than technology.'] }
   ]
 },
 
 /* ---------------- READING ---------------- */
 {
-  id:'rw_fib', section:'reading', kind:'rwfib', name:'Fill in the Blanks (Dropdown)',
+  id:'rw_fib', prefix:'RWFIB', section:'reading', kind:'rwfib', name:'Fill in the Blanks (Dropdown)',
   brief:'Choose the right word for each gap from a dropdown.',
   scores:'Reading + Writing',
   tips:['Read the whole sentence past the gap before choosing - collocation and grammar usually decide it, not meaning alone.',
         'Check what the word must be: noun, verb, adjective? That eliminates two options immediately.',
         'Each correct gap earns a point on its own, so never leave one blank.'],
   items:[
-    { id:'rw1', title:'Peer review',
+    { id:'RWFIB0001', title:'Peer review',
       parts:['Peer review is often described as the gold standard of science, but the practice is more recent and more ',
              ' than that phrase suggests. Formal refereeing became routine at most journals only in the middle of the twentieth century, and studies have repeatedly shown that reviewers ',
              ' poorly with one another when asked to judge the same manuscript. Its defenders argue that the system is not meant to guarantee truth but to filter out work that is obviously ',
@@ -748,7 +749,7 @@ const TASKS = [
            'Collocation settles this. You agree WITH one another; you do not differ, compete or argue “poorly with” anyone. “agree poorly with one another” is the only phrase English allows here.',
            'The defence being described is filtering out bad science — “not meant to guarantee truth but to filter out”. Unpopular, lengthy or expensive work is not what a referee screens for.',
            'Idiom: “on that measure” means by that standard. “on that account” exists, but means for that reason, which does not follow from “more modest”.'] },
-    { id:'rw2', title:'The economics of vaccination',
+    { id:'RWFIB0002', title:'The economics of vaccination',
       parts:['Vaccination produces benefits that spill beyond the individual who receives it, which is why economists treat it as a classic ',
              ' good. Once enough of a population is immune, transmission slows and even the unvaccinated are ',
              ' protected. Left to the market, however, individuals weigh only their own costs and benefits, so uptake tends to settle ',
@@ -765,14 +766,14 @@ const TASKS = [
   ]
 },
 {
-  id:'mcq_multi_r', section:'reading', kind:'mcqm', name:'Multiple Choice, Multiple Answers',
+  id:'mcq_multi_r', prefix:'MCMAR', section:'reading', kind:'mcqm', name:'Multiple Choice, Multiple Answers',
   brief:'More than one option is correct. Wrong choices cancel out right ones.',
   scores:'Reading',
   tips:['Choose only what you can point to in the text. A wrong tick subtracts a mark, so two confident answers beat four hopeful ones.',
         'Options that overstate - "always", "proves", "all" - are usually the distractors.',
         'The number of correct options is not given. Two is the most common.'],
   items:[
-    { id:'rm1',
+    { id:'MCMAR0001',
       passage:'Attempts to measure the economic value of unpaid domestic work run into a definitional problem before they reach a statistical one. National accounts were designed to capture market transactions, and household labour produces no invoice. The conventional workaround is to price the hours at what it would cost to hire someone to do the same tasks, a method that yields figures equivalent to between a quarter and a half of measured GDP in most wealthy countries. Critics point out that this replacement-cost approach flatters the result, since it values an hour of a parent’s childcare at the wage of a professional childminder while ignoring that the two activities differ in quality, motivation and joint production - a parent cooks dinner and supervises homework at once. Yet the alternative, valuing the hours at the earnings the carer forgoes, produces the perverse conclusion that the same load of laundry is worth more when a surgeon does it. Neither method is defensible in isolation, and statistical agencies that publish satellite accounts now generally report both.',
       q:'Which of the following are stated in the passage?',
       o:['Household labour is excluded from conventional national accounts because it generates no market transaction.',
@@ -788,7 +789,7 @@ const TASKS = [
         'Wrong. The passage states they differ \u2014 the two activities \u201cdiffer in quality, motivation and joint production\u201d. This option reverses the sentence it is built from.'
       ],
       a:[0,1,2] },
-    { id:'rm2',
+    { id:'MCMAR0002',
       passage:'The archaeology of the Silk Roads has been reshaped less by spectacular finds than by unglamorous laboratory work. Isotope analysis of human remains now allows researchers to distinguish between people who grew up where they were buried and those who arrived later in life, and the results have been consistently surprising. At several oasis sites in the Tarim Basin, a majority of the interred individuals turn out to be locals, not the cosmopolitan traders of popular imagination. What moved along these routes, it seems, was goods and ideas rather than large numbers of people; merchants typically worked a single leg of the journey and handed cargo onward, so that a bolt of silk might change hands a dozen times between workshop and buyer without any individual travelling the full distance. This relay structure has consequences for how we read the spread of religion and technology along the same corridors, since an idea passed through twelve intermediaries is rarely the idea that set out.',
       q:'Which of the following can be concluded from the passage?',
       o:['Isotope analysis can distinguish lifelong residents from later arrivals at a burial site.',
@@ -807,14 +808,14 @@ const TASKS = [
   ]
 },
 {
-  id:'reorder', section:'reading', kind:'reorder', name:'Reorder Paragraph',
+  id:'reorder', prefix:'RP', section:'reading', kind:'reorder', name:'Reorder Paragraph',
   brief:'Put the sentences back into their original order.',
   scores:'Reading',
   tips:['Find the independent opener first: it names its subject in full and contains no backward reference.',
         'Chain the rest on pronouns, "this", "such", "the latter" and repeated nouns - each one points at the sentence before it.',
         'Scoring is by adjacent pair, so fixing one link can earn a mark even if the whole order is wrong.'],
   items:[
-    { id:'ro1', order:[
+    { id:'RP0001', order:[
       'The Antikythera mechanism was recovered in 1901 from a Roman-era shipwreck off a small Greek island.',
       'For decades it sat in a museum as an unremarkable lump of corroded bronze, catalogued and largely ignored.',
       'Only when X-ray imaging revealed more than thirty interlocking gears did its true character become clear.',
@@ -825,7 +826,7 @@ const TASKS = [
            '\u201cOnly when\u201d answers the neglect just described. This is the turn from \u201clargely ignored\u201d to discovery.',
            '\u201cIt was an analogue computer\u201d delivers the \u201ctrue character\u201d that the previous sentence announced but withheld.',
            'The closer. It steps back to place the object in history, and nothing could follow it.'] },
-    { id:'ro2', order:[
+    { id:'RP0002', order:[
       'Bees returning to the hive perform a looping movement on the vertical comb that Karl von Frisch named the waggle dance.',
       'The angle of the straight run relative to gravity encodes the direction of the food source in relation to the sun.',
       'Its duration, meanwhile, corresponds closely to the distance the forager has flown.',
@@ -839,14 +840,14 @@ const TASKS = [
   ]
 },
 {
-  id:'r_fib', section:'reading', kind:'rfib', name:'Fill in the Blanks (Drag and Drop)',
+  id:'r_fib', prefix:'RFIB', section:'reading', kind:'rfib', name:'Fill in the Blanks (Drag and Drop)',
   brief:'Drop words from the bank into the gaps. There are more words than gaps.',
   scores:'Reading',
   tips:['Work out the part of speech each gap needs before you look at the bank.',
         'Do the gaps you are sure of first; each one you fill shrinks the bank for the rest.',
         'The extra words are chosen to look plausible in isolation - test each candidate in the full sentence.'],
   items:[
-    { id:'rf1', title:'Antarctic ice cores',
+    { id:'RFIB0001', title:'Antarctic ice cores',
       parts:['Ice cores from the Antarctic plateau contain air bubbles that were ',
              ' from the atmosphere at the moment the snow compacted. Because the layers accumulate annually, they can be counted like tree rings, giving a continuous ',
              ' of atmospheric composition reaching back more than eight hundred thousand years. The record shows carbon dioxide oscillating within a narrow band through glacial cycles, then rising ',
@@ -858,7 +859,7 @@ const TASKS = [
            '\u201ccontinuous\u201d and \u201creaching back more than eight hundred thousand years\u201d both want a noun meaning an unbroken account. A record reaches back; a distance does not.',
            'Set against the narrow band of the glacial cycles, the industrial-era rise is the exception. \u201cgradually\u201d would describe the oscillation it is being contrasted with.',
            'The sentence dismisses non-human explanations, which is what makes the departure significant. \u201cartificial\u201d inverts the argument entirely.'] },
-    { id:'rf2', title:'Placebo in clinical trials',
+    { id:'RFIB0002', title:'Placebo in clinical trials',
       parts:['A trial is described as double-blind when neither the participants nor the clinicians assessing them know who has received the active ',
              '. The design exists because expectation alone can produce physiological change, and because assessors unconsciously ',
              ' ambiguous results in the direction they hope for. Blinding is harder to maintain than it sounds: a drug with a distinctive side effect will ',
@@ -873,14 +874,14 @@ const TASKS = [
   ]
 },
 {
-  id:'mcq_single_r', section:'reading', kind:'mcqs', name:'Multiple Choice, Single Answer',
+  id:'mcq_single_r', prefix:'MCSAR', section:'reading', kind:'mcqs', name:'Multiple Choice, Single Answer',
   brief:'One correct option. No penalty for a wrong guess.',
   scores:'Reading',
   tips:['The question usually asks for the author’s purpose or tone, not a fact. Answer the question that was asked.',
         'Distractors are typically true statements that are not the answer. Truth is not enough - it must be responsive.',
         'There is no negative marking here, so always select something.'],
   items:[
-    { id:'rs1q',
+    { id:'MCSAR0001',
       passage:'It is tempting to read the collapse of the Norse settlement in Greenland as a straightforward parable of environmental mismanagement: a farming people arrive, overgraze a fragile landscape, refuse to adopt Inuit techniques, and starve as the climate cools. The evidence is less obliging. Midden analysis shows that the Norse diet shifted substantially towards marine resources over the settlement’s five centuries, which is hardly the behaviour of a community incapable of adaptation. What changed decisively in the fifteenth century was not the weather but the market: the European demand for walrus ivory, on which the colony’s trade depended, collapsed when elephant ivory became available through expanding African routes. A settlement that had been marginal but viable as a trading outpost became simply marginal.',
       q:'What is the author’s main purpose in this passage?',
       o:['To demonstrate that climate change had no role in the fate of the Norse settlement.',
@@ -894,7 +895,7 @@ const TASKS = [
         'True but not the purpose. The diet detail is evidence inside the argument, not the reason the passage was written. Ask what the paragraph is doing, not what it mentions.'
       ],
       a:1 },
-    { id:'rs2q',
+    { id:'MCSAR0002',
       passage:'Every introductory statistics course warns that correlation does not imply causation, and every working researcher knows the warning is insufficient. The harder problem is that the absence of correlation does not rule causation out either. Where two causal pathways operate in opposite directions - a drug that both reduces inflammation and suppresses appetite, say - their effects on an outcome can cancel, leaving a correlation indistinguishable from zero in the aggregate while a real and clinically significant mechanism operates in each direction. This is why methodologists increasingly insist that a causal question be stated as an explicit model before the data are examined, rather than inferred from whatever associations the data happen to display.',
       q:'The example of the drug is used primarily to illustrate',
       o:['how side effects complicate the approval of new medicines.',
@@ -913,32 +914,32 @@ const TASKS = [
 
 /* ---------------- LISTENING ---------------- */
 {
-  id:'sst', section:'listening', kind:'sst', name:'Summarize Spoken Text',
+  id:'sst', prefix:'SST', section:'listening', kind:'sst', name:'Summarize Spoken Text',
   brief:'Listen, then write a 50-70 word summary. 10 minutes.',
   scores:'Listening + Writing', time:600, audio:true,
   tips:['Stay inside 50-70 words for the full form mark. 40-49 or 71-100 words still earns 1 of 2; outside that it is zero.',
         'Note the structure while listening - claim, evidence, qualification - rather than individual words.',
         'Two or three sentences is normal here; unlike the written summary, it does not have to be one.'],
   items:[
-    { id:'ss1', voice:'m', title:'Lecture: why cities keep flooding',
+    { id:'SST0001', voice:'m', title:'Lecture: why cities keep flooding',
       text:'One of the counter-intuitive findings in urban hydrology is that flood damage has risen fastest in cities that have invested most heavily in flood defence. The explanation is behavioural rather than hydrological, and it has a name: the levee effect. When a city builds a substantial embankment, the land behind it is reclassified as safe, insurance becomes cheaper, and development follows. Twenty years later the floodplain that was sparsely occupied is dense with housing and infrastructure. The defence has genuinely reduced the frequency of flooding, but it has enormously increased the value of what is exposed when a flood does exceed the design threshold. And because these structures are built to a specified return period, exceedance is not a failure of engineering, it is an expected event. The policy implication that hydrologists draw is not that defences should not be built, but that they must be paired with restrictions on what may be built behind them - a condition that is politically far harder to sustain than the concrete itself.',
       keys:['flood damage rises fastest where defences are strongest','the levee effect: protection encourages development on floodplains','defences reduce flood frequency but raise exposed value','exceedance is expected, not engineering failure','defences need paired development restrictions, which are politically hard'],
       model:'The lecturer described the levee effect, in which building flood defences makes the land behind them appear safe, encouraging dense development on the floodplain. Although defences reduce how often flooding occurs, they sharply increase the value exposed when a flood exceeds the design threshold, which is an expected event rather than a failure. He concluded that defences must be paired with restrictions on development, which is politically difficult.' },
-    { id:'ss2', voice:'f', title:'Lecture: the replication problem',
+    { id:'SST0002', voice:'f', title:'Lecture: the replication problem',
       text:'In two thousand and fifteen a large collaboration attempted to repeat one hundred published psychology experiments using the original materials and, wherever possible, the original authors’ advice. Fewer than forty per cent produced a statistically significant result in the same direction, and the average effect size was roughly half the published figure. It would be a mistake to read this as evidence of widespread fraud. The far more mundane explanation is a set of incentives that reward novelty over verification. Journals prefer surprising positive findings, hiring committees count publications, and a researcher with flexibility over which measures to report and when to stop collecting data can arrive at a significant result without ever consciously cheating. The reforms that followed target the incentives rather than the individuals: pre-registration of hypotheses, mandatory data sharing, and registered reports in which a journal commits to publishing on the basis of the method, before the result is known. Early evidence suggests these measures work, though they have spread unevenly across disciplines.',
       keys:['replication of 100 psychology studies','under 40% replicated; effects about half the size','cause is incentives, not fraud','novelty rewarded over verification; flexible analysis','reforms: pre-registration, data sharing, registered reports','uneven uptake across disciplines'],
       model:'The speaker reported a large replication project in which fewer than forty per cent of one hundred psychology experiments reproduced the original significant result, with effects around half the published size. She argued that the cause is not fraud but incentives that reward novelty and allow flexible analysis. Reforms such as pre-registration, data sharing and registered reports target those incentives, though uptake varies by discipline.' }
   ]
 },
 {
-  id:'l_mcq_multi', section:'listening', kind:'lmcqm', name:'Multiple Choice, Multiple Answers',
+  id:'l_mcq_multi', prefix:'MCMAL', section:'listening', kind:'lmcqm', name:'Multiple Choice, Multiple Answers',
   brief:'Listen, then select every correct option. Wrong choices cancel out right ones.',
   scores:'Listening', audio:true,
   tips:['Read the options before the audio starts. You then listen for confirmation rather than meaning.',
         'Mark only what you actually heard stated. Negative marking punishes guessing.',
         'Distractors often use a word from the recording in a claim the speaker did not make.'],
   items:[
-    { id:'lm1', text:'Before we break, a word about the field trip, because every year somebody turns up without the right kit and every year somebody loses marks for the same avoidable reason. We leave from the science car park at seven, not from the main gate, and the coach will not wait. Bring waterproofs whatever the forecast says, because the site is exposed and we will be out for most of the day regardless of the weather. Now, a note on how we assess the trip. There are three components and they are weighted unequally. The field notebook is worth forty per cent, and I will collect it on the last morning, not afterwards, so write it up each evening. The group presentation is thirty per cent and is marked as a group, with no individual adjustment, so choose your collaborators carefully. The remaining thirty per cent is the individual reflective report, due two weeks after we return. One thing that catches people out every year: the notebook must include your raw measurements, not a tidied version. Transcribed notebooks lose marks. One more thing on referencing: if you draw on the site guide or on last year’s published survey, cite them properly in the reflective report. The notebook itself does not need a bibliography, but the report does, and the usual penalties apply.',
+    { id:'MCMAL0001', text:'Before we break, a word about the field trip, because every year somebody turns up without the right kit and every year somebody loses marks for the same avoidable reason. We leave from the science car park at seven, not from the main gate, and the coach will not wait. Bring waterproofs whatever the forecast says, because the site is exposed and we will be out for most of the day regardless of the weather. Now, a note on how we assess the trip. There are three components and they are weighted unequally. The field notebook is worth forty per cent, and I will collect it on the last morning, not afterwards, so write it up each evening. The group presentation is thirty per cent and is marked as a group, with no individual adjustment, so choose your collaborators carefully. The remaining thirty per cent is the individual reflective report, due two weeks after we return. One thing that catches people out every year: the notebook must include your raw measurements, not a tidied version. Transcribed notebooks lose marks. One more thing on referencing: if you draw on the site guide or on last year’s published survey, cite them properly in the reflective report. The notebook itself does not need a bibliography, but the report does, and the usual penalties apply.',
       q:'Which statements are consistent with the recording?',
       o:['The field notebook carries the largest single weighting.',
          'The group presentation receives a single mark for the whole group.',
@@ -946,7 +947,7 @@ const TASKS = [
          'Raw measurements must appear in the notebook.',
          'The notebook is collected two weeks after the group returns.'],
       a:[0,1,3] },
-    { id:'lm2', text:'For most of the last century, coastal protection meant concrete, and the engineering question was simply how high and how thick. That assumption has been unravelling for about twenty years, and mangroves are the main reason why. What makes the mangrove such an effective coastal defence is not its size but its architecture. The prop roots slow the water, and slowing the water is what causes suspended sediment to drop out of it. Over decades this builds elevation, so a healthy mangrove belt actually grows upward as sea level rises, which no sea wall can do. Field measurements put wave energy reduction at somewhere between fifty and seventy per cent across a hundred metres of forest. The catch is that this only holds where the sediment supply is intact. Dam a river upstream, cut off the sediment, and the same forest will drown in place within a few decades. There is also a cost argument that tends to settle the debate in practice: restoration typically runs at a fraction of the capital cost of a comparable barrier, and unlike a barrier it needs no maintenance budget once it establishes. Add the fisheries value and the carbon stored in the sediment, and the accounting stops being close. That is why a growing number of coastal authorities now budget for planting before they budget for concrete.',
+    { id:'MCMAL0002', text:'For most of the last century, coastal protection meant concrete, and the engineering question was simply how high and how thick. That assumption has been unravelling for about twenty years, and mangroves are the main reason why. What makes the mangrove such an effective coastal defence is not its size but its architecture. The prop roots slow the water, and slowing the water is what causes suspended sediment to drop out of it. Over decades this builds elevation, so a healthy mangrove belt actually grows upward as sea level rises, which no sea wall can do. Field measurements put wave energy reduction at somewhere between fifty and seventy per cent across a hundred metres of forest. The catch is that this only holds where the sediment supply is intact. Dam a river upstream, cut off the sediment, and the same forest will drown in place within a few decades. There is also a cost argument that tends to settle the debate in practice: restoration typically runs at a fraction of the capital cost of a comparable barrier, and unlike a barrier it needs no maintenance budget once it establishes. Add the fisheries value and the carbon stored in the sediment, and the accounting stops being close. That is why a growing number of coastal authorities now budget for planting before they budget for concrete.',
       q:'Which points does the speaker make?',
       o:['Mangroves can raise their own ground level over time.',
          'A hundred metres of mangrove can cut wave energy by 50 to 70 per cent.',
@@ -957,21 +958,21 @@ const TASKS = [
   ]
 },
 {
-  id:'hcs', section:'listening', kind:'mcqs', name:'Highlight Correct Summary',
+  id:'hcs', prefix:'HCS', section:'listening', kind:'mcqs', name:'Highlight Correct Summary',
   brief:'Listen, then choose the paragraph that best summarises the recording.',
   scores:'Listening + Reading', audio:true,
   tips:['Eliminate on errors of fact first, then on omissions - the best summary covers the whole recording, not just its opening.',
         'A summary that is entirely true but covers only one point is still wrong.',
         'Note the recording’s conclusion. The correct option almost always reflects it.'],
   items:[
-    { id:'hc1', text:'There is a persistent belief that the Great Wall of China is visible from space with the naked eye. It is not, and a moment’s thought about its dimensions explains why. The wall is long, but it is only a few metres wide and it is built from local materials that match the surrounding terrain in colour. From low earth orbit, resolving it unaided would be like spotting a human hair from two kilometres away against a background of the same shade. Astronauts have confirmed this repeatedly. What can be seen from orbit are things that contrast sharply with their surroundings: motorways, airports, greenhouse complexes, and above all the lights of cities at night. The lesson is that visibility from orbit is governed by contrast and width, not by historical importance.',
+    { id:'HCS0001', text:'There is a persistent belief that the Great Wall of China is visible from space with the naked eye. It is not, and a moment’s thought about its dimensions explains why. The wall is long, but it is only a few metres wide and it is built from local materials that match the surrounding terrain in colour. From low earth orbit, resolving it unaided would be like spotting a human hair from two kilometres away against a background of the same shade. Astronauts have confirmed this repeatedly. What can be seen from orbit are things that contrast sharply with their surroundings: motorways, airports, greenhouse complexes, and above all the lights of cities at night. The lesson is that visibility from orbit is governed by contrast and width, not by historical importance.',
       q:'Which summary best represents the recording?',
       o:['The Great Wall cannot be seen from orbit unaided because it is narrow and matches the colour of the surrounding land; what is visible from space depends on contrast and width rather than on a structure’s significance.',
          'Astronauts have often tried and failed to photograph the Great Wall of China from low earth orbit, and modern cameras are now used instead to record historical monuments from space.',
          'The Great Wall of China is one of the longest structures ever built, stretching for thousands of kilometres across varied terrain and constructed from materials gathered locally along its route.',
          'Cities, motorways and airports are visible from orbit at night, which shows how far human settlement has expanded since the Great Wall was first constructed.'],
       a:0 },
-    { id:'hc2', text:'I want to challenge the way we talk about note-taking in lectures. The assumption is that the purpose is to create a record you will later revise from. But the studies comparing longhand with laptop note-taking point somewhere else. Students typing notes produce far more words and capture the lecture more completely, yet they perform worse on conceptual questions a week later. Students writing by hand cannot keep up, so they are forced to select, compress and paraphrase in real time - and that processing, not the resulting document, is what produces the learning. The practical implication is uncomfortable for anyone who records lectures and promises to listen again later. The value was in the effort of the first pass.',
+    { id:'HCS0002', text:'I want to challenge the way we talk about note-taking in lectures. The assumption is that the purpose is to create a record you will later revise from. But the studies comparing longhand with laptop note-taking point somewhere else. Students typing notes produce far more words and capture the lecture more completely, yet they perform worse on conceptual questions a week later. Students writing by hand cannot keep up, so they are forced to select, compress and paraphrase in real time - and that processing, not the resulting document, is what produces the learning. The practical implication is uncomfortable for anyone who records lectures and promises to listen again later. The value was in the effort of the first pass.',
       q:'Which summary best represents the recording?',
       o:['Laptop users take more complete lecture notes than longhand writers, so students who type are generally better prepared for examinations.',
          'The benefit of note-taking lies in the mental processing required to select and paraphrase while listening, which is why slower longhand notes outperform more complete typed ones on later conceptual tests.',
@@ -981,21 +982,21 @@ const TASKS = [
   ]
 },
 {
-  id:'l_fib', section:'listening', kind:'lfib', name:'Fill in the Blanks (Type In)',
+  id:'l_fib', prefix:'LFIB', section:'listening', kind:'lfib', name:'Fill in the Blanks (Type In)',
   brief:'Type the missing word in each gap as you listen.',
   scores:'Listening + Writing',
   tips:['Type what you hear, exactly. Spelling is scored, and a near-miss earns nothing.',
         'Read ahead of the audio so you know what is coming and can type without looking back.',
         'If you miss one, leave it and keep pace with the recording rather than falling behind.'],
   items:[
-    { id:'lf1', title:'Bird migration',
+    { id:'LFIB0001', title:'Bird migration',
       parts:['Every autumn, billions of small birds cross whole continents at night, many of them on their first journey and with no older bird to follow. Migrating songbirds navigate using at least three separate systems. They read the position of the setting ',
              ', they use the pattern of stars around the celestial pole, and they can detect the earth’s magnetic ',
              '. When researchers place a bird in a planetarium and rotate the artificial sky, the bird reorients ',
              '. That is about as direct a demonstration as experimental biology ever ',
              '. The magnetic sense is still the least understood of the three.'],
       ans:['sun','field','accordingly','provides'] },
-    { id:'lf2', title:'Concrete',
+    { id:'LFIB0002', title:'Concrete',
       parts:['We tend to picture pollution as smoke from chimneys and exhaust from cars, but some of the biggest polluters sit quietly in plain sight. Concrete is the second most consumed substance on earth after ',
              '. Its manufacture accounts for roughly eight per cent of global carbon ',
              ', most of which comes not from the kiln fuel but from the chemistry of turning limestone into ',
@@ -1005,21 +1006,21 @@ const TASKS = [
   ]
 },
 {
-  id:'l_mcq_single', section:'listening', kind:'mcqs', name:'Multiple Choice, Single Answer',
+  id:'l_mcq_single', prefix:'MCSAL', section:'listening', kind:'mcqs', name:'Multiple Choice, Single Answer',
   brief:'Listen, then choose the one correct option.',
   scores:'Listening', audio:true,
   tips:['Listen for the speaker’s attitude, not only the facts - many questions ask what they imply.',
         'A contrast marker - "but", "however", "in fact" - usually signals the sentence the question is about.',
         'No penalty for a wrong answer, so never leave it blank.'],
   items:[
-    { id:'ls1', text:'I am often asked whether learning a second language as an adult is a waste of time, given how much easier it is for children. My answer is that the question is framed badly. Children are better at acquiring native-like pronunciation, that much is settled. But adults are considerably faster at the early stages - they already have literacy, they understand grammatical abstraction, and they can use explicit strategies a four-year-old cannot. What adults lack is not capacity but exposure. A child gets thousands of hours of unavoidable immersion. An adult gets three hours a week and a busy job.',
+    { id:'MCSAL0001', text:'I am often asked whether learning a second language as an adult is a waste of time, given how much easier it is for children. My answer is that the question is framed badly. Children are better at acquiring native-like pronunciation, that much is settled. But adults are considerably faster at the early stages - they already have literacy, they understand grammatical abstraction, and they can use explicit strategies a four-year-old cannot. What adults lack is not capacity but exposure. A child gets thousands of hours of unavoidable immersion. An adult gets three hours a week and a busy job.',
       q:'What is the speaker’s main point?',
       o:['Adults cannot achieve a native-like accent and should not attempt to.',
          'The real disadvantage adults face is limited exposure rather than reduced learning capacity.',
          'Children learn second languages faster than adults at every stage.',
          'Explicit grammar instruction is ineffective for adult learners.'],
       a:1 },
-    { id:'ls2', text:'A word about how I want your reading lists used. I do not expect you to read every item, and I would be worried if you tried. The list is a map of a conversation, not a queue of tasks. Start with the two items I have starred, because they disagree with each other, and everything else on the list is a move in the argument between them. If you can explain why those two authors reach different conclusions from broadly the same evidence, you have understood the seminar topic, whether or not you have opened anything else.',
+    { id:'MCSAL0002', text:'A word about how I want your reading lists used. I do not expect you to read every item, and I would be worried if you tried. The list is a map of a conversation, not a queue of tasks. Start with the two items I have starred, because they disagree with each other, and everything else on the list is a move in the argument between them. If you can explain why those two authors reach different conclusions from broadly the same evidence, you have understood the seminar topic, whether or not you have opened anything else.',
       q:'What does the lecturer want students to do with the reading list?',
       o:['Read every item on the list before the seminar.',
          'Focus on two contrasting starred texts and understand the disagreement between them.',
@@ -1029,53 +1030,53 @@ const TASKS = [
   ]
 },
 {
-  id:'smw', section:'listening', kind:'smw', name:'Select Missing Word',
+  id:'smw', prefix:'SMW', section:'listening', kind:'smw', name:'Select Missing Word',
   brief:'The recording is replaced by a beep at the end. Choose what was missing.',
   scores:'Listening', audio:true,
   tips:['The answer must fit the grammar of the sentence and the direction of the argument.',
         'Listen for the final contrast marker - it tells you whether the ending agrees or reverses.',
         'Eliminate options that repeat what was already said; the ending adds something.'],
   items:[
-    { id:'sm1', text:'Before you design your own questionnaire for the coursework, I want you to sit with a finding that has embarrassed this department more than once. The gap between what people tell a researcher and what they actually do is not a minor measurement problem; it is the central one. The pattern in the survey data is clear enough. Households told us they were willing to pay more for produce grown locally, and a large majority said environmental impact influenced their choices. At the checkout, however, the same households bought whichever option was',
+    { id:'SMW0001', text:'Before you design your own questionnaire for the coursework, I want you to sit with a finding that has embarrassed this department more than once. The gap between what people tell a researcher and what they actually do is not a minor measurement problem; it is the central one. The pattern in the survey data is clear enough. Households told us they were willing to pay more for produce grown locally, and a large majority said environmental impact influenced their choices. At the checkout, however, the same households bought whichever option was',
       o:['cheapest','organic','locally grown','best packaged'], a:0 },
-    { id:'sm2', text:'The history of the museum is, among other things, a history of what counts as prestige, and that has shifted more than once. For most of the twentieth century, museums competed on the size of their collections. The measure of a great institution was how much it held. That logic has now been quietly reversed, and the institutions attracting the most attention are those willing to give objects',
+    { id:'SMW0002', text:'The history of the museum is, among other things, a history of what counts as prestige, and that has shifted more than once. For most of the twentieth century, museums competed on the size of their collections. The measure of a great institution was how much it held. That logic has now been quietly reversed, and the institutions attracting the most attention are those willing to give objects',
       o:['back','away for free','a higher valuation','more storage space'], a:0 },
-    { id:'sm3', text:'Whenever somebody tells you that a new communication technology is destroying our manners, it is worth asking what the manners were before it arrived, and where they came from. It is worth remembering that the first users of the telephone were advised to shout into it, and that early etiquette guides debated whether it was rude to call someone without writing first. Every communication technology arrives without conventions, and those conventions have to be',
+    { id:'SMW0003', text:'Whenever somebody tells you that a new communication technology is destroying our manners, it is worth asking what the manners were before it arrived, and where they came from. It is worth remembering that the first users of the telephone were advised to shout into it, and that early etiquette guides debated whether it was rude to call someone without writing first. Every communication technology arrives without conventions, and those conventions have to be',
       o:['invented','abandoned','translated','purchased'], a:0 }
   ]
 },
 {
-  id:'hiw', section:'listening', kind:'hiw', name:'Highlight Incorrect Words',
+  id:'hiw', prefix:'HIW', section:'listening', kind:'hiw', name:'Highlight Incorrect Words',
   brief:'The transcript differs from the recording. Click every word that is wrong.',
   scores:'Listening + Reading', audio:true,
   tips:['Follow the text with your eyes at the speaker’s pace. If you lose your place you will miss the remaining errors.',
         'Every wrong click cancels a correct one, so click only what you clearly heard differ.',
         'Substituted words usually sound similar to the original - listen for the mismatch, not for nonsense.'],
   items:[
-    { id:'hi1',
+    { id:'HIW0001',
       spoken:'The domestication of the horse transformed warfare, trade and agriculture across the steppe. Genetic evidence now points to a single population in the lower Volga region as the source of nearly all modern domestic horses, spreading rapidly from around four thousand years ago.',
       shown: 'The domestication of the horse transformed warfare, trade and agriculture across the steppe. Genetic evidence now points to a single population in the lower Volga region as the source of nearly all modern domestic horses, spreading rapidly from around four hundred years ago.',
       errors:[40] },
-    { id:'hi2',
+    { id:'HIW0002',
       spoken:'Tidal power has one decisive advantage over wind and solar: it is entirely predictable. Engineers can say with confidence what a tidal barrage will generate on a particular afternoon in twenty years. The obstacle has always been cost, and the ecological damage to estuaries.',
       shown: 'Tidal power has one decisive advantage over wind and solar: it is entirely predictable. Engineers can say with confidence what a tidal barrage will generate on a particular morning in twenty years. The obstacle has always been cost, and the ecological damage to industries.',
       errors:[28,43] }
   ]
 },
 {
-  id:'wfd', section:'listening', kind:'wfd', name:'Write from Dictation',
+  id:'wfd', prefix:'WFD', section:'listening', kind:'wfd', name:'Write from Dictation',
   brief:'Listen once and type the sentence exactly. Every correct word scores.',
   scores:'Listening + Writing',
   tips:['Type every word you caught, even in the wrong order - scoring is word by word, not sentence by sentence.',
         'Write the content words first, then fill in the articles and prepositions around them.',
         'Check capitals and plurals before moving on; a missing "s" loses that word.'],
   items:[
-    { id:'wd1', text:'The university library provides access to a wide range of electronic journals.' },
-    { id:'wd2', text:'Students are advised to consult their tutor before changing their subject.' },
-    { id:'wd3', text:'Experimental results must be recorded immediately in the laboratory notebook.' },
-    { id:'wd4', text:'The department has announced a series of lectures on environmental policy.' },
-    { id:'wd5', text:'Financial support is available for postgraduates attending international conferences.' },
-    { id:'wd6', text:'All applications for extension must be submitted through the online portal.' }
+    { id:'WFD0001', text:'The university library provides access to a wide range of electronic journals.' },
+    { id:'WFD0002', text:'Students are advised to consult their tutor before changing their subject.' },
+    { id:'WFD0003', text:'Experimental results must be recorded immediately in the laboratory notebook.' },
+    { id:'WFD0004', text:'The department has announced a series of lectures on environmental policy.' },
+    { id:'WFD0005', text:'Financial support is available for postgraduates attending international conferences.' },
+    { id:'WFD0006', text:'All applications for extension must be submitted through the online portal.' }
   ]
 }
 ];
@@ -1156,6 +1157,7 @@ let LANG = 'en';
 try { if (localStorage.getItem(LANG_KEY) === 'zh') LANG = 'zh'; } catch(e){}
 
 const ZH = {
+"Transcript": "逐字稿",
 "Personal Introduction": "自我介紹（Personal Introduction）",
 "Read Aloud": "朗讀（Read Aloud）",
 "Repeat Sentence": "重述句子（Repeat Sentence）",
@@ -1222,12 +1224,12 @@ const ZH = {
 "Attribute the views. The top band rewards expanding on each speaker’s contribution, so name who argued what rather than merging it all into one voice.": "清楚歸屬觀點。最高分等級要求你展開每位講者的論述，所以要說出誰主張什麼，而不是把所有觀點混成同一個聲音。",
 "Keep your own opinion out of it. You are reporting the discussion, not joining it.": "不要加入自己的意見。你是在報告這場討論，而不是參與討論。",
 "The recording runs up to three minutes and plays once, with no transcript. Take notes as it goes — in the test centre you get an erasable whiteboard.": "錄音最長約三分鐘，只播放一次，沒有文字稿。邊聽邊做筆記——考場會提供可擦寫的白板。",
-"There is no word limit, only the clock. Start speaking as soon as the microphone opens; more than three seconds of silence ends the recording.": "沒有字數限制，只有時間限制。麥克風一開就開始說；靜默超過三秒錄音就會結束。",
+"There is no word limit, only the clock. Start within 7 seconds of the microphone opening, and once you have started, do not pause for more than 3 seconds — either ends the recording.": "沒有字數限制，只有時間限制。麥克風開啟後 7 秒內要開始說話，開始之後停頓不要超過 3 秒——兩者都會讓錄音結束。",
 "Accomplish the communication goal explicitly. If the situation calls for an apology and a remedy, say both out loud — implying them does not score.": "明確達成溝通目的。如果情境需要道歉並提出補救，兩者都要說出來——只是暗示不會得分。",
 "Match the register to the person addressed. A tutor, landlord or member of staff takes a formal register; a classmate or friend takes an informal one, and appropriacy to the context carries marks.": "語氣要符合說話對象。對導師、房東或職員要用正式語氣；對同學或朋友則用非正式語氣，而是否切合情境也會計分。",
 "Do not just restate the prompt. The top band rewards going beyond its language with a developed, persuasive response.": "不要只是重述題目。最高分等級要求你超越題目的用字，給出充實、具說服力的回應。",
 "Aim for about 30–35 seconds of solid content rather than stretching to fill all 40. Stop cleanly instead of trailing off.": "目標是約 30–35 秒的紮實內容，不必硬撐滿 40 秒。說完就乾脆結束，不要拖泥帶水。",
-"Start speaking as soon as the microphone opens. More than three seconds of silence ends the recording.": "麥克風一開就開始說。靜默超過三秒錄音就會結束。",
+"Start within 7 seconds of the microphone opening, and once you have started, do not pause for more than 3 seconds — either ends the recording.": "麥克風開啟後 7 秒內要開始說話，開始之後停頓不要超過 3 秒——兩者都會讓錄音結束。",
 "It must be ONE sentence. One full stop, at the very end - a second full stop scores zero for form regardless of content.": "必須只有「一個」句子。句號只能出現在最後——出現第二個句號，不論內容如何，格式分都是零分。",
 "Aim for 30-45 words. Under 5 or over 75 also scores zero.": "目標是 30–45 字。少於 5 字或超過 75 字同樣是零分。",
 "Join the main ideas with \"although\", \"which\", \"while\" or a semicolon rather than listing them with \"and\".": "用 \"although\"、\"which\"、\"while\" 或分號連接主要觀點，而不是用 \"and\" 一路列舉。",
@@ -1347,7 +1349,7 @@ const ZH = {
 "No microphone in this view, so nothing was captured. The timer still runs — speak aloud against it, then use the self-check below.": "此畫面無法使用麥克風，因此沒有錄到任何內容。計時仍會進行——請跟著時間大聲說出來，然後使用下方的自我檢查。",
 "Your recording": "你的錄音",
 "Recording is not supported in this view. The timer still runs — speak aloud against it.": "此畫面不支援錄音。計時仍會進行——請跟著時間大聲說出來。",
-"In the real test, more than three seconds of silence ends the recording. Here it only warns you.": "在正式考試中，靜默超過三秒錄音就會結束。這裡只會提醒你。",
+"In the real test, the recording stops if you have not started speaking within 7 seconds, or if you pause for more than 3 seconds once you have started. Here it only warns you.": "在正式考試中，若 7 秒內還沒開始說話，或開始說話後停頓超過 3 秒，錄音就會結束。這裡只會提醒你。",
 "this attempt": "本次作答",
 "estimated band": "預估分數",
 "on target": "達標",
@@ -1502,6 +1504,7 @@ const earlyZh = flag => (flag ? ' · 初步估計' : '');
 
 /* strings the app builds from numbers or names */
 const ZH_RULES = [
+  [/^ID ([A-Z]+\d{4})$/, m => '題號 ' + m[1]],
   [/^Item (\d+) of (\d+)$/, m => '第 ' + m[1] + ' 題，共 ' + m[2] + ' 題'],
   [/^(\d+) attempts? · best (\d+)$/, m => m[1] + ' 次練習 · 最佳 ' + m[2]],
   [/^based on (\d+)% of the section( · early estimate)?$/, m => '依據本部分 ' + m[1] + '% 的題型' + earlyZh(m[2])],
@@ -1524,8 +1527,11 @@ const ZH_RULES = [
   [/^Starting in (\d+)s$/, m => m[1] + ' 秒後開始'],
   [/^Signal detected, peaking at (\d+)% of full scale\. Play the clip back — if you can hear yourself clearly, you are ready for the timed tasks\.$/,
      m => '已偵測到訊號，最高達滿格的 ' + m[1] + '%。請播放錄音——若能清楚聽到自己的聲音，就可以開始計時練習了。'],
-  [/^You went quiet for about (\d+) seconds at one point\. In the real test, silence beyond three seconds ends the recording — keep talking, even if it means restating your last point\.$/,
-     m => '你曾經安靜了大約 ' + m[1] + ' 秒。在正式考試中，靜默超過三秒錄音就會結束——請持續說下去，即使只是重述上一個重點。'],
+  [/^You paused for about (\d+) seconds after you started speaking\. In the real test, a pause of more than three seconds ends the recording — keep talking, even if it means restating your last point\.$/,
+     m => '你開始說話後曾停頓大約 ' + m[1] + ' 秒。在正式考試中，停頓超過三秒錄音就會結束——請持續說下去，即使只是重述上一個重點。'],
+  [/^You took about (\d+) seconds to start speaking\. In the real test, the recording stops if you have not started within 7 seconds\.$/,
+     m => '你大約花了 ' + m[1] + ' 秒才開始說話。在正式考試中，若 7 秒內還沒開始說話，錄音就會結束。'],
+  [/^Start speaking — (\d+)s$/, m => '請開始說話——剩 ' + m[1] + ' 秒'],
   [/^(\d+) \/ (\d+) content marks$/, m => '內容分 ' + m[1] + ' / ' + m[2]],
   [/^(\d+) \/ (\d+) marks$/, m => m[1] + ' / ' + m[2] + ' 分'],
   [/^the question was: (.+)$/, m => '題目是：' + m[1]],
@@ -1555,7 +1561,7 @@ const ZH_RULES = [
 ];
 
 /* exam material is never touched by the dictionary */
-const NO_TR = '.prose,.hw,.chip,.rtext,.fig,.zh,.xlnote,.langs,.otext > div:first-child,[translate="no"]';
+const NO_TR = '.prose,.qstem,.hw,.chip,.rtext,.fig,.zh,.xlnote,.langs,.otext > div:first-child,[translate="no"]';
 const TR_ATTRS = ['placeholder', 'title', 'aria-label'];
 
 function trText(s){
@@ -1645,6 +1651,11 @@ function paintLangs(){
 }
 
 /* ---------- translate on demand: questions and explanations ---------- */
+/* Saved Traditional Chinese for every question, answer and transcript, keyed by the English
+   as zkey() normalises it, so every user sees the same translation. */
+const ZHC = {"Read the prompt, then introduce yourself. You might mention: your reasons for taking the test, your interests, your plans for future study, and why you want to study abroad.": "閱讀題目後介紹你自己。你可以提到：參加這項考試的原因、你的興趣、未來的求學計畫，以及你想出國留學的理由。","open with who you are and what you study or do": "開頭先說明你是誰、就讀或從事什麼","give one reason for taking the test": "說出一個參加考試的理由","name a concrete plan — a course, a country, a career": "提出一個具體的計畫——一門課程、一個國家或一種職業","finish a sentence rather than trailing off when time runs out": "時間快到時要把句子說完，而不是說到一半就停","speak at a natural pace, not a rehearsed gallop": "用自然的速度說話，而不是背稿式地一路趕","Coral reefs occupy less than one percent of the ocean floor, yet they shelter roughly a quarter of all marine species. That density earns them the name rainforests of the sea, and it is also what makes them fragile. A rise of one or two degrees can trigger bleaching, in which corals expel the algae that feed them.": "珊瑚礁佔海床面積不到百分之一，卻庇護了約四分之一的海洋物種。這樣的密度讓它們被稱為「海中的雨林」，也正是這點讓它們十分脆弱。水溫只要上升一、兩度就可能引發白化現象，也就是珊瑚排出供給它們養分的藻類。","The shipping container did more to shrink the world than any treaty of the same era. By standardising the box, ports could load a vessel in hours rather than days, and the cost of moving goods across an ocean fell so sharply that manufacturers stopped asking where their components were made and began asking only what they cost.": "貨櫃對縮短世界距離的影響，比同時代任何條約都大。由於貨櫃規格統一，港口裝載一艘船只需數小時而非數天，跨洋運貨的成本也急遽下降，使製造商不再追問零件產自何處，只在乎零件的價格。","The seminar on research methods has been moved to the main lecture theatre.": "研究方法研討課已改到主講堂舉行。","Students must submit their assignments before the end of next week.": "學生必須在下週結束前繳交作業。","The library extends its opening hours during the examination period.": "圖書館在考試期間會延長開放時間。","All laboratory equipment should be returned to the storage cupboard after use.": "所有實驗室設備使用後都應歸還至儲藏櫃。","Attendance at the first tutorial is compulsory for every new postgraduate.": "每位新入學的研究生都必須出席第一堂導修課。","all four countries increased": "四個國家的比例都有所增加","Brazil highest at 89% in 2023": "巴西最高，2023 年達 89%","Japan lowest at 26%": "日本最低，為 26%","Australia grew fastest, 14% to 39%": "澳洲成長最快，從 14% 增至 39%","Germany rose from 30% to 52%": "德國從 30% 上升到 52%","The bar chart compares the share of electricity generated from renewable sources in four countries in 2015 and 2023. Every country increased its share over the period. Brazil is by far the highest, rising from 74 per cent to 89 per cent, while Japan remains the lowest at 26 per cent. The sharpest growth is in Australia, where the share almost tripled from 14 to 39 per cent, and Germany moved from 30 to 52 per cent, crossing the halfway point. Overall, renewables expanded everywhere, but the gap between the leader and the laggard stayed wide.": "這張長條圖比較四個國家在 2015 年與 2023 年再生能源發電所占的比例。在這段期間，每個國家的比例都有所提升。巴西遙遙領先，從百分之七十四上升到百分之八十九，而日本仍然最低，為百分之二十六。成長最快的是澳洲，比例從百分之十四增加到百分之三十九，幾乎成長三倍；德國則從百分之三十升至百分之五十二，突破一半。整體而言，再生能源在各國都有所擴展，但領先者與落後者之間的差距依然很大。","downloads rose from 30 to 121": "下載量從 30 次增加到 121 次","visits fell from 42 to 23": "到館次數從 42 次降到 23 次","lines cross around 2015": "兩條線在 2015 年左右交會","sharp 2020 dip in visits to 12": "2020 年到館次數驟降至 12 次","visits recover only partially": "到館次數只部分回升","The line graph shows two measures of library use per student each year between 2014 and 2023. Electronic downloads climbed steadily from 30 to 121 per student, roughly a fourfold increase, whereas physical visits to the building declined from 42 to 23. The two lines cross early in the period, after which digital use dominates. Visits collapsed to a low of 12 in 2020 and then recovered only partially, never returning to their earlier level. Overall, the data suggest that students have substituted online access for time spent in the library itself.": "這張折線圖呈現 2014 年至 2023 年間，每位學生每年使用圖書館的兩項指標。電子資源下載量從每位學生 30 次穩定攀升至 121 次，約增加為四倍；而實際到館次數則從 42 次下降到 23 次。兩條線在這段期間的早期便已交會，之後以數位使用為主。到館次數在 2020 年跌至 12 次的低點，之後只部分回升，始終未恢復到先前的水準。整體而言，數據顯示學生已經以線上存取取代了實際待在圖書館的時間。","sleeping brain consolidates memory": "睡眠中的大腦會鞏固記憶","hippocampus replays to cortex in slow-wave sleep": "海馬迴在慢波睡眠中將經驗重播給大腦皮質","study: sleepers recalled 40% more": "研究：有睡覺的人多記住了 40%","effect breaks if slow-wave sleep interrupted": "慢波睡眠被打斷時，效果就會消失","all-nighters remove consolidation": "熬夜會剝奪記憶鞏固的過程","The lecturer explained that sleep is not downtime but an active stage of learning. During slow-wave sleep the hippocampus replays the day’s experiences to the cortex, which converts fragile memories into durable ones. She cited a study in which students who slept for eight hours after learning word pairs recalled about forty per cent more than those who stayed awake. The effect disappears when slow-wave sleep is disrupted, so her conclusion was that pulling an all-nighter removes the very process that would have consolidated the material.": "講者說明，睡眠並不是停機時間，而是學習的一個主動階段。在慢波睡眠期間，海馬迴會將白天的經驗重播給大腦皮質，把脆弱的記憶轉化為持久的記憶。她引用一項研究：學生在學習字詞配對後睡了八小時，記住的內容比保持清醒的學生多出約百分之四十。一旦慢波睡眠被打斷，這種效果就會消失，因此她的結論是：熬夜通宵會剝奪原本能鞏固所學內容的那個過程。","Sleep researchers used to treat the night as downtime, but we now know the sleeping brain is doing some of its hardest work. During slow-wave sleep, the hippocampus replays the day’s experiences to the cortex, and this replay is what turns a fragile memory into a durable one. In one well-known study, students who learned a list of word pairs and then slept for eight hours recalled about forty per cent more than students who stayed awake for the same interval. The effect is strongest for material that was deliberately learned, and it collapses when slow-wave sleep is interrupted. So the practical lesson for students is uncomfortable but clear: an all-night study session does not just tire you, it removes the very process that would have consolidated what you studied.": "睡眠研究人員過去把夜晚視為停機時間，但我們現在知道，睡眠中的大腦正在進行一些最艱鉅的工作。在慢波睡眠期間，海馬迴會將白天的經驗重播給大腦皮質，正是這種重播把脆弱的記憶轉化為持久的記憶。在一項知名研究中，學生學習一串字詞配對後睡了八小時，他們記住的內容比同樣時間保持清醒的學生多出約百分之四十。這種效果對刻意學習的材料最為明顯，而一旦慢波睡眠被打斷，效果就會瓦解。因此，給學生的實際教訓雖然令人不太舒服，但很清楚：通宵讀書不只是讓你疲累，更會剝奪原本能鞏固你所學內容的那個過程。","cities 3-7 degrees warmer than surroundings": "城市比周邊地區溫暖 3 至 7 度","asphalt and dark roofs store and release heat": "柏油和深色屋頂會儲存並釋放熱能","loss of vegetation removes evaporative cooling": "植被減少，失去了蒸散作用帶來的降溫效果","waste heat from cars and air conditioning": "汽車和冷氣排出的廢熱","raises power demand, ozone, health risk": "提高用電需求、臭氧與健康風險","remedies: reflective roofs, permeable surfaces, tree canopy": "解決方法：反光屋頂、透水鋪面、樹冠覆蓋","The talk was about the urban heat island effect. The lecturer said cities are typically three to seven degrees warmer than the surrounding countryside, and the gap widens at night. The main causes are material: asphalt and dark roofs absorb solar radiation and release it after sunset, vegetation loss removes evaporative cooling, and vehicles and air conditioning add waste heat. The consequences include higher peak electricity demand, more ground-level ozone, and health risks concentrated in the least leafy neighbourhoods. He ended with the remedies - reflective roofing, permeable surfaces and, most importantly, greater tree canopy cover.": "這場演講談的是都市熱島效應。講者表示，城市通常比周邊鄉村溫暖三到七度，到了夜晚差距還會擴大。主要成因來自材料：柏油和深色屋頂吸收太陽輻射並在日落後釋放出來，植被減少使蒸散作用的降溫效果消失，車輛和冷氣則增添了廢熱。其後果包括尖峰用電需求上升、地面臭氧增加，以及健康風險集中在綠地最少的社區。他最後提出解決方法——反光屋頂、透水鋪面，以及最重要的，增加樹冠覆蓋。","Anyone who has walked from a park into a city centre on a summer afternoon has felt the urban heat island. Cities run between three and seven degrees warmer than the countryside around them, and at night the gap can be wider still. The cause is mostly material. Asphalt and dark roofing absorb solar radiation through the day and release it slowly after sunset, while the loss of vegetation removes the cooling that evaporation from leaves would otherwise provide. Waste heat from vehicles and air conditioning adds a further increment. The consequences are not merely uncomfortable. Heat islands raise peak electricity demand, worsen ground-level ozone, and concentrate the health risk in exactly the neighbourhoods that have the fewest trees. The remedies are well understood: reflective roofing, permeable surfaces, and above all more canopy cover.": "任何在夏日午後從公園走進市中心的人，都感受過都市熱島效應。城市比周圍的鄉村溫暖三到七度，到了夜晚差距甚至更大。成因主要在於材料。柏油和深色屋頂在白天吸收太陽輻射，日落後再慢慢釋放；而植被的減少則讓原本由樹葉蒸散作用提供的降溫效果消失。車輛和冷氣排出的廢熱又使溫度進一步升高。其後果不只是令人不舒服而已。熱島會提高尖峰用電需求、加劇地面臭氧，並使健康風險恰恰集中在樹木最少的社區。解決方法眾所周知：反光屋頂、透水鋪面，以及最重要的——增加樹冠覆蓋。","What do we call the frozen form of water?": "水結冰後的形態叫做什麼？","If you want to borrow a book from a library, which member of staff do you ask?": "如果你想向圖書館借書，應該詢問哪一位工作人員？","What instrument does a doctor use to listen to a patient’s heartbeat?": "醫生用什麼儀器聽病人的心跳？","Which meal do people normally eat in the morning?": "人們通常在早上吃哪一餐？","What do we call the scientific study of the earth’s physical structure?": "研究地球物理構造的科學叫做什麼？","If a lecture starts at nine o’clock and lasts ninety minutes, at what time does it end?": "如果一堂講座九點開始，持續九十分鐘，幾點結束？","What is the person called who draws the plans for a new building?": "負責繪製新建築設計圖的人叫做什麼？","In a university, what do we call a piece of written work submitted for assessment?": "在大學裡，繳交給老師評分的書面作品叫做什麼？","Priya: recording is an accessibility issue and costs little": "Priya：錄影是無障礙的問題，而且成本很低","Daniel: attendance fell 20% and attendance correlates with attainment": "Daniel：出席率下降了 20%，而出席率與學業成績相關","Mei: correlation is not causation; recordings help as revision, not substitute": "Mei：相關不等於因果；錄影作為複習工具有幫助，但不能取代上課","group converges on a delayed release, about a week": "小組最後同意延後釋出錄影，大約一週後","Mei closes by calling for proper measurement": "Mei 最後呼籲要確實衡量效果","The group discussed whether university lectures should be recorded. Priya argued for it on accessibility grounds, pointing out that students with jobs, disabilities or caring responsibilities cannot always attend, and that recording costs almost nothing once installed. Daniel resisted, citing a twenty per cent fall in attendance and the link between attendance and attainment. Mei reframed the disagreement, arguing that the correlation does not establish causation and that recordings help most when used for revision rather than as a substitute. The three converged on releasing recordings after a delay of about a week, with Mei adding that the effect should be measured properly rather than inferred.": "小組討論了大學講座是否應該錄影。Priya 以無障礙為由表示支持，指出有工作、有身心障礙或需負擔照顧責任的學生不一定總能出席，而且系統一旦安裝完成，錄影幾乎不需任何成本。Daniel 則持反對意見，他引用出席率下降百分之二十的數據，以及出席率與學業成績之間的關聯。Mei 重新界定了這場爭論，她主張相關性並不能證明因果關係，而且錄影在用於複習而非取代上課時最有幫助。三人最後同意在延後大約一週後釋出錄影，Mei 並補充應該確實衡量其效果，而不是憑推測。","Priya: I’ll start, since I proposed it. Recording every lecture is basic accessibility. Students with caring responsibilities, or a disability, or a job, cannot always be in the room at eleven on a Tuesday, and a recording costs the department nothing once the system is installed.": "Priya：既然是我提議的，就由我先開始。為每堂講座錄影是基本的無障礙措施。需要照顧家人、有身心障礙或有工作的學生，不一定能在星期二十一點出現在教室，而且系統一旦裝好，錄影對系上來說根本不花錢。","Daniel: Nothing except attendance. Our own figures showed a twenty per cent drop in the term after we started recording, and attendance correlates with attainment. I’m not against access, I’m against pretending the trade-off does not exist.": "Daniel：除了出席率之外，確實不花錢。我們自己的數據顯示，開始錄影後的那個學期，出席率下降了百分之二十，而出席率與學業成績是相關的。我不是反對無障礙，我反對的是假裝這當中沒有取捨。","Mei: I think you’re both arguing about the wrong thing. The correlation Daniel cites does not tell us that watching a recording causes worse results — the students who stop attending may already have been struggling. What the evidence does show is that recordings help most when they are used for revision rather than as a substitute, so the question is how we design around that.": "Mei：我覺得你們兩個爭論的方向都錯了。Daniel 引用的相關性，並不能告訴我們看錄影會導致成績變差——不再出席的學生可能本來就已經跟不上了。證據真正顯示的是，錄影用於複習而不是取代上課時最有幫助，所以問題在於我們要如何針對這一點來設計。","Priya: Which points to making them available after a delay, say a week.": "Priya：那就表示可以延後一段時間再開放，比如說一週。","Daniel: I could live with that. It keeps the safety net without making the lecture optional.": "Daniel：這我可以接受。這樣既保留了安全網，又不會讓上課變成可有可無。","Mei: And we should measure it properly this time, rather than reading a correlation as a cause.": "Mei：而且這次我們應該確實衡量效果，而不是把相關性當成因果。","Tomas: short-term impact requirements damage basic research; laser, web, mRNA had no obvious application": "Tomas：短期影響力的要求會損害基礎研究；雷射、網際網路和 mRNA 當初都沒有明顯的應用","Anneke: the argument relies on hindsight and ignores dead ends; public money needs accountability": "Anneke：這個論點依賴事後諸葛，忽略了走進死胡同的研究；公帑必須有問責","Ruth: reframes accountability — judge competence and honest reporting, not marketable output": "Ruth：重新界定問責——評估研究是否執行得當、報告是否誠實，而不是有沒有可上市的成果","Tomas accepts: judge the process, not the jackpot": "Tomas 接受：評估過程，而不是看有沒有中大獎","Anneke concedes partly but wants a ring-fenced share for directed, urgent research": "Anneke 部分讓步，但希望保留一部分經費專門用於有方向、急迫的研究","The speakers debated how basic research should be funded and judged. Tomas argued that demanding impact within five years harms fundamental work, noting that the laser, the web and mRNA all had no visible application when funded. Anneke countered that this reasoning depends on hindsight and ignores the many lines of enquiry that lead nowhere, insisting public money must be accountable. Ruth reframed the question by asking what accountability should measure, proposing that grants be judged on competent execution and honest reporting rather than marketable output, since the latter measures luck. Tomas accepted that distinction, and Anneke agreed in part while arguing that a share of the budget should still be ring-fenced for urgent, directed problems.": "講者們辯論基礎研究應該如何資助與評估。Tomas 主張，要求在五年內展現影響力會傷害基礎研究，並指出雷射、網際網路和 mRNA 在獲得資助時都看不出任何應用。Anneke 反駁說，這種推論依賴事後諸葛，忽略了許多最終一無所獲的研究方向，並堅持公帑必須負起責任。Ruth 則重新界定問題，問到問責究竟應該衡量什麼，她提議應以研究是否執行得當、報告是否誠實來評估經費，而非看是否產出可上市的成果，因為後者衡量的是運氣。Tomas 接受了這個區分，Anneke 則部分同意，但主張仍應保留一部分預算，專門用於急迫且有明確方向的問題。","Tomas: The pressure to show impact within five years is quietly destroying basic research. The work that eventually mattered most — the laser, the web, mRNA — had no visible application when it was funded.": "Tomas：要求在五年內展現影響力的壓力，正悄悄摧毀基礎研究。最終最重要的成果——雷射、網際網路、mRNA——在獲得資助時都看不出任何應用。","Anneke: That argument gets made a lot, and I notice it is always made with hindsight. For every laser there are a thousand lines of enquiry that led nowhere, and we never hear about those. Public money has to be accountable to someone.": "Anneke：這個論點很常被提出，而我注意到它總是事後才說的。每出現一個雷射，背後就有上千個一無所獲的研究方向，而我們從來沒聽說過那些。公帑必須對某個人負責。","Ruth: Accountable, yes, but accountable for what? If we measure a grant by whether it produced a marketable product, we are measuring luck. Measure it by whether the work was competently done and honestly reported, and you get a standard a researcher can actually meet.": "Ruth：要負責，沒錯，但要為什麼負責？如果我們用一項經費是否產出可上市的產品來衡量它，我們衡量的其實是運氣。如果用研究是否執行得當、報告是否誠實來衡量，就能得到一個研究人員真正做得到的標準。","Tomas: That is the distinction I wanted. Judge the process, not the jackpot.": "Tomas：這正是我想要的區分。評估過程，而不是看有沒有中大獎。","Anneke: I accept that for a portion of the budget. I would still ring-fence a share for directed research, because some problems are urgent and will not solve themselves while we wait for serendipity.": "Anneke：對一部分預算，我接受這個看法。但我仍然會保留一部分經費給有明確方向的研究，因為有些問題很急迫，不會在我們等待機緣巧合時自己解決。","You borrowed a textbook from a classmate and spilled coffee on it, staining several pages. You are returning it to her today. What do you say?": "你向同學借了一本教科書，不小心把咖啡灑在上面，弄髒了好幾頁。你今天要把書還給她。你會怎麼說？","acknowledge the damage plainly, without burying it": "坦白承認造成的損壞，不要含糊帶過","apologise sincerely": "真誠地道歉","offer a concrete remedy — replace it, or pay for it": "提出具體的補救方式——買一本新的還她，或賠償費用","acknowledge the inconvenience to her": "體諒這件事對她造成的不便","keep the register friendly but accountable": "語氣保持友善，但要負起責任","Hi Sara, I need to own up to something before I hand this back. I spilled coffee on it while I was working on Thursday, and a few of the pages near the middle are stained. I am really sorry — it was careless of me, and I know you need it for the exam. I have already found the same edition online and I would like to order you a replacement copy, or just transfer you what it costs, whichever is easier. In the meantime, if you need to read those chapters this week, take my notes on them. Again, I am sorry about this.": "嗨，Sara，在把書還給妳之前，我得先坦白一件事。星期四我在讀書的時候不小心把咖啡灑到書上，中間有幾頁被弄髒了。真的很抱歉——是我太不小心了，我知道妳考試還要用這本書。我已經在網路上找到同一個版本，想幫妳訂一本新的，或者直接把書錢轉給妳，看妳哪個比較方便。在這之前，如果妳這週需要讀那幾章，可以先拿我的筆記去用。再次跟妳說聲對不起。","Your partner on a group assignment has not contributed anything with three days left before the deadline. You need to raise it with him directly. What do you say?": "你在一份小組作業中的組員，在離截止日期只剩三天時仍然沒有任何貢獻。你需要直接跟他提出這件事。你會怎麼說？","raise the problem directly but without hostility": "直接提出問題，但不帶敵意","state the specific facts — what is outstanding, how long is left": "說明具體事實——哪些部分還沒完成、還剩多少時間","ask for his side before assuming": "在下定論之前先聽聽他的說法","propose a concrete split and a deadline": "提出具體的分工方式和期限","name the next step if nothing changes": "說明如果情況沒有改變，下一步會怎麼做","Ravi, can we talk about the assignment for a minute? We are three days out and the methods section is still empty, which is the part we agreed you would take. I wanted to check in before I assume anything — is something going on that has got in the way? If you are able to get it done, I would need a draft by Friday morning so I have time to fold it into the rest. If you are not, tell me now and I will write it myself, but then I do think we need to flag the split to the tutor. I would much rather sort it out between us.": "Ravi，可以跟你談一下作業的事嗎？現在離截止只剩三天，研究方法那一部分還是空白的，而那是我們說好由你負責的部分。在我做任何假設之前，想先問問你——是不是發生了什麼事耽誤到你？如果你能完成，我需要你在星期五早上前給我一份草稿，這樣我才有時間把它整合進其他部分。如果你沒辦法，請現在就告訴我，我會自己寫，不過那樣的話，我覺得我們需要向導師說明分工的情況。我比較希望我們兩個之間就能把這件事解決。","You have been ill for a week and cannot finish an essay due tomorrow. You are speaking to your tutor to ask for an extension. What do you say?": "你生病了一個星期，無法完成明天到期的論文。你正在向導師請求延期。你會怎麼說？","open politely and state the request clearly": "禮貌地開場，並清楚說明你的請求","give the reason concisely, without over-explaining": "簡潔說明原因，不要過度解釋","show what you have already done": "說明你已經完成了哪些部分","propose a specific new date": "提出一個具體的新日期","offer evidence or ask what the process requires": "表示可以提供證明，或詢問程序上需要什麼","Good morning, Dr Whelan, do you have a moment? I wanted to ask about the essay due tomorrow. I have been ill since last Monday and I have not been able to work on it properly — I have the reading done and an outline, but the writing is only about a third finished. I would like to ask for an extension of one week, until the fourteenth, which I am confident would be enough. I can get a note from the health centre if that is needed, and I am happy to follow whatever the formal process is. I did not want to just miss the deadline without speaking to you first.": "Whelan 博士早安，請問您現在方便嗎？我想詢問明天到期的那份論文。我從上週一開始就生病了，一直沒辦法好好寫——閱讀資料已經讀完，大綱也列好了，但寫作只完成了大約三分之一。我想申請延期一週，到十四號，我有信心這樣的時間足夠。如果需要的話，我可以去健康中心開證明，也很樂意依照正式的程序辦理。我不希望在沒有先跟您說明的情況下就錯過截止日期。","The idea that a city never sleeps is barely a century old. Before cheap artificial light, most economic activity stopped at dusk for the simple reason that it could not continue. Gas lighting in the nineteenth century, and electric lighting after it, decoupled work from daylight and made the night shift possible. Factories that had been idle for half of every day could run continuously, and the capital tied up in machinery began to earn its keep around the clock.": "「城市永不眠」這個概念其實才一百年左右。在廉價的人工照明出現之前，大多數經濟活動在黃昏時便停止，原因很簡單：根本無法繼續下去。十九世紀的煤氣照明，以及其後的電力照明，使工作與日光脫鉤，讓夜班成為可能。原本每天有一半時間閒置的工廠得以持續運轉，投入在機器上的資本也開始全天候地產生回報。","The consequences went well beyond the factory gate. A workforce awake at three in the morning needed transport, food and policing, so the night shift propagated outwards into services that had no industrial reason to exist after dark. Within a generation, entire supporting economies had grown up around the simple fact that some people were now awake when their grandparents had been asleep.": "其影響遠遠超出了工廠大門之外。凌晨三點仍醒著的勞動力需要交通、食物和治安，因此夜班向外擴散到各種服務業，而這些行業在天黑後本來並沒有任何工業上的存在理由。不到一個世代，整套配套經濟便圍繞著一個簡單的事實發展起來：有些人如今在祖父母那一輩早已入睡的時間仍然醒著。","The costs, however, were displaced rather than avoided. Epidemiological work over the past forty years has consistently linked long-term night work to disrupted circadian rhythms, elevated cardiovascular risk and higher rates of certain cancers. The gains in productive capacity were real, but they were purchased partly with the health of the people who kept the lights on, and that bill has never appeared on any balance sheet.": "然而，這些代價只是被轉移了，而非得以避免。過去四十年的流行病學研究一再將長期夜間工作與晝夜節律紊亂、心血管風險升高，以及某些癌症的較高發生率連結在一起。生產力的提升是真實的，但其中一部分是以那些讓燈火持續亮著的人的健康換來的，而這筆帳從未出現在任何資產負債表上。","Although cheap artificial light decoupled work from daylight and allowed factories and the service economies around them to operate continuously, raising productive capacity, the resulting night work has been consistently linked to disrupted circadian rhythms and serious long-term health costs that were never counted.": "雖然廉價的人工照明使工作與日光脫鉤，讓工廠及其周邊的服務經濟得以持續運轉，提升了生產力，但由此產生的夜間工作一再被證實與晝夜節律紊亂以及嚴重的長期健康代價有關，而這些代價從未被計算在內。","Linguists estimate that of the roughly seven thousand languages spoken today, close to half will have no native speakers by the end of this century. The mechanism of loss is rarely dramatic. Languages seldom disappear because their last speaker dies in isolation; they disappear because a generation of parents makes a rational decision not to pass them on.": "語言學家估計，在目前使用的約七千種語言中，將近一半到本世紀末將不再有母語使用者。語言消失的過程很少是戲劇性的。語言很少是因為最後一位使用者孤獨離世而消失；它們消失，是因為某一代父母做出了一個理性的決定：不把語言傳給下一代。","That decision is usually made under pressure. Where schooling, employment and government are conducted in a dominant language, fluency in it is the price of participation, and the minority language comes to be associated with the very disadvantage that families are trying to escape. Children raised in this environment typically become passive bilinguals: they understand the older language but answer in the newer one, and their own children hear it only as background.": "這個決定通常是在壓力下做出的。當學校教育、就業和政府事務都以強勢語言進行時，能流利使用強勢語言就成了參與社會的代價，而少數語言則逐漸與家庭試圖擺脫的那種弱勢處境連結在一起。在這種環境下長大的孩子通常會成為被動的雙語者：他們聽得懂舊語言，卻用新語言回答，而他們自己的孩子則只把舊語言當作背景聲音聽到。","Revitalisation efforts that ignore this economic logic tend to fail. Dictionaries and archives preserve a record, but a language survives only if it retains a domain in which it is genuinely useful. The most successful programmes, in Wales, in New Zealand and among the Hawaiian community, have therefore worked by creating such domains deliberately - immersion schooling, broadcasting and public administration - so that speaking the language is once again the practical choice rather than the sentimental one.": "忽略這種經濟邏輯的語言復興工作往往會失敗。字典和檔案能保存紀錄，但一種語言唯有保有一個真正實用的領域，才能存續下去。因此，最成功的計畫——在威爾斯、紐西蘭以及夏威夷社群中——都是刻意創造出這樣的領域，例如沉浸式教學、廣播和公共行政，讓說這種語言再次成為實際的選擇，而不是情感上的選擇。","Nearly half of the world’s languages face extinction not through sudden loss but because parents under economic and educational pressure stop transmitting them, which is why successful revitalisation depends less on archives than on deliberately creating domains such as immersion schooling and broadcasting where the language is practically useful.": "世界上將近一半的語言面臨消亡，並非因為突然的消失，而是因為父母在經濟與教育壓力下不再將語言傳承下去；正因如此，成功的語言復興與其說取決於檔案保存，不如說取決於刻意創造出沉浸式教學、廣播等讓該語言具有實際用途的領域。","Some people believe that universities should only admit students on the basis of academic results, while others argue that broader factors such as background, interests and character should also be considered. Discuss both views and give your own opinion.": "有些人認為大學應該只根據學業成績錄取學生，但也有人主張應同時考量背景、興趣和品格等更廣泛的因素。請討論這兩種觀點，並提出你自己的看法。","Position stated in the first paragraph, not withheld until the conclusion.": "在第一段就表明立場，不要留到結論才說。","Body 1: the case for pure academic selection - transparency, comparability, resistance to manipulation.": "主體段一：支持純粹以學業成績選才的理由——透明、可比較、不易被操弄。","Body 2: the case for broader criteria - unequal preparation, predictive weakness of a single exam, institutional purpose.": "主體段二：支持更廣泛標準的理由——準備條件不平等、單一考試的預測力薄弱、大學機構的使命。","Concession then resolution: a weighted model, with worked examples such as contextual admissions.": "先讓步再提出解方：一種加權模式，並舉出具體例子，例如考量背景的錄取制度。","Conclusion that answers the question rather than summarising the essay.": "結論要回答題目的問題，而不是把文章重新總結一遍。","The increasing use of automation and artificial intelligence in the workplace will do more harm than good to employees. To what extent do you agree or disagree?": "職場中日益增加的自動化和人工智慧應用，對員工而言弊大於利。你在多大程度上同意或不同意這個說法？","State the degree of agreement precisely in the introduction - \"largely disagree\" is stronger than a fence-sit.": "在引言中精確說明你同意的程度——\"largely disagree\"（大致不同意）比騎牆的說法更有力。","Body 1: which tasks are displaced and which are augmented; name a sector.": "主體段一：哪些工作任務會被取代、哪些會被強化；請指出一個具體產業。","Body 2: distributional effect - who bears the cost, retraining, wage polarisation.": "主體段二：分配效應——由誰承擔代價、再培訓、薪資兩極化。","Address the strongest counter-argument honestly before dismissing it.": "在反駁最有力的反方論點之前，先誠實地回應它。","Conclusion tied to policy rather than technology.": "結論要連結到政策，而不是技術本身。","Peer review is often described as the gold standard of science, but the practice is more recent and more ____ than that phrase suggests. Formal refereeing became routine at most journals only in the middle of the twentieth century, and studies have repeatedly shown that reviewers ____ poorly with one another when asked to judge the same manuscript. Its defenders argue that the system is not meant to guarantee truth but to filter out work that is obviously ____ . On that more modest ____ , it continues to earn its place.": "同儕審查常被形容為科學的黃金標準，但這種做法比這個說法所暗示的更新近，也更 ____。正式的審稿制度直到二十世紀中葉才在大多數期刊成為常態，而研究一再顯示，當審稿人被要求評判同一份稿件時，彼此之間的 ____ 程度很差。支持者認為，這個制度的目的並不是保證真理，而是篩除明顯 ____ 的研究。以這個較為保守的 ____ 來看，它仍然有其存在的價值。","“but” sets up a contrast with “gold standard”, so the gap has to undercut the praise — and the sentences that follow report reviewers disagreeing. “celebrated” would repeat the praise the “but” is turning away from.": "\"but\" 與 \"gold standard\" 形成對比，所以空格必須削弱前面的讚美——而後面的句子也提到審稿人彼此意見不一。\"celebrated\" 只會重複 \"but\" 正要轉離的讚美。","Collocation settles this. You agree WITH one another; you do not differ, compete or argue “poorly with” anyone. “agree poorly with one another” is the only phrase English allows here.": "這題由固定搭配決定。英文說 agree WITH one another；不會說 differ、compete 或 argue \"poorly with\" 某人。\"agree poorly with one another\" 是這裡英文唯一允許的說法。","The defence being described is filtering out bad science — “not meant to guarantee truth but to filter out”. Unpopular, lengthy or expensive work is not what a referee screens for.": "這裡描述的辯護理由是篩除糟糕的科學——\"not meant to guarantee truth but to filter out\"。不受歡迎、篇幅冗長或成本高昂的研究，並不是審稿人要篩選的對象。","Idiom: “on that measure” means by that standard. “on that account” exists, but means for that reason, which does not follow from “more modest”.": "慣用語：\"on that measure\" 的意思是「以那個標準來看」。\"on that account\" 雖然存在，但意思是「因為那個原因」，無法接在 \"more modest\" 之後。","Vaccination produces benefits that spill beyond the individual who receives it, which is why economists treat it as a classic ____ good. Once enough of a population is immune, transmission slows and even the unvaccinated are ____ protected. Left to the market, however, individuals weigh only their own costs and benefits, so uptake tends to settle ____ the socially optimal level. Public subsidy is the standard ____ to that gap.": "疫苗接種帶來的好處會外溢到接種者本人以外，這就是為什麼經濟學家把它視為典型的 ____ 財。一旦人口中有足夠比例具備免疫力，傳播就會減緩，連未接種者也會 ____ 受到保護。然而，如果交由市場決定，個人只會衡量自己的成本與效益，因此接種率往往會停留在 ____ 社會最適水準的位置。公共補貼是填補這個缺口的標準 ____。","A term of art. Benefits that “spill beyond the individual” define a public good in economics; the sentence is naming the category, not describing quality.": "這是專業術語。好處會 \"spill beyond the individual\"（外溢到個人以外），正是經濟學中公共財（public good）的定義；這句話是在說明類別，而不是描述品質。","Herd immunity gives the unvaccinated some protection, not total. “equally” overstates it, and “rarely” and “falsely” both contradict transmission slowing.": "群體免疫讓未接種者獲得部分保護，而非完全的保護。\"equally\" 誇大了效果，\"rarely\" 和 \"falsely\" 則都與傳播減緩的描述相矛盾。","The standard result is under-provision: individuals weigh only private benefit, so uptake lands under the social optimum. “settle below” also collocates, where “settle beyond” does not.": "標準的結論是供給不足：個人只衡量私人利益，所以接種率會落在社會最適水準之下。\"settle below\" 也是正確的搭配，而 \"settle beyond\" 則不是。","A subsidy closes the gap, so it is a response to it. A barrier or objection would work against the gap, and an alternative needs something to be an alternative to.": "補貼是用來填補缺口的，所以它是對缺口的一種回應（response）。障礙（barrier）或反對（objection）會與填補缺口背道而馳，而替代方案（alternative）則需要有一個可以被替代的對象。","Attempts to measure the economic value of unpaid domestic work run into a definitional problem before they reach a statistical one. National accounts were designed to capture market transactions, and household labour produces no invoice. The conventional workaround is to price the hours at what it would cost to hire someone to do the same tasks, a method that yields figures equivalent to between a quarter and a half of measured GDP in most wealthy countries. Critics point out that this replacement-cost approach flatters the result, since it values an hour of a parent’s childcare at the wage of a professional childminder while ignoring that the two activities differ in quality, motivation and joint production - a parent cooks dinner and supervises homework at once. Yet the alternative, valuing the hours at the earnings the carer forgoes, produces the perverse conclusion that the same load of laundry is worth more when a surgeon does it. Neither method is defensible in isolation, and statistical agencies that publish satellite accounts now generally report both.": "嘗試衡量無償家務勞動的經濟價值時，在碰到統計問題之前，就先遇到定義上的問題。國民帳戶的設計是為了記錄市場交易，而家務勞動並不會產生任何發票。慣用的變通方法，是以雇用他人完成相同工作所需的費用來為這些工時定價，這種方法得出的數字，在大多數富裕國家相當於所衡量 GDP 的四分之一到二分之一。批評者指出，這種「替代成本」算法會美化結果，因為它以專業保母的工資來計算父母一小時的育兒時間，卻忽略了這兩種活動在品質、動機和同時進行多項工作上的差異——父母可以一邊煮晚餐一邊督促孩子寫功課。然而，另一種方法——以照顧者所放棄的收入來計算工時——卻會得出一個荒謬的結論：同一批衣物由外科醫生來洗，價值就比較高。兩種方法單獨來看都站不住腳，因此發布衛星帳戶的統計機構如今通常會同時公布兩者。","Which of the following are stated in the passage?": "下列哪些是文章中有提到的？","Household labour is excluded from conventional national accounts because it generates no market transaction.": "家務勞動被排除在傳統國民帳戶之外，因為它不會產生市場交易。","Replacement-cost estimates put unpaid domestic work at roughly 25 to 50 per cent of measured GDP.": "以替代成本估算，無償家務勞動約相當於所衡量 GDP 的 25% 至 50%。","The opportunity-cost method values identical tasks differently depending on who performs them.": "機會成本法會因為執行者不同，而對相同的工作給予不同的價值。","Statistical agencies have agreed that the replacement-cost method is the more accurate of the two.": "統計機構已一致認為替代成本法是兩者中較準確的方法。","Professional childminders and parents have been shown to provide care of equivalent quality.": "已有證據顯示專業保母與父母所提供的照顧品質相當。","Correct. “National accounts were designed to capture market transactions, and household labour produces no invoice.” That is the exclusion, and the reason for it.": "正確。\"National accounts were designed to capture market transactions, and household labour produces no invoice.\" 這句話說明了排除的事實，以及排除的原因。","Correct. “figures equivalent to between a quarter and a half of measured GDP in most wealthy countries” — a quarter to a half is 25 to 50 per cent.": "正確。\"figures equivalent to between a quarter and a half of measured GDP in most wealthy countries\"——四分之一到二分之一就是 25% 至 50%。","Correct. “the same load of laundry is worth more when a surgeon does it.” Identical task, different value, because the earnings forgone differ.": "正確。\"the same load of laundry is worth more when a surgeon does it.\" 相同的工作，因為放棄的收入不同，價值也就不同。","Wrong. The passage says the opposite: “Neither method is defensible in isolation”, and agencies “now generally report both”. Be wary of options claiming agreement where the text reports unresolved disagreement.": "錯誤。文章說的正好相反：\"Neither method is defensible in isolation\"，而且各機構 \"now generally report both\"。當原文描述的是尚未解決的分歧時，要小心那些聲稱已達成共識的選項。","Wrong. The passage states they differ — the two activities “differ in quality, motivation and joint production”. This option reverses the sentence it is built from.": "錯誤。文章指出兩者是不同的——這兩種活動 \"differ in quality, motivation and joint production\"。這個選項把它所依據的那句話反過來說了。","The archaeology of the Silk Roads has been reshaped less by spectacular finds than by unglamorous laboratory work. Isotope analysis of human remains now allows researchers to distinguish between people who grew up where they were buried and those who arrived later in life, and the results have been consistently surprising. At several oasis sites in the Tarim Basin, a majority of the interred individuals turn out to be locals, not the cosmopolitan traders of popular imagination. What moved along these routes, it seems, was goods and ideas rather than large numbers of people; merchants typically worked a single leg of the journey and handed cargo onward, so that a bolt of silk might change hands a dozen times between workshop and buyer without any individual travelling the full distance. This relay structure has consequences for how we read the spread of religion and technology along the same corridors, since an idea passed through twelve intermediaries is rarely the idea that set out.": "絲路考古學的重塑，與其說來自驚人的出土發現，不如說來自不起眼的實驗室工作。對人類遺骸進行同位素分析，如今讓研究人員能夠區分哪些人是在埋葬地長大的，哪些人是在人生較晚時期才遷入的，而結果一再令人意外。在塔里木盆地的幾處綠洲遺址中，大多數被埋葬的人原來都是本地人，而不是大眾想像中那些來自四方的商人。看來沿著這些路線移動的，是貨物和思想，而不是大量的人口；商人通常只負責旅程中的一段，再把貨物轉交出去，因此一匹絲綢從工坊到買家之間可能要轉手十幾次，卻沒有任何一個人走完全程。這種接力式的結構，影響了我們如何解讀宗教和技術沿著同一條走廊的傳播，因為一個經過十二個中間人傳遞的想法，很少還是最初出發時的那個想法。","Which of the following can be concluded from the passage?": "從文章中可以得出下列哪些結論？","Isotope analysis can distinguish lifelong residents from later arrivals at a burial site.": "同位素分析可以區分埋葬地的終生居民與後來遷入者。","Most individuals buried at the Tarim Basin oasis sites were long-distance migrants.": "塔里木盆地綠洲遺址中被埋葬的人，大多數是長途遷徙者。","Goods often crossed the Silk Roads through a series of intermediaries rather than a single traveller.": "貨物經常透過一連串中間人穿越絲路，而不是由單一旅人運送。","The relay structure of trade affects how the transmission of ideas should be interpreted.": "貿易的接力式結構，會影響我們應如何解讀思想的傳播。","Spectacular archaeological finds have driven most recent advances in Silk Road studies.": "驚人的考古發現推動了近年絲路研究的大部分進展。","Correct. “Isotope analysis of human remains now allows researchers to distinguish between people who grew up where they were buried and those who arrived later in life.”": "正確。\"Isotope analysis of human remains now allows researchers to distinguish between people who grew up where they were buried and those who arrived later in life.\"","Wrong, and exactly backwards: “a majority of the interred individuals turn out to be locals, not the cosmopolitan traders of popular imagination.”": "錯誤，而且正好相反：\"a majority of the interred individuals turn out to be locals, not the cosmopolitan traders of popular imagination.\"","Correct. “merchants typically worked a single leg of the journey and handed cargo onward, so that a bolt of silk might change hands a dozen times.”": "正確。\"merchants typically worked a single leg of the journey and handed cargo onward, so that a bolt of silk might change hands a dozen times.\"","Correct. “This relay structure has consequences for how we read the spread of religion and technology along the same corridors.”": "正確。\"This relay structure has consequences for how we read the spread of religion and technology along the same corridors.\"","Wrong. The opening sentence says the field was reshaped “less by spectacular finds than by unglamorous laboratory work”. This option picks the half the sentence rules out.": "錯誤。開頭第一句就說這個領域的重塑 \"less by spectacular finds than by unglamorous laboratory work\"。這個選項選的正是那句話所排除的那一半。","The Antikythera mechanism was recovered in 1901 from a Roman-era shipwreck off a small Greek island.": "安提基特拉機械於 1901 年從一個希臘小島外海的羅馬時代沉船中被打撈上岸。","For decades it sat in a museum as an unremarkable lump of corroded bronze, catalogued and largely ignored.": "數十年來，它一直被放在博物館裡，只是一塊不起眼、鏽蝕的青銅塊，雖然有編目，卻幾乎無人理會。","Only when X-ray imaging revealed more than thirty interlocking gears did its true character become clear.": "直到 X 光影像顯示出三十多個相互咬合的齒輪，它的真正本質才變得清楚。","It was an analogue computer, built to predict the positions of the sun and moon and the timing of eclipses.": "它是一台類比計算機，用來預測太陽和月亮的位置以及日月食發生的時間。","Nothing of comparable mechanical sophistication is known to have been produced again for well over a thousand years.": "據目前所知，此後超過一千年，都沒有再出現過機械精密程度可與之相比的作品。","The Antikythera mechanism was recovered in 1901 from a Roman-era shipwreck off a small Greek island. — The opener. It names its subject in full — “The Antikythera mechanism” — gives a date, and refers back to nothing.": "安提基特拉機械於 1901 年從一個希臘小島外海的羅馬時代沉船中被打撈上岸。——開頭句。它完整說出主題 \"The Antikythera mechanism\"，給出年份，而且沒有指涉前文的任何內容。","For decades it sat in a museum as an unremarkable lump of corroded bronze, catalogued and largely ignored. — “it sat in a museum” needs an antecedent, and “For decades” only makes sense once the 1901 recovery has been stated.": "數十年來，它一直被放在博物館裡，只是一塊不起眼、鏽蝕的青銅塊，雖然有編目，卻幾乎無人理會。——\"it sat in a museum\" 需要一個先行詞，而 \"For decades\" 也必須在 1901 年打撈上岸之後才說得通。","Only when X-ray imaging revealed more than thirty interlocking gears did its true character become clear. — “Only when” answers the neglect just described. This is the turn from “largely ignored” to discovery.": "直到 X 光影像顯示出三十多個相互咬合的齒輪，它的真正本質才變得清楚。——\"Only when\" 回應了前面所描述的忽視。這是從 \"largely ignored\" 轉向發現的轉折點。","It was an analogue computer, built to predict the positions of the sun and moon and the timing of eclipses. — “It was an analogue computer” delivers the “true character” that the previous sentence announced but withheld.": "它是一台類比計算機，用來預測太陽和月亮的位置以及日月食發生的時間。——\"It was an analogue computer\" 揭示了前一句預告但沒有說出的 \"true character\"。","Nothing of comparable mechanical sophistication is known to have been produced again for well over a thousand years. — The closer. It steps back to place the object in history, and nothing could follow it.": "據目前所知，此後超過一千年，都沒有再出現過機械精密程度可與之相比的作品。——結尾句。它退一步將這件物品放在歷史脈絡中，後面不可能再接其他句子。","Bees returning to the hive perform a looping movement on the vertical comb that Karl von Frisch named the waggle dance.": "返回蜂巢的蜜蜂會在垂直的蜂巢板上進行一種繞圈的動作，卡爾・馮・弗里希將它命名為「搖擺舞」。","The angle of the straight run relative to gravity encodes the direction of the food source in relation to the sun.": "直線段相對於重力方向的角度，代表食物來源相對於太陽的方向。","Its duration, meanwhile, corresponds closely to the distance the forager has flown.": "同時，搖擺的持續時間與採集蜂飛行的距離密切對應。","Sceptics long argued that hive-mates were simply following the scent carried back on the dancer’s body.": "長久以來，懷疑者認為同巢的蜜蜂只是在追蹤跳舞者身上帶回來的氣味。","That objection was finally settled by robotic bees, which recruited foragers to sites they had never visited.": "這項質疑最終被機器蜜蜂解決了——它們成功引導採集蜂前往自己從未去過的地點。","Bees returning to the hive perform a looping movement on the vertical comb that Karl von Frisch named the waggle dance. — The opener. Full subject, and it names the waggle dance that every later sentence depends on.": "返回蜂巢的蜜蜂會在垂直的蜂巢板上進行一種繞圈的動作，卡爾・馮・弗里希將它命名為「搖擺舞」。——開頭句。主題完整，並且說出了後面每一句都要依賴的 \"waggle dance\"（搖擺舞）。","The angle of the straight run relative to gravity encodes the direction of the food source in relation to the sun. — “the straight run” is a part of the dance just introduced, so this cannot come before it.": "直線段相對於重力方向的角度，代表食物來源相對於太陽的方向。——\"the straight run\" 是剛剛才介紹的舞蹈的一部分，所以這句不可能出現在它之前。","Its duration, meanwhile, corresponds closely to the distance the forager has flown. — “Its duration, meanwhile” points back to the straight run, and “meanwhile” pairs this measure with the angle in the sentence before.": "同時，搖擺的持續時間與採集蜂飛行的距離密切對應。——\"Its duration, meanwhile\" 指回直線段，而 \"meanwhile\" 則把這項指標與前一句的角度配成一對。","Sceptics long argued that hive-mates were simply following the scent carried back on the dancer’s body. — The turn. Having described the mechanism, the paragraph raises the challenge to it.": "長久以來，懷疑者認為同巢的蜜蜂只是在追蹤跳舞者身上帶回來的氣味。——轉折句。描述完運作機制之後，段落接著提出對它的質疑。","That objection was finally settled by robotic bees, which recruited foragers to sites they had never visited. — “That objection” can only refer to the scepticism immediately before, and “finally settled” closes the paragraph.": "這項質疑最終被機器蜜蜂解決了——它們成功引導採集蜂前往自己從未去過的地點。——\"That objection\" 只能指緊接在前面的懷疑，而 \"finally settled\" 則為整段作結。","Ice cores from the Antarctic plateau contain air bubbles that were ____ from the atmosphere at the moment the snow compacted. Because the layers accumulate annually, they can be counted like tree rings, giving a continuous ____ of atmospheric composition reaching back more than eight hundred thousand years. The record shows carbon dioxide oscillating within a narrow band through glacial cycles, then rising ____ outside that band in the industrial era. No ____ explanation for the departure has survived scrutiny.": "南極高原的冰芯中含有氣泡，這些氣泡在積雪壓實的那一刻便與大氣 ____ 。由於冰層每年累積一層，因此可以像樹木年輪一樣計數，提供一份可追溯到八十萬年以前、連續不斷的大氣成分 ____ 。這份紀錄顯示，二氧化碳在各個冰河週期中都只在一個狹窄的範圍內波動，到了工業時代卻 ____ 上升，超出了這個範圍。對於這種偏離，沒有任何 ____ 的解釋能經得起檢驗。","The bubbles were shut off from the atmosphere as the snow compacted. “frozen from the atmosphere” is not English, and “melted” would destroy the very thing being preserved.": "氣泡在積雪壓實時就與大氣隔絕了（sealed）。\"frozen from the atmosphere\" 不是正確的英文，而 \"melted\" 則會破壞正被保存下來的東西。","“continuous” and “reaching back more than eight hundred thousand years” both want a noun meaning an unbroken account. A record reaches back; a distance does not.": "\"continuous\" 和 \"reaching back more than eight hundred thousand years\" 都需要一個表示「不間斷紀錄」的名詞。紀錄（record）可以追溯過去；距離（distance）則不行。","Set against the narrow band of the glacial cycles, the industrial-era rise is the exception. “gradually” would describe the oscillation it is being contrasted with.": "與冰河週期的狹窄範圍相比，工業時代的上升是個例外（急劇上升）。\"gradually\" 描述的其實是它正在與之對比的那種波動。","The sentence dismisses non-human explanations, which is what makes the departure significant. “artificial” inverts the argument entirely.": "這句話否定了非人為的解釋，這正是這種偏離之所以重要的原因。\"artificial\" 會把整個論點完全顛倒。","A trial is described as double-blind when neither the participants nor the clinicians assessing them know who has received the active ____ . The design exists because expectation alone can produce physiological change, and because assessors unconsciously ____ ambiguous results in the direction they hope for. Blinding is harder to maintain than it sounds: a drug with a distinctive side effect will ____ itself to attentive patients, and the trial then loses the protection it was designed to ____ .": "當受試者和評估他們的臨床人員都不知道誰接受了有效 ____ 時，這項試驗就稱為雙盲試驗。這種設計之所以存在，是因為光是期待就可能引起生理變化，也因為評估者會不自覺地朝自己希望的方向 ____ 模稜兩可的結果。雙盲比聽起來更難維持：一種有明顯副作用的藥物，會在細心的病人面前 ____ 自己，而試驗也就失去了它原本設計要 ____ 的保護。","“the active treatment” is the standard phrase in trial design, and it is what participants receive. You are given a diagnosis, not the active one.": "\"the active treatment\" 是試驗設計中的標準說法，也就是受試者所接受的東西。人會被給予診斷（diagnosis），但不會說 \"the active\" 診斷。","The clause ends “in the direction they hope for”, which needs a verb of judgement. You cannot ignore something in a direction.": "這個子句以 \"in the direction they hope for\" 結尾，需要一個表示判斷的動詞（interpret）。你無法「朝某個方向」忽略（ignore）某件事。","Reflexive: a distinctive side effect reveals itself. “conceal itself” would mean the blinding held, which is the opposite of the problem described.": "反身用法：明顯的副作用會暴露自己（reveals itself）。\"conceal itself\" 表示盲法仍然有效，這與文中描述的問題正好相反。","Blinding was designed to provide protection — and the sentence says the trial then loses it. Measure and request do not take “protection” as an object here.": "盲法的設計是為了提供（provide）保護——而句子說試驗隨後就失去了這個保護。measure 和 request 在這裡都不能以 \"protection\" 作受詞。","It is tempting to read the collapse of the Norse settlement in Greenland as a straightforward parable of environmental mismanagement: a farming people arrive, overgraze a fragile landscape, refuse to adopt Inuit techniques, and starve as the climate cools. The evidence is less obliging. Midden analysis shows that the Norse diet shifted substantially towards marine resources over the settlement’s five centuries, which is hardly the behaviour of a community incapable of adaptation. What changed decisively in the fifteenth century was not the weather but the market: the European demand for walrus ivory, on which the colony’s trade depended, collapsed when elephant ivory became available through expanding African routes. A settlement that had been marginal but viable as a trading outpost became simply marginal.": "人們很容易把格陵蘭諾斯人聚落的瓦解，解讀成一則關於環境管理不當的簡單寓言：一群農耕民族來到此地，過度放牧脆弱的土地，拒絕採用因紐特人的技術，最後隨著氣候變冷而餓死。然而證據並不那麼配合這個說法。垃圾堆遺址的分析顯示，在聚落存在的五個世紀裡，諾斯人的飲食大幅轉向海洋資源，這很難說是一個無法適應環境的群體會有的行為。十五世紀真正起決定性變化的不是天氣，而是市場：這個殖民地的貿易所依賴的歐洲海象象牙需求，在大象象牙透過不斷擴展的非洲路線進入市場後崩潰了。一個原本雖處邊緣、但作為貿易前哨仍能維持的聚落，就此成了單純的邊緣之地。","What is the author’s main purpose in this passage?": "作者寫這篇文章的主要目的是什麼？","To demonstrate that climate change had no role in the fate of the Norse settlement.": "證明氣候變遷對諾斯人聚落的命運毫無影響。","To qualify a popular environmental explanation by introducing economic evidence.": "透過引入經濟方面的證據，修正一種廣為流傳的環境解釋。","To argue that the Norse should have adopted Inuit hunting techniques earlier.": "主張諾斯人應該更早採用因紐特人的狩獵技術。","To describe the range of foods consumed at the Greenland settlement over time.": "描述格陵蘭聚落在不同時期所食用的各種食物。","Too absolute. The author disputes that climate is the whole story, not that it played no part — the claim is only that what changed “decisively in the fifteenth century was not the weather but the market”.": "說得太絕對了。作者質疑的是氣候並非故事的全部，而不是說氣候毫無作用——文章只主張十五世紀 \"decisively\" 改變的 \"was not the weather but the market\"。","Correct. The passage opens with “It is tempting to read” the collapse as environmental mismanagement, answers “The evidence is less obliging”, then supplies the ivory-market collapse. That is a qualification supported by economic evidence.": "正確。文章一開頭說 \"It is tempting to read\" 這次瓦解是環境管理不當，接著以 \"The evidence is less obliging\" 回應，然後提出象牙市場崩潰的說法。這就是用經濟證據支持的一種修正。","This reverses how the author uses the evidence. The shift toward marine resources is cited to show the Norse did adapt — “hardly the behaviour of a community incapable of adaptation”.": "這把作者使用證據的方式弄反了。轉向海洋資源這一點，是用來證明諾斯人確實有所適應——\"hardly the behaviour of a community incapable of adaptation\"。","True but not the purpose. The diet detail is evidence inside the argument, not the reason the passage was written. Ask what the paragraph is doing, not what it mentions.": "內容正確，但不是寫作目的。飲食的細節是論證中的證據，而不是寫這篇文章的原因。要問的是這段文字在做什麼，而不是它提到了什麼。","Every introductory statistics course warns that correlation does not imply causation, and every working researcher knows the warning is insufficient. The harder problem is that the absence of correlation does not rule causation out either. Where two causal pathways operate in opposite directions - a drug that both reduces inflammation and suppresses appetite, say - their effects on an outcome can cancel, leaving a correlation indistinguishable from zero in the aggregate while a real and clinically significant mechanism operates in each direction. This is why methodologists increasingly insist that a causal question be stated as an explicit model before the data are examined, rather than inferred from whatever associations the data happen to display.": "每一門統計學入門課都會提醒學生「相關不代表因果」，而每一位實際從事研究的人都知道，光有這個提醒是不夠的。更棘手的問題在於，沒有相關性也不能排除因果關係。當兩條因果路徑朝相反方向作用時——比方說，一種既能減輕發炎、又會抑制食慾的藥物——它們對某項結果的影響可能互相抵消，使整體數據中的相關性與零無法區分，儘管每個方向上都有一個真實且具臨床意義的機制在運作。這就是為什麼方法論學者越來越堅持，在檢視數據之前，必須先把因果問題明確地表述為一個模型，而不是從數據碰巧呈現出的關聯中推論出來。","The example of the drug is used primarily to illustrate": "文中以藥物為例，主要是為了說明","how side effects complicate the approval of new medicines.": "副作用如何使新藥的核准變得複雜。","why aggregate data can conceal genuine causal relationships.": "為什麼整體數據可能掩蓋真實的因果關係。","that inflammation and appetite are physiologically connected.": "發炎和食慾在生理上是互相關聯的。","the difficulty of recruiting participants for clinical trials.": "招募臨床試驗受試者的困難。","The side effects are the machinery of the example, not its point. The passage is not about drug approval at all.": "副作用只是這個例子的運作機制，而不是它要表達的重點。這篇文章根本與藥物核准無關。","Correct. “their effects on an outcome can cancel, leaving a correlation indistinguishable from zero in the aggregate while a real and clinically significant mechanism operates in each direction.”": "正確。\"their effects on an outcome can cancel, leaving a correlation indistinguishable from zero in the aggregate while a real and clinically significant mechanism operates in each direction.\"","The drug is hypothetical — note the “say”. No physiological claim is being made about inflammation and appetite.": "這種藥物是假設的——注意文中的 \"say\"（比方說）。文章並沒有對發炎和食慾做出任何生理上的主張。","Never mentioned. Recruitment does not come up anywhere in the passage.": "完全沒有提到。文章中沒有任何地方談到招募受試者。","flood damage rises fastest where defences are strongest": "防洪設施最堅固的地方，洪災損失增加得最快","the levee effect: protection encourages development on floodplains": "堤防效應：防護措施反而鼓勵人們在氾濫平原上開發","defences reduce flood frequency but raise exposed value": "防洪設施降低了淹水頻率，卻提高了暴露在風險中的價值","exceedance is expected, not engineering failure": "洪水超過設計標準是預期中的事件，而不是工程失敗","defences need paired development restrictions, which are politically hard": "防洪設施需要搭配開發限制，但這在政治上很困難","The lecturer described the levee effect, in which building flood defences makes the land behind them appear safe, encouraging dense development on the floodplain. Although defences reduce how often flooding occurs, they sharply increase the value exposed when a flood exceeds the design threshold, which is an expected event rather than a failure. He concluded that defences must be paired with restrictions on development, which is politically difficult.": "講者說明了堤防效應：興建防洪設施會讓其後方的土地看起來很安全，因而鼓勵在氾濫平原上密集開發。雖然防洪設施減少了淹水的次數，但當洪水超過設計標準時——這是預期中的事件，而不是失敗——暴露在風險中的價值卻大幅增加。他的結論是，防洪設施必須搭配開發限制，而這在政治上很難做到。","One of the counter-intuitive findings in urban hydrology is that flood damage has risen fastest in cities that have invested most heavily in flood defence. The explanation is behavioural rather than hydrological, and it has a name: the levee effect. When a city builds a substantial embankment, the land behind it is reclassified as safe, insurance becomes cheaper, and development follows. Twenty years later the floodplain that was sparsely occupied is dense with housing and infrastructure. The defence has genuinely reduced the frequency of flooding, but it has enormously increased the value of what is exposed when a flood does exceed the design threshold. And because these structures are built to a specified return period, exceedance is not a failure of engineering, it is an expected event. The policy implication that hydrologists draw is not that defences should not be built, but that they must be paired with restrictions on what may be built behind them - a condition that is politically far harder to sustain than the concrete itself.": "都市水文學中一個違反直覺的發現是：在防洪上投資最多的城市，洪災損失反而增加得最快。原因與人的行為有關，而不是水文，而且它有一個名稱：堤防效應。當一座城市興建了大型堤防，堤防後方的土地就被重新劃分為安全區域，保險費變得更便宜，開發也隨之而來。二十年後，原本人煙稀少的氾濫平原已經密布住宅和基礎設施。防洪設施確實降低了淹水的頻率，但當洪水真的超過設計標準時，暴露在風險中的價值卻大幅增加。而且由於這些設施是依照特定的重現期來興建的，洪水超過標準並不是工程上的失敗，而是預期中會發生的事件。水文學家從中得出的政策意涵，並不是不該興建防洪設施，而是必須同時限制在其後方可以興建什麼——而這個條件在政治上要維持下去，比興建混凝土堤防本身困難得多。","replication of 100 psychology studies": "重做 100 項心理學研究","under 40% replicated; effects about half the size": "不到 40% 成功重現；效應大約只有一半","cause is incentives, not fraud": "原因在於激勵機制，而不是造假","novelty rewarded over verification; flexible analysis": "重視新奇勝於驗證；分析方式具有彈性","reforms: pre-registration, data sharing, registered reports": "改革措施：預先註冊、資料共享、註冊報告","uneven uptake across disciplines": "各學科採用的程度不一","The speaker reported a large replication project in which fewer than forty per cent of one hundred psychology experiments reproduced the original significant result, with effects around half the published size. She argued that the cause is not fraud but incentives that reward novelty and allow flexible analysis. Reforms such as pre-registration, data sharing and registered reports target those incentives, though uptake varies by discipline.": "講者提到一項大型重現計畫：在一百項心理學實驗中，只有不到百分之四十重現了原本具統計顯著性的結果，而效應大小約只有發表數值的一半。她認為原因並不是造假，而是獎勵新奇、並允許彈性分析的激勵機制。預先註冊、資料共享和註冊報告等改革措施正是針對這些激勵機制，不過各學科採用的程度不一。","In two thousand and fifteen a large collaboration attempted to repeat one hundred published psychology experiments using the original materials and, wherever possible, the original authors’ advice. Fewer than forty per cent produced a statistically significant result in the same direction, and the average effect size was roughly half the published figure. It would be a mistake to read this as evidence of widespread fraud. The far more mundane explanation is a set of incentives that reward novelty over verification. Journals prefer surprising positive findings, hiring committees count publications, and a researcher with flexibility over which measures to report and when to stop collecting data can arrive at a significant result without ever consciously cheating. The reforms that followed target the incentives rather than the individuals: pre-registration of hypotheses, mandatory data sharing, and registered reports in which a journal commits to publishing on the basis of the method, before the result is known. Early evidence suggests these measures work, though they have spread unevenly across disciplines.": "二〇一五年，一個大型合作團隊嘗試使用原始材料、並盡可能依照原作者的建議，重做一百項已發表的心理學實驗。結果只有不到百分之四十得出方向相同、且具統計顯著性的結果，而平均效應大小約只有發表數值的一半。如果把這解讀為造假行為普遍存在的證據，那就錯了。更平凡的解釋，是一套重視新奇勝於驗證的激勵機制。期刊偏好令人驚訝的正面發現，聘任委員會計算論文數量，而一位可以彈性決定要報告哪些指標、何時停止收集資料的研究者，就算從未有意作弊，也可能得出顯著的結果。隨後的改革針對的是激勵機制，而不是個人：預先註冊研究假設、強制共享資料，以及「註冊報告」——期刊在結果出爐之前，就根據研究方法承諾刊登。初步證據顯示這些措施有效，不過它們在各學科之間的推廣程度並不平均。","Which statements are consistent with the recording?": "哪些敘述與錄音內容相符？","The field notebook carries the largest single weighting.": "野外筆記本所占的權重最高。","The group presentation receives a single mark for the whole group.": "小組報告是整組共同得到一個分數。","The reflective report is due on the last morning of the trip.": "反思報告要在考察旅行的最後一天早上繳交。","Raw measurements must appear in the notebook.": "筆記本中必須包含原始測量數據。","The notebook is collected two weeks after the group returns.": "筆記本會在小組回來兩週後收回。","Before we break, a word about the field trip, because every year somebody turns up without the right kit and every year somebody loses marks for the same avoidable reason. We leave from the science car park at seven, not from the main gate, and the coach will not wait. Bring waterproofs whatever the forecast says, because the site is exposed and we will be out for most of the day regardless of the weather. Now, a note on how we assess the trip. There are three components and they are weighted unequally. The field notebook is worth forty per cent, and I will collect it on the last morning, not afterwards, so write it up each evening. The group presentation is thirty per cent and is marked as a group, with no individual adjustment, so choose your collaborators carefully. The remaining thirty per cent is the individual reflective report, due two weeks after we return. One thing that catches people out every year: the notebook must include your raw measurements, not a tidied version. Transcribed notebooks lose marks. One more thing on referencing: if you draw on the site guide or on last year’s published survey, cite them properly in the reflective report. The notebook itself does not need a bibliography, but the report does, and the usual penalties apply.": "下課前，我想說明一下野外考察的事，因為每年都有人沒帶對裝備，也每年都有人因為同一個本來可以避免的原因被扣分。我們七點從理學院停車場出發，不是從大門口，遊覽車不會等人。不管天氣預報怎麼說，都要帶防水衣物，因為考察地點毫無遮蔽，而且無論天氣如何，我們大部分時間都會待在戶外。接下來說明考察的評分方式。評分分為三個部分，權重並不相同。野外筆記本占百分之四十，我會在最後一天早上收，不是之後才收，所以每天晚上都要整理好。小組報告占百分之三十，是以小組為單位評分，不會個別調整，所以要謹慎選擇組員。剩下的百分之三十是個人反思報告，在我們回來兩週後繳交。有一件事每年都有人栽跟頭：筆記本裡必須包含你的原始測量數據，而不是整理過的版本。重新謄寫的筆記本會被扣分。還有一件關於引用的事：如果你參考了現場導覽手冊或去年發表的調查報告，請在反思報告中正確引用。筆記本本身不需要參考書目，但報告需要，而且一般的扣分規定同樣適用。","Which points does the speaker make?": "講者提出了哪些論點？","Mangroves can raise their own ground level over time.": "紅樹林可以隨著時間墊高自己所在的地面高度。","A hundred metres of mangrove can cut wave energy by 50 to 70 per cent.": "一百公尺寬的紅樹林可以削減 50% 至 70% 的波浪能量。","Sea walls adapt to rising sea levels better than mangroves do.": "海堤比紅樹林更能適應海平面上升。","Upstream dams can undermine a mangrove belt by removing sediment.": "上游的水壩會截斷沉積物，進而破壞紅樹林帶。","The defensive value of mangroves comes mainly from the height of the trees.": "紅樹林的防護價值主要來自樹木的高度。","For most of the last century, coastal protection meant concrete, and the engineering question was simply how high and how thick. That assumption has been unravelling for about twenty years, and mangroves are the main reason why. What makes the mangrove such an effective coastal defence is not its size but its architecture. The prop roots slow the water, and slowing the water is what causes suspended sediment to drop out of it. Over decades this builds elevation, so a healthy mangrove belt actually grows upward as sea level rises, which no sea wall can do. Field measurements put wave energy reduction at somewhere between fifty and seventy per cent across a hundred metres of forest. The catch is that this only holds where the sediment supply is intact. Dam a river upstream, cut off the sediment, and the same forest will drown in place within a few decades. There is also a cost argument that tends to settle the debate in practice: restoration typically runs at a fraction of the capital cost of a comparable barrier, and unlike a barrier it needs no maintenance budget once it establishes. Add the fisheries value and the carbon stored in the sediment, and the accounting stops being close. That is why a growing number of coastal authorities now budget for planting before they budget for concrete.": "在上個世紀的大部分時間裡，海岸防護指的就是混凝土，工程上的問題只是要蓋多高、多厚。這個假設在大約二十年來逐漸瓦解，而紅樹林正是主要原因。紅樹林之所以是如此有效的海岸防護，關鍵不在於它的大小，而在於它的結構。支柱根會減緩水流，而水流變慢，懸浮的沉積物就會沉降下來。經過數十年，這會使地面逐漸墊高，所以一片健康的紅樹林帶其實會隨著海平面上升而向上生長，這是任何海堤都做不到的。實地測量顯示，一百公尺寬的森林可以削減大約百分之五十到七十的波浪能量。但問題是，這只在沉積物供應完整的地方才成立。如果在上游築壩，截斷了沉積物，同一片森林在幾十年內就會原地被淹沒。另外還有一個成本上的論點，在實務上往往能讓這場爭論塵埃落定：復育紅樹林的費用通常只有同等屏障資本成本的一小部分，而且和屏障不同的是，紅樹林一旦長成，就不需要任何維護預算。再加上漁業價值以及儲存在沉積物中的碳，這筆帳就一點也不難算了。這就是為什麼越來越多的沿海主管機關，現在會先編列種植紅樹林的預算，再考慮混凝土的預算。","Which summary best represents the recording?": "哪一個摘要最能代表錄音內容？","The Great Wall cannot be seen from orbit unaided because it is narrow and matches the colour of the surrounding land; what is visible from space depends on contrast and width rather than on a structure’s significance.": "由於長城很窄，而且顏色與周圍土地相近，所以無法從軌道上用肉眼看見；從太空能否看見某樣東西，取決於對比和寬度，而不是建築物的重要性。","Astronauts have often tried and failed to photograph the Great Wall of China from low earth orbit, and modern cameras are now used instead to record historical monuments from space.": "太空人經常嘗試從近地軌道拍攝萬里長城卻都失敗，因此現在改用現代相機從太空記錄歷史古蹟。","The Great Wall of China is one of the longest structures ever built, stretching for thousands of kilometres across varied terrain and constructed from materials gathered locally along its route.": "萬里長城是有史以來最長的建築之一，綿延數千公里，橫跨各種地形，並以沿途就地取材的材料建造而成。","Cities, motorways and airports are visible from orbit at night, which shows how far human settlement has expanded since the Great Wall was first constructed.": "城市、高速公路和機場在夜間可以從軌道上看見，這顯示自長城最初興建以來，人類聚落擴張的程度有多大。","There is a persistent belief that the Great Wall of China is visible from space with the naked eye. It is not, and a moment’s thought about its dimensions explains why. The wall is long, but it is only a few metres wide and it is built from local materials that match the surrounding terrain in colour. From low earth orbit, resolving it unaided would be like spotting a human hair from two kilometres away against a background of the same shade. Astronauts have confirmed this repeatedly. What can be seen from orbit are things that contrast sharply with their surroundings: motorways, airports, greenhouse complexes, and above all the lights of cities at night. The lesson is that visibility from orbit is governed by contrast and width, not by historical importance.": "有一種說法一直流傳著：從太空可以用肉眼看見萬里長城。事實並非如此，只要稍微想一下它的尺寸就能明白原因。長城雖然很長，但寬度只有幾公尺，而且是用當地材料建造的，顏色與周圍的地形相近。從近地軌道用肉眼辨識它，就像要從兩公里外，在同樣顏色的背景中看出一根頭髮一樣。太空人已經多次證實了這一點。從軌道上看得見的，是那些與周圍環境形成強烈對比的東西：高速公路、機場、溫室群，尤其是夜間的城市燈光。這給我們的啟示是：能否從軌道上看見，取決於對比和寬度，而不是歷史上的重要性。","Laptop users take more complete lecture notes than longhand writers, so students who type are generally better prepared for examinations.": "用筆電做筆記的人所做的課堂筆記比手寫者更完整，因此打字的學生通常對考試準備得更充分。","The benefit of note-taking lies in the mental processing required to select and paraphrase while listening, which is why slower longhand notes outperform more complete typed ones on later conceptual tests.": "做筆記的好處，在於邊聽邊篩選和改述時所需要的思考處理過程，這就是為什麼速度較慢的手寫筆記，在之後的概念性測驗中表現勝過較完整的打字筆記。","Recording lectures and listening to them again is an efficient substitute for taking notes during the lecture itself.": "將課程錄音並重新聆聽，是課堂上做筆記的一種有效替代方式。","Handwriting is a declining skill among university students, and this has measurable consequences for how quickly they can record information in lectures.": "手寫是大學生逐漸退化的一項技能，而這對他們在課堂上記錄資訊的速度有可測量的影響。","I want to challenge the way we talk about note-taking in lectures. The assumption is that the purpose is to create a record you will later revise from. But the studies comparing longhand with laptop note-taking point somewhere else. Students typing notes produce far more words and capture the lecture more completely, yet they perform worse on conceptual questions a week later. Students writing by hand cannot keep up, so they are forced to select, compress and paraphrase in real time - and that processing, not the resulting document, is what produces the learning. The practical implication is uncomfortable for anyone who records lectures and promises to listen again later. The value was in the effort of the first pass.": "我想挑戰我們談論課堂筆記的方式。一般的假設是，做筆記的目的是留下一份之後可以拿來複習的紀錄。但比較手寫與筆電筆記的研究卻指向另一個方向。用打字做筆記的學生寫下的字數多得多，對課程內容的記錄也更完整，但一週後在概念性問題上的表現卻比較差。手寫的學生跟不上速度，因此被迫即時地篩選、濃縮和改述——而產生學習效果的，正是這種思考處理過程，而不是最後留下的那份文件。對於任何錄下課程、並承諾之後會再聽一次的人來說，這個實際意涵令人不太舒服：價值其實在於第一次聆聽時所付出的努力。","Every autumn, billions of small birds cross whole continents at night, many of them on their first journey and with no older bird to follow. Migrating songbirds navigate using at least three separate systems. They read the position of the setting ____ , they use the pattern of stars around the celestial pole, and they can detect the earth’s magnetic ____ . When researchers place a bird in a planetarium and rotate the artificial sky, the bird reorients ____ . That is about as direct a demonstration as experimental biology ever ____ . The magnetic sense is still the least understood of the three.": "每年秋天，數十億隻小鳥在夜間飛越整片大陸，其中許多是第一次遷徙，也沒有年長的鳥可以跟隨。遷徙的鳴禽至少使用三套不同的系統來導航。牠們會判讀正在落下的 ____ 的位置，利用天極周圍星星的排列，還能偵測地球的磁 ____ 。當研究人員把一隻鳥放進天象館並轉動人造星空時，鳥會 ____ 重新調整方向。這幾乎是實驗生物學所能 ____ 的最直接的證明了。在這三種感知中，磁感仍然是了解最少的一種。","Every autumn, billions of small birds cross whole continents at night, many of them on their first journey and with no older bird to follow. Migrating songbirds navigate using at least three separate systems. They read the position of the setting sun, they use the pattern of stars around the celestial pole, and they can detect the earth’s magnetic field. When researchers place a bird in a planetarium and rotate the artificial sky, the bird reorients accordingly. That is about as direct a demonstration as experimental biology ever provides. The magnetic sense is still the least understood of the three.": "每年秋天，數十億隻小鳥在夜間飛越整片大陸，其中許多是第一次遷徙，也沒有年長的鳥可以跟隨。遷徙的鳴禽至少使用三套不同的系統來導航。牠們會判讀落日的位置，利用天極周圍星星的排列，還能偵測地球的磁場。當研究人員把一隻鳥放進天象館並轉動人造星空時，鳥會隨之重新調整方向。這幾乎是實驗生物學所能提供的最直接的證明了。在這三種感知中，磁感仍然是了解最少的一種。","We tend to picture pollution as smoke from chimneys and exhaust from cars, but some of the biggest polluters sit quietly in plain sight. Concrete is the second most consumed substance on earth after ____ . Its manufacture accounts for roughly eight per cent of global carbon ____ , most of which comes not from the kiln fuel but from the chemistry of turning limestone into ____ . Reducing that figure therefore requires changing the material itself, not simply the energy ____ that heats it. Cleaner fuel, however welcome, can only ever close a fraction of the gap.": "我們往往把污染想像成煙囪冒出的煙和汽車排放的廢氣，但一些最大的污染源其實就安靜地擺在眼前。混凝土是地球上消耗量第二大的物質，僅次於 ____ 。它的製造約占全球碳 ____ 的百分之八，其中大部分並非來自窯爐燃料，而是來自將石灰石轉化為 ____ 的化學過程。因此，要降低這個數字，就必須改變材料本身，而不只是改變加熱它的能源 ____ 。更乾淨的燃料固然值得歡迎，卻永遠只能填補一小部分的缺口。","We tend to picture pollution as smoke from chimneys and exhaust from cars, but some of the biggest polluters sit quietly in plain sight. Concrete is the second most consumed substance on earth after water. Its manufacture accounts for roughly eight per cent of global carbon emissions, most of which comes not from the kiln fuel but from the chemistry of turning limestone into clinker. Reducing that figure therefore requires changing the material itself, not simply the energy source that heats it. Cleaner fuel, however welcome, can only ever close a fraction of the gap.": "我們往往把污染想像成煙囪冒出的煙和汽車排放的廢氣，但一些最大的污染源其實就安靜地擺在眼前。混凝土是地球上消耗量第二大的物質，僅次於水。它的製造約占全球碳排放量的百分之八，其中大部分並非來自窯爐燃料，而是來自將石灰石轉化為熟料的化學過程。因此，要降低這個數字，就必須改變材料本身，而不只是改變加熱它的能源來源。更乾淨的燃料固然值得歡迎，卻永遠只能填補一小部分的缺口。","What is the speaker’s main point?": "講者的主要論點是什麼？","Adults cannot achieve a native-like accent and should not attempt to.": "成年人無法達到母語般的口音，也不應該嘗試。","The real disadvantage adults face is limited exposure rather than reduced learning capacity.": "成年人真正面臨的劣勢是接觸語言的機會有限，而不是學習能力下降。","Children learn second languages faster than adults at every stage.": "兒童在每個階段學習第二語言的速度都比成年人快。","Explicit grammar instruction is ineffective for adult learners.": "明確的文法教學對成年學習者無效。","I am often asked whether learning a second language as an adult is a waste of time, given how much easier it is for children. My answer is that the question is framed badly. Children are better at acquiring native-like pronunciation, that much is settled. But adults are considerably faster at the early stages - they already have literacy, they understand grammatical abstraction, and they can use explicit strategies a four-year-old cannot. What adults lack is not capacity but exposure. A child gets thousands of hours of unavoidable immersion. An adult gets three hours a week and a busy job.": "常有人問我，既然小孩學第二語言容易得多，成年人學第二語言是不是在浪費時間。我的回答是，這個問題本身的問法就不對。小孩比較擅長習得母語般的發音，這一點已經確定了。但成年人在初期階段的進步快得多——他們已經具備讀寫能力，能理解抽象的文法概念，還能運用四歲小孩做不到的明確學習策略。成年人缺乏的不是能力，而是接觸語言的機會。小孩會得到數千小時無法避免的沉浸式環境，而成年人每週只有三小時，外加一份忙碌的工作。","What does the lecturer want students to do with the reading list?": "講者希望學生如何使用閱讀清單？","Read every item on the list before the seminar.": "在研討課之前讀完清單上的每一項。","Focus on two contrasting starred texts and understand the disagreement between them.": "專注於兩篇觀點相反、標有星號的文章，並理解兩者之間的分歧。","Choose any two items that interest them personally.": "選擇任意兩篇自己感興趣的文章。","Read the list in the order in which it is printed.": "按照清單上列出的順序閱讀。","A word about how I want your reading lists used. I do not expect you to read every item, and I would be worried if you tried. The list is a map of a conversation, not a queue of tasks. Start with the two items I have starred, because they disagree with each other, and everything else on the list is a move in the argument between them. If you can explain why those two authors reach different conclusions from broadly the same evidence, you have understood the seminar topic, whether or not you have opened anything else.": "關於你們該怎麼使用閱讀清單，我想說明一下。我不期望你們讀完每一項，如果你們真的想全部讀完，我反而會擔心。這份清單是一場對話的地圖，而不是一排待辦事項。先從我標了星號的兩篇開始，因為它們彼此意見相左，而清單上的其他每一篇，都是這兩者之間論戰中的一步。如果你能解釋為什麼這兩位作者根據大致相同的證據，卻得出不同的結論，那你就已經理解了這次研討課的主題，無論你有沒有翻開其他任何一篇。","cheapest": "最便宜的","organic": "有機的","locally grown": "本地種植的","best packaged": "包裝最好的","Before you design your own questionnaire for the coursework, I want you to sit with a finding that has embarrassed this department more than once. The gap between what people tell a researcher and what they actually do is not a minor measurement problem; it is the central one. The pattern in the survey data is clear enough. Households told us they were willing to pay more for produce grown locally, and a large majority said environmental impact influenced their choices. At the checkout, however, the same households bought whichever option was cheapest.": "在你們為課程作業設計自己的問卷之前，我希望你們好好思考一個不只一次讓本系難堪的發現。人們告訴研究人員的話與他們實際的行為之間的落差，並不是一個小小的測量問題，而是核心問題。問卷數據呈現的模式相當明確。家庭告訴我們，他們願意為本地種植的農產品多付一些錢，而且絕大多數人表示環境影響會左右他們的選擇。然而到了結帳櫃檯，同樣的這些家庭卻買了最便宜的那一種。","back": "歸還","away for free": "免費送出","a higher valuation": "更高的估價","more storage space": "更多的儲藏空間","The history of the museum is, among other things, a history of what counts as prestige, and that has shifted more than once. For most of the twentieth century, museums competed on the size of their collections. The measure of a great institution was how much it held. That logic has now been quietly reversed, and the institutions attracting the most attention are those willing to give objects back.": "博物館的歷史，除了其他面向之外，也是一部「什麼才算是聲望」的歷史，而這個標準已經改變過不只一次。在二十世紀的大部分時間裡，博物館比拼的是館藏的規模。衡量一座偉大機構的標準，就是它收藏了多少東西。這個邏輯如今已悄悄地翻轉，現在最受矚目的機構，是那些願意把文物歸還的機構。","invented": "發明的","abandoned": "拋棄的","translated": "翻譯的","purchased": "購買的","Whenever somebody tells you that a new communication technology is destroying our manners, it is worth asking what the manners were before it arrived, and where they came from. It is worth remembering that the first users of the telephone were advised to shout into it, and that early etiquette guides debated whether it was rude to call someone without writing first. Every communication technology arrives without conventions, and those conventions have to be invented.": "每當有人告訴你某項新的通訊技術正在摧毀我們的禮儀時，都值得問一問：在它出現之前，禮儀是什麼樣子，又是從哪裡來的。值得記住的是，最早使用電話的人曾被建議要對著它大喊，而早期的禮儀指南還曾爭論過，沒有先寫信就打電話給別人是否失禮。每一種通訊技術出現時都沒有既定的慣例，而這些慣例必須被創造出來。","The domestication of the horse transformed warfare, trade and agriculture across the steppe. Genetic evidence now points to a single population in the lower Volga region as the source of nearly all modern domestic horses, spreading rapidly from around four hundred years ago.": "馬的馴化改變了整個草原上的戰爭、貿易和農業。基因證據如今顯示，幾乎所有現代家馬都源自伏爾加河下游地區的單一族群，並從大約四百年前開始迅速擴散。","The domestication of the horse transformed warfare, trade and agriculture across the steppe. Genetic evidence now points to a single population in the lower Volga region as the source of nearly all modern domestic horses, spreading rapidly from around four thousand years ago.": "馬的馴化改變了整個草原上的戰爭、貿易和農業。基因證據如今顯示，幾乎所有現代家馬都源自伏爾加河下游地區的單一族群，並從大約四千年前開始迅速擴散。","Tidal power has one decisive advantage over wind and solar: it is entirely predictable. Engineers can say with confidence what a tidal barrage will generate on a particular morning in twenty years. The obstacle has always been cost, and the ecological damage to industries.": "潮汐發電比風力和太陽能多了一項決定性的優勢：它完全可以預測。工程師能夠有把握地說出，一座潮汐壩在二十年後某個特定的早上會發多少電。障礙一直都是成本，以及對產業造成的生態破壞。","Tidal power has one decisive advantage over wind and solar: it is entirely predictable. Engineers can say with confidence what a tidal barrage will generate on a particular afternoon in twenty years. The obstacle has always been cost, and the ecological damage to estuaries.": "潮汐發電比風力和太陽能多了一項決定性的優勢：它完全可以預測。工程師能夠有把握地說出，一座潮汐壩在二十年後某個特定的下午會發多少電。障礙一直都是成本，以及對河口造成的生態破壞。","the university library provides access to a wide range of electronic journals": "大學圖書館提供多種電子期刊的使用權限","students are advised to consult their tutor before changing their subject": "學生在更換科目之前，建議先諮詢他們的導師","experimental results must be recorded immediately in the laboratory notebook": "實驗結果必須立即記錄在實驗室筆記本中","the department has announced a series of lectures on environmental policy": "系上宣布將舉辦一系列關於環境政策的講座","financial support is available for postgraduates attending international conferences": "參加國際研討會的研究生可以申請經費補助","all applications for extension must be submitted through the online portal": "所有延期申請都必須透過線上系統提交"};
+const zkey = s => String(s).replace(/\s+/g, ' ').replace(/\s*_{2,}\s*/g, ' ____ ').trim();
+
 function plainText(el){
   const c = el.cloneNode(true);
   c.querySelectorAll('.zh, .tag, .xlnote').forEach(x => x.remove());
@@ -1654,7 +1665,7 @@ function plainText(el){
 function segmentsFor(kind){
   const root = document.getElementById('view');
   const pick = kind === 'q'
-    ? '.prose, .otext > div:first-child, .rcard .rtext, details.reveal .dbody li'
+    ? '.prose, .qstem, .otext > div:first-child, .rcard .rtext, details.reveal .dbody li'
     : '.whyline, .whytext, .tnote, .result .tips li, .card .tips li, .result .prose, .result .model > div:not(.eyebrow)';
   let els = Array.from(root.querySelectorAll(pick)).filter(el =>
     !el.closest('.wshead') && (kind === 'q' ? !el.closest('.result') : true));
@@ -1666,56 +1677,50 @@ function segmentsFor(kind){
     return /[A-Za-z]{2}/.test(t) && !/[一-鿿]/.test(t);
   });
 }
-function putZh(el, text){
-  const z = h(el.closest('button') ? 'span' : 'div', { cls:'zh', translate:'no' }, text);
-  if (el.matches('li, .whytext, .whyline, .tnote, .rtext, .otext > div:first-child, .model > div')) el.append(z);
+function putZh(el, text, kind){
+  const z = h(el.closest('button') ? 'span' : 'div', { cls:'zh', translate:'no', 'data-k':kind }, text);
+  if (el.matches('li, .whytext, .whyline, .tnote, .rtext, .qstem, .otext > div:first-child, .model > div, .tscript p')) el.append(z);
   else el.after(z);
-  el.dataset.zh = '1';
+  el.dataset.zh = kind;
 }
 function xlNote(btn, msg){
   let n = btn.nextElementSibling;
   if (!n || !n.classList.contains('xlnote')){ n = h('div', { cls:'xlnote', translate:'no' }); btn.after(n); }
   n.textContent = msg;
 }
-const XL_ERR = {
-  rate_limited:'翻譯請求過於頻繁，請稍候一分鐘再試。',
-  not_granted:'未允許此頁面使用 AI，因此無法翻譯。',
-  sampling_disabled:'此帳戶無法使用 AI 翻譯。',
-  session_expired:'登入已過期，請重新登入後再試。'
-};
-async function translateContent(kind, btn){
-  const els = segmentsFor(kind);
-  if (!els.length){ btn.textContent = '✓ 已翻譯'; return; }
-  const s = await ensureSample();
-  if (!s){
-    xlNote(btn, '此版本無法即時翻譯題目與解說。請使用瀏覽器內建的翻譯功能：iPhone Safari 點網址列的「aA」圖示；電腦版 Chrome 在頁面上按右鍵選擇「翻譯」。');
-    return;
-  }
-  const label = btn.textContent;
-  btn.disabled = true; btn.textContent = '譯 翻譯中…';
-  try {
-    const out = await s.json(
-      'Translate each English string in the JSON array below into Traditional Chinese (繁體中文) as used in Taiwan, for a student preparing for the PTE Academic English test.\n' +
-      '- Translate faithfully and naturally. Do not summarise, explain or add anything.\n' +
-      '- Keep any English inside quotation marks (“…” or "…") exactly as written, and translate the words around it.\n' +
-      '- Keep numbers, names and ____ blanks unchanged.\n' +
-      'Reply with only a JSON array of strings, the same length and in the same order as the input.\n\n' +
-      JSON.stringify(els.map(plainText)),
-      { modelTier:'quick', cache:{ gcTime:86400000 } });
-    if (!Array.isArray(out) || out.length !== els.length) throw { code:'invalid_json' };
-    els.forEach((el, i) => putZh(el, String(out[i] == null ? '' : out[i])));
-    btn.textContent = '✓ 已翻譯';
-  } catch(e){
-    btn.textContent = label;
-    xlNote(btn, XL_ERR[e && e.code] || '翻譯失敗，請再試一次。');
-  } finally {
-    btn.disabled = false;
-  }
+const XL_LABEL = { q:'譯 翻譯題目', a:'譯 翻譯解說' };
+/* Saved translations only: shown on the first click, hidden on the next. */
+function translateContent(kind, btn){
+  const view = document.getElementById('view');
+  view.querySelectorAll('.zh[data-k="' + kind + '"]').forEach(z => z.remove());
+  view.querySelectorAll('[data-zh="' + kind + '"]').forEach(el => { delete el.dataset.zh; });
+  const note = btn.nextElementSibling;
+  if (note && note.classList.contains('xlnote')) note.remove();
+  if (btn.dataset.on === '1'){ btn.dataset.on = ''; btn.textContent = XL_LABEL[kind]; return; }
+  let n = 0;
+  segmentsFor(kind).forEach(el => {
+    const z = ZHC[zkey(plainText(el))];
+    if (z){ putZh(el, z, kind); n++; }
+  });
+  btn.dataset.on = '1'; btn.textContent = '譯 隱藏翻譯';
+  if (!n) xlNote(btn, '這裡沒有需要翻譯的內容。');
 }
 function xlateButton(kind){
-  const b = h('button', { cls:'btn sm xlate', type:'button', translate:'no' }, kind === 'q' ? '譯 翻譯題目' : '譯 翻譯解說');
+  const b = h('button', { cls:'btn sm xlate', type:'button', translate:'no' }, XL_LABEL[kind]);
   b.addEventListener('click', () => translateContent(kind, b));
   return b;
+}
+
+/* transcript of the audio, shown after answering */
+const TRANSCRIPT_TASKS = ['retell_lecture', 'sgd', 'short_question', 'sst', 'l_mcq_multi', 'l_fib', 'hcs', 'l_mcq_single', 'hiw'];
+function transcriptBlock(task, item){
+  if (!TRANSCRIPT_TASKS.includes(task.id)) return null;
+  const lines = item.turns
+    ? item.turns.map(x => h('p', {}, h('b', { text: x.who + ': ' }), x.text))
+    : [h('p', { text: task.id === 'l_fib' ? item.parts.map((p, k) => p + (item.ans[k] || '')).join('')
+                   : task.id === 'hiw' ? item.spoken : (item.text || item.q) })];
+  return h('details', { cls:'reveal tscript' }, h('summary', { text:'Transcript' }),
+    h('div', { cls:'dbody' }, h('div', { cls:'prose', style:'font-size:15.5px' }, lines)));
 }
 
 /* ============================ state + storage ============================ */
@@ -1727,6 +1732,12 @@ try {
   state.attempts = JSON.parse(localStorage.getItem(LSK)
     || localStorage.getItem('pte-drill-room/attempts/v1') || '[]');
 } catch(e){ state.attempts = []; }
+// question IDs were renamed to type-prefixed numbers (ro1 -> RP0001)
+const OLD_IDS = { pi1:'PI0001', ra1:'RA0001', ra2:'RA0002', rs1:'RS0001', rs2:'RS0002', rs3:'RS0003', rs4:'RS0004', rs5:'RS0005', di1:'DI0001', di2:'DI0002', rl1:'RL0001', rl2:'RL0002', sq1:'ASQ0001', sq2:'ASQ0002', sq3:'ASQ0003', sq4:'ASQ0004', sq5:'ASQ0005', sq6:'ASQ0006', sq7:'ASQ0007', sq8:'ASQ0008', gd1:'SGD0001', gd2:'SGD0002', rt1:'RTS0001', rt2:'RTS0002', rt3:'RTS0003', sw1:'SWT0001', sw2:'SWT0002', es1:'WE0001', es2:'WE0002', rw1:'RWFIB0001', rw2:'RWFIB0002', rm1:'MCMAR0001', rm2:'MCMAR0002', ro1:'RP0001', ro2:'RP0002', rf1:'RFIB0001', rf2:'RFIB0002', rs1q:'MCSAR0001', rs2q:'MCSAR0002', ss1:'SST0001', ss2:'SST0002', lm1:'MCMAL0001', lm2:'MCMAL0002', hc1:'HCS0001', hc2:'HCS0002', lf1:'LFIB0001', lf2:'LFIB0002', ls1:'MCSAL0001', ls2:'MCSAL0002', sm1:'SMW0001', sm2:'SMW0002', sm3:'SMW0003', hi1:'HIW0001', hi2:'HIW0002', wd1:'WFD0001', wd2:'WFD0002', wd3:'WFD0003', wd4:'WFD0004', wd5:'WFD0005', wd6:'WFD0006' };
+if (state.attempts.some(a => OLD_IDS[a.i])){
+  state.attempts.forEach(a => { if (OLD_IDS[a.i]) a.i = OLD_IDS[a.i]; });
+  try { localStorage.setItem(LSK, JSON.stringify(state.attempts.slice(-600))); } catch(e){}
+}
 function persist(){ try { localStorage.setItem(LSK, JSON.stringify(state.attempts.slice(-600))); } catch(e){} }
 function record(taskId, itemId, p){
   state.attempts.push({ t:taskId, i:itemId, p:Math.round(p), ts:Date.now() });
@@ -2144,6 +2155,8 @@ function micTester(){
       h('p', { cls:'muted small', style:'margin-top:4px', text:'Five seconds of recording with a live level meter, then playback. Worth doing once per sitting — a speaking task gives you one take and will not tell you the mic was dead.' })),
     row, out);
 }
+const START_GRACE = 7;   // seconds allowed before the candidate starts speaking
+const PAUSE_LIMIT = 3;   // seconds of pause allowed once speaking has started
 function makeRecorder(seconds, onDone, opts){
   opts = opts || {};
   const wave = makeWave();
@@ -2153,7 +2166,8 @@ function makeRecorder(seconds, onDone, opts){
   const out = h('div', { style:'margin-top:10px' });
   const node = h('div', {}, bar, out);
   let rec = null, chunks = [], id = null, lvl = null, left = seconds, finished = false;
-  let spoke = false, quietMs = 0, longestQuiet = 0, measured = false;
+  // the real test allows 7 s of silence before you start, then 3 s once you are speaking
+  let spoke = false, quietMs = 0, startDelay = 0, longestPause = 0, measured = false;
 
   const finish = () => {
     if (finished) return; finished = true;
@@ -2161,7 +2175,7 @@ function makeRecorder(seconds, onDone, opts){
     if (lvl) clearInterval(lvl);
     wave.off(); stat.textContent = 'Completed';
     try { if (rec && rec.state === 'recording') rec.stop(); } catch(e){}
-    onDone && onDone({ measured, spoke, longestQuiet });
+    onDone && onDone({ measured, spoke, startDelay, longestPause });
   };
   const run = async () => {
     const stream = await getMic();
@@ -2200,14 +2214,23 @@ function makeRecorder(seconds, onDone, opts){
         analyser.getByteFrequencyData(data);
         wave.feed(data);
         let sum = 0; for (let i = 0; i < data.length; i++) sum += data[i];
-        if (sum / data.length / 255 > 0.045){ spoke = true; quietMs = 0; }
-        else { quietMs += 120; longestQuiet = Math.max(longestQuiet, quietMs); }
-        stat.textContent = (opts.silence && quietMs >= 3000)
-          ? 'Silent ' + Math.floor(quietMs / 1000) + 's' : 'Recording';
+        if (sum / data.length / 255 > 0.045){ if (!spoke) startDelay = quietMs; spoke = true; quietMs = 0; }
+        else {
+          quietMs += 120;
+          if (spoke) longestPause = Math.max(longestPause, quietMs);
+          else startDelay = quietMs;
+        }
+        let msg = 'Recording';
+        if (opts.silence){
+          if (!spoke && quietMs >= START_GRACE * 1000) msg = 'Silent ' + Math.floor(quietMs / 1000) + 's';
+          else if (!spoke && quietMs >= 3000) msg = 'Start speaking — ' + Math.ceil((START_GRACE * 1000 - quietMs) / 1000) + 's';
+          else if (spoke && quietMs >= PAUSE_LIMIT * 1000) msg = 'Silent ' + Math.floor(quietMs / 1000) + 's';
+        }
+        stat.textContent = msg;
       }, 120);
       timers.push(lvl);
     } else wave.on();
-    if (opts.silence) out.append(h('div', { cls:'small faint', style:'margin-bottom:8px', text:'In the real test, more than three seconds of silence ends the recording. Here it only warns you.' }));
+    if (opts.silence) out.append(h('div', { cls:'small faint', style:'margin-bottom:8px', text:'In the real test, the recording stops if you have not started speaking within 7 seconds, or if you pause for more than 3 seconds once you have started. Here it only warns you.' }));
     id = setInterval(() => {
       left--; clock.textContent = mmss(Math.max(0, left));
       clock.classList.toggle('low', left <= 5);
@@ -2333,7 +2356,10 @@ RUN.speak = ctx => {
     const box = h('div', { cls:'card', style:'margin-top:16px;display:flex;flex-direction:column;gap:14px' });
     if (info && info.measured && task.silence){
       if (!info.spoke) box.append(h('div', { cls:'notice', style:'border-color:var(--rose);color:var(--rose)', text:'No speech was picked up at all. In the real test this is marked as unattempted.' }));
-      else if (info.longestQuiet >= 3000) box.append(h('div', { cls:'notice', style:'border-color:var(--amber);color:var(--amber)', text:'You went quiet for about ' + Math.floor(info.longestQuiet / 1000) + ' seconds at one point. In the real test, silence beyond three seconds ends the recording — keep talking, even if it means restating your last point.' }));
+      else {
+        if (info.startDelay >= START_GRACE * 1000) box.append(h('div', { cls:'notice', style:'border-color:var(--amber);color:var(--amber)', text:'You took about ' + Math.floor(info.startDelay / 1000) + ' seconds to start speaking. In the real test, the recording stops if you have not started within 7 seconds.' }));
+        if (info.longestPause >= PAUSE_LIMIT * 1000) box.append(h('div', { cls:'notice', style:'border-color:var(--amber);color:var(--amber)', text:'You paused for about ' + Math.floor(info.longestPause / 1000) + ' seconds after you started speaking. In the real test, a pause of more than three seconds ends the recording — keep talking, even if it means restating your last point.' }));
+      }
     }
     if (task.id === 'read_aloud'){
       const marked = item.text.split(/(\s+)/).map(w => {
@@ -2753,7 +2779,7 @@ RUN.mcqm = ctx => {
   const player = task.audio ? makePlayer(item.text, { rate:0.95, sex: sexFor(ctx) }) : null;
   const head = player ? player.node : h('div', { cls:'prose' }, h('p', { text:item.passage }));
   host.append(h('div', { style:'display:flex;flex-direction:column;gap:16px' },
-    head, h('div', {}, h('div', { style:'font-weight:600', text:item.q }), boxes.map(b => b.node)),
+    head, h('div', {}, h('div', { cls:'qstem', style:'font-weight:600', text:item.q }), boxes.map(b => b.node)),
     h('div', { cls:'row' }, submit)));
   if (player) player.play();
   submit.addEventListener('click', () => {
@@ -2790,7 +2816,7 @@ RUN.mcqs = ctx => {
   const player = task.audio ? makePlayer(item.text, { rate:0.95, sex: sexFor(ctx) }) : null;
   const head = player ? player.node : h('div', { cls:'prose' }, h('p', { text:item.passage }));
   host.append(h('div', { style:'display:flex;flex-direction:column;gap:16px' },
-    head, h('div', {}, h('div', { style:'font-weight:600', text:item.q }), opts.map(o => o.node)),
+    head, h('div', {}, h('div', { cls:'qstem', style:'font-weight:600', text:item.q }), opts.map(o => o.node)),
     h('div', { cls:'row' }, submit)));
   if (player) player.play();
   submit.addEventListener('click', () => {
@@ -3297,6 +3323,7 @@ function viewTask(){
     h('div', { cls:'row' },
       h('span', { cls:'pill acc', text:'scores ' + task.skills.map(skillLabel).join(' + ') }),
       h('span', { cls:'pill', text: PART_NAME[task.part] }),
+      h('span', { cls:'pill mono', text: 'ID ' + item.id }),
       h('span', { cls:'pill', text: task.count + ' in the real test' }),
       task.time ? h('span', { cls:'pill', text: (task.time/60) + ' min' }) : null,
       (task.rec && task.kind === 'speak') ? h('span', { cls:'pill', text: task.rec + ' s recording' }) : null,
@@ -3309,6 +3336,8 @@ function viewTask(){
   const ctx = { task, item, idx, host: body, finish(p, card){
     clearTimers(); stopAudio();
     if (!task.unscored) record(task.id, item.id, p);
+    const ts = transcriptBlock(task, item);
+    if (ts) (card.querySelector('.rbody') || card).append(ts);
     body.append(card);
     const nav = h('div', { cls:'row', style:'margin-top:16px' },
       h('button', { cls:'btn primary', text:'Try this item again', onclick:() => openTask(taskId, idx, from) }),
@@ -3320,6 +3349,39 @@ function viewTask(){
 
   view.replaceChildren(head, body);
   (RUN[task.kind] || (() => body.append(h('div', { cls:'notice', text:'This task type is not wired up.' }))))(ctx);
+}
+
+/* ============================ extra questions ============================
+   Questions added after the built-in bank live in data/questions.json, one record per
+   question. Each ID is the question type's prefix plus four digits (RP0003) and carries
+   on from the last ID used for that type. IDs are permanent: never renumber or reuse one. */
+const EXTRA_URL = 'data/questions.json';
+function addExtraQuestions(data){
+  const rows = data && Array.isArray(data.questions) ? data.questions : [];
+  const seen = new Set(TASKS.flatMap(t => t.items.map(i => i.id)));
+  let added = 0;
+  rows.forEach(q => {
+    const id = q && typeof q.id === 'string' ? q.id : '';
+    const task = TASKS.find(t => new RegExp('^' + t.prefix + '\\d{4}$').test(id));
+    if (!task){ console.warn('questions.json: no question type uses the ID', id); return; }
+    if (seen.has(id)){ console.warn('questions.json: duplicate ID', id); return; }
+    // every field the built-in questions of this type all have is required
+    const need = Object.keys(task.items[0]).filter(k => task.items.every(i => k in i));
+    const missing = need.filter(k => !(k in q));
+    if (missing.length){ console.warn('questions.json:', id, 'is missing', missing.join(', ')); return; }
+    const item = Object.assign({}, q);
+    delete item.zh;
+    if (q.zh && typeof q.zh === 'object') Object.keys(q.zh).forEach(en => { ZHC[zkey(en)] = String(q.zh[en]); });
+    task.items.push(item); seen.add(id); added++;
+  });
+  TASKS.forEach(t => t.items.sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
+  return added;
+}
+function loadExtraQuestions(){
+  if (!window.fetch) return Promise.resolve(0);
+  const timeout = new Promise(r => setTimeout(r, 2500, null));
+  const get = fetch(EXTRA_URL, { cache:'no-cache' }).then(r => r.ok ? r.json() : null).catch(() => null);
+  return Promise.race([get, timeout]).then(d => d ? addExtraQuestions(d) : 0).catch(() => 0);
 }
 
 /* ============================ boot ============================ */
@@ -3336,7 +3398,7 @@ window.addEventListener('pagehide', () => { stopAudio(); releaseMic(); });
 paintSkins();
 paintLangs();
 startI18n();
-render();
+loadExtraQuestions().then(render, render);
 window.__pteBooted = true;
 </script>
 
