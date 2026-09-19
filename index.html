@@ -362,11 +362,14 @@ textarea.resp.short{min-height:92px}
 .unsave{flex:none;background:none;border:0;color:var(--accent);font-size:17px;line-height:1;cursor:pointer;padding:6px}
 @media (max-width:560px){ .saveditem .open{flex-wrap:wrap;gap:2px 10px} .saveditem .snip{flex-basis:100%;order:3;white-space:normal} }
 .lastwrap{padding:2px 0 14px}
-.lastshot{margin-top:8px;border:1px solid var(--line);border-radius:var(--r-soft);background:var(--surface);padding:16px;max-height:75vh;overflow:auto;display:flex;flex-direction:column;gap:14px}
+.lastshot{margin-top:8px;border:1px solid var(--line);border-radius:var(--r-soft);background:var(--surface);padding:16px;max-height:75vh;overflow:auto}
+.lastshot > * + *{margin-top:14px}
+.lastshot *{max-height:none}
 .lastshot input,.lastshot select,.lastshot textarea,.lastshot button,.lastshot label{pointer-events:none}
 .recnext{margin-left:auto}
 /* a wrong answer stays visible, struck through, before the correct word */
 .gapwas{color:var(--rose);font-size:.92em;margin-right:5px;text-decoration-thickness:1.5px}
+.gate{display:flex;flex-direction:column;gap:12px;padding:18px;border:1px dashed var(--line-strong);border-radius:var(--r-card);background:var(--surface-2)}
 .xlate{display:none}
 .tscript p{margin:0 0 10px}.tscript p:last-child{margin-bottom:0}
 :root[lang="zh-Hant"] .xlate{display:inline-flex}
@@ -1177,6 +1180,8 @@ let LANG = 'en';
 try { if (localStorage.getItem(LANG_KEY) === 'zh') LANG = 'zh'; } catch(e){}
 
 const ZH = {
+"The audio plays and the timer starts when you press Begin task.": "按下「開始作答」後，才會播放音訊並開始計時。",
+"The question appears and the timer starts when you press Begin task.": "按下「開始作答」後，才會顯示題目並開始計時。",
 "Next": "下一步",
 "Finish recording now": "立即結束錄音",
 "Review last attempt": "查看上次作答",
@@ -2463,8 +2468,7 @@ function whyPanel(title, rows){
 RUN.speak = ctx => {
   const { task, item, host } = ctx;
   const stage = h('div', {});
-  const start = h('button', { cls:'btn primary', text:'Begin task' });
-  host.append(h('div', { style:'display:flex;flex-direction:column;gap:16px' }, stage, h('div', { cls:'row' }, start)));
+  host.append(h('div', { style:'display:flex;flex-direction:column;gap:16px' }, stage));
 
   let promptNode = null;
   if (task.id === 'describe_image'){
@@ -2487,7 +2491,6 @@ RUN.speak = ctx => {
   stage.append(promptNode);
 
   const runPrep = () => {
-    start.remove();
     const rec = makeRecorder(task.rec, info => setTimeout(() => selfCheck(info), 400), { silence: !!task.silence });
     const begin = () => { stage.append(rec.node); rec.run(); };
 
@@ -2507,7 +2510,6 @@ RUN.speak = ctx => {
       stage.append(c.node); c.start();
     }
   };
-  start.addEventListener('click', runPrep);
 
   const selfCheck = (info) => {
     stopAudio();
@@ -2594,6 +2596,7 @@ RUN.speak = ctx => {
     host.append(box);
     box.scrollIntoView({ behavior:'smooth', block:'nearest' });
   };
+  runPrep();
 };
 
 /* ---------- speaking: the AI listens to the recording (hosted version) ---------- */
@@ -3678,6 +3681,8 @@ function viewProgress(){
 function openTask(taskId, idx, from){
   go({ view:'task', taskId, idx: idx || 0, from: from || TASK_BY_ID[taskId].skills[0] });
 }
+/* question types that run against a clock: nothing is shown until Begin task */
+const TIMED_KINDS = ['speak', 'swt', 'essay', 'sst'];
 function viewTask(){
   const { taskId, idx, from } = state.route;
   const task = TASK_BY_ID[taskId];
@@ -3726,7 +3731,17 @@ function viewTask(){
   }};
 
   view.replaceChildren(head, body);
-  (RUN[task.kind] || (() => body.append(h('div', { cls:'notice', text:'This task type is not wired up.' }))))(ctx);
+  const run = () => (RUN[task.kind] || (() => body.append(h('div', { cls:'notice', text:'This task type is not wired up.' }))))(ctx);
+  if (TIMED_KINDS.includes(task.kind)){
+    const begin = h('button', { cls:'btn primary', text:'Begin task' });
+    const gate = h('div', { cls:'gate' },
+      h('p', { cls:'muted', text: (task.audio || task.kind === 'sst')
+        ? 'The audio plays and the timer starts when you press Begin task.'
+        : 'The question appears and the timer starts when you press Begin task.' }),
+      h('div', { cls:'row' }, begin));
+    begin.addEventListener('click', () => { gate.remove(); run(); });   // also the tap that lets phones play audio
+    body.append(gate);
+  } else run();
 }
 
 /* ============================ extra questions ============================
