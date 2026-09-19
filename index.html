@@ -549,7 +549,7 @@ const SECTIONS = [
   { id:'listening', label:'Listening' },
   { id:'drill',     label:'Daily Practice' },
   { id:'progress',  label:'Progress' },
-  { id:'saved',     label:'Saved' }
+  { id:'saved',     label:'Saved Questions' }
 ];
 
 const TASKS = [
@@ -1187,6 +1187,7 @@ let LANG = 'en';
 try { if (localStorage.getItem(LANG_KEY) === 'zh') LANG = 'zh'; } catch(e){}
 
 const ZH = {
+"Remove from saved": "從收藏中移除",
 "Daily Practice": "每日練習",
 "Today’s practice": "今日練習",
 "Open today’s practice": "開啟今日練習",
@@ -1207,10 +1208,9 @@ const ZH = {
 "Finish recording now": "立即結束錄音",
 "Review last attempt": "查看上次作答",
 "Hide last attempt": "隱藏上次作答",
-"Saved": "收藏",
 "☆ Save": "☆ 收藏",
 "★ Saved": "★ 已收藏",
-"Saved questions": "收藏的題目",
+"Saved Questions": "收藏的題目",
 "Questions you save are kept on this device. Choose a skill to see them by question type.": "你收藏的題目會保存在這台裝置上。選擇一項技能，即可依題型查看。",
 "Tap ☆ Save on any question to keep it here for revision.": "在任何題目上點選「☆ 收藏」，就能把它保存在這裡以便複習。",
 "Audio question": "音訊題",
@@ -1538,7 +1538,7 @@ const ZH = {
 "day streak": "連續練習天數",
 "Where you stand — open a part for its task types": "你目前的程度——點開各部分查看題型",
 "Estimate only.": "僅供參考。",
-"These scores come from your practice here and are a guide, not a prediction.": "這些分數來自你在這裡的練習，只是參考，並非預測。",
+"These scores come from your practice here and are a guide, not a prediction. Your actual PTE score may be higher or lower.": "這些分數來自你在這裡的練習，只是參考，並非預測。你實際的 PTE 分數可能更高或更低。",
 "Your actual PTE score may be higher or lower.": "你的實際 PTE 成績可能更高或更低。",
 "Communicative skill": "溝通技能",
 "Part average": "平均分數",
@@ -1594,6 +1594,7 @@ const ZH_RULES = [
      m => '依你練習過的每種題型在正式考試中出現的頻率加權計算——涵蓋完整考試的 ' + m[1] + '%' + (m[2] === '.' ? '。' : '，因此僅為初步估計。')],
   [/^(\d+) question types$/, m => m[1] + ' 種題型'],
   [/^(\d+) items$/, m => m[1] + ' 題'],
+  [/^\+ (Speaking|Writing|Reading|Listening)$/, m => '+ ' + SKILL_ZH[m[1]]],
   [/^scores (.+)$/, m => '計分：' + m[1].split(' + ').map(x => SKILL_ZH[x] || x).join(' + ')],
   [/^([\d-]+) in the real test$/, m => '正式考試 ' + m[1] + ' 題'],
   [/^(\d+) min$/, m => m[1] + ' 分鐘'],
@@ -1741,7 +1742,7 @@ function plainText(el){
 function segmentsFor(kind){
   const root = document.getElementById('view');
   const pick = kind === 'q'
-    ? '.prose, .qstem, .otext > div:first-child, .rcard .rtext, details.reveal .dbody li'
+    ? '.prose, .qstem, .otext > div:first-child, label.opt > span, .rcard .rtext, details.reveal .dbody li'
     : '.whyline, .whytext, .tnote, .result .tips li, .card .tips li, .result .prose, .result .model > div:not(.eyebrow)';
   let els = Array.from(root.querySelectorAll(pick)).filter(el =>
     !el.closest('.wshead') && (kind === 'q' ? !el.closest('.result') : true));
@@ -3581,7 +3582,7 @@ function viewSaved(){
 
   view.replaceChildren(...[
     h('div', { cls:'hero' },
-      h('h1', { cls:'h1', text:'Saved questions' }),
+      h('h1', { cls:'h1', text:'Saved Questions' }),
       h('p', { cls:'muted', style:'margin-top:8px;max-width:58ch', text: total
         ? 'Questions you save are kept on this device. Choose a skill to see them by question type.'
         : 'Tap ☆ Save on any question to keep it here for revision.' })),
@@ -3664,8 +3665,7 @@ function viewHome(){
     h('div', { style:'height:18px' }),
     h('div', { cls:'estnote' },
       h('b', { text:'Estimate only. ' }),
-      'These scores come from your practice here and are a guide, not a prediction. '
-        + 'Your actual PTE score may be higher or lower.'));
+      'These scores come from your practice here and are a guide, not a prediction. Your actual PTE score may be higher or lower.'));
 }
 
 function streak(){
