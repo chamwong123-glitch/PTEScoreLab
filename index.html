@@ -361,6 +361,12 @@ textarea.resp.short{min-height:92px}
 .saveditem .last{font-family:var(--ff-num);font-size:11px;color:var(--muted);flex:none}
 .unsave{flex:none;background:none;border:0;color:var(--accent);font-size:17px;line-height:1;cursor:pointer;padding:6px}
 @media (max-width:560px){ .saveditem .open{flex-wrap:wrap;gap:2px 10px} .saveditem .snip{flex-basis:100%;order:3;white-space:normal} }
+.lastwrap{padding:2px 0 14px}
+.lastshot{margin-top:8px;border:1px solid var(--line);border-radius:var(--r-soft);background:var(--surface);padding:16px;max-height:75vh;overflow:auto;display:flex;flex-direction:column;gap:14px}
+.lastshot input,.lastshot select,.lastshot textarea,.lastshot button,.lastshot label{pointer-events:none}
+.recnext{margin-left:auto}
+/* a wrong answer stays visible, struck through, before the correct word */
+.gapwas{color:var(--rose);font-size:.92em;margin-right:5px;text-decoration-thickness:1.5px}
 .xlate{display:none}
 .tscript p{margin:0 0 10px}.tscript p:last-child{margin-bottom:0}
 :root[lang="zh-Hant"] .xlate{display:inline-flex}
@@ -1171,6 +1177,10 @@ let LANG = 'en';
 try { if (localStorage.getItem(LANG_KEY) === 'zh') LANG = 'zh'; } catch(e){}
 
 const ZH = {
+"Next": "下一步",
+"Finish recording now": "立即結束錄音",
+"Review last attempt": "查看上次作答",
+"Hide last attempt": "隱藏上次作答",
 "Saved": "收藏",
 "☆ Save": "☆ 收藏",
 "★ Saved": "★ 已收藏",
@@ -1540,6 +1550,7 @@ const earlyZh = flag => (flag ? ' · 初步估計' : '');
 
 /* strings the app builds from numbers or names */
 const ZH_RULES = [
+  [/^Answered (\d{4}-\d\d-\d\d)( · band (\d+))?$/, m => '作答於 ' + m[1] + (m[3] ? ' · 分數 ' + m[3] : '')],
   [/^(\d+) saved$/, m => '已收藏 ' + m[1] + ' 題'],
   [/^last score (\d+)$/, m => '上次分數 ' + m[1]],
   [/^Content (\d+)\/(\d+) · Pronunciation (\d+)\/5 · Oral Fluency (\d+)\/5$/, m => '內容 ' + m[1] + '/' + m[2] + ' · 發音 ' + m[3] + '/5 · 口語流暢度 ' + m[4] + '/5'],
@@ -1798,6 +1809,56 @@ function toggleSaved(id){
 }
 const savedOf = t => t.items.map((it, idx) => ({ it, idx })).filter(x => isSaved(x.it.id));
 const savedCount = () => TASKS.reduce((n, t) => n + savedOf(t).length, 0);
+/* ---------- last attempt on each question, kept for reviewing saved questions ----------
+   A read-only copy of the question as it stood after marking: the answer given, the marks,
+   the examiner's comments or the correct answers and explanations. Always stored in English. */
+const LAST_KEY = 'pte-score-lab/last/v1';
+let lastShots = {};
+try { lastShots = JSON.parse(localStorage.getItem(LAST_KEY) || '{}') || {}; } catch(e){ lastShots = {}; }
+function snapshotOf(root){
+  const c = root.cloneNode(true);
+  const wa = document.createTreeWalker(root, NodeFilter.SHOW_TEXT), wb = document.createTreeWalker(c, NodeFilter.SHOW_TEXT);
+  for (let a = wa.nextNode(), b = wb.nextNode(); a && b; a = wa.nextNode(), b = wb.nextNode()) if (a.__en != null) b.nodeValue = a.__en;
+  const fa = root.querySelectorAll('input, textarea, select'), fb = c.querySelectorAll('input, textarea, select');
+  fa.forEach((el, i) => {
+    const k = fb[i]; if (!k) return;
+    if (el.tagName === 'TEXTAREA') k.textContent = el.value;
+    else if (el.tagName === 'SELECT'){ if (k.options[el.selectedIndex]) k.options[el.selectedIndex].setAttribute('selected', ''); }
+    else if (el.type === 'checkbox' || el.type === 'radio'){ if (el.checked) k.setAttribute('checked', ''); }
+    else k.setAttribute('value', el.value);
+    k.setAttribute('disabled', '');
+  });
+  c.querySelectorAll('.recwrap, .audio, audio, .btn, .xlate, .xlnote, .zh, .load, script').forEach(n => n.remove());
+  c.querySelectorAll('[id]').forEach(n => n.removeAttribute('id'));
+  c.querySelectorAll('[data-zh]').forEach(n => n.removeAttribute('data-zh'));
+  c.querySelectorAll('button').forEach(n => n.setAttribute('disabled', ''));
+  return c.innerHTML;
+}
+function persistShots(){
+  const ids = Object.keys(lastShots).sort((a, b) => lastShots[b].ts - lastShots[a].ts);
+  // saved questions always keep theirs; others only while there is room
+  for (const others of [40, 10, 0]){
+    let n = 0; const kept = {};
+    ids.forEach(id => { if (isSaved(id) || n++ < others) kept[id] = lastShots[id]; });
+    try { localStorage.setItem(LAST_KEY, JSON.stringify(kept)); lastShots = kept; return; } catch(e){}
+  }
+}
+function rememberAttempt(id, p, root){
+  let html;
+  try { html = snapshotOf(root); } catch(e){ return; }
+  if (html.length > 150000) return;
+  lastShots[id] = { ts: Date.now(), p: p == null ? null : Math.round(p), html };
+  persistShots();
+}
+function shotView(shot){
+  const d = new Date(shot.ts), pad = n => (n < 10 ? '0' : '') + n;
+  const box = h('div', { cls:'lastshot' });
+  box.innerHTML = shot.html;
+  return h('div', { cls:'lastwrap' },
+    h('div', { cls:'small muted', text: 'Answered ' + d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate())
+      + (shot.p == null ? '' : ' · band ' + pteOf(shot.p)) }), box);
+}
+
 function saveButton(id){
   const b = h('button', { cls:'btn sm savebtn', type:'button' });
   const paint = () => { const on = isSaved(id); b.textContent = on ? '★ Saved' : '☆ Save'; b.setAttribute('aria-pressed', String(on)); };
@@ -2249,15 +2310,18 @@ function makeRecorder(seconds, onDone, opts){
   const wave = makeWave();
   const stat = h('div', { cls:'astat', text:'Not recording' });
   const clock = h('div', { cls:'clock mono', text: mmss(seconds) });
-  const bar = h('div', { cls:'audio' }, h('div', { cls:'clocklab', text:'Recording' }), clock, wave.node, stat);
+  // like the real test, Next ends the recording early
+  const next = h('button', { cls:'btn sm recnext', type:'button', text:'Next', title:'Finish recording now', style:'display:none' });
+  const bar = h('div', { cls:'audio' }, h('div', { cls:'clocklab', text:'Recording' }), clock, wave.node, stat, next);
   const out = h('div', { style:'margin-top:10px' });
-  const node = h('div', {}, bar, out);
+  const node = h('div', { cls:'recwrap' }, bar, out);
   let rec = null, chunks = [], id = null, lvl = null, left = seconds, finished = false, whenStopped = null;
   // the real test allows 7 s of silence before you start, then 3 s once you are speaking
   let spoke = false, quietMs = 0, startDelay = 0, longestPause = 0, measured = false;
 
   const finish = () => {
     if (finished) return; finished = true;
+    next.remove();
     if (id) clearInterval(id);
     if (lvl) clearInterval(lvl);
     wave.off(); stat.textContent = 'Completed';
@@ -2268,7 +2332,9 @@ function makeRecorder(seconds, onDone, opts){
     else setTimeout(() => { if (whenStopped){ whenStopped = null; report(null); } }, 2500);
   };
   const run = async () => {
+    next.style.display = ''; next.onclick = () => finish();
     const stream = await getMic();
+    if (finished){ releaseMic(); return; }
     stat.textContent = stream ? 'Recording' : 'No microphone';
     if (!stream) out.append(h('div', { cls:'notice', text:'No microphone in this view, so nothing was captured. The timer still runs — speak aloud against it, then use the self-check below.' }));
     else {
@@ -2910,7 +2976,7 @@ RUN.rwfib = ctx => {
       s.dataset.wasRight = ok ? '1' : '0';
       if (ok) right++;
       s.classList.add(ok ? 'ok' : 'no'); s.disabled = true;
-      if (!ok) s.append(h('option', { value:item.gaps[i].a, text:item.gaps[i].a, selected:true }));
+      if (!ok){ s.before(h('s', { cls:'gapwas', title:'Your answer', text: s.value || '—' })); s.append(h('option', { value:item.gaps[i].a, text:item.gaps[i].a, selected:true })); }
     });
     submit.disabled = true;
     const p = pct(right, sels.length);
@@ -2969,7 +3035,7 @@ RUN.rfib = ctx => {
       b.dataset.wasRight = ok ? '1' : '0';
       if (ok) right++;
       b.classList.add(ok ? 'ok' : 'no'); b.disabled = true;
-      if (!ok) b.textContent = item.ans[i];
+      if (!ok){ b.before(h('s', { cls:'gapwas', title:'Your answer', text: b.dataset.word || '—' })); b.textContent = item.ans[i]; }
     });
     chips.forEach(c => c.disabled = true);
     submit.disabled = true;
@@ -3002,7 +3068,7 @@ RUN.lfib = ctx => {
       const ok = norm(inp.value) === norm(item.ans[i]);
       if (ok) right++;
       inp.classList.add(ok ? 'ok' : 'no'); inp.disabled = true;
-      if (!ok) inp.value = item.ans[i];
+      if (!ok){ inp.before(h('s', { cls:'gapwas', title:'Your answer', text: inp.value.trim() || '—' })); inp.value = item.ans[i]; }
     });
     submit.disabled = true;
     const p = pct(right, ins.length);
@@ -3412,17 +3478,20 @@ function viewSaved(){
       row.addEventListener('click', () => { open.type = expanded ? null : t.id; render(); });
       rows.push(row);
       if (!expanded) return;
-      rows.push(h('div', { cls:'savedlist' }, saved.length ? saved.map(({ it, idx }) => {
+      rows.push(h('div', { cls:'savedlist' }, saved.length ? saved.flatMap(({ it, idx }) => {
         const mine = state.attempts.filter(a => a.t === t.id && a.i === it.id);
         const last = mine.length ? mine[mine.length - 1].p : null;
         const unsave = h('button', { cls:'unsave', type:'button', title:'Remove from saved', 'aria-label':'Remove from saved', text:'★' });
         unsave.addEventListener('click', () => { toggleSaved(it.id); render(); });
-        return h('div', { cls:'saveditem' },
+        const shot = lastShots[it.id], showing = shot && open.shot === it.id;
+        const review = shot ? h('button', { cls:'btn sm', type:'button', text: showing ? 'Hide last attempt' : 'Review last attempt' }) : null;
+        if (review) review.addEventListener('click', () => { open.shot = showing ? null : it.id; render(); });
+        return [h('div', { cls:'saveditem' },
           h('button', { cls:'open', type:'button', onclick:() => openTask(t.id, idx, 'saved') },
             h('span', { cls:'sid', text: it.id }),
             h('span', { cls:'snip', translate:'no', text: savedSnippet(t, it) }),
             h('span', { cls:'last', text: last == null ? 'Not attempted yet' : 'last score ' + pteOf(last) })),
-          unsave);
+          review, unsave), showing ? shotView(shot) : null].filter(Boolean);
       }) : [h('div', { cls:'small muted', style:'padding:8px 0', text:'No saved questions of this type yet.' })]));
     });
     board = h('div', { cls:'board', style:'margin-top:18px' }, rows);
@@ -3647,6 +3716,7 @@ function viewTask(){
     const ts = transcriptBlock(task, item);
     if (ts) (card.querySelector('.rbody') || card).append(ts);
     body.append(card);
+    rememberAttempt(item.id, p, body);
     const nav = h('div', { cls:'row', style:'margin-top:16px' },
       h('button', { cls:'btn primary', text:'Try this item again', onclick:() => openTask(taskId, idx, from) }),
       idx < task.items.length - 1 ? h('button', { cls:'btn', text:'Next item', onclick:() => openTask(taskId, idx + 1, from) }) : null,
