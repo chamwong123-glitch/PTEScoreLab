@@ -1289,6 +1289,7 @@ const ZH = {
 "Beep": "嗶聲",
 "Finished": "播放完畢",
 "Replay": "重播",
+"Tap Play to listen": "請點播放按鈕收聽",
 "No microphone detected. Please connect a microphone or headset, then test again.": "未偵測到麥克風。請連接麥克風或耳機後再測試一次。",
 "Another app is using the microphone. Close it, then test again.": "麥克風正被其他應用程式使用中。請關閉該程式後再測試一次。",
 "Microphone access is blocked. Click the microphone icon in the address bar and choose Allow, then test again. If there is no icon there, open this page in its own browser tab and test again.": "麥克風存取已被封鎖。請點選網址列上的麥克風圖示並選擇「允許」，然後再測試一次。若網址列上沒有這個圖示，請在瀏覽器的新分頁中開啟此頁面後再測試。",
@@ -1748,8 +1749,11 @@ async function aiRubric(prompt, tier){
 /* ============================ speech ============================ */
 let stopSpeech = null, keepAlive = null, leadIn = [];
 const LEAD_IN = 2;   // seconds of quiet before any clip starts
+let startWatch = null;       // fires if an utterance never begins
+let speechBlocked = false;   // this device refused speech that a tap did not start
 function stopAudio(){
   leadIn.forEach(clearTimeout); leadIn = [];
+  if (startWatch){ clearTimeout(startWatch); startWatch = null; }
   if (stopSpeech) { stopSpeech(); stopSpeech = null; }
   if (keepAlive) { clearInterval(keepAlive); keepAlive = null; }
   // only cancel real speech: cancelling an idle engine right before speaking
@@ -1782,9 +1786,15 @@ function hasBritish(){ return britishVoices().length > 0; }
 /* Resolve a voice for the requested sex. Falls back through: British of that
    sex -> any British -> any English -> browser default, and reports whether it
    actually matched so the caller can shift pitch instead. */
+const badVoices = new Set();
+const voiceKey = v => v.voiceURI || v.name;
+// Safari lists "Enhanced" and "Premium" voices that are often not downloaded
+const voiceRank = v => (/enhanced|premium/i.test(v.name || '') ? 1 : 0);
 function resolveVoice(sex){
-  const gb = britishVoices();
-  const pool = gb.length ? gb : VOICES.filter(v => /^en/i.test(v.lang || ''));
+  const usable = v => !badVoices.has(voiceKey(v));
+  const gb = britishVoices().filter(usable);
+  const pool = (gb.length ? gb : VOICES.filter(v => /^en/i.test(v.lang || '') && usable(v)))
+    .slice().sort((a, b) => voiceRank(a) - voiceRank(b));
   if (!pool.length) return { voice:null, matched:false, british:false };
   const hit = pool.filter(v => voiceSex(v) === sex);
   const voice = hit.length ? hit[0] : pool[0];
@@ -1801,26 +1811,59 @@ function speak(input, opts){
   segs.forEach(sg => (String(sg.text).match(/[^.!?;:]+[.!?;:]*/g) || [String(sg.text)])
     .forEach(t => { t = t.trim(); if (t) parts.push({ t, sex: sg.sex }); }));
   let i = 0, dead = false;
-  const next = () => {
-    if (dead) return;
-    if (i >= parts.length) { stopAudio(); opts.onEnd && opts.onEnd(true); return; }
-    const part = parts[i++];
+  const blocked = () => { dead = true; stopAudio(); opts.onBlocked && opts.onBlocked(); };
+  // failedVoice: a voice that did not start - only blamed if the system voice then works
+  const say = (part, useVoice, failedVoice) => {
     const u = new SpeechSynthesisUtterance(part.t);
-    const r = resolveVoice(part.sex || 'f');
+    const r = useVoice ? resolveVoice(part.sex || 'f') : { voice:null, matched:false };
     if (r.voice) u.voice = r.voice;
     u.lang = 'en-GB';
     u.rate = opts.rate || 0.95;
     // if no distinctly male/female voice is installed, separate the speakers by pitch
     u.pitch = r.matched ? 1 : (part.sex === 'm' ? 0.8 : 1.2);
-    u.onend = next;
-    u.onerror = () => { if (!dead) next(); };
+    let began = false;
+    u.onstart = () => {
+      began = true;
+      if (failedVoice) badVoices.add(failedVoice);
+      if (startWatch){ clearTimeout(startWatch); startWatch = null; }
+    };
+    u.onend = () => { if (began && !dead) next(); };
+    u.onerror = e => {
+      if (dead) return;
+      if (began) next();
+      else if (e && e.error === 'not-allowed') blocked();   // refused outright: no need to wait
+    };
     window.speechSynthesis.speak(u);
+    // an utterance that never begins means an uninstalled voice or a refused start
+    startWatch = setTimeout(() => {
+      startWatch = null;
+      if (dead || began) return;
+      try { window.speechSynthesis.cancel(); } catch(err){}
+      if (r.voice) say(part, false, voiceKey(r.voice));   // try the device's own voice
+      else blocked();
+    }, 3000);
+  };
+  const next = () => {
+    if (dead) return;
+    if (i >= parts.length) { stopAudio(); opts.onEnd && opts.onEnd(true); return; }
+    say(parts[i++], true);
   };
   stopSpeech = () => { dead = true; };
   keepAlive = setInterval(() => { try { window.speechSynthesis.resume(); } catch(e){} }, 8000);
   next();
 }
 let actx = null;
+let speechPrimed = false;
+function unlockAudio(){
+  try {
+    actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+    if (actx.state === 'suspended') actx.resume();
+  } catch(e){}
+  if (speechPrimed || !('speechSynthesis' in window)) return;
+  // a silent utterance started inside a tap lets later speech start from timers on iPhone/iPad
+  try { const u = new SpeechSynthesisUtterance('.'); u.volume = 0; u.rate = 2; window.speechSynthesis.speak(u); speechPrimed = true; } catch(e){}
+}
+['touchend', 'click', 'keydown'].forEach(ev => document.addEventListener(ev, unlockAudio, { capture:true, passive:true }));
 function beep(){
   try {
     actx = actx || new (window.AudioContext || window.webkitAudioContext)();
@@ -1897,6 +1940,7 @@ function makePlayer(text, opts){
     plays++;
     btn.disabled = true;
     stopAudio();
+    if (speechBlocked){ start(); return; }   // this device only speaks when the tap itself starts it
     // a short lead-in, as the real test gives, and time for the speech engine to wake
     stat.textContent = 'Starting in ' + LEAD_IN + 's';
     for (let k = 1; k < LEAD_IN; k++)
@@ -1921,7 +1965,18 @@ function makePlayer(text, opts){
     // if the browser silently refuses to speak, never leave the task stranded
     const guard = setTimeout(done, words(flat).length * 520 + 9000);
     timers.push(guard);
-    speak(text, { rate: opts.rate, sex: opts.sex || 'f', onEnd: done });
+    // speech never began: ask for a tap instead of pretending the clip played
+    const refused = () => {
+      if (settled) return; settled = true;
+      clearTimeout(guard);
+      speechBlocked = true;
+      plays = Math.max(0, plays - 1);
+      wave.off();
+      stat.textContent = 'Tap Play to listen';
+      btn.disabled = false;
+      btn.textContent = opts.playLabel || 'Play audio';
+    };
+    speak(text, { rate: opts.rate, sex: opts.sex || 'f', onEnd: done, onBlocked: refused });
   };
   btn.addEventListener('click', play);
   if (opts.note) node.append(h('div', { cls:'small faint', style:'flex-basis:100%', text: opts.note }));
