@@ -189,9 +189,11 @@ button,input,select,textarea{font:inherit;color:inherit}
   background:radial-gradient(60% 80% at 12% 0%, var(--accent-soft), transparent 70%), radial-gradient(45% 70% at 78% 10%, var(--blush-soft), transparent 72%)}
 .h1{font-family:var(--ff-dis);font-size:clamp(28px,4.6vw,40px);font-weight:600;letter-spacing:-.02em}
 .scalewrap{margin-top:20px}
-.scalebar{position:relative;height:28px;border-radius:var(--r-pill);background:linear-gradient(90deg,var(--rose-soft),var(--amber-soft) 48%,var(--good-soft));border:1px solid var(--line)}
-.scalebar i{position:absolute;top:-1px;bottom:-1px;width:1px;background:var(--line-strong)}
-.scalebar b{position:absolute;top:-5px;bottom:-5px;width:4px;background:var(--accent);border-radius:var(--r-pill);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent)}
+.scalebar{position:relative;height:28px;border-radius:var(--r-pill);border:1px solid var(--line);
+  background:linear-gradient(90deg,hsl(4 70% 52%),hsl(28 85% 52%) 25%,hsl(45 88% 48%) 50%,hsl(85 55% 45%) 75%,hsl(140 55% 40%));
+  background:linear-gradient(90deg,oklch(var(--ramp-bar-l) var(--ramp-bar-c) 25),oklch(var(--ramp-bar-l) var(--ramp-bar-c) 56.25) 25%,oklch(var(--ramp-bar-l) var(--ramp-bar-c) 87.5) 50%,oklch(var(--ramp-bar-l) var(--ramp-bar-c) 118.75) 75%,oklch(var(--ramp-bar-l) var(--ramp-bar-c) 150))}
+.scalebar i{position:absolute;top:0;bottom:0;width:2px;background:var(--surface);opacity:.8}
+.scalebar b{position:absolute;top:-6px;bottom:-6px;width:4px;background:var(--ink);border-radius:var(--r-pill);box-shadow:0 0 0 2px var(--surface),0 2px 6px rgba(0,0,0,.25)}
 .scaleticks{position:relative;height:16px;margin-top:5px}
 .scaleticks span{position:absolute;transform:translateX(-50%);font-family:var(--ff-num);font-size:10px;color:var(--faint);text-align:center;line-height:1.35;white-space:nowrap}
 .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden}
@@ -568,6 +570,8 @@ const TASKS = [
   id:'describe_image', section:'speaking', kind:'speak', name:'Describe Image',
   brief:'Describe a chart in detail. 25 s to prepare, 40 s to record.',
   scores:'Speaking', prep:25, rec:40, transcript:true,
+  rubric:[{ name:'Content', max:6 }],
+  traitNote:'In the real test this also scores Oral Fluency and Pronunciation out of 5 each, from the audio. A transcript cannot show either, so only Content is marked here.',
   tips:['Open with one sentence naming what the chart shows, then the highest value, the lowest value, and the trend. That template fills 40 seconds.',
         'Read at least two exact figures aloud with their units. Vague description scores low on content.',
         'Finish with a one-clause conclusion rather than trailing off mid-sentence.'],
@@ -586,6 +590,8 @@ const TASKS = [
   id:'retell_lecture', section:'speaking', kind:'speak', name:'Re-tell Lecture',
   brief:'Listen to a lecture, then re-tell it in your own words. 10 s to prepare, 40 s to record.',
   scores:'Listening + Speaking', prep:10, rec:40, audio:true, transcript:true,
+  rubric:[{ name:'Content', max:6 }],
+  traitNote:'In the real test this also scores Oral Fluency and Pronunciation out of 5 each, from the audio. A transcript cannot show either, so only Content is marked here.',
   tips:['Take notes as a skeleton: topic, two or three supporting points, conclusion. Do not transcribe.',
         'Open with "The lecturer discussed..." to buy yourself a second of thinking time.',
         'Include at least three concrete details from the talk - names, numbers, examples - since content carries the marks.'],
@@ -841,9 +847,9 @@ const TASKS = [
         'The extra words are chosen to look plausible in isolation - test each candidate in the full sentence.'],
   items:[
     { id:'rf1', title:'Antarctic ice cores',
-      parts:['Ice cores drilled from the Antarctic plateau contain air bubbles that were ',
+      parts:['Ice cores from the Antarctic plateau contain air bubbles that were ',
              ' from the atmosphere at the moment the snow compacted. Because the layers accumulate annually, they can be counted like tree rings, giving a continuous ',
-             ' of atmospheric composition reaching back more than eight hundred thousand years. The record shows carbon dioxide oscillating within a narrow band through successive glacial cycles, and then rising ',
+             ' of atmospheric composition reaching back more than eight hundred thousand years. The record shows carbon dioxide oscillating within a narrow band through glacial cycles, then rising ',
              ' outside that band in the industrial era. No ',
              ' explanation for the departure has survived scrutiny.'],
       ans:['sealed','record','abruptly','natural'],
@@ -854,9 +860,9 @@ const TASKS = [
            'The sentence dismisses non-human explanations, which is what makes the departure significant. \u201cartificial\u201d inverts the argument entirely.'] },
     { id:'rf2', title:'Placebo in clinical trials',
       parts:['A trial is described as double-blind when neither the participants nor the clinicians assessing them know who has received the active ',
-             '. The design exists because expectation alone can produce measurable physiological change, and because assessors unconsciously ',
+             '. The design exists because expectation alone can produce physiological change, and because assessors unconsciously ',
              ' ambiguous results in the direction they hope for. Blinding is harder to maintain than it sounds: a drug with a distinctive side effect will ',
-             ' itself to attentive patients, and the trial then quietly loses the protection it was designed to ',
+             ' itself to attentive patients, and the trial then loses the protection it was designed to ',
              '.'],
       ans:['treatment','interpret','reveal','provide'],
       bank:['treatment','interpret','reveal','provide','diagnosis','ignore','conceal','request','measure'],
@@ -910,7 +916,7 @@ const TASKS = [
   id:'sst', section:'listening', kind:'sst', name:'Summarize Spoken Text',
   brief:'Listen, then write a 50-70 word summary. 10 minutes.',
   scores:'Listening + Writing', time:600, audio:true,
-  tips:['Stay inside 50-70 words. Outside that band the form mark is zero.',
+  tips:['Stay inside 50-70 words for the full form mark. 40-49 or 71-100 words still earns 1 of 2; outside that it is zero.',
         'Note the structure while listening - claim, evidence, qualification - rather than individual words.',
         'Two or three sentences is normal here; unlike the written summary, it does not have to be one.'],
   items:[
@@ -940,7 +946,7 @@ const TASKS = [
          'Raw measurements must appear in the notebook.',
          'The notebook is collected two weeks after the group returns.'],
       a:[0,1,3] },
-    { id:'lm2', text:'For most of the last century, coastal protection meant concrete, and the engineering question was simply how high and how thick. That assumption has been unravelling for about twenty years, and mangroves are the main reason why. What makes the mangrove such an effective coastal defence is not its size but its architecture. The prop roots slow the water, and slowing the water is what causes suspended sediment to drop out of it. Over decades this builds elevation, so a healthy mangrove belt actually grows upward as sea level rises, which no sea wall can do. Field measurements put wave energy reduction at somewhere between fifty and seventy per cent across a hundred metres of forest. The catch is that this only holds where the sediment supply is intact. Dam a river upstream, cut off the sediment, and the same forest will drown in place within a few decades. There is also a cost argument that tends to settle the debate in practice: restoration typically runs at a fraction of the capital cost of a comparable barrier, and unlike a barrier it needs no maintenance budget once it establishes. Add the fisheries value and the carbon stored in the sediment, and the accounting stops being close.',
+    { id:'lm2', text:'For most of the last century, coastal protection meant concrete, and the engineering question was simply how high and how thick. That assumption has been unravelling for about twenty years, and mangroves are the main reason why. What makes the mangrove such an effective coastal defence is not its size but its architecture. The prop roots slow the water, and slowing the water is what causes suspended sediment to drop out of it. Over decades this builds elevation, so a healthy mangrove belt actually grows upward as sea level rises, which no sea wall can do. Field measurements put wave energy reduction at somewhere between fifty and seventy per cent across a hundred metres of forest. The catch is that this only holds where the sediment supply is intact. Dam a river upstream, cut off the sediment, and the same forest will drown in place within a few decades. There is also a cost argument that tends to settle the debate in practice: restoration typically runs at a fraction of the capital cost of a comparable barrier, and unlike a barrier it needs no maintenance budget once it establishes. Add the fisheries value and the carbon stored in the sediment, and the accounting stops being close. That is why a growing number of coastal authorities now budget for planting before they budget for concrete.',
       q:'Which points does the speaker make?',
       o:['Mangroves can raise their own ground level over time.',
          'A hundred metres of mangrove can cut wave energy by 50 to 70 per cent.',
@@ -983,18 +989,18 @@ const TASKS = [
         'If you miss one, leave it and keep pace with the recording rather than falling behind.'],
   items:[
     { id:'lf1', title:'Bird migration',
-      parts:['Migrating songbirds navigate using at least three separate systems. They read the position of the setting ',
+      parts:['Every autumn, billions of small birds cross whole continents at night, many of them on their first journey and with no older bird to follow. Migrating songbirds navigate using at least three separate systems. They read the position of the setting ',
              ', they use the pattern of stars around the celestial pole, and they can detect the earth’s magnetic ',
              '. When researchers place a bird in a planetarium and rotate the artificial sky, the bird reorients ',
              '. That is about as direct a demonstration as experimental biology ever ',
-             '.'],
+             '. The magnetic sense is still the least understood of the three.'],
       ans:['sun','field','accordingly','provides'] },
     { id:'lf2', title:'Concrete',
-      parts:['Concrete is the second most consumed substance on earth after ',
+      parts:['We tend to picture pollution as smoke from chimneys and exhaust from cars, but some of the biggest polluters sit quietly in plain sight. Concrete is the second most consumed substance on earth after ',
              '. Its manufacture accounts for roughly eight per cent of global carbon ',
              ', most of which comes not from the kiln fuel but from the chemistry of turning limestone into ',
              '. Reducing that figure therefore requires changing the material itself, not simply the energy ',
-             ' that heats it.'],
+             ' that heats it. Cleaner fuel, however welcome, can only ever close a fraction of the gap.'],
       ans:['water','emissions','clinker','source'] }
   ]
 },
@@ -1243,7 +1249,7 @@ const ZH = {
 "The question usually asks for the author’s purpose or tone, not a fact. Answer the question that was asked.": "題目通常問的是作者的目的或語氣，而不是事實。要回答題目真正問的問題。",
 "Distractors are typically true statements that are not the answer. Truth is not enough - it must be responsive.": "干擾選項通常是正確的敘述，但不是答案。光是正確還不夠——必須回應題目。",
 "There is no negative marking here, so always select something.": "這題不倒扣，所以一定要選一個答案。",
-"Stay inside 50-70 words. Outside that band the form mark is zero.": "字數保持在 50–70 字之間。超出範圍，格式分為零分。",
+"Stay inside 50-70 words for the full form mark. 40-49 or 71-100 words still earns 1 of 2; outside that it is zero.": "字數保持在 50–70 字之間才能拿到完整格式分。40–49 字或 71–100 字仍可得 1 分（滿分 2 分）；超出這個範圍則為零分。",
 "Note the structure while listening - claim, evidence, qualification - rather than individual words.": "聆聽時記下結構——主張、證據、限定條件——而不是個別的字。",
 "Two or three sentences is normal here; unlike the written summary, it does not have to be one.": "這題寫兩三個句子很正常；與書面摘要不同，不必限定一句。",
 "Read the options before the audio starts. You then listen for confirmation rather than meaning.": "音訊開始前先讀選項。這樣你聆聽時是在求證，而不是理解意思。",
@@ -1530,6 +1536,7 @@ const ZH_RULES = [
   [/^(\d+) words — far outside the band; in the real exam this zeroes the item\.$/, m => m[1] + ' 字——遠超出範圍；在正式考試中整題為零分。'],
   [/^(\d+) words — inside the 50–70 band\.$/, m => m[1] + ' 字——在 50–70 字範圍內。'],
   [/^(\d+) words — outside the 50–70 band\.$/, m => m[1] + ' 字——不在 50–70 字範圍內。'],
+  [/^(\d+) words — outside 50–70, which costs a form mark\.$/, m => m[1] + ' 字——超出 50–70 字範圍，扣一分格式分。'],
   [/^(\d+) of (\d+) gaps correct$/, m => m[2] + ' 個空格中答對 ' + m[1] + ' 個'],
   [/^Gap (\d+) · (.+)$/, m => '空格 ' + m[1] + ' · ' + m[2]],
   [/^(\d+) of (\d+) words correct$/, m => m[2] + ' 個字中答對 ' + m[1] + ' 個'],
@@ -2468,9 +2475,9 @@ RUN.swt = ctx => {
       const r = await aiRubric(
         'You are a PTE Academic examiner marking a Summarize Written Text response against the official trait rubric.\n\n' +
         'SOURCE PASSAGE:\n' + item.passage + '\n\nCANDIDATE SUMMARY (' + w + ' words, ' + s + ' sentence-final punctuation marks):\n' + text + '\n\n' +
-        'Marks: Content 0-2 (does it capture the main idea and the key qualification), Grammar 0-2, Vocabulary 0-2. ' +
+        'Marks: Content 0-4 (4: every main idea captured and synthesised in the candidate\u2019s own words with extraneous detail removed; 2: main ideas found but leaning on copied excerpts; 0: too limited to show comprehension), Grammar 0-2, Vocabulary 0-2. ' +
         'Do NOT score Form; it is computed separately. Every note must quote the candidate’s own words.\n' +
-        'Reply with only JSON: {"traits":[{"name":"Content","score":2,"max":2,"note":"..."},{"name":"Grammar","score":1,"max":2,"note":"..."},{"name":"Vocabulary","score":2,"max":2,"note":"..."}],"good":["..."],"fix":["..."]}',
+        'Reply with only JSON: {"traits":[{"name":"Content","score":3,"max":4,"note":"..."},{"name":"Grammar","score":1,"max":2,"note":"..."},{"name":"Vocabulary","score":2,"max":2,"note":"..."}],"good":["..."],"fix":["..."]}',
         'default');
       traits = r.traits; good = r.good; fix = r.fix;
     } catch(e){
@@ -2482,7 +2489,9 @@ RUN.swt = ctx => {
       .concat(traits || []);
     const tot = all.reduce((a,t) => a + Number(t.score||0), 0);
     const max = all.reduce((a,t) => a + Number(t.max||0), 0);
-    const p = form === 0 ? Math.min(25, pct(tot, max)) : pct(tot, max);
+    // Score Guide: a 0 for Content or Form means no points for the response at all
+    const contentZero = (traits || []).some(t => /^content$/i.test(String(t.name)) && Number(t.score) === 0);
+    const p = (form === 0 || contentZero) ? 0 : pct(tot, max);
     if (traits) out.replaceChildren();
     ctx.finish(p, resultCard({ pct:p, sub: tot + ' / ' + max + ' marks', traits:all, good:good,
       fix: fix || (form ? null : ['Rewrite it as a single sentence joined with "although", "which" or a semicolon.']),
@@ -2525,9 +2534,9 @@ RUN.essay = ctx => {
       const r = await aiRubric(
         'You are a PTE Academic examiner marking a Write Essay response against the official trait rubric. Be exacting: award full marks only where the rubric genuinely warrants it.\n\n' +
         'PROMPT:\n' + item.prompt + '\n\nCANDIDATE ESSAY (' + w + ' words):\n' + text + '\n\n' +
-        'Mark these traits: Content 0-3, Development, Structure and Coherence 0-2, Grammar 0-2, General Linguistic Range 0-2, Vocabulary Range 0-2, Spelling 0-2. ' +
+        'Mark these traits: Content 0-6, Development, Structure and Coherence 0-6, Grammar 0-2, General Linguistic Range 0-6, Vocabulary Range 0-2, Spelling 0-2. ' +
         'Do NOT score Form; it is computed separately from the word count. Every note must quote the candidate’s actual wording and say what to change.\n' +
-        'Reply with only JSON: {"traits":[{"name":"Content","score":2,"max":3,"note":"..."}],"good":["..."],"fix":["..."],"rewrite":"a stronger version of the candidate’s weakest sentence, quoting the original first in the form: original -> improved"}',
+        'Reply with only JSON: {"traits":[{"name":"Content","score":4,"max":6,"note":"..."}],"good":["..."],"fix":["..."],"rewrite":"a stronger version of the candidate’s weakest sentence, quoting the original first in the form: original -> improved"}',
         'complex');
       traits = r.traits; good = r.good; fix = r.fix; rewrite = r.rewrite;
     } catch(e){
@@ -2538,7 +2547,9 @@ RUN.essay = ctx => {
       .concat(traits || []);
     const tot = all.reduce((a,t) => a + Number(t.score||0), 0);
     const max = all.reduce((a,t) => a + Number(t.max||0), 0);
-    const p = form === 0 ? Math.min(25, pct(tot, max)) : pct(tot, max);
+    // Score Guide: a 0 for Content or Form means no points for the response at all
+    const contentZero = (traits || []).some(t => /^content$/i.test(String(t.name)) && Number(t.score) === 0);
+    const p = (form === 0 || contentZero) ? 0 : pct(tot, max);
     const extra = rewrite ? h('div', { cls:'model' },
       h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'One sentence, rewritten' }),
       h('div', { cls:'small', text:String(rewrite) })) : null;
@@ -2582,16 +2593,20 @@ RUN.sst = ctx => {
         'You are a PTE Academic examiner marking a Summarize Spoken Text response.\n\n' +
         'LECTURE TRANSCRIPT:\n' + item.text + '\n\nKEY POINTS:\n- ' + item.keys.join('\n- ') +
         '\n\nCANDIDATE SUMMARY (' + w + ' words):\n' + text + '\n\n' +
-        'Mark Content 0-2, Grammar 0-2, Vocabulary 0-2, Spelling 0-2. Do NOT score Form. Notes must quote the candidate.\n' +
-        'Reply with only JSON: {"traits":[{"name":"Content","score":1,"max":2,"note":"..."}],"missed":["key point omitted"],"good":["..."],"fix":["..."]}',
+        'Mark Content 0-4 (4: all main ideas captured and synthesised concisely in the candidate\u2019s own words; 2: main ideas present but some key points missing or copied; 0: too limited), Grammar 0-2, Vocabulary 0-2, Spelling 0-2. Do NOT score Form. Notes must quote the candidate.\n' +
+        'Reply with only JSON: {"traits":[{"name":"Content","score":3,"max":4,"note":"..."}],"missed":["key point omitted"],"good":["..."],"fix":["..."]}',
         'default');
       traits = r.traits; good = r.good; fix = r.fix; missed = r.missed;
     } catch(e){ out.replaceChildren(h('div', { cls:'notice', text: aiCopy(e && e.code) })); }
     const all = [{ name:'Form', score:form, max:2,
-      note: form === 2 ? w + ' words — inside the 50–70 band.' : w + ' words — outside the 50–70 band.' }].concat(traits || []);
+      note: form === 2 ? w + ' words — inside the 50–70 band.'
+        : form === 1 ? w + ' words — outside 50–70, which costs a form mark.'
+        : w + ' words — far outside the band; in the real exam this zeroes the item.' }].concat(traits || []);
     const tot = all.reduce((a,t) => a + Number(t.score||0), 0);
     const max = all.reduce((a,t) => a + Number(t.max||0), 0);
-    const p = pct(tot, max);
+    // Score Guide: a 0 for Content or Form means no points for the response at all
+    const contentZero = (traits || []).some(t => /^content$/i.test(String(t.name)) && Number(t.score) === 0);
+    const p = (form === 0 || contentZero) ? 0 : pct(tot, max);
     const extra = (missed && missed.length) ? h('div', {},
       h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'Points you left out' }),
       h('ul', { cls:'tips' }, missed.map(x => h('li', { text:x })))) : null;
