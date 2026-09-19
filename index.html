@@ -404,6 +404,28 @@ img{max-width:100%}
 <body>
 
 
+<script>
+/* older Safari (before iOS 14) has no replaceChildren */
+if (window.Element && !Element.prototype.replaceChildren) {
+  Element.prototype.replaceChildren = function () {
+    while (this.lastChild) this.removeChild(this.lastChild);
+    this.append.apply(this, arguments);
+  };
+}
+window.addEventListener('error', function (e) {
+  if (window.__pteBooted) return;
+  var v = document.getElementById('view');
+  if (!v) return;
+  var d = document.createElement('div');
+  d.className = 'notice';
+  d.style.whiteSpace = 'pre-wrap';
+  d.textContent = 'The practice area could not load in this browser.\n\nError: ' + (e.message || 'unknown') +
+    (e.lineno ? '\nAt: line ' + e.lineno + ', column ' + e.colno : '') +
+    '\nBrowser: ' + navigator.userAgent;
+  v.innerHTML = '';
+  v.appendChild(d);
+});
+</script>
 <script>try{var _k=localStorage.getItem('pte-score-lab/skin');if(_k&&_k!=='orchid')document.documentElement.setAttribute('data-skin',_k);if(localStorage.getItem('pte-score-lab/lang')==='zh')document.documentElement.lang='zh-Hant';}catch(e){}</script>
 <div class="skins" id="skins"></div>
 <div class="app">
@@ -3300,6 +3322,7 @@ paintSkins();
 paintLangs();
 startI18n();
 render();
+window.__pteBooted = true;
 </script>
 
 </body>
