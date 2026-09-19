@@ -13,30 +13,30 @@ Every question — built-in or in this table — has an ID made of its question 
 | Question type | Prefix | Built-in (in the app) | In this table | Next free ID |
 |---|---|---|---|---|
 | Personal Introduction | PI | PI0001 | — | PI0002 |
-| Read Aloud | RA | RA0001–RA0002 | RA0003–RA0011 | RA0012 |
-| Repeat Sentence | RS | RS0001–RS0005 | RS0006–RS0020 | RS0021 |
-| Describe Image | DI | DI0001–DI0002 | DI0003–DI0009 | DI0010 |
-| Re-tell Lecture | RL | RL0001–RL0002 | RL0003–RL0006 | RL0007 |
-| Answer Short Question | ASQ | ASQ0001–ASQ0008 | ASQ0009–ASQ0015 | ASQ0016 |
-| Summarize Group Discussion | SGD | SGD0001–SGD0002 | SGD0003–SGD0006 | SGD0007 |
-| Respond to a Situation | RTS | RTS0001–RTS0003 | RTS0004–RTS0007 | RTS0008 |
-| Summarize Written Text | SWT | SWT0001–SWT0002 | SWT0003–SWT0005 | SWT0006 |
-| Write Essay | WE | WE0001–WE0002 | WE0003–WE0004 | WE0005 |
-| Reading & Writing: Fill in the Blanks (dropdown) | RWFIB | RWFIB0001–RWFIB0002 | RWFIB0003–RWFIB0009 | RWFIB0010 |
-| Reading: Multiple Choice, Multiple Answers | MCMAR | MCMAR0001–MCMAR0002 | MCMAR0003–MCMAR0005 | MCMAR0006 |
-| Reorder Paragraph | RP | RP0001–RP0002 | RP0003–RP0005 | RP0006 |
-| Reading: Fill in the Blanks (drag and drop) | RFIB | RFIB0001–RFIB0002 | RFIB0003–RFIB0008 | RFIB0009 |
-| Reading: Multiple Choice, Single Answer | MCSAR | MCSAR0001–MCSAR0002 | MCSAR0003–MCSAR0005 | MCSAR0006 |
-| Summarize Spoken Text | SST | SST0001–SST0002 | SST0003 | SST0004 |
-| Listening: Multiple Choice, Multiple Answers | MCMAL | MCMAL0001–MCMAL0002 | MCMAL0003–MCMAL0005 | MCMAL0006 |
-| Highlight Correct Summary | HCS | HCS0001–HCS0002 | HCS0003–HCS0005 | HCS0006 |
-| Listening: Fill in the Blanks | LFIB | LFIB0001–LFIB0002 | LFIB0003–LFIB0005 | LFIB0006 |
-| Listening: Multiple Choice, Single Answer | MCSAL | MCSAL0001–MCSAL0002 | MCSAL0003–MCSAL0005 | MCSAL0006 |
-| Select Missing Word | SMW | SMW0001–SMW0003 | SMW0004–SMW0005 | SMW0006 |
-| Highlight Incorrect Words | HIW | HIW0001–HIW0002 | HIW0003–HIW0005 | HIW0006 |
-| Write from Dictation | WFD | WFD0001–WFD0006 | WFD0007–WFD0011 | WFD0012 |
+| Read Aloud | RA | RA0001–RA0002 | RA0003–RA0028 | RA0029 |
+| Repeat Sentence | RS | RS0001–RS0005 | RS0006–RS0049 | RS0050 |
+| Describe Image | DI | DI0001–DI0002 | DI0003–DI0023 | DI0024 |
+| Re-tell Lecture | RL | RL0001–RL0002 | RL0003–RL0013 | RL0014 |
+| Answer Short Question | ASQ | ASQ0001–ASQ0008 | ASQ0009–ASQ0029 | ASQ0030 |
+| Summarize Group Discussion | SGD | SGD0001–SGD0002 | SGD0003–SGD0013 | SGD0014 |
+| Respond to a Situation | RTS | RTS0001–RTS0003 | RTS0004–RTS0014 | RTS0015 |
+| Summarize Written Text | SWT | SWT0001–SWT0002 | SWT0003–SWT0010 | SWT0011 |
+| Write Essay | WE | WE0001–WE0002 | WE0003–WE0007 | WE0008 |
+| Reading & Writing: Fill in the Blanks (dropdown) | RWFIB | RWFIB0001–RWFIB0002 | RWFIB0003–RWFIB0023 | RWFIB0024 |
+| Reading: Multiple Choice, Multiple Answers | MCMAR | MCMAR0001–MCMAR0002 | MCMAR0003–MCMAR0012 | MCMAR0013 |
+| Reorder Paragraph | RP | RP0001–RP0002 | RP0003–RP0012 | RP0013 |
+| Reading: Fill in the Blanks (drag and drop) | RFIB | RFIB0001–RFIB0002 | RFIB0003–RFIB0020 | RFIB0021 |
+| Reading: Multiple Choice, Single Answer | MCSAR | MCSAR0001–MCSAR0002 | MCSAR0003–MCSAR0012 | MCSAR0013 |
+| Summarize Spoken Text | SST | SST0001–SST0002 | SST0003–SST0006 | SST0007 |
+| Listening: Multiple Choice, Multiple Answers | MCMAL | MCMAL0001–MCMAL0002 | MCMAL0003–MCMAL0012 | MCMAL0013 |
+| Highlight Correct Summary | HCS | HCS0001–HCS0002 | HCS0003–HCS0012 | HCS0013 |
+| Listening: Fill in the Blanks | LFIB | LFIB0001–LFIB0002 | LFIB0003–LFIB0012 | LFIB0013 |
+| Listening: Multiple Choice, Single Answer | MCSAL | MCSAL0001–MCSAL0002 | MCSAL0003–MCSAL0012 | MCSAL0013 |
+| Select Missing Word | SMW | SMW0001–SMW0003 | SMW0004–SMW0009 | SMW0010 |
+| Highlight Incorrect Words | HIW | HIW0001–HIW0002 | HIW0003–HIW0011 | HIW0012 |
+| Write from Dictation | WFD | WFD0001–WFD0006 | WFD0007–WFD0020 | WFD0021 |
 
-The table holds 100 questions, split in proportion to how often each type appears in a real test. Update these columns whenever questions are added.
+The table holds 300 questions, split in proportion to how often each type appears in a real test. Update these columns whenever questions are added.
 
 ## Record fields
 

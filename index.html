@@ -370,6 +370,13 @@ textarea.resp.short{min-height:92px}
 /* a wrong answer stays visible, struck through, before the correct word */
 .gapwas{color:var(--rose);font-size:.92em;margin-right:5px;text-decoration-thickness:1.5px}
 .gate{display:flex;flex-direction:column;gap:12px;padding:18px;border:1px dashed var(--line-strong);border-radius:var(--r-card);background:var(--surface-2)}
+.seg{display:inline-flex;gap:2px;padding:3px;border:1px solid var(--line);border-radius:var(--r-pill);background:var(--surface)}
+.segb{border:0;background:none;padding:5px 12px;border-radius:var(--r-pill);font:inherit;font-size:12.5px;font-weight:600;color:var(--muted);cursor:pointer}
+.segb:hover{color:var(--ink)}
+.segb[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent)}
+.tile .cmp{font-family:var(--ff-num);font-size:11px;color:var(--faint);margin-top:6px}
+.tile .cmp.up{color:var(--good)}
+.tile .cmp.down{color:var(--rose)}
 .xlate{display:none}
 .tscript p{margin:0 0 10px}.tscript p:last-child{margin-bottom:0}
 :root[lang="zh-Hant"] .xlate{display:inline-flex}
@@ -540,7 +547,7 @@ const SECTIONS = [
   { id:'writing',   label:'Writing' },
   { id:'reading',   label:'Reading' },
   { id:'listening', label:'Listening' },
-  { id:'drill',     label:'Daily Drill' },
+  { id:'drill',     label:'Daily Practice' },
   { id:'progress',  label:'Progress' },
   { id:'saved',     label:'Saved' }
 ];
@@ -1180,6 +1187,20 @@ let LANG = 'en';
 try { if (localStorage.getItem(LANG_KEY) === 'zh') LANG = 'zh'; } catch(e){}
 
 const ZH = {
+"Daily Practice": "每日練習",
+"Today’s practice": "今日練習",
+"Open today’s practice": "開啟今日練習",
+"Chosen for you: question types scoring below 65 come first, then the ones you have not practised for longest, using questions you have not tried yet where possible. Fixed for the day.": "為你挑選：分數低於 65 的題型優先，其次是最久沒有練習的題型，並盡量選擇你還沒做過的題目。當天固定不變。",
+"Not practised yet": "尚未練習",
+"Practised longest ago": "最久沒有練習",
+"New question": "新題目",
+"Lowest score so far": "目前分數最低的題目",
+"This week": "本週",
+"This month": "本月",
+"To date": "累計",
+"days practised": "練習天數",
+"Practice record": "練習紀錄",
+"Statistics period": "統計期間",
 "The audio plays and the timer starts when you press Begin task.": "按下「開始作答」後，才會播放音訊並開始計時。",
 "The question appears and the timer starts when you press Begin task.": "按下「開始作答」後，才會顯示題目並開始計時。",
 "Next": "下一步",
@@ -1337,7 +1358,6 @@ const ZH = {
 "Writing": "寫作",
 "Reading": "閱讀",
 "Listening": "聽力",
-"Daily Drill": "每日練習",
 "Progress": "進度",
 "Practice": "練習",
 "Part 1 · Speaking & Writing": "第一部分 · 口說與寫作",
@@ -1513,24 +1533,22 @@ const ZH = {
 "Avg band": "平均分數",
 "Start with one task and get a real score on it.": "從一題開始，取得實際分數。",
 "Every item here is timed the way the exam times it. Written and spoken responses are marked by an AI examiner against the official trait rubrics; the rest are marked automatically the moment you submit.": "這裡每一題的計時方式都與正式考試相同。寫作與口說題由 AI 考官依官方評分指標評分；其餘題型在你提交後立即自動評分。",
-"attempts logged": "已記錄的練習次數",
+"questions attempted": "已做題數",
 "question types tried": "已練習的題型",
 "day streak": "連續練習天數",
 "Where you stand — open a part for its task types": "你目前的程度——點開各部分查看題型",
-"Open today’s drill": "開啟今日練習",
 "Estimate only.": "僅供參考。",
 "These scores come from your practice here and are a guide, not a prediction.": "這些分數來自你在這裡的練習，只是參考，並非預測。",
 "Your actual PTE score may be higher or lower.": "你的實際 PTE 成績可能更高或更低。",
 "Communicative skill": "溝通技能",
 "Part average": "平均分數",
 "Nothing attempted yet": "尚未作答",
-"Today’s drill": "今日練習",
 "Nothing logged yet. Finish one task and it will appear here.": "尚無記錄。完成一題後就會顯示在這裡。",
 "Start with Write from Dictation": "從聽寫（Write from Dictation）開始",
 "Clear history": "清除記錄",
 "Tap again to erase everything": "再點一次以清除全部",
 "Estimated overall band · weighted by the real test": "預估總分 · 依正式考試加權",
-"Last 24 attempts": "最近 24 次練習",
+"Latest 24 questions": "最近作答的 24 題",
 "By part": "各部分",
 "Weakest task types first": "最弱題型優先",
 "previous item": "上一題",
@@ -1555,6 +1573,9 @@ const earlyZh = flag => (flag ? ' · 初步估計' : '');
 
 /* strings the app builds from numbers or names */
 const ZH_RULES = [
+  [/^Last (week|month): (\d+) · (▲|▼) (\d+)$/, m => (m[1] === 'week' ? '上週：' : '上月：') + m[2] + ' · ' + m[3] + ' ' + m[4]],
+  [/^Last (week|month): (\d+) · no change$/, m => (m[1] === 'week' ? '上週：' : '上月：') + m[2] + ' · 持平'],
+  [/^(\d+) of (\d+) questions attempted · best (\d+)$/, m => '已做 ' + m[1] + '/' + m[2] + ' 題 · 最佳 ' + m[3]],
   [/^Answered (\d{4}-\d\d-\d\d)( · band (\d+))?$/, m => '作答於 ' + m[1] + (m[3] ? ' · 分數 ' + m[3] : '')],
   [/^(\d+) saved$/, m => '已收藏 ' + m[1] + ' 題'],
   [/^last score (\d+)$/, m => '上次分數 ' + m[1]],
@@ -1566,8 +1587,8 @@ const ZH_RULES = [
   [/^(\d+) attempts? · best (\d+)$/, m => m[1] + ' 次練習 · 最佳 ' + m[2]],
   [/^based on (\d+)% of the section( · early estimate)?$/, m => '依據本部分 ' + m[1] + '% 的題型' + earlyZh(m[2])],
   [/^(\d+) question types · not started$/, m => m[1] + ' 種題型 · 尚未開始'],
-  [/^(\d+) attempts? across (\d+) of (\d+) question types · based on (\d+)% of the section( · early estimate)?$/,
-     m => '已練習 ' + m[3] + ' 種題型中的 ' + m[2] + ' 種，共 ' + m[1] + ' 次 · 依據本部分 ' + m[4] + '% 的題型' + earlyZh(m[5])],
+  [/^(\d+) questions? attempted across (\d+) of (\d+) question types · based on (\d+)% of the section( · early estimate)?$/,
+     m => '已做 ' + m[1] + ' 題，涵蓋 ' + m[3] + ' 種題型中的 ' + m[2] + ' 種 · 依據本部分 ' + m[4] + '% 的題型' + earlyZh(m[5])],
   [/^Your running estimate is (\d+)\.$/, m => '你目前的預估分數是 ' + m[1] + '。'],
   [/^Weighted across every question type you have tried, by how often each appears in a real test — covering (\d+)% of a full sitting(\.|, so treat it as an early estimate\.)$/,
      m => '依你練習過的每種題型在正式考試中出現的頻率加權計算——涵蓋完整考試的 ' + m[1] + '%' + (m[2] === '.' ? '。' : '，因此僅為初步估計。')],
@@ -1610,9 +1631,7 @@ const ZH_RULES = [
      m => '你點選了 ' + m[1] + ' 個其實正確的字。每一次誤選都會抵銷一個正確找到的錯誤，所以只有在清楚聽到不符時才點選。'],
   [/^(\d+) of (\d+) words captured$/, m => m[2] + ' 個字中聽寫出 ' + m[1] + ' 個'],
   [/^(\d+) of (\d+) adjacent pairs correct$/, m => m[2] + ' 組相鄰段落中答對 ' + m[1] + ' 組'],
-  [/^Six items across all four parts, fixed for the day\. About twenty-five minutes\. (\d+) of 6 done\.$/,
-     m => '涵蓋四大技能的六題，當天固定不變，約需二十五分鐘。已完成 ' + m[1] + ' / 6。'],
-  [/^(Part \d · .+) · item (\d+)$/, m => zhOf(m[1]) + ' · 第 ' + m[2] + ' 題'],
+  [/^Band (\d+), below 65$/, m => '分數 ' + m[1] + '，低於 65'],
   [/^(\d+) tried$/, m => '練習 ' + m[1] + ' 次'],
   [/^British English · (.+)$/, m => '英式英語 · ' + (ZH[m[1]] || m[1].replace(/^(\d+) female, (\d+) male$/, '$1 女 $2 男'))]
 ];
@@ -1793,11 +1812,61 @@ try {
 const OLD_IDS = { pi1:'PI0001', ra1:'RA0001', ra2:'RA0002', rs1:'RS0001', rs2:'RS0002', rs3:'RS0003', rs4:'RS0004', rs5:'RS0005', di1:'DI0001', di2:'DI0002', rl1:'RL0001', rl2:'RL0002', sq1:'ASQ0001', sq2:'ASQ0002', sq3:'ASQ0003', sq4:'ASQ0004', sq5:'ASQ0005', sq6:'ASQ0006', sq7:'ASQ0007', sq8:'ASQ0008', gd1:'SGD0001', gd2:'SGD0002', rt1:'RTS0001', rt2:'RTS0002', rt3:'RTS0003', sw1:'SWT0001', sw2:'SWT0002', es1:'WE0001', es2:'WE0002', rw1:'RWFIB0001', rw2:'RWFIB0002', rm1:'MCMAR0001', rm2:'MCMAR0002', ro1:'RP0001', ro2:'RP0002', rf1:'RFIB0001', rf2:'RFIB0002', rs1q:'MCSAR0001', rs2q:'MCSAR0002', ss1:'SST0001', ss2:'SST0002', lm1:'MCMAL0001', lm2:'MCMAL0002', hc1:'HCS0001', hc2:'HCS0002', lf1:'LFIB0001', lf2:'LFIB0002', ls1:'MCSAL0001', ls2:'MCSAL0002', sm1:'SMW0001', sm2:'SMW0002', sm3:'SMW0003', hi1:'HIW0001', hi2:'HIW0002', wd1:'WFD0001', wd2:'WFD0002', wd3:'WFD0003', wd4:'WFD0004', wd5:'WFD0005', wd6:'WFD0006' };
 if (state.attempts.some(a => OLD_IDS[a.i])){
   state.attempts.forEach(a => { if (OLD_IDS[a.i]) a.i = OLD_IDS[a.i]; });
-  try { localStorage.setItem(LSK, JSON.stringify(state.attempts.slice(-600))); } catch(e){}
+  try { localStorage.setItem(LSK, JSON.stringify(state.attempts)); } catch(e){}
 }
-function persist(){ try { localStorage.setItem(LSK, JSON.stringify(state.attempts.slice(-600))); } catch(e){} }
+/* One record per question: its latest attempt (score p, time ts), its best score b, and d,
+   the dates the period statistics need - its latest attempt in this week, last week, this month
+   and last month (at most four). Attempting a question again replaces its record, so nothing is
+   counted twice, while last week's and last month's figures stay as they were. */
+function keepDates(dates, now){
+  const keep = new Set([Math.max.apply(null, dates)]);
+  [['week', 0], ['week', 1], ['month', 0], ['month', 1]].forEach(([k, back]) => {
+    const r = windowRange(k, back, now), inR = dates.filter(t => t >= r[0] && t < r[1]);
+    if (inR.length) keep.add(Math.max.apply(null, inR));
+  });
+  return Array.from(keep).sort((x, y) => x - y);
+}
+const datesOf = a => a.d || [a.ts];
+function collapseAttempts(list){
+  const by = new Map();
+  list.forEach(a => {
+    const key = a.t + '|' + (a.i || ''), old = by.get(key);
+    const best = Math.max(old ? old.b : -1, a.b != null ? a.b : a.p);
+    const latest = !old || a.ts >= old.ts ? a : old;
+    by.set(key, { t: latest.t, i: latest.i, p: latest.p, ts: latest.ts, b: best, d: (old ? old.d : []).concat(datesOf(a)) });
+  });
+  const now = Date.now();
+  return Array.from(by.values()).map(r => Object.assign(r, { d: keepDates(r.d, now) })).sort((x, y) => x.ts - y.ts);
+}
+state.attempts = collapseAttempts(state.attempts);   // histories saved before this kept every repeat
+function persist(){
+  try { localStorage.setItem(LSK, JSON.stringify(state.attempts)); } catch(e){}
+}
+/* every question ever attempted, by ID (drives which question a question type opens at) */
+const DONE_KEY = 'pte-score-lab/done/v1';
+try { state.done = JSON.parse(localStorage.getItem(DONE_KEY) || '{}') || {}; } catch(e){ state.done = {}; }
+state.attempts.forEach(a => { if (a.i && !(a.i in state.done)) state.done[a.i] = a.ts || 0; });
+function markDone(id){
+  state.done[id] = Date.now();
+  try { localStorage.setItem(DONE_KEY, JSON.stringify(state.done)); } catch(e){}
+}
+const doneCount = t => t.items.filter(it => it.id in state.done).length;
+/* a question type opens at its earliest ID not yet attempted;
+   once all have been tried, at the one attempted longest ago */
+function startIndex(t){
+  const k = t.items.findIndex(it => !(it.id in state.done));
+  if (k >= 0) return k;
+  let best = 0;
+  t.items.forEach((it, i) => { if (state.done[it.id] < state.done[t.items[best].id]) best = i; });
+  return best;
+}
 function record(taskId, itemId, p){
-  state.attempts.push({ t:taskId, i:itemId, p:Math.round(p), ts:Date.now() });
+  const score = Math.round(p), prev = state.attempts.find(a => a.t === taskId && a.i === itemId);
+  state.attempts = state.attempts.filter(a => a !== prev);
+  const now = Date.now();
+  state.attempts.push({ t:taskId, i:itemId, p:score, ts:now, b:Math.max(prev ? (prev.b != null ? prev.b : prev.p) : -1, score),
+    d: keepDates((prev ? datesOf(prev) : []).concat(now), now) });
+  markDone(itemId);
   persist(); paintNav();
 }
 /* ---------- saved questions: IDs kept on this device ---------- */
@@ -1872,11 +1941,20 @@ function saveButton(id){
   return b;
 }
 
-const RECENT = 10;  // every average is over the latest 10 attempts only
+const RECENT = 10;  // a question type's score: its latest 10 different questions
+/* one attempt per question - the most recent - so a repeated question counts once; oldest-first */
+function latestPerQuestion(list){
+  const seen = new Set(), out = [];
+  for (let k = list.length - 1; k >= 0; k--){
+    const a = list[k], key = a.i || ('#' + k);
+    if (!seen.has(key)){ seen.add(key); out.push(a); }
+  }
+  return out.reverse();
+}
 const attemptsFor = id => state.attempts.filter(a => a.t === id);
-function bestFor(id){ const a = attemptsFor(id); return a.length ? Math.max(...a.map(x => x.p)) : null; }
+function bestFor(id){ const a = attemptsFor(id); return a.length ? Math.max(...a.map(x => x.b != null ? x.b : x.p)) : null; }
 function avgFor(list){
-  const r = list.slice(-RECENT);   // attempts are stored oldest-first
+  const r = latestPerQuestion(list).slice(-RECENT);   // attempts are stored oldest-first
   return r.length ? Math.round(r.reduce((s,x) => s + x.p, 0) / r.length) : null;
 }
 const dayKey = ts => new Date(ts).toISOString().slice(0,10);
@@ -3369,7 +3447,8 @@ function scoreRow(cls, main, avg, indent){
 
 const PARTS = () => SECTIONS.filter(s => TASKS.some(t => t.skills && t.skills.includes(s.id)));
 /* ---------- scoring model ----------
-   Question type: the mean of its last 10 attempts, 0-100.
+   Question type: the mean of its latest 10 different questions, 0-100. A question
+            attempted more than once counts once, using its most recent attempt.
    Skill:   those question-type scores, weighted by how many of each question
             appear in a real sitting (midpoint of the Score Guide's range).
    Overall: the same weighting across every question type, each counted once,
@@ -3382,7 +3461,7 @@ function perSitting(t){
   return m.length > 1 ? (m[0] + m[1]) / 2 : m[0];
 }
 function typePct(id){
-  const r = attemptsFor(id).slice(-RECENT);
+  const r = latestPerQuestion(attemptsFor(id)).slice(-RECENT);
   return r.length ? r.reduce((s, x) => s + x.p, 0) / r.length : null;
 }
 function weighted(types){
@@ -3435,10 +3514,10 @@ function taskBoard(id){
           t.unscored ? h('span', { cls:'also warm', text:'unscored' })
                      : also.map(k => h('span', { cls:'also', text:'+ ' + skillLabel(k) }))),
         h('div', { cls:'bt', text: t.unscored ? t.brief : (n
-          ? n + (n === 1 ? ' attempt · best ' : ' attempts · best ') + pteOf(bestFor(t.id))
+          ? doneCount(t) + ' of ' + t.items.length + ' questions attempted · best ' + pteOf(bestFor(t.id))
           : t.brief) })),
       t.unscored ? null : a);
-    row.addEventListener('click', () => openTask(t.id, 0));
+    row.addEventListener('click', () => openTask(t.id, startIndex(t)));
     rows.push(row);
   });
   return h('div', { cls:'board' }, rows);
@@ -3509,11 +3588,63 @@ function viewSaved(){
     cards, board].filter(Boolean));
 }
 
+/* practice statistics on the dashboard: this week, this month or all time,
+   with the week or month before for comparison. Weeks start on Monday. */
+const STATS_KEY = 'pte-score-lab/stats-window';
+function statsWindow(){ try { return localStorage.getItem(STATS_KEY) || 'week'; } catch(e){ return 'week'; } }
+const localDay = ts => { const d = new Date(ts); return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate(); };
+function windowRange(kind, back, now){
+  const d = now ? new Date(now) : new Date(); d.setHours(0, 0, 0, 0);
+  if (kind === 'week'){
+    d.setDate(d.getDate() - (d.getDay() + 6) % 7 - 7 * back);
+    const e = new Date(d); e.setDate(e.getDate() + 7);
+    return [d.getTime(), e.getTime()];
+  }
+  return [new Date(d.getFullYear(), d.getMonth() - back, 1).getTime(), new Date(d.getFullYear(), d.getMonth() - back + 1, 1).getTime()];
+}
+function statsFor(range){
+  const inR = t => t >= range[0] && t < range[1];
+  const a = state.attempts.filter(x => datesOf(x).some(inR));
+  const days = new Set(a.map(x => localDay(Math.max.apply(null, datesOf(x).filter(inR)))));
+  return { questions: new Set(a.map(x => x.i)).size, types: new Set(a.map(x => x.t)).size, days: days.size };
+}
+function statTile(n, label, cmp){
+  return h('div', { cls:'tile' }, h('div', { cls:'n', text:String(n) }), h('div', { cls:'l', text:label }), cmp);
+}
+function compareLine(now, before, unit){
+  const d = now - before;
+  return h('div', { cls:'cmp' + (d > 0 ? ' up' : d < 0 ? ' down' : ''),
+    text: 'Last ' + unit + ': ' + before + ' · ' + (d > 0 ? '▲ ' + d : d < 0 ? '▼ ' + (-d) : 'no change') });
+}
+function statsBlock(){
+  const win = statsWindow();
+  const seg = h('div', { cls:'seg', role:'group', 'aria-label':'Statistics period' },
+    [['week', 'This week'], ['month', 'This month'], ['all', 'To date']].map(([id, label]) => {
+      const b = h('button', { cls:'segb', type:'button', 'aria-pressed': String(win === id), text: label });
+      b.addEventListener('click', () => { try { localStorage.setItem(STATS_KEY, id); } catch(e){} render(); });
+      return b;
+    }));
+  const scored = TASKS.filter(t => !t.unscored).length;
+  let tiles;
+  if (win === 'all'){
+    tiles = [
+      statTile(TASKS.reduce((k, t) => k + doneCount(t), 0), 'questions attempted'),
+      statTile(TASKS.filter(t => !t.unscored && doneCount(t)).length + '/' + scored, 'question types tried'),
+      statTile(streak(), 'day streak')];
+  } else {
+    const cur = statsFor(windowRange(win, 0)), prev = statsFor(windowRange(win, 1));
+    tiles = [
+      statTile(cur.questions, 'questions attempted', compareLine(cur.questions, prev.questions, win)),
+      statTile(cur.types + '/' + scored, 'question types tried', compareLine(cur.types, prev.types, win)),
+      statTile(cur.days, 'days practised', compareLine(cur.days, prev.days, win))];
+  }
+  return h('div', {},
+    h('div', { cls:'spread', style:'margin-bottom:10px' }, h('div', { cls:'eyebrow', text:'Practice record' }), seg),
+    h('div', { cls:'tiles' }, tiles));
+}
+
 function viewHome(){
   const b = overallBand();
-  const done = state.attempts.length;
-  const covered = new Set(state.attempts.map(a => a.t)).size;
-  const scoredCount = TASKS.filter(t => !t.unscored).length;
 
   const hero = h('div', { cls:'hero' },
     h('h1', { cls:'h1', text: b == null ? 'Start with one task and get a real score on it.' : 'Your running estimate is ' + b + '.' }),
@@ -3524,17 +3655,11 @@ function viewHome(){
             + 'covering ' + Math.round(o.coverage * 100) + '% of a full sitting' + (o.coverage < EARLY ? ', so treat it as an early estimate.' : '.'); })() }),
     scaleWidget(b));
 
-  const tiles = h('div', { cls:'tiles' },
-    h('div', { cls:'tile' }, h('div', { cls:'n', text:String(done) }), h('div', { cls:'l', text:'attempts logged' })),
-    h('div', { cls:'tile' }, h('div', { cls:'n', text: covered + '/' + scoredCount }), h('div', { cls:'l', text:'question types tried' })),
-    h('div', { cls:'tile' }, h('div', { cls:'n', text: b == null ? '–' : String(b) }), h('div', { cls:'l', text:'estimated band' })),
-    h('div', { cls:'tile' }, h('div', { cls:'n', text: String(streak()) }), h('div', { cls:'l', text:'day streak' })));
-
-  view.replaceChildren(hero, tiles,
+  view.replaceChildren(hero, statsBlock(),
     h('div', { style:'height:26px' }),
     h('div', { cls:'spread', style:'margin-bottom:10px' },
       h('div', { cls:'eyebrow', text:'Where you stand — open a part for its task types' }),
-      h('button', { cls:'btn sm', text:'Open today’s drill', onclick:() => go({ view:'drill' }) })),
+      h('button', { cls:'btn sm', text:'Open today’s practice', onclick:() => go({ view:'drill' }) })),
     areaCards(),
     h('div', { style:'height:18px' }),
     h('div', { cls:'estnote' },
@@ -3545,10 +3670,11 @@ function viewHome(){
 
 function streak(){
   if (!state.attempts.length) return 0;
-  const days = new Set(state.attempts.map(a => dayKey(a.ts)));
+  const days = new Set();   // local days, not UTC
+  state.attempts.forEach(a => datesOf(a).forEach(t => days.add(localDay(t))));
   let n = 0, d = new Date();
-  if (!days.has(dayKey(d.getTime()))) d.setDate(d.getDate() - 1);
-  for (;;){ if (days.has(dayKey(d.getTime()))) { n++; d.setDate(d.getDate() - 1); } else break; }
+  if (!days.has(localDay(d.getTime()))) d.setDate(d.getDate() - 1);
+  for (;;){ if (days.has(localDay(d.getTime()))) { n++; d.setDate(d.getDate() - 1); } else break; }
   return n;
 }
 
@@ -3573,7 +3699,7 @@ function viewSection(id){
           h('div', { cls:'bbar', style:'height:8px;border-radius:4px' }, bar),
           h('div', { cls:'small faint', style:'margin-top:6px',
             text: st.avg == null ? 'Nothing attempted yet'
-              : st.att.length + ' attempt' + (st.att.length === 1 ? '' : 's') + ' across ' + st.tried + ' of ' + st.ts.length
+              : (q => q + ' question' + (q === 1 ? '' : 's') + ' attempted')(st.ts.reduce((k, t) => k + doneCount(t), 0)) + ' across ' + st.tried + ' of ' + st.ts.length
                 + ' question types · ' + coverageNote(st.coverage) })),
         h('div', { cls:'row', style:'padding-bottom:6px' },
           h('span', { cls:'pill acc', text: st.ts.length + ' question types' }),
@@ -3589,31 +3715,66 @@ const SECTION_NOTE = {
   listening:'The largest skill, and the one that reaches furthest. Beyond the Part 3 question types, Repeat Sentence, Re-tell Lecture, Summarize Group Discussion and Answer Short Question all score Listening from inside Part 1.'
 };
 
-/* --- daily drill --- */
-function mulberry(a){ return function(){ a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
-function drillSet(){
-  const d = new Date();
-  const rnd = mulberry(d.getFullYear() * 10000 + (d.getMonth()+1) * 100 + d.getDate());
-  const pick = arr => arr[Math.floor(rnd() * arr.length)];
-  const picks = [];
-  ['speaking','writing','reading','listening','reading','listening'].forEach(sec => {
-    const pool = TASKS.filter(t => t.skills.includes(sec) && !t.unscored && !picks.some(p => p.taskId === t.id));
-    const t = pick(pool.length ? pool : TASKS.filter(x => x.skills.includes(sec) && !x.unscored));
-    picks.push({ taskId: t.id, idx: Math.floor(rnd() * t.items.length) });
+/* --- daily practice ---
+   Six questions, chosen once a day and kept for the day:
+   1. question types whose band is below 65, weakest first;
+   2. then the question types practised longest ago (never practised counts as longest);
+   and within each type, a question never attempted if there is one, otherwise the one
+   with the lowest score so far. */
+const PRACTICE_KEY = 'pte-score-lab/practice/v1';
+const WEAK_BAND = 65, PRACTICE_SIZE = 6;
+function typeBand(t){ const a = avgFor(attemptsFor(t.id)); return a == null ? null : pteOf(a); }
+function lastPractised(t){ return t.items.reduce((m, it) => Math.max(m, state.done[it.id] || 0), 0); }
+function pickQuestion(t){
+  const fresh = t.items.find(it => !(it.id in state.done));
+  if (fresh) return { itemId: fresh.id, fresh: true };
+  const scoreOf = id => { const r = state.attempts.find(a => a.t === t.id && a.i === id); return r ? r.p : 101; };
+  let best = t.items[0];
+  t.items.forEach(it => {
+    const s = scoreOf(it.id), sb = scoreOf(best.id);
+    if (s < sb || (s === sb && (state.done[it.id] || 0) < (state.done[best.id] || 0))) best = it;
   });
-  return picks;
+  return { itemId: best.id, fresh: false };
+}
+function buildPractice(){
+  const types = TASKS.filter(t => !t.unscored && t.items.length);
+  const weak = types.filter(t => { const b = typeBand(t); return b != null && b < WEAK_BAND; })
+    .sort((a, b) => typeBand(a) - typeBand(b));
+  // ties (for example, types never practised) rotate through the three parts of the test
+  const spread = {};
+  [1, 2, 3].map(pt => types.filter(t => t.part === pt)).forEach(g => g.forEach((t, k) => { spread[t.id] = k * 3 + t.part; }));
+  const rest = types.filter(t => weak.indexOf(t) < 0)
+    .sort((a, b) => (lastPractised(a) - lastPractised(b)) || (spread[a.id] - spread[b.id]));
+  return weak.map(t => ({ t, why: 'weak' })).concat(rest.map(t => ({ t, why: lastPractised(t) ? 'due' : 'new' })))
+    .slice(0, PRACTICE_SIZE)
+    .map(x => Object.assign({ taskId: x.t.id, why: x.why, band: typeBand(x.t) }, pickQuestion(x.t)));
+}
+function drillSet(){
+  const today = localDay(Date.now());
+  let saved = null;
+  try { saved = JSON.parse(localStorage.getItem(PRACTICE_KEY) || 'null'); } catch(e){}
+  if (!saved || saved.day !== today || !Array.isArray(saved.picks) || !saved.picks.length){
+    saved = { day: today, picks: buildPractice() };
+    try { localStorage.setItem(PRACTICE_KEY, JSON.stringify(saved)); } catch(e){}
+  }
+  return saved.picks.map(p => {
+    const t = TASK_BY_ID[p.taskId], idx = t ? t.items.findIndex(it => it.id === p.itemId) : -1;
+    return idx < 0 ? null : Object.assign({}, p, { idx });
+  }).filter(Boolean);
 }
 function viewDrill(){
   const set = drillSet();
-  const today = dayKey(Date.now());
-  const doneToday = p => state.attempts.some(a => a.t === p.taskId && a.i === TASK_BY_ID[p.taskId].items[p.idx].id && dayKey(a.ts) === today);
-  const n = set.filter(doneToday).length;
-  const rows = h('div', { cls:'tlist' }, set.map((p,i) => {
+  const today = localDay(Date.now());
+  const doneToday = p => state.attempts.some(a => a.t === p.taskId && a.i === p.itemId && localDay(a.ts) === today);
+  const n = set.filter(doneToday).length, total = set.length;
+  const reason = p => p.why === 'weak' ? 'Band ' + p.band + ', below 65' : p.why === 'new' ? 'Not practised yet' : 'Practised longest ago';
+  const rows = h('div', { cls:'tlist' }, set.map((p, i) => {
     const t = TASK_BY_ID[p.taskId], ok = doneToday(p);
     const b = h('button', { cls:'trow' },
-      h('div', { cls:'tnum mono', text: ok ? '✓' : String(i+1) }),
+      h('div', { cls:'tnum mono', text: ok ? '✓' : String(i + 1) }),
       h('div', {}, h('div', { cls:'tname', text:t.name }),
-        h('div', { cls:'tbrief', text: PART_NAME[t.part] + ' · item ' + (p.idx+1) })),
+        h('div', { cls:'tbrief' }, h('span', { text: PART_NAME[t.part] }), ' · ', h('span', { cls:'mono', translate:'no', text: p.itemId })),
+        h('div', { cls:'tbrief' }, h('span', { text: reason(p) }), ' · ', h('span', { text: p.fresh ? 'New question' : 'Lowest score so far' }))),
       h('div', { cls:'tmeter' }, h('span', { cls:'pill' + (ok ? ' good' : ''), text: ok ? 'done' : 'to do' })));
     b.addEventListener('click', () => openTask(p.taskId, p.idx, 'drill'));
     return b;
@@ -3621,11 +3782,11 @@ function viewDrill(){
   view.replaceChildren(
     h('div', { cls:'hero' },
       h('div', { cls:'eyebrow', text: new Date().toLocaleDateString(LANG === 'zh' ? 'zh-TW' : undefined, { weekday:'long', day:'numeric', month:'long' }) }),
-      h('h1', { cls:'h1', style:'margin-top:6px', text:'Today’s drill' }),
-      h('p', { cls:'muted', style:'margin-top:8px;max-width:58ch', text:'Six items across all four parts, fixed for the day. About twenty-five minutes. ' + n + ' of 6 done.' }),
+      h('h1', { cls:'h1', style:'margin-top:6px', text:'Today’s practice' }),
+      h('p', { cls:'muted', style:'margin-top:8px;max-width:60ch', text:'Chosen for you: question types scoring below 65 come first, then the ones you have not practised for longest, using questions you have not tried yet where possible. Fixed for the day.' }),
       h('div', { cls:'row', style:'margin-top:12px' },
-        h('div', { cls:'bar', style:'width:180px' }, h('i', { style:'width:' + pct(n,6) + '%' })),
-        h('span', { cls:'small mono muted', text: n + '/6' }))),
+        h('div', { cls:'bar', style:'width:180px' }, h('i', { style:'width:' + pct(n, total || 1) + '%' })),
+        h('span', { cls:'small mono muted', text: n + '/' + total }))),
     rows);
 }
 
@@ -3635,7 +3796,7 @@ function viewProgress(){
     view.replaceChildren(h('div', { cls:'hero' }, h('h1', { cls:'h1', text:'Progress' })),
       h('div', { cls:'card empty' }, h('p', { text:'Nothing logged yet. Finish one task and it will appear here.' }),
         h('div', { cls:'row', style:'justify-content:center;margin-top:14px' },
-          h('button', { cls:'btn primary', text:'Start with Write from Dictation', onclick:() => openTask('wfd', 0) }))));
+          h('button', { cls:'btn primary', text:'Start with Write from Dictation', onclick:() => openTask('wfd', startIndex(TASK_BY_ID.wfd)) }))));
     return;
   }
   const last = state.attempts.slice(-24);
@@ -3656,7 +3817,7 @@ function viewProgress(){
       h('h1', { cls:'h1', style:'margin-top:6px', text: String(overallBand()) }),
       scaleWidget(overallBand())),
     h('div', { cls:'grid2' },
-      h('div', { cls:'card' }, h('div', { cls:'eyebrow', style:'margin-bottom:10px', text:'Last 24 attempts' }), spark),
+      h('div', { cls:'card' }, h('div', { cls:'eyebrow', style:'margin-bottom:10px', text:'Latest 24 questions' }), spark),
       h('div', { cls:'card' }, h('div', { cls:'eyebrow', style:'margin-bottom:10px', text:'By part' }),
         h('div', { style:'display:flex;flex-direction:column;gap:9px' }, bySec.map(x => h('div', {},
           h('div', { cls:'spread', style:'margin-bottom:3px' },
@@ -3672,7 +3833,7 @@ function viewProgress(){
         h('span', { cls:'small mono faint', text: r.n + ' tried' }),
         tint(h('span', { cls:'mono', style:'font-weight:600', text: String(pteOf(r.a)) }), r.a, false));
       el.style.cursor = 'pointer';
-      el.addEventListener('click', () => openTask(r.t.id, 0));
+      el.addEventListener('click', () => openTask(r.t.id, startIndex(r.t)));
       return el;
     })));
 }
@@ -3687,7 +3848,7 @@ function viewTask(){
   const { taskId, idx, from } = state.route;
   const task = TASK_BY_ID[taskId];
   const item = task.items[idx];
-  const backLabel = from === 'drill' ? 'Today’s drill' : SECTIONS.find(s => s.id === from).label;
+  const backLabel = from === 'drill' ? 'Today’s practice' : SECTIONS.find(s => s.id === from).label;
   const backBtn = h('button', { text: backLabel, onclick:() => go({ view: from }) });
   const pager = h('div', { cls:'row' },
     h('button', { cls:'btn sm', text:'◀', 'aria-label':'previous item', disabled: idx === 0,
@@ -3773,9 +3934,13 @@ function addExtraQuestions(data){
 }
 function loadExtraQuestions(){
   if (!window.fetch) return Promise.resolve(0);
-  const timeout = new Promise(r => setTimeout(r, 2500, null));
-  const get = fetch(EXTRA_URL, { cache:'no-cache' }).then(r => r.ok ? r.json() : null).catch(() => null);
-  return Promise.race([get, timeout]).then(d => d ? addExtraQuestions(d) : 0).catch(() => 0);
+  let late = false;
+  const get = fetch(EXTRA_URL, { cache:'no-cache' }).then(r => r.ok ? r.json() : null)
+    .then(d => d ? addExtraQuestions(d) : 0).catch(() => 0);
+  // on a slow connection, show the app after 4 s and add the questions when they arrive
+  get.then(n => { if (late && n && state.route.view !== 'task') render(); });
+  const timeout = new Promise(r => setTimeout(() => { late = true; r(0); }, 4000));
+  return Promise.race([get, timeout]);
 }
 
 /* ============================ boot ============================ */
