@@ -8,7 +8,9 @@ The sources PTE Score Lab is built against, and a record of how each question ty
 |---|---|---|
 | [Score_Guide_Summary.md](Score_Guide_Summary.md) — summary of Pearson's *PTE Academic Test Taker Score Guide* (2025) | **Marking:** traits and their maximums, correct/incorrect vs partial credit, negative marking, the zero rule, which skills each question type scores, and how many of each appear per test | Governs marking |
 | [PTE_Academic_Timing_Format_Reference.md](PTE_Academic_Timing_Format_Reference.md) — compiled from Pearson's test-format pages (September 2026) | **Timing and format:** preparation and response times, prompt lengths, audio lengths, word limits, the silence rule | Governs timing |
-| [Test_Format_Speaking_Writing_Summary.md](Test_Format_Speaking_Writing_Summary.md) — summary of Pearson's official Part 1 test-format page (read September 2026) | On-screen behaviour for Speaking & Writing (countdowns, tones, one-take recording) and Pearson's own tips | Consistent with the two above; they govern if anything conflicts |
+| [Test_Format_Speaking_Writing_Summary.md](Test_Format_Speaking_Writing_Summary.md) — Pearson's Part 1 test-format page (read September 2026) | On-screen behaviour for Speaking & Writing (countdowns, tones, one-take recording) and Pearson's tips | The two above govern if anything conflicts |
+| [Test_Format_Reading_Summary.md](Test_Format_Reading_Summary.md) — Pearson's Part 2 test-format page | Reading question types, prompt lengths, on-screen behaviour and tips | The two above govern if anything conflicts |
+| [Test_Format_Listening_Summary.md](Test_Format_Listening_Summary.md) — Pearson's Part 3 test-format page | Listening question types, audio lengths, option counts and on-screen behaviour | The two above govern if anything conflicts |
 
 Pearson's publications are copyrighted and are **not stored here**. The files above summarise their facts — numbers, rules and structure — in our own words, without reproducing Pearson's text. Get the originals from Pearson.
 
