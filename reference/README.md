@@ -68,7 +68,7 @@ Checked against both documents on 19 September 2026. The **In the app** column g
 
 ## Where the app necessarily differs from the real test
 
-- **Pronunciation and Oral Fluency are not machine-scored.** Read Aloud and Repeat Sentence use self-assessment. The other spoken question types have Content marked by an AI examiner from a typed transcript, where that is available.
+- **Speaking is marked by a general AI model, not Pearson's engine.** On the hosted version, the AI listens to the recording, transcribes it, and scores Pronunciation and Oral Fluency (0–5) as estimates. For Read Aloud and Repeat Sentence, the app scores Content itself by comparing the transcript word by word with the text, using the Score Guide's rules. For the other speaking question types, the AI scores Content 0–6 against the key points. Content is judged first: if it is 0, so are the other two traits. Where the recording can't be sent, the app falls back to a typed transcript (Content only) or self-assessment.
 - **Answer Short Question** is typed rather than spoken, so it can be marked instantly.
 - **Audio** is read by the device's speech voices (British English where installed), not recorded speakers.
 - **The 10–90 estimates** come from the app's own weighting by how many of each question type appear in a sitting. Pearson does not publish its scaling, so these are practice estimates, not predictions.

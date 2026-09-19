@@ -348,6 +348,19 @@ textarea.resp.short{min-height:92px}
 .langb{border:0;background:none;padding:3px 10px;border-radius:var(--r-pill);font-family:var(--ff-ui);font-size:11.5px;font-weight:700;letter-spacing:0;text-transform:none;color:var(--muted);cursor:pointer}
 .langb:hover{color:var(--ink)}
 .langb[aria-pressed="true"]{background:var(--surface);color:var(--accent);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.savebtn[aria-pressed="true"]{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+.area[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.brow[aria-expanded="true"]{background:var(--accent-soft)}
+.savedlist{border-top:1px solid var(--line);background:var(--surface-2);padding:4px 18px 8px}
+.saveditem{display:flex;align-items:center;gap:8px;border-bottom:1px dashed var(--line)}
+.saveditem:last-child{border-bottom:0}
+.saveditem .open{flex:1;min-width:0;display:flex;gap:12px;align-items:baseline;background:none;border:0;padding:10px 0;text-align:left;font:inherit;color:inherit;cursor:pointer}
+.saveditem .open:hover .snip{color:var(--accent)}
+.saveditem .sid{font-family:var(--ff-num);font-size:11.5px;color:var(--accent);flex:none}
+.saveditem .snip{flex:1;min-width:0;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.saveditem .last{font-family:var(--ff-num);font-size:11px;color:var(--muted);flex:none}
+.unsave{flex:none;background:none;border:0;color:var(--accent);font-size:17px;line-height:1;cursor:pointer;padding:6px}
+@media (max-width:560px){ .saveditem .open{flex-wrap:wrap;gap:2px 10px} .saveditem .snip{flex-basis:100%;order:3;white-space:normal} }
 .xlate{display:none}
 .tscript p{margin:0 0 10px}.tscript p:last-child{margin-bottom:0}
 :root[lang="zh-Hant"] .xlate{display:inline-flex}
@@ -519,7 +532,8 @@ const SECTIONS = [
   { id:'reading',   label:'Reading' },
   { id:'listening', label:'Listening' },
   { id:'drill',     label:'Daily Drill' },
-  { id:'progress',  label:'Progress' }
+  { id:'progress',  label:'Progress' },
+  { id:'saved',     label:'Saved' }
 ];
 
 const TASKS = [
@@ -1157,6 +1171,16 @@ let LANG = 'en';
 try { if (localStorage.getItem(LANG_KEY) === 'zh') LANG = 'zh'; } catch(e){}
 
 const ZH = {
+"Saved": "收藏",
+"☆ Save": "☆ 收藏",
+"★ Saved": "★ 已收藏",
+"Saved questions": "收藏的題目",
+"Questions you save are kept on this device. Choose a skill to see them by question type.": "你收藏的題目會保存在這台裝置上。選擇一項技能，即可依題型查看。",
+"Tap ☆ Save on any question to keep it here for revision.": "在任何題目上點選「☆ 收藏」，就能把它保存在這裡以便複習。",
+"Audio question": "音訊題",
+"Not attempted yet": "尚未作答",
+"No saved questions of this type yet.": "這個題型還沒有收藏的題目。",
+"Question type": "題型",
 "Transcript": "逐字稿",
 "Personal Introduction": "自我介紹（Personal Introduction）",
 "Read Aloud": "朗讀（Read Aloud）",
@@ -1396,7 +1420,19 @@ const ZH = {
 "Covered": "已涵蓋",
 "Missed": "遺漏",
 "Nothing significant.": "沒有重大遺漏。",
-"scored without the examiner": "未經考官評分",
+"Mark my recording": "為我的錄音評分",
+"No recording was captured, so this answer cannot be marked. Check that the microphone is allowed, then try the task again.": "沒有錄到聲音，因此無法評分。請確認已允許使用麥克風，然後重新作答這一題。",
+"Your recording is sent to an AI model for marking and is not stored.": "你的錄音會傳送給 AI 模型評分，不會被保存。",
+"Examiner is listening to your recording…": "考官正在聆聽你的錄音…",
+"Pronunciation and Oral Fluency are AI estimates from your recording, not Pearson’s scoring engine. The same recording can vary by about one band.": "發音和口語流暢度是 AI 根據你的錄音所做的估計，並非 Pearson 的評分系統。同一段錄音的分數可能相差約一個等級。",
+"What the examiner heard": "考官聽到的內容",
+"Words not said as written": "沒有照原文說出的字",
+"Listen again at": "重聽這些時間點",
+"(no speech detected)": "（未偵測到語音）",
+"Could not reach the AI examiner. Check your connection and try again.": "無法連線到 AI 考官。請檢查網路連線後再試一次。",
+"The AI examiner took too long to reply. Try again.": "AI 考官回應逾時，請再試一次。",
+"AI marking is paused for now. Try again later.": "AI 評分目前暫停，請稍後再試。",
+"Your recording could not be prepared for marking. Record the task again.": "你的錄音無法用於評分，請重新錄製這一題。",
 "Transcribe your answer": "打出你的答案",
 "your own judgement of the recording": "依你自己對錄音的判斷",
 "You judged this fluent — repeat it once more at speed to lock it in.": "你判斷這次很流暢——用正常速度再練一次，加深印象。",
@@ -1504,6 +1540,11 @@ const earlyZh = flag => (flag ? ' · 初步估計' : '');
 
 /* strings the app builds from numbers or names */
 const ZH_RULES = [
+  [/^(\d+) saved$/, m => '已收藏 ' + m[1] + ' 題'],
+  [/^last score (\d+)$/, m => '上次分數 ' + m[1]],
+  [/^Content (\d+)\/(\d+) · Pronunciation (\d+)\/5 · Oral Fluency (\d+)\/5$/, m => '內容 ' + m[1] + '/' + m[2] + ' · 發音 ' + m[3] + '/5 · 口語流暢度 ' + m[4] + '/5'],
+  [/^(\d+) word errors? \(replaced, left out or added\)\.$/, m => m[1] + ' 個字有誤（替換、遺漏或多加）。'],
+  [/^(\d+) of (\d+) words repeated in sequence\.$/, m => m[2] + ' 個字中，有 ' + m[1] + ' 個字按順序複述。'],
   [/^ID ([A-Z]+\d{4})$/, m => '題號 ' + m[1]],
   [/^Item (\d+) of (\d+)$/, m => '第 ' + m[1] + ' 題，共 ' + m[2] + ' 題'],
   [/^(\d+) attempts? · best (\d+)$/, m => m[1] + ' 次練習 · 最佳 ' + m[2]],
@@ -1743,6 +1784,28 @@ function record(taskId, itemId, p){
   state.attempts.push({ t:taskId, i:itemId, p:Math.round(p), ts:Date.now() });
   persist(); paintNav();
 }
+/* ---------- saved questions: IDs kept on this device ---------- */
+const SAVED_KEY = 'pte-score-lab/saved/v1';
+try { state.saved = JSON.parse(localStorage.getItem(SAVED_KEY) || '[]'); } catch(e){ state.saved = []; }
+if (!Array.isArray(state.saved)) state.saved = [];
+state.savedOpen = { skill:null, type:null };   // what the Saved page has expanded
+const isSaved = id => state.saved.indexOf(id) >= 0;
+function toggleSaved(id){
+  const k = state.saved.indexOf(id);
+  if (k >= 0) state.saved.splice(k, 1); else state.saved.push(id);
+  try { localStorage.setItem(SAVED_KEY, JSON.stringify(state.saved)); } catch(e){}
+  paintNav();
+}
+const savedOf = t => t.items.map((it, idx) => ({ it, idx })).filter(x => isSaved(x.it.id));
+const savedCount = () => TASKS.reduce((n, t) => n + savedOf(t).length, 0);
+function saveButton(id){
+  const b = h('button', { cls:'btn sm savebtn', type:'button' });
+  const paint = () => { const on = isSaved(id); b.textContent = on ? '★ Saved' : '☆ Save'; b.setAttribute('aria-pressed', String(on)); };
+  paint();
+  b.addEventListener('click', () => { toggleSaved(id); paint(); });
+  return b;
+}
+
 const RECENT = 10;  // every average is over the latest 10 attempts only
 const attemptsFor = id => state.attempts.filter(a => a.t === id);
 function bestFor(id){ const a = attemptsFor(id); return a.length ? Math.max(...a.map(x => x.p)) : null; }
@@ -1773,17 +1836,41 @@ const AI_COPY = {
   prompt_too_large:'That response is too long to score. Shorten it and retry.',
   refused:'The AI examiner declined to score this response. Rewrite it and try again.',
   empty_completion:'No feedback came back. Try scoring again.',
-  cancelled:'Scoring stopped.'
+  cancelled:'Scoring stopped.',
+  offline:'Could not reach the AI examiner. Check your connection and try again.',
+  timeout:'The AI examiner took too long to reply. Try again.',
+  out_of_credit:'AI marking is paused for now. Try again later.',
+  audio_unreadable:'Your recording could not be prepared for marking. Record the task again.'
 };
 const aiCopy = code => (code === 'not_granted' && !(window.claude && window.claude.use))
   ? 'AI examiner marking is not available in this version yet. Everything else \u2014 timing, recording and all the auto-marked question types \u2014 works here, and the model answer below still applies.'
   : (AI_COPY[code] || 'Scoring failed because of a temporary service problem. Try again.');
 
-async function aiRubric(prompt, tier){
-  const s = await ensureSample();
-  if (!s) throw { code:'not_granted' };
-  if (LANG === 'zh') prompt += '\n\nLANGUAGE: write every "note", and every item in "good", "fix", "covered" and "missed", in Traditional Chinese (繁體中文, Taiwan usage). Keep each trait "name" exactly as given in English, keep "rewrite" in English, and keep any quotation of the candidate\u2019s own words in the original English.';
-  return await s.json(prompt, { modelTier: tier || 'default', cache:{ gcTime: 86400000 } });
+/* Hosted version: marking goes through the app's own proxy, which holds the API key.
+   Empty = no AI marking. A tester can point it elsewhere with localStorage 'pte-score-lab/mark-url'. */
+const MARK_URL_DEFAULT = 'https://pte-marking.chamwong123.workers.dev/';
+const MARK_URL = (function(){ try { return localStorage.getItem('pte-score-lab/mark-url') || MARK_URL_DEFAULT; } catch(e){ return MARK_URL_DEFAULT; } })();
+async function markRemote(kind, prompt, audio){
+  const ctl = window.AbortController ? new AbortController() : null;
+  const stop = ctl ? setTimeout(() => ctl.abort(), 120000) : null;
+  let res, j = null;
+  try {
+    res = await fetch(MARK_URL, { method:'POST', headers:{ 'Content-Type':'application/json' },
+      body: JSON.stringify(audio ? { kind, prompt, audio } : { kind, prompt }), signal: ctl ? ctl.signal : undefined });
+    j = await res.json().catch(() => null);
+  } catch(e){ throw { code: e && e.name === 'AbortError' ? 'timeout' : 'offline' }; }
+  finally { if (stop) clearTimeout(stop); }
+  if (!res.ok || !j || !j.data) throw { code: (j && j.error) || 'upstream_error' };
+  return j.data;
+}
+
+/* kind: 'speaking' | 'essay' | 'writing' picks the model on the hosted version */
+async function aiRubric(prompt, tier, kind, audio){
+  if (LANG === 'zh') prompt += '\n\nLANGUAGE: write every "note", and every item in "good", "fix", "covered", "missed" and "issues", in Traditional Chinese (繁體中文, Taiwan usage). Keep each trait "name" exactly as given in English, keep "rewrite" and "transcript" in English, and keep any quotation of the candidate\u2019s own words in the original English.';
+  const s = audio ? null : await ensureSample();
+  if (s) return await s.json(prompt, { modelTier: tier || 'default', cache:{ gcTime: 86400000 } });
+  if (!MARK_URL) throw { code:'not_granted' };
+  return await markRemote(kind || 'writing', prompt, audio);
 }
 
 /* ============================ speech ============================ */
@@ -2165,7 +2252,7 @@ function makeRecorder(seconds, onDone, opts){
   const bar = h('div', { cls:'audio' }, h('div', { cls:'clocklab', text:'Recording' }), clock, wave.node, stat);
   const out = h('div', { style:'margin-top:10px' });
   const node = h('div', {}, bar, out);
-  let rec = null, chunks = [], id = null, lvl = null, left = seconds, finished = false;
+  let rec = null, chunks = [], id = null, lvl = null, left = seconds, finished = false, whenStopped = null;
   // the real test allows 7 s of silence before you start, then 3 s once you are speaking
   let spoke = false, quietMs = 0, startDelay = 0, longestPause = 0, measured = false;
 
@@ -2174,8 +2261,11 @@ function makeRecorder(seconds, onDone, opts){
     if (id) clearInterval(id);
     if (lvl) clearInterval(lvl);
     wave.off(); stat.textContent = 'Completed';
-    try { if (rec && rec.state === 'recording') rec.stop(); } catch(e){}
-    onDone && onDone({ measured, spoke, startDelay, longestPause });
+    const report = blob => { onDone && onDone({ measured, spoke, startDelay, longestPause, blob: blob || null }); };
+    let stopping = false;
+    try { if (rec && rec.state === 'recording'){ whenStopped = report; rec.stop(); stopping = true; } } catch(e){}
+    if (!stopping) report(null);
+    else setTimeout(() => { if (whenStopped){ whenStopped = null; report(null); } }, 2500);
   };
   const run = async () => {
     const stream = await getMic();
@@ -2186,12 +2276,14 @@ function makeRecorder(seconds, onDone, opts){
         rec = new MediaRecorder(stream); chunks = [];
         rec.ondataavailable = e => { if (e.data && e.data.size) chunks.push(e.data); };
         rec.onstop = () => {
+          let blob = null;
           if (chunks.length){
-            const blob = new Blob(chunks, { type: chunks[0].type || 'audio/webm' });
+            blob = new Blob(chunks, { type: chunks[0].type || 'audio/webm' });
             const a = h('audio', { controls:true, src: URL.createObjectURL(blob), style:'width:100%' });
             out.append(h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'Your recording' }), a);
           }
           releaseMic();   // don't hold the mic open between items
+          if (whenStopped){ const f = whenStopped; whenStopped = null; f(blob); }
         };
         rec.start();
       } catch(e){ rec = null; out.append(h('div', { cls:'notice', text:'Recording is not supported in this view. The timer still runs — speak aloud against it.' })); }
@@ -2377,6 +2469,7 @@ RUN.speak = ctx => {
       box.append(h('div', { cls:'eyebrow', text: task.checkLabel || 'Key content the scoring looks for' }),
         h('ul', { cls:'tips' }, item.keys.map(k => h('li', { text:k }))));
     }
+    const manualMarking = () => {
     if (task.transcript){
       const ta = h('textarea', { cls:'resp short', id:'tr-' + item.id, placeholder:'Type what you actually said, as closely as you can remember. The AI examiner scores its content.' });
       const scoreBtn = h('button', { cls:'btn primary', text:'Score my content' });
@@ -2397,7 +2490,7 @@ RUN.speak = ctx => {
             'Reply with only JSON of this shape: {"traits":[' +
               rub.map(t => '{"name":"' + t.name + '","score":<0-' + t.max + '>,"max":' + t.max + ',"note":"..."}').join(',') +
             '],"covered":["key point they hit"],"missed":["key point they left out"],"good":["one specific thing done well"],"fix":["one concrete change for next attempt"]}',
-            'default');
+            'default', 'speaking');
           const tot = r.traits.reduce((s,t) => s + Number(t.score||0), 0);
           const max = r.traits.reduce((s,t) => s + Number(t.max||0), 0) || 10;
           const p = pct(tot, max);
@@ -2413,7 +2506,6 @@ RUN.speak = ctx => {
         } catch(e){
           out.replaceChildren(h('div', { cls:'notice', text: aiCopy(e && e.code) }));
           scoreBtn.disabled = false;
-          ctx.finish(55, resultCard({ pct:55, label:'self-marked', sub:'scored without the examiner', model:item.model }));
         }
       });
       box.append(h('div', {}, h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'Transcribe your answer' }), ta),
@@ -2428,10 +2520,163 @@ RUN.speak = ctx => {
       box.append(h('div', {}, h('div', { cls:'eyebrow', style:'margin-bottom:8px', text:'How did that go?' }),
         h('div', { cls:'row' }, rate('Fluent, no hesitation', 90), rate('A few stumbles', 65), rate('Struggled', 38))));
     }
+    };
+    if (canHearRecording(task, info)) box.append(markRecording(ctx, info));
+    else if (MARK_URL && !(window.claude && window.claude.use) && !task.unscored)   // hosted version: AI marking only
+      box.append(h('div', { cls:'notice', text:'No recording was captured, so this answer cannot be marked. Check that the microphone is allowed, then try the task again.' }));
+    else manualMarking();
     host.append(box);
     box.scrollIntoView({ behavior:'smooth', block:'nearest' });
   };
 };
+
+/* ---------- speaking: the AI listens to the recording (hosted version) ---------- */
+const canHearRecording = (task, info) => !!(MARK_URL && !(window.claude && window.claude.use) &&
+  info && info.blob && !task.unscored && window.btoa);
+
+/* recording -> 16 kHz mono WAV, base64 */
+async function recordingWav(blob){
+  const buf = await new Response(blob).arrayBuffer();
+  actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+  const audio = await new Promise((res, rej) => { const p = actx.decodeAudioData(buf, res, rej); if (p && p.then) p.then(res, rej); });
+  const Off = window.OfflineAudioContext || window.webkitOfflineAudioContext;
+  let rate = 16000, off;
+  try { off = new Off(1, Math.ceil(audio.duration * rate), rate); }
+  catch(e){ rate = 22050; off = new Off(1, Math.ceil(audio.duration * rate), rate); }
+  const src = off.createBufferSource(); src.buffer = audio; src.connect(off.destination); src.start(0);
+  const out = await new Promise((res, rej) => { off.oncomplete = e => res(e.renderedBuffer); const p = off.startRendering(); if (p && p.then) p.then(res, rej); });
+  const pcm = out.getChannelData(0), n = pcm.length;
+  const v = new DataView(new ArrayBuffer(44 + n * 2));
+  const str = (o, s) => { for (let i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); };
+  str(0, 'RIFF'); v.setUint32(4, 36 + n * 2, true); str(8, 'WAVE'); str(12, 'fmt ');
+  v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+  v.setUint32(24, rate, true); v.setUint32(28, rate * 2, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true);
+  str(36, 'data'); v.setUint32(40, n * 2, true);
+  for (let i = 0; i < n; i++){ const x = Math.max(-1, Math.min(1, pcm[i])); v.setInt16(44 + i * 2, x < 0 ? x * 0x8000 : x * 0x7fff, true); }
+  const bytes = new Uint8Array(v.buffer);
+  let bin = '';
+  for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+  return { b64: btoa(bin), seconds: audio.duration };
+}
+
+/* word-level comparison for Read Aloud and Repeat Sentence content */
+const FILLERS = ['um', 'uh', 'er', 'erm', 'ah', 'hmm', 'mm'];
+const spokenWords = s => norm(s).split(' ').filter(w => w && FILLERS.indexOf(w) < 0);
+function compareWords(ref, said){
+  const n = ref.length, m = said.length;
+  const d = [], l = [];
+  for (let i = 0; i <= n; i++){ d.push(new Array(m + 1).fill(0)); l.push(new Array(m + 1).fill(0)); d[i][0] = i; }
+  for (let j = 0; j <= m; j++) d[0][j] = j;
+  for (let i = 1; i <= n; i++) for (let j = 1; j <= m; j++){
+    const same = ref[i-1] === said[j-1];
+    d[i][j] = Math.min(d[i-1][j] + 1, d[i][j-1] + 1, d[i-1][j-1] + (same ? 0 : 1));
+    l[i][j] = same ? l[i-1][j-1] + 1 : Math.max(l[i-1][j], l[i][j-1]);
+  }
+  // words of the text that were not said in sequence
+  const missed = []; let i = n, j = m;
+  while (i > 0 && j > 0){
+    if (ref[i-1] === said[j-1]){ i--; j--; }
+    else if (l[i-1][j] >= l[i][j-1]){ missed.unshift(ref[i-1]); i--; }
+    else j--;
+  }
+  while (i > 0){ missed.unshift(ref[i-1]); i--; }
+  return { errors: d[n][m], inSequence: l[n][m], missed };
+}
+
+const PRON_BANDS = 'Pronunciation 0-5: 5 = every sound clear and natural; word stress and intonation support the meaning; effortless to follow. 4 = clear, with occasional unusual sounds or stress that never obscure a word. 3 = mostly clear, but some sounds or stress patterns are consistently off and the listener sometimes has to work. 2 = frequent mispronunciations; several words are hard to recognise. 1 = much of the speech is hard to understand. 0 = mostly unintelligible or not English. A non-native accent is not a fault when the speech is clear.';
+const FLU_BANDS = 'Oral Fluency 0-5: 5 = smooth, natural rhythm and phrasing, with no noticeable hesitation, repetition or false starts. 4 = generally smooth; a few short hesitations or one or two self-corrections. 3 = steady overall, but with uneven phrasing, some fillers or pauses. 2 = frequent hesitations, fillers, repetitions or unnatural pauses break the flow. 1 = very halting and fragmented, with long pauses. 0 = too little speech to judge.';
+const CONTENT_GUIDE = {
+  describe_image: 'Content 0-6: how fully and accurately the response describes the image: its main features, the key figures and trends, how they relate, and a conclusion or implication. 6 = all key elements, accurate and related to each other; 3 = some key elements, with gaps or inaccuracies; 1 = one or two relevant details; 0 = nothing relevant.',
+  retell_lecture: 'Content 0-6: how accurately and fully the response re-tells the lecture: its main points, how they connect, and the conclusion. 6 = all main points accurate and connected; 3 = some main points, with gaps or inaccuracies; 1 = one or two relevant details; 0 = nothing relevant.',
+  sgd: 'Content 0-6: covers each speaker’s contribution, attributes views to the right person, relates the views to each other, and gives the outcome. 6 = every speaker covered accurately and related; 3 = some speakers or views missing or merged; 1 = one or two relevant details; 0 = nothing relevant.',
+  rts: 'Content 0-6: how well the response achieves the communicative goal of the situation, with a tone and register suited to the listener and the elements the situation calls for. 6 = goal fully achieved, appropriate throughout; 3 = goal partly achieved or tone partly inappropriate; 1 = barely addresses the situation; 0 = does not address it.'
+};
+
+function markRecording(ctx, info){
+  const { task, item } = ctx;
+  const refMode = task.id === 'read_aloud' || task.id === 'repeat_sentence';
+  const btn = h('button', { cls:'btn primary', text:'Mark my recording' });
+  const out = h('div', {});
+  const node = h('div', { style:'display:flex;flex-direction:column;gap:10px' },
+    h('div', { cls:'row' }, btn),
+    h('div', { cls:'small faint', text:'Your recording is sent to an AI model for marking and is not stored.' }), out);
+  btn.addEventListener('click', async () => {
+    btn.disabled = true;
+    out.replaceChildren(h('div', { cls:'notice' }, h('span', { cls:'load' }), ' Examiner is listening to your recording…'));
+    try {
+      const wav = await recordingWav(info.blob).catch(() => { throw { code:'audio_unreadable' }; });
+      const secs = Math.round(wav.seconds);
+      const measured = info.measured
+        ? 'MEASURED ON THE DEVICE: the candidate took about ' + Math.round(info.startDelay / 1000) + ' s to start speaking; the longest pause after starting was about ' + Math.round(info.longestPause / 1000) + ' s. In the real test, recording stops after 7 s without starting or a pause of more than 3 s once speaking. Use these figures when judging fluency.\n'
+        : '';
+      const traitsAsked = refMode ? ['Pronunciation', 'Oral Fluency'] : ['Content', 'Pronunciation', 'Oral Fluency'];
+      const prompt =
+        'You are a PTE Academic examiner. The attached audio is a candidate’s recorded answer.\n\n' +
+        'TASK: ' + task.name + '. Time allowed: ' + task.rec + ' s. Recording length: ' + secs + ' s.\n' + measured +
+        (refMode
+          ? 'The candidate was asked to ' + (task.id === 'read_aloud' ? 'read this text aloud' : 'repeat this sentence') + ': "' + item.text + '"\n' +
+            'Transcribe what was ACTUALLY said, not what the text says: keep every omitted, changed or added word as spoken.\n'
+          : 'STIMULUS: ' + (item.caption || item.title || task.name) + '\nKEY CONTENT POINTS:\n- ' + item.keys.join('\n- ') + '\n' + CONTENT_GUIDE[task.id] + '\n') +
+        '\n1. "transcript": exactly what the candidate said, including fillers (um, uh), repetitions and false starts. Write [inaudible] for unclear stretches. If there is no English speech, use "".\n' +
+        '2. Score ' + traitsAsked.join(', ') + '.\n' + PRON_BANDS + '\n' + FLU_BANDS + '\n' +
+        (refMode ? '' : 'Judge Content first. If Content is 0, Pronunciation and Oral Fluency are also 0.\n') +
+        'Award the top band only when genuinely deserved. Each note must name specific words or moments from the recording.\n' +
+        '3. "issues": up to 5 specific pronunciation or fluency problems, each with the approximate time (m:ss) and the word or phrase.\n\n' +
+        'Reply with only JSON of this shape: {"transcript":"...","traits":[' +
+          traitsAsked.map(t => '{"name":"' + t + '","score":<0-' + (t === 'Content' ? 6 : 5) + '>,"max":' + (t === 'Content' ? 6 : 5) + ',"note":"..."}').join(',') + ']' +
+          (refMode ? '' : ',"covered":["key point they hit"],"missed":["key point they left out"]') +
+          ',"issues":[{"at":"0:12","text":"..."}],"good":["one specific strength"],"fix":["one concrete change for next time"]}';
+      const r = await aiRubric(prompt, 'default', 'speaking', wav.b64);
+      const said = String(r.transcript || '');
+      const byName = {};
+      (Array.isArray(r.traits) ? r.traits : []).forEach(t => { if (t && t.name) byName[t.name] = t; });
+      const trait = (name, max) => {
+        const t = byName[name] || {};
+        return { name, max, score: Math.max(0, Math.min(max, Math.round(Number(t.score) || 0))), note: t.note ? String(t.note) : '' };
+      };
+      let content, extraBits = [];
+      if (refMode){
+        const ref = spokenWords(item.text), cmp = compareWords(ref, spokenWords(said));
+        if (task.id === 'read_aloud'){
+          content = { name:'Content', max: ref.length, score: Math.max(0, ref.length - cmp.errors),
+            note: cmp.errors + ' word error' + (cmp.errors === 1 ? '' : 's') + ' (replaced, left out or added).' };
+        } else {
+          const share = ref.length ? cmp.inSequence / ref.length : 0;
+          content = { name:'Content', max:3, score: share >= 1 ? 3 : share >= 0.5 ? 2 : share > 0.1 ? 1 : 0,
+            note: cmp.inSequence + ' of ' + ref.length + ' words repeated in sequence.' };
+        }
+        if (cmp.missed.length) extraBits.push(h('div', {}, h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'Words not said as written' }),
+          h('div', { cls:'prose', style:'font-size:15px', text: cmp.missed.slice(0, 20).join(', ') + (cmp.missed.length > 20 ? ' …' : '') })));
+      } else content = trait('Content', 6);
+      let pron = trait('Pronunciation', 5), flu = trait('Oral Fluency', 5);
+      if (content.score === 0){ pron.score = 0; flu.score = 0; }   // content is judged first
+      const traits = [content, pron, flu];
+      const p = Math.round(traits.reduce((s, t) => s + t.score / t.max, 0) / traits.length * 100);
+      const issues = (Array.isArray(r.issues) ? r.issues : []).filter(x => x && x.text).slice(0, 5);
+      const list = xs => (Array.isArray(xs) ? xs : []).map(String).filter(Boolean);
+      const extra = h('div', { style:'display:flex;flex-direction:column;gap:14px' },
+        h('div', { cls:'notice', text:'Pronunciation and Oral Fluency are AI estimates from your recording, not Pearson’s scoring engine. The same recording can vary by about one band.' }),
+        h('div', {}, h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'What the examiner heard' }),
+          h('div', { cls:'prose', style:'font-size:15px', text: said || '(no speech detected)' })),
+        extraBits,
+        refMode ? null : h('div', { cls:'grid2' },
+          h('div', {}, h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'Covered' }),
+            h('ul', { cls:'tips' }, list(r.covered).map(x => h('li', { text:x })))),
+          h('div', {}, h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'Missed' }),
+            h('ul', { cls:'tips' }, list(r.missed).length ? list(r.missed).map(x => h('li', { text:x })) : [h('li', { text:'Nothing significant.' })]))),
+        issues.length ? h('div', {}, h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'Listen again at' }),
+          h('ul', { cls:'tips' }, issues.map(x => h('li', { text: (x.at ? x.at + ' — ' : '') + x.text })))) : null);
+      out.replaceChildren();
+      node.remove();
+      ctx.finish(p, resultCard({ pct:p, sub: traits.map(t => t.name + ' ' + t.score + '/' + t.max).join(' · '),
+        traits, good: list(r.good), fix: list(r.fix), extra, model: item.model || null }));
+    } catch(e){
+      out.replaceChildren(h('div', { cls:'notice', text: aiCopy(e && e.code) }));
+      btn.disabled = false;
+    }
+  });
+  return node;
+}
 
 /* --- answer short question --- */
 RUN.asq = ctx => {
@@ -2504,7 +2749,7 @@ RUN.swt = ctx => {
         'Marks: Content 0-4 (4: every main idea captured and synthesised in the candidate\u2019s own words with extraneous detail removed; 2: main ideas found but leaning on copied excerpts; 0: too limited to show comprehension), Grammar 0-2, Vocabulary 0-2. ' +
         'Do NOT score Form; it is computed separately. Every note must quote the candidate’s own words.\n' +
         'Reply with only JSON: {"traits":[{"name":"Content","score":3,"max":4,"note":"..."},{"name":"Grammar","score":1,"max":2,"note":"..."},{"name":"Vocabulary","score":2,"max":2,"note":"..."}],"good":["..."],"fix":["..."]}',
-        'default');
+        'default', 'writing');
       traits = r.traits; good = r.good; fix = r.fix;
     } catch(e){
       out.replaceChildren(h('div', { cls:'notice', text: aiCopy(e && e.code) }));
@@ -2563,7 +2808,7 @@ RUN.essay = ctx => {
         'Mark these traits: Content 0-6, Development, Structure and Coherence 0-6, Grammar 0-2, General Linguistic Range 0-6, Vocabulary Range 0-2, Spelling 0-2. ' +
         'Do NOT score Form; it is computed separately from the word count. Every note must quote the candidate’s actual wording and say what to change.\n' +
         'Reply with only JSON: {"traits":[{"name":"Content","score":4,"max":6,"note":"..."}],"good":["..."],"fix":["..."],"rewrite":"a stronger version of the candidate’s weakest sentence, quoting the original first in the form: original -> improved"}',
-        'complex');
+        'complex', 'essay');
       traits = r.traits; good = r.good; fix = r.fix; rewrite = r.rewrite;
     } catch(e){
       out.replaceChildren(h('div', { cls:'notice', text: aiCopy(e && e.code) }));
@@ -2621,7 +2866,7 @@ RUN.sst = ctx => {
         '\n\nCANDIDATE SUMMARY (' + w + ' words):\n' + text + '\n\n' +
         'Mark Content 0-4 (4: all main ideas captured and synthesised concisely in the candidate\u2019s own words; 2: main ideas present but some key points missing or copied; 0: too limited), Grammar 0-2, Vocabulary 0-2, Spelling 0-2. Do NOT score Form. Notes must quote the candidate.\n' +
         'Reply with only JSON: {"traits":[{"name":"Content","score":3,"max":4,"note":"..."}],"missed":["key point omitted"],"good":["..."],"fix":["..."]}',
-        'default');
+        'default', 'writing');
       traits = r.traits; good = r.good; fix = r.fix; missed = r.missed;
     } catch(e){ out.replaceChildren(h('div', { cls:'notice', text: aiCopy(e && e.code) })); }
     const all = [{ name:'Form', score:form, max:2,
@@ -2998,7 +3243,7 @@ function go(route){ stopAudio(); clearTimers(); state.route = route; window.scro
 
 function paintNav(){
   navEl.replaceChildren(...SECTIONS.map(s => {
-    const n = TASKS.filter(t => t.skills && t.skills.includes(s.id) && !t.unscored).length;
+    const n = s.id === 'saved' ? savedCount() : TASKS.filter(t => t.skills && t.skills.includes(s.id) && !t.unscored).length;
     const b = h('button', { cls:'navb', 'aria-current': String(state.route.view === s.id) },
       h('span', { cls:'dot' }), h('span', { text:s.label }),
       n ? h('span', { cls:'cnt', text:String(n) }) : null);
@@ -3130,6 +3375,68 @@ function taskBoard(id){
   return h('div', { cls:'board' }, rows);
 }
 
+/* saved questions: skill cards -> question types -> the saved questions */
+function savedSnippet(task, item){
+  // never show a listening script: that would give the answer away
+  if (task.part === 3 || task.kind === 'asq' || (task.audio && !task.showPrompt)) return item.title || 'Audio question';
+  const s = String(item.prompt || item.caption || item.title || item.passage || item.text || item.q || (item.order && item.order[0]) || '');
+  const w = s.split(/\s+/);
+  return w.length > 16 ? w.slice(0, 16).join(' ') + ' …' : s;
+}
+function viewSaved(){
+  const open = state.savedOpen;
+  const total = savedCount();
+  const cards = h('div', { cls:'areas' }, PARTS().map(s => {
+    const st = partStats(s.id);
+    const n = TASKS.filter(t => t.skills.includes(s.id)).reduce((k, t) => k + savedOf(t).length, 0);
+    const bar = h('i', { style:'width:' + (st.avg || 0) + '%' });
+    const num = h('div', { cls:'av', text: st.avg == null ? '–' : String(pteOf(st.avg)) });
+    tint(bar, st.avg, true); tint(num, st.avg, false);
+    const card = h('button', { cls:'area', 'aria-pressed': String(open.skill === s.id) },
+      h('div', { cls:'an', text: s.label }), num, h('div', { cls:'bbar' }, bar),
+      h('div', { cls:'as', text: n + ' saved' }));
+    card.addEventListener('click', () => { open.skill = open.skill === s.id ? null : s.id; open.type = null; render(); });
+    return card;
+  }));
+
+  let board = null;
+  if (open.skill){
+    const rows = [h('div', { cls:'bhead' },
+      h('span', { text:'Question type' }), h('span', {}), h('span', { text:'Avg band' }))];
+    TASKS.filter(t => t.skills.includes(open.skill)).forEach(t => {
+      const saved = savedOf(t), expanded = open.type === t.id;
+      const row = scoreRow('brow',
+        h('div', {}, h('div', { cls:'bn', text: t.name }), h('div', { cls:'bt', text: saved.length + ' saved' })),
+        t.unscored ? null : avgFor(attemptsFor(t.id)));
+      row.setAttribute('aria-expanded', String(expanded));
+      row.addEventListener('click', () => { open.type = expanded ? null : t.id; render(); });
+      rows.push(row);
+      if (!expanded) return;
+      rows.push(h('div', { cls:'savedlist' }, saved.length ? saved.map(({ it, idx }) => {
+        const mine = state.attempts.filter(a => a.t === t.id && a.i === it.id);
+        const last = mine.length ? mine[mine.length - 1].p : null;
+        const unsave = h('button', { cls:'unsave', type:'button', title:'Remove from saved', 'aria-label':'Remove from saved', text:'★' });
+        unsave.addEventListener('click', () => { toggleSaved(it.id); render(); });
+        return h('div', { cls:'saveditem' },
+          h('button', { cls:'open', type:'button', onclick:() => openTask(t.id, idx, 'saved') },
+            h('span', { cls:'sid', text: it.id }),
+            h('span', { cls:'snip', translate:'no', text: savedSnippet(t, it) }),
+            h('span', { cls:'last', text: last == null ? 'Not attempted yet' : 'last score ' + pteOf(last) })),
+          unsave);
+      }) : [h('div', { cls:'small muted', style:'padding:8px 0', text:'No saved questions of this type yet.' })]));
+    });
+    board = h('div', { cls:'board', style:'margin-top:18px' }, rows);
+  }
+
+  view.replaceChildren(...[
+    h('div', { cls:'hero' },
+      h('h1', { cls:'h1', text:'Saved questions' }),
+      h('p', { cls:'muted', style:'margin-top:8px;max-width:58ch', text: total
+        ? 'Questions you save are kept on this device. Choose a skill to see them by question type.'
+        : 'Tap ☆ Save on any question to keep it here for revision.' })),
+    cards, board].filter(Boolean));
+}
+
 function viewHome(){
   const b = overallBand();
   const done = state.attempts.length;
@@ -3199,7 +3506,7 @@ function viewSection(id){
         h('div', { cls:'row', style:'padding-bottom:6px' },
           h('span', { cls:'pill acc', text: st.ts.length + ' question types' }),
           h('span', { cls:'pill', text: st.items + ' items' })))),
-    id === 'speaking' ? micTester() : null,
+    (id === 'speaking' || id === 'listening') ? micTester() : null,   // both parts record your voice
     taskBoard(id)].filter(Boolean));
 }
 
@@ -3328,6 +3635,7 @@ function viewTask(){
       task.time ? h('span', { cls:'pill', text: (task.time/60) + ' min' }) : null,
       (task.rec && task.kind === 'speak') ? h('span', { cls:'pill', text: task.rec + ' s recording' }) : null,
       task.prep ? h('span', { cls:'pill', text: task.prep + ' s prep' }) : null,
+      saveButton(item.id),
       xlateButton('q')),
     h('div', { cls:'brief' }, h('b', { text:'Task. ' }), task.brief),
     h('details', { cls:'reveal' }, h('summary', { text:'How this item is actually scored' }),
@@ -3366,11 +3674,12 @@ function addExtraQuestions(data){
     if (!task){ console.warn('questions.json: no question type uses the ID', id); return; }
     if (seen.has(id)){ console.warn('questions.json: duplicate ID', id); return; }
     // every field the built-in questions of this type all have is required
-    const need = Object.keys(task.items[0]).filter(k => task.items.every(i => k in i));
-    const missing = need.filter(k => !(k in q));
-    if (missing.length){ console.warn('questions.json:', id, 'is missing', missing.join(', ')); return; }
     const item = Object.assign({}, q);
     delete item.zh;
+    if (item.turns && !item.text) item.text = item.turns.map(x => x.who + ': ' + x.text).join(' ');   // as for built-in discussions
+    const need = Object.keys(task.items[0]).filter(k => task.items.every(i => k in i));
+    const missing = need.filter(k => !(k in item));
+    if (missing.length){ console.warn('questions.json:', id, 'is missing', missing.join(', ')); return; }
     if (q.zh && typeof q.zh === 'object') Object.keys(q.zh).forEach(en => { ZHC[zkey(en)] = String(q.zh[en]); });
     task.items.push(item); seen.add(id); added++;
   });
@@ -3392,6 +3701,7 @@ function render(){
   else if (v === 'home') viewHome();
   else if (v === 'drill') viewDrill();
   else if (v === 'progress') viewProgress();
+  else if (v === 'saved') viewSaved();
   else viewSection(v);
 }
 window.addEventListener('pagehide', () => { stopAudio(); releaseMic(); });
