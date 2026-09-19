@@ -8,9 +8,9 @@ The sources PTE Score Lab is built against, and a record of how each question ty
 |---|---|---|
 | [Score_Guide_Summary.md](Score_Guide_Summary.md) — summary of Pearson's *PTE Academic Test Taker Score Guide* (2025) | **Marking:** traits and their maximums, correct/incorrect vs partial credit, negative marking, the zero rule, which skills each question type scores, and how many of each appear per test | Governs marking |
 | [PTE_Academic_Timing_Format_Reference.md](PTE_Academic_Timing_Format_Reference.md) — compiled from Pearson's test-format pages (September 2026) | **Timing and format:** preparation and response times, prompt lengths, audio lengths, word limits, the silence rule | Governs timing |
-| [Official_Guide_2012_Summary.md](Official_Guide_2012_Summary.md) — summary of Pearson's *The Official Guide to PTE Academic* (2012) | On-screen behaviour, finer limits (blanks per item, options per blank, errors per passage) and preparation strategy | **Superseded** wherever it conflicts with the two above — it describes the older, three-hour test |
+| [Test_Format_Speaking_Writing_Summary.md](Test_Format_Speaking_Writing_Summary.md) — summary of Pearson's official Part 1 test-format page (read September 2026) | On-screen behaviour for Speaking & Writing (countdowns, tones, one-take recording) and Pearson's own tips | Consistent with the two above; they govern if anything conflicts |
 
-The two Pearson publications are copyrighted and are **not stored here**. The files above summarise their facts — numbers, rules and structure — in our own words, without reproducing Pearson's text. Get the originals from Pearson.
+Pearson's publications are copyrighted and are **not stored here**. The files above summarise their facts — numbers, rules and structure — in our own words, without reproducing Pearson's text. Get the originals from Pearson.
 
 ## Alignment
 
