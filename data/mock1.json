@@ -1,0 +1,1742 @@
+{
+ "format": 1,
+ "exam": "Mock Exam 1",
+ "questions": [
+  {
+   "id": "M1PI0001",
+   "text": "You will have 25 seconds to think about the question below and 30 seconds to record your answer. Introduce yourself briefly: where you are from, what you study or do, and one reason you are taking this test.",
+   "keys": [
+    "say where you are from and what you study or do",
+    "give one clear reason for taking the test",
+    "add one specific detail, such as a course, a job or a country",
+    "finish your last sentence before the time runs out",
+    "speak at a natural pace rather than reciting"
+   ],
+   "zh": {
+    "You will have 25 seconds to think about the question below and 30 seconds to record your answer. Introduce yourself briefly: where you are from, what you study or do, and one reason you are taking this test.": "你有 25 秒思考下面的問題，以及 30 秒錄下你的回答。請簡短介紹自己：你來自哪裡、你就讀或從事什麼，以及你參加這項考試的一個理由。",
+    "say where you are from and what you study or do": "說明你來自哪裡，以及你就讀或從事什麼",
+    "give one clear reason for taking the test": "給出一個參加考試的明確理由",
+    "add one specific detail, such as a course, a job or a country": "加入一個具體細節，例如某門課程、某份工作或某個國家",
+    "finish your last sentence before the time runs out": "在時間結束前把最後一句話說完",
+    "speak at a natural pace rather than reciting": "用自然的速度說話，而不是背稿"
+   },
+   "type": "personal_intro"
+  },
+  {
+   "id": "M1RA0001",
+   "text": "Lightning heats the air around it to roughly thirty thousand degrees Celsius, about five times the temperature of the surface of the sun. The air expands so violently that it produces the shock wave we hear as thunder. Because light travels far faster than sound, counting the seconds between the flash and the rumble gives a rough measure of distance.",
+   "focus": [
+    "roughly",
+    "violently",
+    "shock",
+    "measure"
+   ],
+   "zh": {
+    "Lightning heats the air around it to roughly thirty thousand degrees Celsius, about five times the temperature of the surface of the sun. The air expands so violently that it produces the shock wave we hear as thunder. Because light travels far faster than sound, counting the seconds between the flash and the rumble gives a rough measure of distance.": "閃電會把周圍的空氣加熱到大約攝氏三萬度，約是太陽表面溫度的五倍。空氣劇烈膨脹，產生我們聽到的衝擊波，也就是雷聲。由於光的傳播速度遠比聲音快，計算閃光與雷聲之間相隔的秒數，就能粗略估算出距離。"
+   },
+   "type": "read_aloud"
+  },
+  {
+   "id": "M1RA0002",
+   "text": "Silk is produced by caterpillars that spin a single continuous thread to build a cocoon. A single cocoon can yield nearly a kilometre of fibre, which is why the material was once worth more than gold by weight. For centuries the method was a closely guarded secret, and revealing it was punishable by death.",
+   "focus": [
+    "caterpillars",
+    "continuous",
+    "cocoon",
+    "punishable"
+   ],
+   "zh": {
+    "Silk is produced by caterpillars that spin a single continuous thread to build a cocoon. A single cocoon can yield nearly a kilometre of fibre, which is why the material was once worth more than gold by weight. For centuries the method was a closely guarded secret, and revealing it was punishable by death.": "蠶絲是由毛毛蟲吐出一條連續不斷的絲線來結繭所產生的。一個蠶繭可以抽出將近一公里長的纖維，這就是為什麼這種材料以重量計算曾經比黃金還貴。好幾個世紀以來，這種方法都是嚴加保守的秘密，洩漏出去甚至可能被處死。"
+   },
+   "type": "read_aloud"
+  },
+  {
+   "id": "M1RA0003",
+   "text": "Braille was invented by a fifteen-year-old student who had lost his sight in a childhood accident. He adapted a military code of raised dots, reducing it to six positions that a fingertip can read without moving. Schools resisted the system for decades, partly because sighted teachers found it difficult to learn.",
+   "focus": [
+    "invented",
+    "adapted",
+    "positions",
+    "resisted"
+   ],
+   "zh": {
+    "Braille was invented by a fifteen-year-old student who had lost his sight in a childhood accident. He adapted a military code of raised dots, reducing it to six positions that a fingertip can read without moving. Schools resisted the system for decades, partly because sighted teachers found it difficult to learn.": "點字是由一位在童年意外中失明的十五歲學生發明的。他改造了一種以凸點構成的軍用密碼，把它簡化為六個位置，讓指尖不必移動就能讀取。學校抗拒這套系統長達數十年，部分原因是明眼的老師覺得很難學會。"
+   },
+   "type": "read_aloud"
+  },
+  {
+   "id": "M1RA0004",
+   "text": "Scurvy killed more sailors than storms or battle until the eighteenth century, when a naval surgeon showed that citrus fruit could prevent it. His trial compared six treatments on twelve sick men and is often described as the first controlled clinical experiment. Even so, the navy took more than forty years to act on the result.",
+   "focus": [
+    "surgeon",
+    "citrus",
+    "controlled",
+    "clinical"
+   ],
+   "zh": {
+    "Scurvy killed more sailors than storms or battle until the eighteenth century, when a naval surgeon showed that citrus fruit could prevent it. His trial compared six treatments on twelve sick men and is often described as the first controlled clinical experiment. Even so, the navy took more than forty years to act on the result.": "在十八世紀之前，壞血病奪走的水手性命比風暴或戰鬥還多，直到一位海軍外科醫師證明柑橘類水果可以預防它。他的試驗在十二名病人身上比較了六種療法，常被稱為第一個對照臨床實驗。即便如此，海軍仍花了四十多年才根據這個結果採取行動。"
+   },
+   "type": "read_aloud"
+  },
+  {
+   "id": "M1RA0005",
+   "text": "The earliest photographs required exposures of several hours, which is why the first street scenes appear deserted. Anyone walking past simply vanished, while a man having his shoes polished stood still long enough to be recorded. Within two decades, faster chemistry had cut exposures to a fraction of a second.",
+   "focus": [
+    "exposures",
+    "deserted",
+    "vanished",
+    "chemistry"
+   ],
+   "zh": {
+    "The earliest photographs required exposures of several hours, which is why the first street scenes appear deserted. Anyone walking past simply vanished, while a man having his shoes polished stood still long enough to be recorded. Within two decades, faster chemistry had cut exposures to a fraction of a second.": "最早的照片需要曝光好幾個小時，這就是為什麼最初的街景照看起來空無一人。任何路過的人都直接消失了，而一名正在擦鞋的男子因為站得夠久，才被記錄下來。不到二十年，更快的化學技術就把曝光時間縮短到不到一秒。"
+   },
+   "type": "read_aloud"
+  },
+  {
+   "id": "M1RA0006",
+   "text": "Peatlands cover only about three per cent of the land surface, yet they store twice as much carbon as all the world’s forests combined. The carbon accumulates because waterlogged ground slows decay to a crawl. When peat is drained for farming, that ancient store begins to break down and escapes into the atmosphere.",
+   "focus": [
+    "peatlands",
+    "accumulates",
+    "waterlogged",
+    "atmosphere"
+   ],
+   "zh": {
+    "Peatlands cover only about three per cent of the land surface, yet they store twice as much carbon as all the world’s forests combined. The carbon accumulates because waterlogged ground slows decay to a crawl. When peat is drained for farming, that ancient store begins to break down and escapes into the atmosphere.": "泥炭地只覆蓋約百分之三的陸地表面，儲存的碳卻是全世界森林總和的兩倍。碳之所以會累積，是因為浸水的土地讓分解變得極為緩慢。當泥炭地為了耕作而被排乾時，這個古老的碳庫就會開始分解，並逸散到大氣中。"
+   },
+   "type": "read_aloud"
+  },
+  {
+   "id": "M1RS0001",
+   "text": "The conference will be held in the main auditorium next Thursday morning.",
+   "zh": {
+    "The conference will be held in the main auditorium next Thursday morning.": "研討會將於下週四上午在主禮堂舉行。"
+   },
+   "type": "repeat_sentence"
+  },
+  {
+   "id": "M1RS0002",
+   "text": "Please collect your reading materials from the departmental office today.",
+   "zh": {
+    "Please collect your reading materials from the departmental office today.": "請今天到系辦公室領取你的閱讀資料。"
+   },
+   "type": "repeat_sentence"
+  },
+  {
+   "id": "M1RS0003",
+   "text": "Applications for summer research placements close at the end of March.",
+   "zh": {
+    "Applications for summer research placements close at the end of March.": "暑期研究實習的申請於三月底截止。"
+   },
+   "type": "repeat_sentence"
+  },
+  {
+   "id": "M1RS0004",
+   "text": "The tutorial groups have been reduced to twelve students each.",
+   "zh": {
+    "The tutorial groups have been reduced to twelve students each.": "每個小組輔導課的人數已經減少到十二人。"
+   },
+   "type": "repeat_sentence"
+  },
+  {
+   "id": "M1RS0005",
+   "text": "Most academic journals now publish their articles online first.",
+   "zh": {
+    "Most academic journals now publish their articles online first.": "現在大多數學術期刊都會先在網路上刊登論文。"
+   },
+   "type": "repeat_sentence"
+  },
+  {
+   "id": "M1RS0006",
+   "text": "The museum offers free entry to students on weekday afternoons.",
+   "zh": {
+    "The museum offers free entry to students on weekday afternoons.": "博物館在平日下午對學生免費開放。"
+   },
+   "type": "repeat_sentence"
+  },
+  {
+   "id": "M1RS0007",
+   "text": "Our findings suggest that early intervention improves long-term outcomes.",
+   "zh": {
+    "Our findings suggest that early intervention improves long-term outcomes.": "我們的研究結果顯示，及早介入能改善長期成效。"
+   },
+   "type": "repeat_sentence"
+  },
+  {
+   "id": "M1RS0008",
+   "text": "The supervisor asked for a short summary of the experiment by Monday.",
+   "zh": {
+    "The supervisor asked for a short summary of the experiment by Monday.": "指導老師要求在星期一之前繳交一份實驗的簡短摘要。"
+   },
+   "type": "repeat_sentence"
+  },
+  {
+   "id": "M1RS0009",
+   "text": "Many species of insects are declining rapidly across Western Europe.",
+   "zh": {
+    "Many species of insects are declining rapidly across Western Europe.": "西歐許多種昆蟲的數量正在迅速減少。"
+   },
+   "type": "repeat_sentence"
+  },
+  {
+   "id": "M1RS0010",
+   "text": "The building on the corner houses the faculty of engineering.",
+   "zh": {
+    "The building on the corner houses the faculty of engineering.": "轉角那棟建築裡是工學院。"
+   },
+   "type": "repeat_sentence"
+  },
+  {
+   "id": "M1RS0011",
+   "text": "Students may borrow up to eight books at any one time.",
+   "zh": {
+    "Students may borrow up to eight books at any one time.": "學生一次最多可以借八本書。"
+   },
+   "type": "repeat_sentence"
+  },
+  {
+   "id": "M1DI0001",
+   "caption": "Bar chart of average broadband download speeds in five countries, in megabits per second.",
+   "keys": [
+    "Singapore is fastest at 250 Mbps",
+    "South Korea is close behind at 210 Mbps",
+    "the UK is far lower at 95 Mbps",
+    "Brazil (60) and India (45) are the slowest",
+    "the fastest country is more than five times the slowest"
+   ],
+   "model": "The bar chart compares average broadband download speeds in five countries. Singapore leads with 250 megabits per second, closely followed by South Korea at 210. The United Kingdom is far behind at 95, less than half the South Korean figure, while Brazil and India are slowest at 60 and 45 respectively. Overall, the chart shows a wide gap in internet infrastructure, with the fastest country offering more than five times the speed of the slowest.",
+   "fig": "<svg viewBox=\"0 0 560 300\" role=\"img\" aria-label=\"Bar chart: average broadband speed is 250 Mbps in Singapore, 210 in South Korea, 95 in the UK, 60 in Brazil and 45 in India.\">\n<text x=\"0\" y=\"14\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"13\" font-weight=\"600\">Average broadband download speed (Mbps)</text>\n\n<g stroke=\"var(--line)\" stroke-width=\"1\">\n<line x1=\"62\" y1=\"244\" x2=\"545\" y2=\"244\"/>\n<line x1=\"62\" y1=\"201\" x2=\"545\" y2=\"201\"/>\n<line x1=\"62\" y1=\"158\" x2=\"545\" y2=\"158\"/>\n<line x1=\"62\" y1=\"116\" x2=\"545\" y2=\"116\"/>\n<line x1=\"62\" y1=\"73\" x2=\"545\" y2=\"73\"/>\n<line x1=\"62\" y1=\"30\" x2=\"545\" y2=\"30\"/>\n</g>\n<g fill=\"var(--faint)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"10\" text-anchor=\"end\">\n<text x=\"54\" y=\"248\">0</text>\n<text x=\"54\" y=\"205\">50</text>\n<text x=\"54\" y=\"162\">100</text>\n<text x=\"54\" y=\"120\">150</text>\n<text x=\"54\" y=\"77\">200</text>\n<text x=\"54\" y=\"34\">250</text>\n</g>\n<g fill=\"var(--accent)\"><rect x=\"93\" y=\"30\" width=\"34\" height=\"214\" rx=\"2\"/><rect x=\"190\" y=\"64\" width=\"34\" height=\"180\" rx=\"2\"/><rect x=\"286\" y=\"163\" width=\"34\" height=\"81\" rx=\"2\"/><rect x=\"383\" y=\"193\" width=\"34\" height=\"51\" rx=\"2\"/><rect x=\"480\" y=\"205\" width=\"34\" height=\"39\" rx=\"2\"/></g>\n<g fill=\"var(--accent)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"10\" text-anchor=\"middle\" font-weight=\"600\"><text x=\"110\" y=\"26\">250</text><text x=\"207\" y=\"60\">210</text><text x=\"304\" y=\"159\">95</text><text x=\"400\" y=\"189\">60</text><text x=\"497\" y=\"201\">45</text></g>\n<g fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"12\" text-anchor=\"middle\"><text x=\"110\" y=\"262\">Singapore</text><text x=\"207\" y=\"262\">South Korea</text><text x=\"304\" y=\"262\">UK</text><text x=\"400\" y=\"262\">Brazil</text><text x=\"497\" y=\"262\">India</text></g></svg>",
+   "zh": {
+    "Singapore is fastest at 250 Mbps": "新加坡最快，為 250 Mbps",
+    "South Korea is close behind at 210 Mbps": "南韓緊隨其後，為 210 Mbps",
+    "the UK is far lower at 95 Mbps": "英國低得多，為 95 Mbps",
+    "Brazil (60) and India (45) are the slowest": "巴西（60）和印度（45）最慢",
+    "the fastest country is more than five times the slowest": "最快的國家是最慢國家的五倍以上",
+    "The bar chart compares average broadband download speeds in five countries. Singapore leads with 250 megabits per second, closely followed by South Korea at 210. The United Kingdom is far behind at 95, less than half the South Korean figure, while Brazil and India are slowest at 60 and 45 respectively. Overall, the chart shows a wide gap in internet infrastructure, with the fastest country offering more than five times the speed of the slowest.": "這張長條圖比較五個國家的平均寬頻下載速度。新加坡以每秒 250 兆位元居首，南韓以 210 緊隨其後。英國以 95 遠遠落後，不到南韓數字的一半，而巴西和印度最慢，分別為 60 和 45。整體而言，這張圖顯示各國網路基礎建設的差距很大，最快的國家提供的速度是最慢國家的五倍以上。"
+   },
+   "type": "describe_image"
+  },
+  {
+   "id": "M1DI0002",
+   "caption": "Line chart of average summer and winter temperatures in one city from 1990 to 2020.",
+   "keys": [
+    "both seasons warmed by three degrees over thirty years",
+    "summer rose from 26 to 29 degrees",
+    "winter rose from 3 to 6 degrees",
+    "the gap between the seasons stayed about 23 degrees",
+    "the rise was steady, about one degree per decade"
+   ],
+   "model": "The line chart shows average summer and winter temperatures in one city between 1990 and 2020. Both seasons became warmer by three degrees over the thirty years. Summer temperatures rose steadily from 26 to 29 degrees Celsius, while winter temperatures rose from 3 to 6 degrees. Because both lines climbed at the same rate, roughly one degree per decade, the gap between the seasons remained almost unchanged at about 23 degrees. Overall, the chart suggests a consistent warming trend rather than a change in seasonal contrast.",
+   "fig": "<svg viewBox=\"0 0 560 300\" role=\"img\" aria-label=\"Line chart: average summer temperature rises from 26 to 29 degrees and winter from 3 to 6 degrees between 1990 and 2020.\">\n<text x=\"0\" y=\"14\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"13\" font-weight=\"600\">Average seasonal temperature in one city (°C)</text>\n\n<g stroke=\"var(--line)\" stroke-width=\"1\">\n<line x1=\"62\" y1=\"244\" x2=\"545\" y2=\"244\"/>\n<line x1=\"62\" y1=\"173\" x2=\"545\" y2=\"173\"/>\n<line x1=\"62\" y1=\"101\" x2=\"545\" y2=\"101\"/>\n<line x1=\"62\" y1=\"30\" x2=\"545\" y2=\"30\"/>\n</g>\n<g fill=\"var(--faint)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"10\" text-anchor=\"end\">\n<text x=\"54\" y=\"248\">0</text>\n<text x=\"54\" y=\"177\">10</text>\n<text x=\"54\" y=\"105\">20</text>\n<text x=\"54\" y=\"34\">30</text>\n</g>\n<polyline points=\"76,59 227,51 379,44 530,37\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"2.5\" stroke-linejoin=\"round\"/>\n<g fill=\"var(--accent)\"><circle cx=\"76\" cy=\"59\" r=\"3.5\"/><circle cx=\"227\" cy=\"51\" r=\"3.5\"/><circle cx=\"379\" cy=\"44\" r=\"3.5\"/><circle cx=\"530\" cy=\"37\" r=\"3.5\"/></g>\n<g fill=\"var(--accent)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"10\" text-anchor=\"middle\" font-weight=\"600\"><text x=\"76\" y=\"50\">26</text><text x=\"530\" y=\"28\">29</text></g>\n<polyline points=\"76,223 227,215 379,208 530,201\" fill=\"none\" stroke=\"var(--line-strong)\" stroke-width=\"2.5\" stroke-linejoin=\"round\"/>\n<g fill=\"var(--line-strong)\"><circle cx=\"76\" cy=\"223\" r=\"3.5\"/><circle cx=\"227\" cy=\"215\" r=\"3.5\"/><circle cx=\"379\" cy=\"208\" r=\"3.5\"/><circle cx=\"530\" cy=\"201\" r=\"3.5\"/></g>\n<g fill=\"var(--muted)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"10\" text-anchor=\"middle\" font-weight=\"600\"><text x=\"76\" y=\"214\">3</text><text x=\"530\" y=\"192\">6</text></g>\n<g fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"11\" text-anchor=\"middle\"><text x=\"76\" y=\"262\">1990</text><text x=\"227\" y=\"262\">2000</text><text x=\"379\" y=\"262\">2010</text><text x=\"530\" y=\"262\">2020</text></g>\n<g font-family=\"Archivo,sans-serif\" font-size=\"11\"><rect x=\"62\" y=\"278\" width=\"11\" height=\"11\" rx=\"2\" fill=\"var(--accent)\"/><text x=\"79\" y=\"288\" fill=\"var(--muted)\">Summer</text><rect x=\"143\" y=\"278\" width=\"11\" height=\"11\" rx=\"2\" fill=\"var(--line-strong)\"/><text x=\"160\" y=\"288\" fill=\"var(--muted)\">Winter</text></g></svg>",
+   "zh": {
+    "both seasons warmed by three degrees over thirty years": "兩個季節在三十年間都上升了三度",
+    "summer rose from 26 to 29 degrees": "夏季從 26 度升到 29 度",
+    "winter rose from 3 to 6 degrees": "冬季從 3 度升到 6 度",
+    "the gap between the seasons stayed about 23 degrees": "兩季之間的差距維持在約 23 度",
+    "the rise was steady, about one degree per decade": "上升相當穩定，大約每十年一度",
+    "The line chart shows average summer and winter temperatures in one city between 1990 and 2020. Both seasons became warmer by three degrees over the thirty years. Summer temperatures rose steadily from 26 to 29 degrees Celsius, while winter temperatures rose from 3 to 6 degrees. Because both lines climbed at the same rate, roughly one degree per decade, the gap between the seasons remained almost unchanged at about 23 degrees. Overall, the chart suggests a consistent warming trend rather than a change in seasonal contrast.": "這張折線圖呈現某城市在 1990 年至 2020 年間的夏季與冬季平均氣溫。在這三十年間，兩個季節都上升了三度。夏季氣溫從攝氏 26 度穩定升至 29 度，冬季氣溫則從 3 度升至 6 度。由於兩條線以相同的速度上升，大約每十年一度，兩季之間的差距幾乎沒有變化，維持在約 23 度。整體而言，這張圖顯示的是一種持續的暖化趨勢，而不是季節落差的改變。"
+   },
+   "type": "describe_image"
+  },
+  {
+   "id": "M1DI0003",
+   "caption": "Pie chart of how a typical student divides the hours in a week.",
+   "keys": [
+    "sleep takes the largest share, a third of the week",
+    "study is second at 25%",
+    "leisure accounts for 18%",
+    "paid work takes 12%",
+    "travel and other activities take 6% each"
+   ],
+   "model": "The pie chart shows how a typical student divides the hours in a week. Sleep takes the largest share at 33 per cent, or about a third of all the time available. Study is second at 25 per cent, followed by leisure at 18 per cent and paid work at 12 per cent. Travel and other activities each account for just 6 per cent. Overall, sleep and study together fill well over half the week, leaving a little under a fifth for leisure.",
+   "fig": "<svg viewBox=\"0 0 560 300\" role=\"img\" aria-label=\"Pie chart: sleep 33%, study 25%, leisure 18%, paid work 12%, travel 6%, other 6%.\">\n<text x=\"0\" y=\"14\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"13\" font-weight=\"600\">How a student’s week is spent (%)</text>\n\n<path d=\"M150,160 L150.0,50.0 A110,110 0 0 1 246.4,213.0 Z\" fill=\"var(--accent)\" stroke=\"var(--surface)\" stroke-width=\"2\"/>\n<path d=\"M150,160 L246.4,213.0 A110,110 0 0 1 97.0,256.4 Z\" fill=\"var(--line-strong)\" stroke=\"var(--surface)\" stroke-width=\"2\"/>\n<path d=\"M150,160 L97.0,256.4 A110,110 0 0 1 40.2,153.1 Z\" fill=\"var(--amber)\" stroke=\"var(--surface)\" stroke-width=\"2\"/>\n<path d=\"M150,160 L40.2,153.1 A110,110 0 0 1 74.7,79.8 Z\" fill=\"var(--good)\" stroke=\"var(--surface)\" stroke-width=\"2\"/>\n<path d=\"M150,160 L74.7,79.8 A110,110 0 0 1 109.5,57.7 Z\" fill=\"var(--rose)\" stroke=\"var(--surface)\" stroke-width=\"2\"/>\n<path d=\"M150,160 L109.5,57.7 A110,110 0 0 1 150.0,50.0 Z\" fill=\"var(--faint)\" stroke=\"var(--surface)\" stroke-width=\"2\"/>\n<rect x=\"300\" y=\"59\" width=\"13\" height=\"13\" rx=\"2\" fill=\"var(--accent)\"/>\n<text x=\"322\" y=\"70\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"12.5\">Sleep</text>\n<text x=\"545\" y=\"70\" fill=\"var(--muted)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"12\" text-anchor=\"end\" font-weight=\"600\">33%</text>\n<rect x=\"300\" y=\"89\" width=\"13\" height=\"13\" rx=\"2\" fill=\"var(--line-strong)\"/>\n<text x=\"322\" y=\"100\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"12.5\">Study</text>\n<text x=\"545\" y=\"100\" fill=\"var(--muted)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"12\" text-anchor=\"end\" font-weight=\"600\">25%</text>\n<rect x=\"300\" y=\"119\" width=\"13\" height=\"13\" rx=\"2\" fill=\"var(--amber)\"/>\n<text x=\"322\" y=\"130\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"12.5\">Leisure</text>\n<text x=\"545\" y=\"130\" fill=\"var(--muted)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"12\" text-anchor=\"end\" font-weight=\"600\">18%</text>\n<rect x=\"300\" y=\"149\" width=\"13\" height=\"13\" rx=\"2\" fill=\"var(--good)\"/>\n<text x=\"322\" y=\"160\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"12.5\">Paid work</text>\n<text x=\"545\" y=\"160\" fill=\"var(--muted)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"12\" text-anchor=\"end\" font-weight=\"600\">12%</text>\n<rect x=\"300\" y=\"179\" width=\"13\" height=\"13\" rx=\"2\" fill=\"var(--rose)\"/>\n<text x=\"322\" y=\"190\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"12.5\">Travel</text>\n<text x=\"545\" y=\"190\" fill=\"var(--muted)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"12\" text-anchor=\"end\" font-weight=\"600\">6%</text>\n<rect x=\"300\" y=\"209\" width=\"13\" height=\"13\" rx=\"2\" fill=\"var(--faint)\"/>\n<text x=\"322\" y=\"220\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"12.5\">Other</text>\n<text x=\"545\" y=\"220\" fill=\"var(--muted)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"12\" text-anchor=\"end\" font-weight=\"600\">6%</text></svg>",
+   "zh": {
+    "sleep takes the largest share, a third of the week": "睡眠占比最大，約占一週的三分之一",
+    "study is second at 25%": "讀書居次，占 25%",
+    "leisure accounts for 18%": "休閒占 18%",
+    "paid work takes 12%": "有薪工作占 12%",
+    "travel and other activities take 6% each": "通勤和其他活動各占 6%",
+    "The pie chart shows how a typical student divides the hours in a week. Sleep takes the largest share at 33 per cent, or about a third of all the time available. Study is second at 25 per cent, followed by leisure at 18 per cent and paid work at 12 per cent. Travel and other activities each account for just 6 per cent. Overall, sleep and study together fill well over half the week, leaving a little under a fifth for leisure.": "這張圓餅圖呈現一位典型學生如何分配一週的時間。睡眠占比最大，為百分之三十三，約占所有時間的三分之一。讀書居次，占百分之二十五，其次是休閒的百分之十八和有薪工作的百分之十二。通勤和其他活動各只占百分之六。整體而言，睡眠和讀書合計就填滿了一週遠超過一半的時間，只留下不到五分之一給休閒。"
+   },
+   "type": "describe_image"
+  },
+  {
+   "id": "M1DI0004",
+   "caption": "Table of household waste and recycling in four cities.",
+   "keys": [
+    "Houston produces the most waste per person, 720 kg, and recycles least, 19%",
+    "Oslo produces the least, 380 kg, and recycles most, 62%",
+    "Vienna is close to Oslo on both measures",
+    "Dublin sits in between, recycling 41% and sending 33% to landfill",
+    "cities that produce less waste also tend to recycle more of it"
+   ],
+   "model": "The table compares household waste in four cities. Houston produces by far the most, at 720 kilograms per person, and recycles the least, just 19 per cent, sending 68 per cent to landfill. At the other extreme, Oslo produces only 380 kilograms per person and recycles 62 per cent, with just 9 per cent going to landfill. Vienna performs almost as well as Oslo, while Dublin lies in between, recycling 41 per cent. Overall, the cities that generate less waste also tend to recycle a larger share of it.",
+   "fig": "<svg viewBox=\"0 0 560 210\" role=\"img\" aria-label=\"Table: waste per person and the share recycled, composted and sent to landfill in four cities.\">\n<text x=\"0\" y=\"14\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"13\" font-weight=\"600\">Household waste and recycling</text>\n\n<rect x=\"0\" y=\"32\" width=\"560\" height=\"34\" rx=\"4\" fill=\"var(--accent-soft)\"/>\n<text x=\"10\" y=\"53\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"12\" font-weight=\"700\">City</text>\n<text x=\"140\" y=\"53\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"12\" font-weight=\"700\">Waste per person (kg)</text>\n<text x=\"310\" y=\"53\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"12\" font-weight=\"700\">Recycled (%)</text>\n<text x=\"450\" y=\"53\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"12\" font-weight=\"700\">Landfill (%)</text>\n<line x1=\"0\" y1=\"100\" x2=\"560\" y2=\"100\" stroke=\"var(--line)\"/>\n<text x=\"10\" y=\"87\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"12\">Oslo</text>\n<text x=\"140\" y=\"87\" fill=\"var(--muted)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"12\">380</text>\n<text x=\"310\" y=\"87\" fill=\"var(--muted)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"12\">62</text>\n<text x=\"450\" y=\"87\" fill=\"var(--muted)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"12\">9</text>\n<line x1=\"0\" y1=\"134\" x2=\"560\" y2=\"134\" stroke=\"var(--line)\"/>\n<text x=\"10\" y=\"121\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"12\">Vienna</text>\n<text x=\"140\" y=\"121\" fill=\"var(--muted)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"12\">420</text>\n<text x=\"310\" y=\"121\" fill=\"var(--muted)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"12\">58</text>\n<text x=\"450\" y=\"121\" fill=\"var(--muted)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"12\">14</text>\n<line x1=\"0\" y1=\"168\" x2=\"560\" y2=\"168\" stroke=\"var(--line)\"/>\n<text x=\"10\" y=\"155\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"12\">Dublin</text>\n<text x=\"140\" y=\"155\" fill=\"var(--muted)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"12\">540</text>\n<text x=\"310\" y=\"155\" fill=\"var(--muted)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"12\">41</text>\n<text x=\"450\" y=\"155\" fill=\"var(--muted)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"12\">33</text>\n<line x1=\"0\" y1=\"202\" x2=\"560\" y2=\"202\" stroke=\"var(--line)\"/>\n<text x=\"10\" y=\"189\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"12\">Houston</text>\n<text x=\"140\" y=\"189\" fill=\"var(--muted)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"12\">720</text>\n<text x=\"310\" y=\"189\" fill=\"var(--muted)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"12\">19</text>\n<text x=\"450\" y=\"189\" fill=\"var(--muted)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"12\">68</text></svg>",
+   "zh": {
+    "Houston produces the most waste per person, 720 kg, and recycles least, 19%": "休士頓每人產生的垃圾最多，為 720 公斤，回收率也最低，只有 19%",
+    "Oslo produces the least, 380 kg, and recycles most, 62%": "奧斯陸最少，為 380 公斤，回收率最高，達 62%",
+    "Vienna is close to Oslo on both measures": "維也納在兩項指標上都接近奧斯陸",
+    "Dublin sits in between, recycling 41% and sending 33% to landfill": "都柏林介於兩者之間，回收 41%，33% 進入垃圾掩埋場",
+    "cities that produce less waste also tend to recycle more of it": "垃圾量較少的城市，往往回收比例也較高",
+    "The table compares household waste in four cities. Houston produces by far the most, at 720 kilograms per person, and recycles the least, just 19 per cent, sending 68 per cent to landfill. At the other extreme, Oslo produces only 380 kilograms per person and recycles 62 per cent, with just 9 per cent going to landfill. Vienna performs almost as well as Oslo, while Dublin lies in between, recycling 41 per cent. Overall, the cities that generate less waste also tend to recycle a larger share of it.": "這張表格比較四個城市的家庭垃圾狀況。休士頓的垃圾量遙遙領先，每人 720 公斤，回收率也最低，只有百分之十九，有百分之六十八進入垃圾掩埋場。另一個極端是奧斯陸，每人只產生 380 公斤，回收率達百分之六十二，只有百分之九進入掩埋場。維也納的表現幾乎和奧斯陸一樣好，而都柏林介於兩者之間，回收率為百分之四十一。整體而言，垃圾量較少的城市，往往回收的比例也較高。"
+   },
+   "type": "describe_image"
+  },
+  {
+   "id": "M1DI0005",
+   "caption": "Process diagram showing how a hydroelectric dam generates electricity.",
+   "keys": [
+    "the process has five stages",
+    "water is stored behind the dam in a reservoir",
+    "it flows down through an intake under pressure",
+    "the moving water spins a turbine",
+    "the turbine drives a generator and the electricity enters the grid"
+   ],
+   "model": "The diagram shows how a hydroelectric dam generates electricity in five stages. First, water collects in a reservoir behind the dam, which stores the energy of the river. When electricity is needed, the water flows down through an intake, gaining speed as it falls. The moving water then spins a turbine, and the turbine drives a generator that converts the motion into electrical energy. Finally, the electricity is fed into the grid. Overall, the diagram shows a simple chain in which stored water is converted step by step into electricity.",
+   "fig": "<svg viewBox=\"0 0 560 234\" role=\"img\" aria-label=\"Process diagram: water collects in a reservoir, flows through an intake, spins a turbine, drives a generator, and electricity goes to the grid.\">\n<text x=\"0\" y=\"14\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"13\" font-weight=\"600\">How a hydroelectric dam works</text>\n\n<defs><marker id=\"ah\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto\"><path d=\"M0,0 L10,5 L0,10 z\" fill=\"var(--accent)\"/></marker></defs>\n<line x1=\"173\" y1=\"71\" x2=\"206\" y2=\"71\" stroke=\"var(--accent)\" stroke-width=\"2\" marker-end=\"url(#ah)\"/>\n<line x1=\"363\" y1=\"71\" x2=\"396\" y2=\"71\" stroke=\"var(--accent)\" stroke-width=\"2\" marker-end=\"url(#ah)\"/>\n<line x1=\"475\" y1=\"105\" x2=\"475\" y2=\"158\" stroke=\"var(--accent)\" stroke-width=\"2\" marker-end=\"url(#ah)\"/>\n<line x1=\"397\" y1=\"193\" x2=\"364\" y2=\"193\" stroke=\"var(--accent)\" stroke-width=\"2\" marker-end=\"url(#ah)\"/>\n<rect x=\"20\" y=\"40\" width=\"150\" height=\"62\" rx=\"10\" fill=\"var(--accent-soft)\" stroke=\"var(--accent)\" stroke-width=\"1.2\"/>\n<text x=\"30\" y=\"56\" fill=\"var(--accent)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"10\" font-weight=\"600\">1</text>\n<text x=\"95\" y=\"68\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"12\" text-anchor=\"middle\">Water collects</text>\n<text x=\"95\" y=\"83\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"12\" text-anchor=\"middle\">in a reservoir</text>\n<rect x=\"210\" y=\"40\" width=\"150\" height=\"62\" rx=\"10\" fill=\"var(--accent-soft)\" stroke=\"var(--accent)\" stroke-width=\"1.2\"/>\n<text x=\"220\" y=\"56\" fill=\"var(--accent)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"10\" font-weight=\"600\">2</text>\n<text x=\"285\" y=\"68\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"12\" text-anchor=\"middle\">Flows down</text>\n<text x=\"285\" y=\"83\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"12\" text-anchor=\"middle\">through an intake</text>\n<rect x=\"400\" y=\"40\" width=\"150\" height=\"62\" rx=\"10\" fill=\"var(--accent-soft)\" stroke=\"var(--accent)\" stroke-width=\"1.2\"/>\n<text x=\"410\" y=\"56\" fill=\"var(--accent)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"10\" font-weight=\"600\">3</text>\n<text x=\"475\" y=\"68\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"12\" text-anchor=\"middle\">Spins</text>\n<text x=\"475\" y=\"83\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"12\" text-anchor=\"middle\">a turbine</text>\n<rect x=\"400\" y=\"162\" width=\"150\" height=\"62\" rx=\"10\" fill=\"var(--accent-soft)\" stroke=\"var(--accent)\" stroke-width=\"1.2\"/>\n<text x=\"410\" y=\"178\" fill=\"var(--accent)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"10\" font-weight=\"600\">4</text>\n<text x=\"475\" y=\"190\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"12\" text-anchor=\"middle\">Turbine drives</text>\n<text x=\"475\" y=\"205\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"12\" text-anchor=\"middle\">a generator</text>\n<rect x=\"210\" y=\"162\" width=\"150\" height=\"62\" rx=\"10\" fill=\"var(--accent-soft)\" stroke=\"var(--accent)\" stroke-width=\"1.2\"/>\n<text x=\"220\" y=\"178\" fill=\"var(--accent)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"10\" font-weight=\"600\">5</text>\n<text x=\"285\" y=\"190\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"12\" text-anchor=\"middle\">Electricity</text>\n<text x=\"285\" y=\"205\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"12\" text-anchor=\"middle\">enters the grid</text></svg>",
+   "zh": {
+    "the process has five stages": "整個流程分為五個階段",
+    "water is stored behind the dam in a reservoir": "水被儲存在水壩後方的水庫中",
+    "it flows down through an intake under pressure": "水在壓力下經由進水口向下流動",
+    "the moving water spins a turbine": "流動的水推動渦輪旋轉",
+    "the turbine drives a generator and the electricity enters the grid": "渦輪帶動發電機，電力隨後併入電網",
+    "The diagram shows how a hydroelectric dam generates electricity in five stages. First, water collects in a reservoir behind the dam, which stores the energy of the river. When electricity is needed, the water flows down through an intake, gaining speed as it falls. The moving water then spins a turbine, and the turbine drives a generator that converts the motion into electrical energy. Finally, the electricity is fed into the grid. Overall, the diagram shows a simple chain in which stored water is converted step by step into electricity.": "這張圖呈現水力發電廠如何以五個階段產生電力。首先，水匯集在水壩後方的水庫中，儲存了河流的能量。當需要電力時，水會經由進水口向下流動，在落下的過程中加速。流動的水接著推動渦輪旋轉，而渦輪帶動發電機，把運動轉換成電能。最後，電力被送入電網。整體而言，這張圖呈現了一條簡單的鏈條，把儲存的水一步步轉換成電力。"
+   },
+   "type": "describe_image"
+  },
+  {
+   "id": "M1DI0006",
+   "caption": "Grouped bar chart of museum visitors by age group in 2019 and 2024, in thousands.",
+   "keys": [
+    "visits by under-18s grew most, from 120,000 to 190,000",
+    "18 to 34 year olds remain the largest group, rising to 260,000",
+    "visits by 35 to 59 year olds fell from 180,000 to 150,000",
+    "the over-60s fell from 140,000 to 110,000",
+    "the audience became younger overall"
+   ],
+   "model": "The bar chart compares museum visitors in four age groups in 2019 and 2024. The two younger groups grew while the two older groups declined. Visits by under-18s rose most sharply, from 120,000 to 190,000, and 18 to 34 year olds remained the largest group, increasing from 210,000 to 260,000. In contrast, visits by 35 to 59 year olds fell from 180,000 to 150,000, and those by people aged 60 and over fell from 140,000 to 110,000. Overall, the museum’s audience became considerably younger over the five years.",
+   "fig": "<svg viewBox=\"0 0 560 300\" role=\"img\" aria-label=\"Grouped bar chart: visitors in 2019 and 2024 - under 18s 120 to 190, 18 to 34 210 to 260, 35 to 59 180 to 150, 60 and over 140 to 110 thousand.\">\n<text x=\"0\" y=\"14\" fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"13\" font-weight=\"600\">Museum visitors by age group (thousands)</text>\n\n<g stroke=\"var(--line)\" stroke-width=\"1\">\n<line x1=\"62\" y1=\"244\" x2=\"545\" y2=\"244\"/>\n<line x1=\"62\" y1=\"208\" x2=\"545\" y2=\"208\"/>\n<line x1=\"62\" y1=\"173\" x2=\"545\" y2=\"173\"/>\n<line x1=\"62\" y1=\"137\" x2=\"545\" y2=\"137\"/>\n<line x1=\"62\" y1=\"101\" x2=\"545\" y2=\"101\"/>\n<line x1=\"62\" y1=\"66\" x2=\"545\" y2=\"66\"/>\n<line x1=\"62\" y1=\"30\" x2=\"545\" y2=\"30\"/>\n</g>\n<g fill=\"var(--faint)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"10\" text-anchor=\"end\">\n<text x=\"54\" y=\"248\">0</text>\n<text x=\"54\" y=\"212\">50</text>\n<text x=\"54\" y=\"177\">100</text>\n<text x=\"54\" y=\"141\">150</text>\n<text x=\"54\" y=\"105\">200</text>\n<text x=\"54\" y=\"70\">250</text>\n<text x=\"54\" y=\"34\">300</text>\n</g>\n<g fill=\"var(--line-strong)\"><rect x=\"86\" y=\"158\" width=\"34\" height=\"86\" rx=\"2\"/><rect x=\"207\" y=\"94\" width=\"34\" height=\"150\" rx=\"2\"/><rect x=\"328\" y=\"116\" width=\"34\" height=\"128\" rx=\"2\"/><rect x=\"449\" y=\"144\" width=\"34\" height=\"100\" rx=\"2\"/></g>\n<g fill=\"var(--muted)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"10\" text-anchor=\"middle\"><text x=\"103\" y=\"154\">120</text><text x=\"224\" y=\"90\">210</text><text x=\"345\" y=\"112\">180</text><text x=\"466\" y=\"140\">140</text></g>\n<g fill=\"var(--accent)\"><rect x=\"124\" y=\"108\" width=\"34\" height=\"136\" rx=\"2\"/><rect x=\"245\" y=\"59\" width=\"34\" height=\"185\" rx=\"2\"/><rect x=\"366\" y=\"137\" width=\"34\" height=\"107\" rx=\"2\"/><rect x=\"487\" y=\"166\" width=\"34\" height=\"78\" rx=\"2\"/></g>\n<g fill=\"var(--accent)\" font-family=\"IBM Plex Mono,monospace\" font-size=\"10\" text-anchor=\"middle\" font-weight=\"600\"><text x=\"141\" y=\"104\">190</text><text x=\"262\" y=\"55\">260</text><text x=\"383\" y=\"133\">150</text><text x=\"504\" y=\"162\">110</text></g>\n<g fill=\"var(--ink)\" font-family=\"Archivo,sans-serif\" font-size=\"12\" text-anchor=\"middle\"><text x=\"122\" y=\"262\">Under 18</text><text x=\"243\" y=\"262\">18–34</text><text x=\"364\" y=\"262\">35–59</text><text x=\"485\" y=\"262\">60+</text></g>\n<g font-family=\"Archivo,sans-serif\" font-size=\"11\"><rect x=\"62\" y=\"278\" width=\"11\" height=\"11\" rx=\"2\" fill=\"var(--line-strong)\"/><text x=\"79\" y=\"288\" fill=\"var(--muted)\">2019</text><rect x=\"129\" y=\"278\" width=\"11\" height=\"11\" rx=\"2\" fill=\"var(--accent)\"/><text x=\"146\" y=\"288\" fill=\"var(--muted)\">2024</text></g></svg>",
+   "zh": {
+    "visits by under-18s grew most, from 120,000 to 190,000": "18 歲以下的參觀人數成長最多，從 12 萬增至 19 萬",
+    "18 to 34 year olds remain the largest group, rising to 260,000": "18 至 34 歲仍是最大的族群，增加到 26 萬",
+    "visits by 35 to 59 year olds fell from 180,000 to 150,000": "35 至 59 歲的參觀人數從 18 萬降到 15 萬",
+    "the over-60s fell from 140,000 to 110,000": "60 歲以上從 14 萬降到 11 萬",
+    "the audience became younger overall": "整體而言，觀眾變得更年輕",
+    "The bar chart compares museum visitors in four age groups in 2019 and 2024. The two younger groups grew while the two older groups declined. Visits by under-18s rose most sharply, from 120,000 to 190,000, and 18 to 34 year olds remained the largest group, increasing from 210,000 to 260,000. In contrast, visits by 35 to 59 year olds fell from 180,000 to 150,000, and those by people aged 60 and over fell from 140,000 to 110,000. Overall, the museum’s audience became considerably younger over the five years.": "這張長條圖比較 2019 年與 2024 年四個年齡層的博物館參觀人數。兩個較年輕的族群成長，而兩個較年長的族群則下降。18 歲以下的參觀人數上升最為顯著，從 12 萬增加到 19 萬，而 18 至 34 歲仍是最大的族群，從 21 萬增加到 26 萬。相較之下，35 至 59 歲的參觀人數從 18 萬降到 15 萬，60 歲以上則從 14 萬降到 11 萬。整體而言，這座博物館的觀眾在這五年間變得年輕許多。"
+   },
+   "type": "describe_image"
+  },
+  {
+   "id": "M1RL0001",
+   "voice": "f",
+   "text": "Why is it so easy to forget someone’s name a moment after hearing it? The answer has little to do with a failing memory and a great deal to do with attention. A name is an arbitrary label: it carries no meaning that can be attached to anything else you know about the person. Faces, by contrast, connect to a rich network of information, which is why we recognise a face while groping for the name. Most of the time, the name was never properly encoded, because in the seconds after an introduction we are usually thinking about what to say next. The practical remedies follow from this. Repeat the name aloud once, use it within the first minute, and link it deliberately to something you already know, such as another person with the same name. None of these tricks improves your memory; they simply ensure that the name gets into it in the first place.",
+   "keys": [
+    "forgetting names is a problem of attention, not memory decline",
+    "a name is arbitrary and connects to nothing else you know",
+    "faces link to rich information, so they are recognised while the name is lost",
+    "the name is often never encoded, because we are thinking about what to say",
+    "remedies: repeat it aloud, use it within a minute, link it to something known"
+   ],
+   "model": "The lecturer explained that forgetting names reflects attention rather than a failing memory. A name is an arbitrary label with no meaning to attach it to, whereas a face connects to a wealth of information, which is why we recognise faces but lose names. Usually the name was never encoded at all, because we are busy thinking about what to say next. She recommended repeating the name aloud, using it within a minute and linking it to something familiar.",
+   "zh": {
+    "forgetting names is a problem of attention, not memory decline": "忘記名字是注意力的問題，而不是記憶力衰退",
+    "a name is arbitrary and connects to nothing else you know": "名字是任意的標籤，和你已知的任何事物都沒有連結",
+    "faces link to rich information, so they are recognised while the name is lost": "臉孔連結著豐富的資訊，所以我們認得臉卻想不起名字",
+    "the name is often never encoded, because we are thinking about what to say": "名字往往從未被真正記錄下來，因為我們正忙著想接下來要說什麼",
+    "remedies: repeat it aloud, use it within a minute, link it to something known": "補救方法：把名字唸出來一次、在一分鐘內使用它、把它與已知的事物連結",
+    "The lecturer explained that forgetting names reflects attention rather than a failing memory. A name is an arbitrary label with no meaning to attach it to, whereas a face connects to a wealth of information, which is why we recognise faces but lose names. Usually the name was never encoded at all, because we are busy thinking about what to say next. She recommended repeating the name aloud, using it within a minute and linking it to something familiar.": "講者說明，忘記名字反映的是注意力的問題，而不是記憶力衰退。名字是一個任意的標籤，沒有任何意義可以與之連結，而臉孔則連結著大量的資訊，這就是為什麼我們認得臉卻想不起名字。通常那個名字根本從未被記錄下來，因為我們忙著想接下來要說什麼。她建議把名字唸出來、在一分鐘內使用它，並把它與熟悉的事物連結起來。",
+    "Why is it so easy to forget someone’s name a moment after hearing it? The answer has little to do with a failing memory and a great deal to do with attention. A name is an arbitrary label: it carries no meaning that can be attached to anything else you know about the person. Faces, by contrast, connect to a rich network of information, which is why we recognise a face while groping for the name. Most of the time, the name was never properly encoded, because in the seconds after an introduction we are usually thinking about what to say next. The practical remedies follow from this. Repeat the name aloud once, use it within the first minute, and link it deliberately to something you already know, such as another person with the same name. None of these tricks improves your memory; they simply ensure that the name gets into it in the first place.": "為什麼聽到某人的名字後，過一下就那麼容易忘記？答案與記憶力衰退關係不大，而與注意力關係極大。名字是一個任意的標籤：它本身沒有任何意義，可以和你對這個人所知的其他事情連結起來。相反地，臉孔連結著一整套豐富的資訊網絡，這就是為什麼我們認得一張臉，卻在苦苦搜尋對方的名字。多數時候，那個名字從來沒有被好好記錄下來，因為在被介紹之後的那幾秒鐘裡，我們通常正在想接下來要說什麼。實際的補救方法也就由此而來。把名字大聲唸一次、在第一分鐘內使用它，並刻意把它和你已經知道的東西連結起來，例如另一個同名的人。這些技巧都不會提升你的記憶力；它們只是確保那個名字首先進得了你的記憶。"
+   },
+   "type": "retell_lecture"
+  },
+  {
+   "id": "M1RL0002",
+   "voice": "m",
+   "text": "The second-hand clothing trade is far larger than most people realise. When you donate a bag of clothes to a charity shop in Europe, only a small proportion is sold locally. The rest is baled and exported, mostly to countries in West Africa and South Asia, where it supports a substantial industry of traders, tailors and market sellers. For decades this trade offered affordable clothing and thousands of jobs. What has changed is quality. As fast fashion has driven down the durability of garments, a growing share of each bale is unsellable on arrival, and the receiving country is left with the cost of disposal. Estimates in Ghana suggest that up to forty per cent of imported clothing is waste. Some governments have therefore proposed import restrictions, while critics argue that this would destroy livelihoods without addressing the real source of the problem, which lies in how much we buy and how briefly we keep it.",
+   "keys": [
+    "most donated clothing in Europe is exported rather than sold locally",
+    "the trade supports traders, tailors and sellers in West Africa and South Asia",
+    "fast fashion has lowered garment quality, so more arrives unsellable",
+    "up to 40% of imports in Ghana is waste, and disposal falls on the receiving country",
+    "import bans would cost livelihoods without addressing how much we buy"
+   ],
+   "model": "The speaker explained that most clothing donated in Europe is exported rather than sold locally, supporting a large industry of traders, tailors and sellers in West Africa and South Asia. However, fast fashion has reduced garment quality, so a growing share arrives unsellable, and estimates in Ghana suggest up to forty per cent becomes waste, leaving disposal costs to the receiving country. Some governments propose import restrictions, but critics say this would destroy livelihoods without changing how much clothing we buy.",
+   "zh": {
+    "most donated clothing in Europe is exported rather than sold locally": "在歐洲捐出的衣物大多被出口，而不是在當地販售",
+    "the trade supports traders, tailors and sellers in West Africa and South Asia": "這項貿易支撐著西非和南亞的商人、裁縫和市場攤商",
+    "fast fashion has lowered garment quality, so more arrives unsellable": "快時尚降低了衣物的品質，因此更多衣物一到就無法販售",
+    "up to 40% of imports in Ghana is waste, and disposal falls on the receiving country": "迦納的估計顯示，最多 40% 的進口衣物成為廢棄物，處理成本由接收國承擔",
+    "import bans would cost livelihoods without addressing how much we buy": "禁止進口會使人失去生計，卻沒有解決我們買太多的問題",
+    "The speaker explained that most clothing donated in Europe is exported rather than sold locally, supporting a large industry of traders, tailors and sellers in West Africa and South Asia. However, fast fashion has reduced garment quality, so a growing share arrives unsellable, and estimates in Ghana suggest up to forty per cent becomes waste, leaving disposal costs to the receiving country. Some governments propose import restrictions, but critics say this would destroy livelihoods without changing how much clothing we buy.": "講者說明，在歐洲捐出的衣物大多被出口，而不是在當地販售，支撐著西非和南亞龐大的商人、裁縫和攤商產業。然而，快時尚降低了衣物的品質，因此越來越多衣物一送到就無法販售，迦納的估計顯示最多有百分之四十成為廢棄物，處理成本落在接收國身上。有些政府提議限制進口，但批評者認為這會摧毀人們的生計，卻無法改變我們購買衣物的數量。",
+    "The second-hand clothing trade is far larger than most people realise. When you donate a bag of clothes to a charity shop in Europe, only a small proportion is sold locally. The rest is baled and exported, mostly to countries in West Africa and South Asia, where it supports a substantial industry of traders, tailors and market sellers. For decades this trade offered affordable clothing and thousands of jobs. What has changed is quality. As fast fashion has driven down the durability of garments, a growing share of each bale is unsellable on arrival, and the receiving country is left with the cost of disposal. Estimates in Ghana suggest that up to forty per cent of imported clothing is waste. Some governments have therefore proposed import restrictions, while critics argue that this would destroy livelihoods without addressing the real source of the problem, which lies in how much we buy and how briefly we keep it.": "二手衣物貿易的規模比大多數人想像的大得多。當你在歐洲把一袋衣服捐給慈善商店時，其中只有一小部分會在當地賣出。其餘的會被打包出口，主要運往西非和南亞的國家，在那裡支撐著一個由商人、裁縫和市場攤商組成的龐大產業。數十年來，這項貿易提供了平價的衣物和數千個工作機會。改變的是品質。隨著快時尚不斷降低衣物的耐用度，每一包衣物中越來越多的比例在抵達時就已經無法販售，而接收國必須承擔處理這些廢棄物的成本。迦納的估計顯示，最多有百分之四十的進口衣物是廢棄物。因此，有些政府提議限制進口，而批評者則認為，這會摧毀人們的生計，卻沒有觸及問題真正的根源：也就是我們買了多少衣服，以及我們穿多久就丟掉。"
+   },
+   "type": "retell_lecture"
+  },
+  {
+   "id": "M1RL0003",
+   "voice": "f",
+   "text": "People have farmed on the slopes of active volcanoes for thousands of years, which looks reckless until you look at the soil. Volcanic ash weathers into some of the most fertile ground on Earth. It is rich in phosphorus, potassium and trace minerals, and its porous structure holds water while still draining well. In parts of Indonesia and Italy, land within a few kilometres of a crater supports several harvests a year, and population density around some volcanoes is far higher than in the surrounding regions. The trade-off is obvious but unevenly understood. Major eruptions are rare enough that a family may farm for three generations without seeing one, and the memory of the last event fades faster than the fertility does. Modern monitoring has improved warning times considerably, but evacuation still depends on people being willing to leave land that has, in every year of living memory, simply made them prosperous.",
+   "keys": [
+    "volcanic ash weathers into extremely fertile soil",
+    "it is rich in phosphorus, potassium and trace minerals, and holds water while draining",
+    "land near craters supports several harvests a year and dense populations",
+    "eruptions are rare, so memory of danger fades faster than the fertility",
+    "monitoring has improved warnings, but evacuation depends on willingness to leave"
+   ],
+   "model": "The lecturer explained why people farm on active volcanoes. Volcanic ash breaks down into exceptionally fertile soil, rich in phosphorus and potassium and able to hold water while draining well, so land near craters can produce several harvests a year and supports dense populations. The trade-off is that major eruptions are rare, so the memory of danger fades faster than the fertility. Although monitoring now gives better warnings, evacuation still depends on people being willing to leave prosperous land.",
+   "zh": {
+    "volcanic ash weathers into extremely fertile soil": "火山灰風化後會形成極為肥沃的土壤",
+    "it is rich in phosphorus, potassium and trace minerals, and holds water while draining": "它富含磷、鉀和微量礦物質，既能保水又排水良好",
+    "land near craters supports several harvests a year and dense populations": "火山口附近的土地一年可以收成數次，也養育了密集的人口",
+    "eruptions are rare, so memory of danger fades faster than the fertility": "火山爆發很少見，所以對危險的記憶消退得比肥沃度更快",
+    "monitoring has improved warnings, but evacuation depends on willingness to leave": "監測改善了預警，但疏散仍取決於人們是否願意離開",
+    "The lecturer explained why people farm on active volcanoes. Volcanic ash breaks down into exceptionally fertile soil, rich in phosphorus and potassium and able to hold water while draining well, so land near craters can produce several harvests a year and supports dense populations. The trade-off is that major eruptions are rare, so the memory of danger fades faster than the fertility. Although monitoring now gives better warnings, evacuation still depends on people being willing to leave prosperous land.": "講者說明了人們為什麼會在活火山上耕作。火山灰風化後會形成異常肥沃的土壤，富含磷和鉀，既能保水又排水良好，所以火山口附近的土地一年可以收成數次，也養育了密集的人口。代價在於，大規模的火山爆發很少發生，所以對危險的記憶消退得比土地的肥沃度更快。雖然現在的監測能提供更好的預警，疏散仍取決於人們是否願意離開這片富饒的土地。",
+    "People have farmed on the slopes of active volcanoes for thousands of years, which looks reckless until you look at the soil. Volcanic ash weathers into some of the most fertile ground on Earth. It is rich in phosphorus, potassium and trace minerals, and its porous structure holds water while still draining well. In parts of Indonesia and Italy, land within a few kilometres of a crater supports several harvests a year, and population density around some volcanoes is far higher than in the surrounding regions. The trade-off is obvious but unevenly understood. Major eruptions are rare enough that a family may farm for three generations without seeing one, and the memory of the last event fades faster than the fertility does. Modern monitoring has improved warning times considerably, but evacuation still depends on people being willing to leave land that has, in every year of living memory, simply made them prosperous.": "人們在活火山的山坡上耕作已有數千年之久，這看起來似乎很不顧危險，直到你去看看那裡的土壤。火山灰風化後會形成地球上最肥沃的土地之一。它富含磷、鉀和微量礦物質，而且多孔的結構既能保水，又能良好地排水。在印尼和義大利的部分地區，距離火山口只有幾公里的土地一年可以收成好幾次，而某些火山周圍的人口密度，遠高於周邊地區。其中的取捨很明顯，但人們的理解卻不一致。大規模的噴發罕見到一個家庭可能耕作了三代都沒遇過一次，而對上一次事件的記憶，消退得比土地的肥沃度更快。現代的監測已經大幅改善了預警時間，但疏散仍然取決於人們是否願意離開那片在所有人記憶中的每一年裡，都只是讓他們富足的土地。"
+   },
+   "type": "retell_lecture"
+  },
+  {
+   "id": "M1ASQ0001",
+   "q": "What do we call the study of living organisms?",
+   "a": [
+    "biology"
+   ],
+   "zh": {
+    "What do we call the study of living organisms?": "研究生物的學科叫做什麼？"
+   },
+   "type": "short_question"
+  },
+  {
+   "id": "M1ASQ0002",
+   "q": "What colour do you get when you mix blue and yellow?",
+   "a": [
+    "green"
+   ],
+   "zh": {
+    "What colour do you get when you mix blue and yellow?": "藍色和黃色混合會得到什麼顏色？"
+   },
+   "type": "short_question"
+  },
+  {
+   "id": "M1ASQ0003",
+   "q": "What do we call a large area of water surrounded by land?",
+   "a": [
+    "lake",
+    "a lake"
+   ],
+   "zh": {
+    "What do we call a large area of water surrounded by land?": "被陸地環繞的大片水域叫做什麼？"
+   },
+   "type": "short_question"
+  },
+  {
+   "id": "M1ASQ0004",
+   "q": "If a book has two hundred pages and you have read half, how many pages are left?",
+   "a": [
+    "one hundred",
+    "a hundred",
+    "100",
+    "hundred"
+   ],
+   "zh": {
+    "If a book has two hundred pages and you have read half, how many pages are left?": "如果一本書有兩百頁，而你已經讀了一半，還剩下多少頁？"
+   },
+   "type": "short_question"
+  },
+  {
+   "id": "M1ASQ0005",
+   "q": "What do we call the person in charge of a school?",
+   "a": [
+    "principal",
+    "headteacher",
+    "head teacher",
+    "the principal",
+    "headmaster"
+   ],
+   "zh": {
+    "What do we call the person in charge of a school?": "負責管理一所學校的人叫做什麼？"
+   },
+   "type": "short_question"
+  },
+  {
+   "id": "M1ASQ0006",
+   "q": "In a laboratory, what do you wear to protect your eyes?",
+   "a": [
+    "goggles",
+    "safety goggles",
+    "glasses",
+    "safety glasses"
+   ],
+   "zh": {
+    "In a laboratory, what do you wear to protect your eyes?": "在實驗室裡，你要戴什麼來保護眼睛？"
+   },
+   "type": "short_question"
+  },
+  {
+   "id": "M1SGD0001",
+   "title": "Should the city introduce a congestion charge?",
+   "turns": [
+    {
+     "who": "Elena",
+     "sex": "f",
+     "text": "I support a congestion charge for the city centre. Traffic has grown every year, buses are stuck in it, and the cities that have tried it, London and Stockholm, saw traffic fall by around twenty per cent almost immediately."
+    },
+    {
+     "who": "Hugo",
+     "sex": "m",
+     "text": "My concern is who pays. A flat daily charge is nothing to someone in a company car and a real cost to a cleaner driving in for a six o’clock shift when no buses run. It is a tax that falls hardest on the people with the fewest alternatives."
+    },
+    {
+     "who": "Sarah",
+     "sex": "f",
+     "text": "That is the strongest objection, but it is an argument about design rather than about the charge itself. Stockholm exempted some vehicles and spent the revenue on suburban transport, which made the scheme popular enough to survive a referendum."
+    },
+    {
+     "who": "Elena",
+     "sex": "f",
+     "text": "So the money has to be visibly spent on alternatives, not absorbed into the general budget."
+    },
+    {
+     "who": "Hugo",
+     "sex": "m",
+     "text": "If it funded night buses and a discount for shift workers, I could support it. Without that, I think it just prices poorer drivers off the road."
+    },
+    {
+     "who": "Sarah",
+     "sex": "f",
+     "text": "Then we should also publish the traffic and air quality data each year, so the promise can actually be checked."
+    }
+   ],
+   "keys": [
+    "Elena: supports a charge; London and Stockholm cut traffic by about 20%",
+    "Hugo: the cost falls hardest on low-paid drivers with no alternatives",
+    "Sarah: that is an argument about design; Stockholm used exemptions and spent revenue on transport",
+    "agreement: revenue must visibly fund night buses and discounts for shift workers",
+    "Sarah: publish traffic and air quality data each year so the promise can be checked"
+   ],
+   "model": "The group discussed a congestion charge for the city centre. Elena supported it, noting that London and Stockholm cut traffic by around twenty per cent. Hugo objected that a flat charge falls hardest on low-paid drivers who have no alternative when buses are not running. Sarah argued this concerned design rather than the charge itself, citing Stockholm’s exemptions and its spending of revenue on suburban transport. They agreed the money must visibly fund night buses and discounts for shift workers, with traffic and air quality data published yearly.",
+   "zh": {
+    "Elena: supports a charge; London and Stockholm cut traffic by about 20%": "Elena：支持收費；倫敦和斯德哥爾摩使交通量減少約 20%",
+    "Hugo: the cost falls hardest on low-paid drivers with no alternatives": "Hugo：這筆費用對沒有其他選擇的低薪駕駛負擔最重",
+    "Sarah: that is an argument about design; Stockholm used exemptions and spent revenue on transport": "Sarah：這是制度設計的問題；斯德哥爾摩採取豁免措施，並把收入用於交通建設",
+    "agreement: revenue must visibly fund night buses and discounts for shift workers": "共識：這筆收入必須明確用於夜間公車和輪班工作者的優惠",
+    "Sarah: publish traffic and air quality data each year so the promise can be checked": "Sarah：每年公布交通與空氣品質數據，讓承諾可以被檢驗",
+    "The group discussed a congestion charge for the city centre. Elena supported it, noting that London and Stockholm cut traffic by around twenty per cent. Hugo objected that a flat charge falls hardest on low-paid drivers who have no alternative when buses are not running. Sarah argued this concerned design rather than the charge itself, citing Stockholm’s exemptions and its spending of revenue on suburban transport. They agreed the money must visibly fund night buses and discounts for shift workers, with traffic and air quality data published yearly.": "小組討論了市中心的塞車費。Elena 表示支持，並指出倫敦和斯德哥爾摩使交通量減少了約百分之二十。Hugo 反對說，統一的收費對低薪駕駛負擔最重，因為在沒有公車的時段他們別無選擇。Sarah 認為這關乎制度設計而非收費本身，並舉出斯德哥爾摩的豁免措施，以及把收入用於郊區交通建設的做法。他們同意這筆收入必須明確用於夜間公車和輪班工作者的優惠，並每年公布交通與空氣品質的數據。",
+    "Elena: I support a congestion charge for the city centre. Traffic has grown every year, buses are stuck in it, and the cities that have tried it, London and Stockholm, saw traffic fall by around twenty per cent almost immediately.": "Elena：我支持在市中心收取塞車費。交通量年年成長，公車被卡在車陣裡，而試行過的城市——倫敦和斯德哥爾摩——幾乎立刻就看到交通量減少約百分之二十。",
+    "Hugo: My concern is who pays. A flat daily charge is nothing to someone in a company car and a real cost to a cleaner driving in for a six o’clock shift when no buses run. It is a tax that falls hardest on the people with the fewest alternatives.": "Hugo：我擔心的是誰來付錢。對開公司車的人來說，每天一筆固定費用根本不算什麼，但對一位要趕六點班、而當時沒有公車可搭的清潔工來說，卻是實實在在的負擔。這是一種對選擇最少的人打擊最重的稅。",
+    "Sarah: That is the strongest objection, but it is an argument about design rather than about the charge itself. Stockholm exempted some vehicles and spent the revenue on suburban transport, which made the scheme popular enough to survive a referendum.": "Sarah：這是最有力的反對意見，但它談的是制度設計，而不是收費本身。斯德哥爾摩對某些車輛給予豁免，並把收入用在郊區的交通建設上，這讓這項措施受歡迎到足以在公投中存活下來。",
+    "Elena: So the money has to be visibly spent on alternatives, not absorbed into the general budget.": "Elena：所以這筆錢必須明顯地花在替代方案上，而不是被吸收進一般預算裡。",
+    "Hugo: If it funded night buses and a discount for shift workers, I could support it. Without that, I think it just prices poorer drivers off the road.": "Hugo：如果它能用來資助夜間公車，並為輪班工作者提供優惠，我可以支持。沒有這些，我認為它只是把比較窮的駕駛趕出馬路而已。",
+    "Sarah: Then we should also publish the traffic and air quality data each year, so the promise can actually be checked.": "Sarah：那我們也應該每年公布交通量和空氣品質的數據，讓這個承諾真的能被檢驗。"
+   },
+   "type": "sgd"
+  },
+  {
+   "id": "M1SGD0002",
+   "title": "Should employers monitor staff with software?",
+   "turns": [
+    {
+     "who": "Victor",
+     "sex": "m",
+     "text": "Since we moved to hybrid working, our company installed software that records active hours and screenshots. Management says it is about fairness, so that people carrying the load are recognised. I think that is a reasonable aim."
+    },
+    {
+     "who": "Nadia",
+     "sex": "f",
+     "text": "The aim may be reasonable, but the measure is not. What the software records is activity, not output. The people it flags are often those doing the thinking, and the people it rewards are the ones who have learned to keep the mouse moving."
+    },
+    {
+     "who": "Yusuf",
+     "sex": "m",
+     "text": "There is also evidence that monitoring changes behaviour in unhelpful ways. Studies of monitored call centres find that staff hit their targets and stop doing the small favours for colleagues that nobody measures."
+    },
+    {
+     "who": "Victor",
+     "sex": "m",
+     "text": "So you would rather managers judged by results, even though results are harder to measure?"
+    },
+    {
+     "who": "Nadia",
+     "sex": "f",
+     "text": "Yes, because harder to measure is not the same as impossible. Agree what a good month looks like, and review it."
+    },
+    {
+     "who": "Yusuf",
+     "sex": "m",
+     "text": "And if any monitoring stays, staff should see exactly what is collected about them. Secret measurement destroys trust faster than any productivity gain can repay."
+    }
+   ],
+   "keys": [
+    "Victor: monitoring software aims at fairness, recognising those carrying the load",
+    "Nadia: it records activity, not output, and rewards people who keep the mouse moving",
+    "Yusuf: monitored call centres hit targets but stop helping colleagues",
+    "Nadia: judge by agreed results, since harder to measure is not impossible",
+    "Yusuf: any monitoring must be transparent, because secret measurement destroys trust"
+   ],
+   "model": "The speakers debated monitoring staff with software. Victor said his company installed it for fairness, to recognise those doing the most work. Nadia objected that it records activity rather than output, rewarding people who simply keep the mouse moving. Yusuf added that monitored call centre staff meet targets but stop helping colleagues. Nadia argued for judging agreed results instead, since harder to measure does not mean impossible, and Yusuf concluded that any monitoring must be fully transparent, as secret measurement destroys trust.",
+   "zh": {
+    "Victor: monitoring software aims at fairness, recognising those carrying the load": "Victor：監控軟體的目的是公平，讓真正在付出的人被看見",
+    "Nadia: it records activity, not output, and rewards people who keep the mouse moving": "Nadia：它記錄的是活動量而不是產出，獎勵的是懂得讓滑鼠一直動的人",
+    "Yusuf: monitored call centres hit targets but stop helping colleagues": "Yusuf：受監控的客服中心員工達成了目標，卻不再幫同事的小忙",
+    "Nadia: judge by agreed results, since harder to measure is not impossible": "Nadia：改以雙方議定的成果來評斷，因為難以衡量不等於不可能",
+    "Yusuf: any monitoring must be transparent, because secret measurement destroys trust": "Yusuf：任何監控都必須透明，因為祕密的監測會摧毀信任",
+    "The speakers debated monitoring staff with software. Victor said his company installed it for fairness, to recognise those doing the most work. Nadia objected that it records activity rather than output, rewarding people who simply keep the mouse moving. Yusuf added that monitored call centre staff meet targets but stop helping colleagues. Nadia argued for judging agreed results instead, since harder to measure does not mean impossible, and Yusuf concluded that any monitoring must be fully transparent, as secret measurement destroys trust.": "講者們辯論用軟體監控員工的做法。Victor 說他的公司安裝這套軟體是為了公平，讓付出最多的人被看見。Nadia 反駁說，它記錄的是活動量而不是產出，獎勵的是那些只會讓滑鼠一直動的人。Yusuf 補充說，受監控的客服中心員工雖然達成了目標，卻不再幫助同事。Nadia 主張改以雙方議定的成果來評斷，因為難以衡量並不代表不可能，而 Yusuf 的結論是，任何監控都必須完全透明，因為祕密的監測會摧毀信任。",
+    "Victor: Since we moved to hybrid working, our company installed software that records active hours and screenshots. Management says it is about fairness, so that people carrying the load are recognised. I think that is a reasonable aim.": "Victor：自從我們改成混合辦公之後，公司安裝了一套會記錄工作時數並擷取螢幕畫面的軟體。管理層說這是為了公平，讓真正在扛工作的人被看見。我認為這個目標算合理。",
+    "Nadia: The aim may be reasonable, but the measure is not. What the software records is activity, not output. The people it flags are often those doing the thinking, and the people it rewards are the ones who have learned to keep the mouse moving.": "Nadia：目標也許合理，但衡量方式並不合理。這套軟體記錄的是活動量，而不是產出。被它標記出來的，往往是真正在思考的人，而被它獎勵的，則是那些學會讓滑鼠一直動的人。",
+    "Yusuf: There is also evidence that monitoring changes behaviour in unhelpful ways. Studies of monitored call centres find that staff hit their targets and stop doing the small favours for colleagues that nobody measures.": "Yusuf：也有證據顯示，監控會以無益的方式改變行為。針對受監控客服中心的研究發現，員工會達成他們的目標，但不再去做那些沒人衡量、幫同事的小忙。",
+    "Victor: So you would rather managers judged by results, even though results are harder to measure?": "Victor：所以你們寧願主管以成果來評斷，即使成果比較難衡量？",
+    "Nadia: Yes, because harder to measure is not the same as impossible. Agree what a good month looks like, and review it.": "Nadia：是的，因為比較難衡量並不等於不可能。先談好一個好的月份應該是什麼樣子，然後再檢視。",
+    "Yusuf: And if any monitoring stays, staff should see exactly what is collected about them. Secret measurement destroys trust faster than any productivity gain can repay.": "Yusuf：而且如果還是要保留任何監控，員工應該能清楚看到哪些關於他們的資料被收集。祕密的監測摧毀信任的速度，比任何生產力的提升所能彌補的都快。"
+   },
+   "type": "sgd"
+  },
+  {
+   "id": "M1RTS0001",
+   "text": "You booked a table for eight people at a restaurant to celebrate a friend’s birthday, but on arrival you are told the table has been given away. What do you say to the manager?",
+   "keys": [
+    "state the booking clearly: name, time and number of people",
+    "explain why it matters: a birthday celebration with eight guests",
+    "stay calm and firm rather than angry",
+    "ask for a specific solution, such as another table or a nearby branch",
+    "ask what they can do now rather than why it happened"
+   ],
+   "model": "Good evening, could I speak to the manager? I booked a table for eight at seven o’clock under the name Tran, and I have the confirmation email here. We have just been told the table has gone, and I have seven guests arriving in the next few minutes for a birthday dinner. I understand mistakes happen, but I do need a solution tonight. Could you put two smaller tables together, or, if that is impossible, call your branch on Market Street and see whether they can take us? I would rather sort this out quickly than discuss how it happened.",
+   "zh": {
+    "You booked a table for eight people at a restaurant to celebrate a friend’s birthday, but on arrival you are told the table has been given away. What do you say to the manager?": "你在一家餐廳訂了八人的桌位，要為朋友慶生，但抵達時卻被告知桌位已經給了別人。你會對經理說什麼？",
+    "state the booking clearly: name, time and number of people": "清楚說明訂位資訊：姓名、時間和人數",
+    "explain why it matters: a birthday celebration with eight guests": "說明為什麼這很重要：這是八位客人的生日聚會",
+    "stay calm and firm rather than angry": "保持冷靜而堅定，而不是發怒",
+    "ask for a specific solution, such as another table or a nearby branch": "要求具體的解決辦法，例如換一張桌子或轉到附近的分店",
+    "ask what they can do now rather than why it happened": "詢問他們現在能怎麼處理，而不是追問為什麼會這樣",
+    "Good evening, could I speak to the manager? I booked a table for eight at seven o’clock under the name Tran, and I have the confirmation email here. We have just been told the table has gone, and I have seven guests arriving in the next few minutes for a birthday dinner. I understand mistakes happen, but I do need a solution tonight. Could you put two smaller tables together, or, if that is impossible, call your branch on Market Street and see whether they can take us? I would rather sort this out quickly than discuss how it happened.": "晚安，請問可以找經理嗎？我以 Tran 的名字訂了七點八人的位子，確認信我這裡也有。我們剛剛被告知位子沒了，而我有七位客人再過幾分鐘就會到，要一起吃生日晚餐。我理解難免會出錯，但我今晚確實需要一個解決辦法。可以把兩張小桌併起來嗎？如果真的不行，可以請你打電話到你們市場街的分店，看看他們能不能接待我們嗎？比起討論為什麼會這樣，我更希望能盡快把問題解決。"
+   },
+   "type": "rts"
+  },
+  {
+   "id": "M1RTS0002",
+   "text": "Your flatmate has repeatedly left the kitchen dirty, and you have decided to raise it with him this evening. What do you say?",
+   "keys": [
+    "choose a calm moment and open without accusation",
+    "describe the specific problem: dishes and surfaces left over several days",
+    "explain the effect on you, using I rather than you always",
+    "propose a workable arrangement, such as a rota or a same-day rule",
+    "invite his view and keep the tone friendly"
+   ],
+   "model": "Dan, have you got five minutes? I want to sort something out before it turns into a bad atmosphere. The kitchen has been left with dishes and food on the counters most of this week, and I have ended up clearing it three times before I could cook. I am not trying to have a go at you, and I know you have been busy with deadlines. Could we agree that whoever cooks washes up the same evening, and we each take the bins for a week? If a different arrangement works better for you, I am happy with that too.",
+   "zh": {
+    "Your flatmate has repeatedly left the kitchen dirty, and you have decided to raise it with him this evening. What do you say?": "你的室友一再把廚房弄髒不整理，你決定今晚跟他談這件事。你會怎麼說？",
+    "choose a calm moment and open without accusation": "挑一個平和的時機，開口時不要指責",
+    "describe the specific problem: dishes and surfaces left over several days": "描述具體的問題：這幾天留下的碗盤和檯面髒污",
+    "explain the effect on you, using I rather than you always": "說明這對你的影響，用「我」而不是「你總是」",
+    "propose a workable arrangement, such as a rota or a same-day rule": "提出可行的安排，例如輪值表或當天清理的規則",
+    "invite his view and keep the tone friendly": "詢問他的想法，並保持友善的語氣",
+    "Dan, have you got five minutes? I want to sort something out before it turns into a bad atmosphere. The kitchen has been left with dishes and food on the counters most of this week, and I have ended up clearing it three times before I could cook. I am not trying to have a go at you, and I know you have been busy with deadlines. Could we agree that whoever cooks washes up the same evening, and we each take the bins for a week? If a different arrangement works better for you, I am happy with that too.": "Dan，你有五分鐘嗎？我想把一件事講開，免得之後氣氛變差。這週大部分時間廚房都留著碗盤和檯面上的食物，我為了煮飯已經先幫忙清了三次。我不是要找你麻煩，我也知道你最近忙著趕截止日期。我們可以說好誰煮飯就當晚洗碗，然後我們一人負責一週倒垃圾嗎？如果你有其他更合適的安排，我也完全可以配合。"
+   },
+   "type": "rts"
+  },
+  {
+   "id": "M1RTS0003",
+   "text": "You have realised that a report you sent to a client last week contains a significant error in the figures. You go to tell your manager. What do you say?",
+   "keys": [
+    "report the error immediately and without excuses",
+    "state exactly what is wrong and which figures are affected",
+    "say what the consequences might be for the client",
+    "propose the correction and how to inform the client",
+    "say what you will change so it does not happen again"
+   ],
+   "model": "Priya, I need to tell you about a mistake straight away. In the quarterly report we sent to Kepler on Thursday, the revenue figures in table two are wrong: I used the unadjusted numbers, so the total is overstated by about eight per cent. The commentary and the forecast both rely on that table, so they are affected too. I have already corrected the figures and prepared a revised version, which I can send with a short note explaining the change. If you prefer, I will call their finance manager first so it does not come as a surprise. From now on I will have the figures checked by someone else before anything goes out.",
+   "zh": {
+    "You have realised that a report you sent to a client last week contains a significant error in the figures. You go to tell your manager. What do you say?": "你發現上週寄給客戶的報告中，有一個重要的數字錯誤。你去告訴主管。你會怎麼說？",
+    "report the error immediately and without excuses": "立刻回報錯誤，不要找藉口",
+    "state exactly what is wrong and which figures are affected": "明確說明錯在哪裡、影響哪些數字",
+    "say what the consequences might be for the client": "說明這對客戶可能造成的後果",
+    "propose the correction and how to inform the client": "提出更正方式以及如何通知客戶",
+    "say what you will change so it does not happen again": "說明你會如何避免再次發生",
+    "Priya, I need to tell you about a mistake straight away. In the quarterly report we sent to Kepler on Thursday, the revenue figures in table two are wrong: I used the unadjusted numbers, so the total is overstated by about eight per cent. The commentary and the forecast both rely on that table, so they are affected too. I have already corrected the figures and prepared a revised version, which I can send with a short note explaining the change. If you prefer, I will call their finance manager first so it does not come as a surprise. From now on I will have the figures checked by someone else before anything goes out.": "Priya，我得立刻跟妳報告一個錯誤。在我們星期四寄給 Kepler 的季度報告中，表二的營收數字是錯的：我用了未調整的數據，所以總額高估了約百分之八。文字說明和預測都依據那張表，所以也受到影響。我已經更正了數字並準備好修訂版，可以附上一則簡短說明一起寄出。如果妳覺得比較好，我會先打電話給他們的財務經理，讓他們不會措手不及。從現在起，任何東西寄出之前，我都會請另一個人先核對數字。"
+   },
+   "type": "rts"
+  },
+  {
+   "id": "M1SWT0001",
+   "title": "Measuring inflation",
+   "passage": "Inflation sounds like a simple idea: the rate at which prices rise. Measuring it is far harder than it appears. Statistical agencies track the price of a basket of goods and services meant to represent what a typical household buys, and the composition of that basket determines the answer. Because spending patterns change, the basket must be revised regularly, and each revision involves judgement.\n\nTwo problems are particularly stubborn. The first is quality. A laptop that costs the same as one sold five years ago is a far better machine, so part of the price reflects more product rather than inflation, and agencies must estimate how much. The second is substitution. When beef becomes expensive, households buy more chicken, so a fixed basket overstates the rise in their actual cost of living.\n\nThese are not academic concerns. Pensions, wages and welfare payments are often linked to the published figure, so a small bias moves large sums of money. They also explain why people sometimes insist that inflation is higher than the official rate: the index describes an average household that resembles nobody exactly, and it gives no extra weight to the items, such as rent or food, that people notice most.",
+   "model": "Although inflation appears simple, measuring it depends on the composition of a regularly revised basket of goods and on difficult judgements about improving quality and about substitution between products, which matters because pensions and wages are linked to the published figure and because the average it describes matches no individual household.",
+   "zh": {
+    "Inflation sounds like a simple idea: the rate at which prices rise. Measuring it is far harder than it appears. Statistical agencies track the price of a basket of goods and services meant to represent what a typical household buys, and the composition of that basket determines the answer. Because spending patterns change, the basket must be revised regularly, and each revision involves judgement.": "通貨膨脹聽起來是個簡單的概念：物價上漲的速度。但要衡量它，卻比表面上困難得多。統計機構會追蹤一籃子商品與服務的價格，這些商品應該能代表一般家庭所購買的東西，而這個籃子的組成決定了答案。由於消費模式會改變，這個籃子必須定期調整，而每次調整都涉及判斷。",
+    "Two problems are particularly stubborn. The first is quality. A laptop that costs the same as one sold five years ago is a far better machine, so part of the price reflects more product rather than inflation, and agencies must estimate how much. The second is substitution. When beef becomes expensive, households buy more chicken, so a fixed basket overstates the rise in their actual cost of living.": "其中有兩個問題特別棘手。第一是品質。一台和五年前售價相同的筆記型電腦，性能好得多，所以價格中有一部分反映的是更好的產品，而不是通膨，統計機構必須估算這部分有多少。第二是替代。當牛肉變貴時，家庭會多買雞肉，所以固定的籃子會高估他們實際生活成本的上升。",
+    "These are not academic concerns. Pensions, wages and welfare payments are often linked to the published figure, so a small bias moves large sums of money. They also explain why people sometimes insist that inflation is higher than the official rate: the index describes an average household that resembles nobody exactly, and it gives no extra weight to the items, such as rent or food, that people notice most.": "這些並不是學術上的空談。退休金、薪資和社會福利給付常常與公布的數字連動，所以一點點偏差就會牽動龐大的金額。這也解釋了為什麼人們有時堅稱通膨比官方數字更高：這個指數描述的是一個和任何人都不完全相像的「平均家庭」，而且它並沒有為人們最有感的項目，例如房租或食物，賦予額外的權重。",
+    "Although inflation appears simple, measuring it depends on the composition of a regularly revised basket of goods and on difficult judgements about improving quality and about substitution between products, which matters because pensions and wages are linked to the published figure and because the average it describes matches no individual household.": "雖然通貨膨脹看似簡單，衡量它卻取決於定期調整的一籃子商品的組成，以及關於品質提升與商品替代的困難判斷；這很重要，因為退休金和薪資都與公布的數字連動，而它所描述的平均值又與任何一個家庭都不相符。"
+   },
+   "type": "swt"
+  },
+  {
+   "id": "M1SWT0002",
+   "title": "The other carbon problem",
+   "passage": "About a quarter of the carbon dioxide released by human activity does not stay in the atmosphere. It dissolves into the ocean, where it reacts with seawater to form carbonic acid. Since the industrial revolution, this process has made the surface ocean around thirty per cent more acidic, a change that is happening faster than at any time in the past fifty million years.\n\nThe consequences fall hardest on organisms that build shells and skeletons from calcium carbonate: corals, oysters, mussels and the tiny sea snails that underpin many polar food webs. As acidity rises, the carbonate these animals need becomes harder to obtain, and in the most affected waters existing shells begin to dissolve. Oyster hatcheries on the Pacific coast of North America have already had to treat incoming seawater to keep young shellfish alive.\n\nUnlike warming, acidification cannot be moderated by any conceivable local measure, because the chemistry follows directly from the amount of carbon dioxide in the air. Scientists sometimes call it the other carbon problem, and note that it will continue even if the climate response to emissions turns out to be milder than expected.",
+   "model": "Because the ocean absorbs about a quarter of human carbon dioxide emissions, it has become roughly thirty per cent more acidic since the industrial revolution, which makes shell-building difficult for corals and shellfish and cannot be addressed locally, since the chemistry depends directly on carbon dioxide in the air.",
+   "zh": {
+    "About a quarter of the carbon dioxide released by human activity does not stay in the atmosphere. It dissolves into the ocean, where it reacts with seawater to form carbonic acid. Since the industrial revolution, this process has made the surface ocean around thirty per cent more acidic, a change that is happening faster than at any time in the past fifty million years.": "人類活動排放的二氧化碳中，約有四分之一並沒有留在大氣中。它會溶入海洋，與海水反應形成碳酸。自工業革命以來，這個過程使表層海水的酸度提高了約百分之三十，而這個變化的速度比過去五千萬年間的任何時候都快。",
+    "The consequences fall hardest on organisms that build shells and skeletons from calcium carbonate: corals, oysters, mussels and the tiny sea snails that underpin many polar food webs. As acidity rises, the carbonate these animals need becomes harder to obtain, and in the most affected waters existing shells begin to dissolve. Oyster hatcheries on the Pacific coast of North America have already had to treat incoming seawater to keep young shellfish alive.": "受影響最深的，是那些用碳酸鈣構築外殼和骨骼的生物：珊瑚、牡蠣、貽貝，以及支撐許多極地食物網的微小海螺。隨著酸度上升，這些動物所需的碳酸鹽變得更難取得，而在受影響最嚴重的水域，既有的外殼甚至開始溶解。北美太平洋沿岸的牡蠣孵化場，已經必須處理引入的海水，才能讓幼貝存活。",
+    "Unlike warming, acidification cannot be moderated by any conceivable local measure, because the chemistry follows directly from the amount of carbon dioxide in the air. Scientists sometimes call it the other carbon problem, and note that it will continue even if the climate response to emissions turns out to be milder than expected.": "與暖化不同，海洋酸化無法透過任何可想見的地方性措施來緩解，因為其化學反應直接取決於空氣中二氧化碳的含量。科學家有時稱它為「另一個碳問題」，並指出即使氣候對排放的反應比預期溫和，酸化仍會持續下去。",
+    "Because the ocean absorbs about a quarter of human carbon dioxide emissions, it has become roughly thirty per cent more acidic since the industrial revolution, which makes shell-building difficult for corals and shellfish and cannot be addressed locally, since the chemistry depends directly on carbon dioxide in the air.": "由於海洋吸收了人類約四分之一的二氧化碳排放，自工業革命以來其酸度已上升約百分之三十，使珊瑚和貝類難以形成外殼；而且由於這個化學過程直接取決於空氣中的二氧化碳，它無法以地方性措施解決。"
+   },
+   "type": "swt"
+  },
+  {
+   "id": "M1WE0001",
+   "prompt": "Some people think that all students should continue to study a science subject until they leave school, even if they have no interest in it. To what extent do you agree or disagree?",
+   "plan": [
+    "Give your position in the introduction and say how strongly you hold it.",
+    "Arguments for: scientific literacy for voting and health decisions, and keeping options open.",
+    "Arguments against: time taken from subjects a student is committed to, and the risk of disengagement.",
+    "Distinguish between compulsory science and compulsory examinations in science.",
+    "Conclusion: restate your position and the condition that makes it work."
+   ],
+   "zh": {
+    "Some people think that all students should continue to study a science subject until they leave school, even if they have no interest in it. To what extent do you agree or disagree?": "有些人認為，所有學生在畢業之前都應該持續修讀一門科學科目，即使他們對它毫無興趣。你在多大程度上同意或不同意這個說法？",
+    "Give your position in the introduction and say how strongly you hold it.": "在引言中表明立場，並說明你支持的程度。",
+    "Arguments for: scientific literacy for voting and health decisions, and keeping options open.": "支持的論點：投票與健康決策所需的科學素養，以及保留未來的選擇。",
+    "Arguments against: time taken from subjects a student is committed to, and the risk of disengagement.": "反對的論點：占用學生真正投入的科目的時間，以及學生可能因此失去學習動力。",
+    "Distinguish between compulsory science and compulsory examinations in science.": "區分「必修科學」與「科學必考」這兩件事。",
+    "Conclusion: restate your position and the condition that makes it work.": "結論：重申你的立場，以及讓它可行的條件。"
+   },
+   "type": "essay"
+  },
+  {
+   "id": "M1RWFIB0001",
+   "title": "The Gulf Stream",
+   "parts": [
+    "The Gulf Stream carries warm water from the Gulf of Mexico towards north-west Europe, which is why Britain has milder winters than places at the same ",
+    ". The current is part of a larger circulation driven by differences in temperature and salt, and it ",
+    " on cold, salty water sinking in the far north. Meltwater from Greenland makes the surface fresher and therefore less dense, which could ",
+    " that sinking. Most models suggest a gradual weakening rather than a sudden collapse, but the ",
+    " of the estimates is itself a reason for concern."
+   ],
+   "gaps": [
+    {
+     "o": [
+      "latitude",
+      "altitude",
+      "distance",
+      "longitude"
+     ],
+     "a": "latitude"
+    },
+    {
+     "o": [
+      "depends",
+      "insists",
+      "reflects",
+      "consists"
+     ],
+     "a": "depends"
+    },
+    {
+     "o": [
+      "slow",
+      "speed",
+      "cause",
+      "repeat"
+     ],
+     "a": "slow"
+    },
+    {
+     "o": [
+      "width",
+      "weight",
+      "length",
+      "height"
+     ],
+     "a": "width"
+    }
+   ],
+   "why": [
+    "Places compared for winter temperature are at the same latitude, the north–south position that governs climate. Longitude runs east–west and would not explain milder winters.",
+    "Collocation: a current depends on something. “insists” and “consists” need different prepositions, and “reflects on” means to think about.",
+    "Fresher, less dense water sinks less readily, so the meltwater could slow the sinking. “speed” would reverse the effect described.",
+    "The sentence contrasts a gradual weakening with the uncertainty around it, and the width of a range of estimates is how uncertainty is described."
+   ],
+   "zh": {
+    "The Gulf Stream carries warm water from the Gulf of Mexico towards north-west Europe, which is why Britain has milder winters than places at the same ____ . The current is part of a larger circulation driven by differences in temperature and salt, and it ____ on cold, salty water sinking in the far north. Meltwater from Greenland makes the surface fresher and therefore less dense, which could ____ that sinking. Most models suggest a gradual weakening rather than a sudden collapse, but the ____ of the estimates is itself a reason for concern.": "墨西哥灣流把溫暖的海水從墨西哥灣帶往西北歐，這就是為什麼英國的冬天比同 ____ 的其他地方溫和。這股洋流是一個更大循環系統的一部分，由溫度和鹽度的差異所驅動，而它 ____ 於北方冰冷、高鹽度的海水下沉。來自格陵蘭的融水使表層海水鹽度降低、密度變小，這可能會 ____ 那樣的下沉。大多數模型顯示的是逐漸減弱而不是突然崩潰，但這些估計值的 ____ 本身就是令人擔憂的理由。",
+    "Places compared for winter temperature are at the same latitude, the north–south position that governs climate. Longitude runs east–west and would not explain milder winters.": "拿來比較冬季氣溫的地方位於相同的 latitude（緯度），也就是決定氣候的南北位置。longitude（經度）是東西向的，無法解釋為什麼冬天比較溫和。",
+    "Collocation: a current depends on something. “insists” and “consists” need different prepositions, and “reflects on” means to think about.": "固定搭配：洋流 depends on（依賴）某事物。insists 和 consists 需要搭配不同的介系詞，而 reflects on 的意思是「思考」。",
+    "Fresher, less dense water sinks less readily, so the meltwater could slow the sinking. “speed” would reverse the effect described.": "鹽度較低、密度較小的水比較不容易下沉，所以融水可能會 slow（減緩）下沉。speed 會把文中描述的效應顛倒過來。",
+    "The sentence contrasts a gradual weakening with the uncertainty around it, and the width of a range of estimates is how uncertainty is described.": "這句話把逐漸減弱與其中的不確定性加以對比，而估計範圍的 width（寬度）正是描述不確定性的方式。"
+   },
+   "type": "rw_fib"
+  },
+  {
+   "id": "M1RWFIB0002",
+   "title": "Reading in silence",
+   "parts": [
+    "For most of recorded history, reading was done out loud. Ancient texts were written without spaces between words, so a reader had to sound them out in order to ",
+    " where one word ended and the next began. Silent reading was rare enough that writers remarked on it with ",
+    ". The introduction of word spacing by Irish and English scribes in the seventh century made it far easier to read with the eye ",
+    ". That change did more than improve comfort: it allowed readers to move quickly through unfamiliar material, and it made the private, ",
+    " relationship with a text that we now take for granted."
+   ],
+   "gaps": [
+    {
+     "o": [
+      "tell",
+      "speak",
+      "listen",
+      "repeat"
+     ],
+     "a": "tell"
+    },
+    {
+     "o": [
+      "surprise",
+      "approval",
+      "regret",
+      "accuracy"
+     ],
+     "a": "surprise"
+    },
+    {
+     "o": [
+      "alone",
+      "only",
+      "single",
+      "lonely"
+     ],
+     "a": "alone"
+    },
+    {
+     "o": [
+      "silent",
+      "loud",
+      "spoken",
+      "musical"
+     ],
+     "a": "silent"
+    }
+   ],
+   "why": [
+    "Sounding out unspaced text helps a reader work out, or tell, where each word ends. “speak” and “listen” do not take “where one word ended”.",
+    "Writers commented on silent reading because it was unusual, so they remarked on it with surprise. Approval or regret would not explain why it was worth remarking on at all.",
+    "“read with the eye alone” means without the voice. “only” cannot follow the noun in this way, and “lonely” describes a feeling.",
+    "The paragraph is about the change to silent reading, and a private, silent relationship with a text is what word spacing made possible."
+   ],
+   "zh": {
+    "For most of recorded history, reading was done out loud. Ancient texts were written without spaces between words, so a reader had to sound them out in order to ____ where one word ended and the next began. Silent reading was rare enough that writers remarked on it with ____ . The introduction of word spacing by Irish and English scribes in the seventh century made it far easier to read with the eye ____ . That change did more than improve comfort: it allowed readers to move quickly through unfamiliar material, and it made the private, ____ relationship with a text that we now take for granted.": "在有文字記載的大部分歷史中，閱讀都是出聲進行的。古代文本的字與字之間沒有空格，所以讀者必須把字音唸出來，才能 ____ 一個字在哪裡結束、下一個字從哪裡開始。默讀非常罕見，罕見到作家會帶著 ____ 提到它。七世紀愛爾蘭和英格蘭抄寫員引入字間空格之後，只用眼睛 ____ 閱讀就變得容易許多。這個改變帶來的不只是舒適：它讓讀者能快速讀過不熟悉的內容，也造就了我們今天視為理所當然、與文本之間那種私密而 ____ 的關係。",
+    "Sounding out unspaced text helps a reader work out, or tell, where each word ends. “speak” and “listen” do not take “where one word ended”.": "把沒有空格的文字唸出聲音，能幫助讀者判斷、也就是 tell（辨別）每個字在哪裡結束。speak 和 listen 都無法接「一個字在哪裡結束」。",
+    "Writers commented on silent reading because it was unusual, so they remarked on it with surprise. Approval or regret would not explain why it was worth remarking on at all.": "作家之所以會提到默讀，是因為它很不尋常，所以他們帶著 surprise（驚訝）提起它。approval 或 regret 都無法解釋為什麼這件事值得一提。",
+    "“read with the eye alone” means without the voice. “only” cannot follow the noun in this way, and “lonely” describes a feeling.": "read with the eye alone（只用眼睛閱讀）表示不出聲。only 不能這樣放在名詞後面，而 lonely 描述的是一種感受。",
+    "The paragraph is about the change to silent reading, and a private, silent relationship with a text is what word spacing made possible.": "這一段談的是轉向默讀的改變，而與文本之間私密而 silent（無聲）的關係，正是字間空格所促成的。"
+   },
+   "type": "rw_fib"
+  },
+  {
+   "id": "M1RWFIB0003",
+   "title": "How insurance works",
+   "parts": [
+    "Insurance works by pooling risk. Each customer pays a premium that is small compared with the loss being insured against, and the company pays out to the few who actually suffer that ",
+    ". The arrangement only functions if losses are largely ",
+    ": a flood that damages ten thousand homes at once can overwhelm an insurer in a way that ten thousand separate house fires would not. Insurers therefore buy their own cover from reinsurers, spreading the risk across the world. Climate change complicates this model, because events once treated as rare are becoming both more frequent and more ",
+    "."
+   ],
+   "gaps": [
+    {
+     "o": [
+      "loss",
+      "premium",
+      "profit",
+      "policy"
+     ],
+     "a": "loss"
+    },
+    {
+     "o": [
+      "independent",
+      "expensive",
+      "predictable",
+      "unavoidable"
+     ],
+     "a": "independent"
+    },
+    {
+     "o": [
+      "correlated",
+      "affordable",
+      "distant",
+      "voluntary"
+     ],
+     "a": "correlated"
+    }
+   ],
+   "why": [
+    "The company pays the few who suffer the event being insured against, which the sentence has just called a loss. A premium is what customers pay in.",
+    "The contrast is between one flood hitting ten thousand homes together and ten thousand unrelated fires, so the model needs losses that are independent of each other.",
+    "A flood damaging many homes at once is the example of losses that arrive together, so the worry is that events are becoming more correlated as well as more frequent."
+   ],
+   "zh": {
+    "Insurance works by pooling risk. Each customer pays a premium that is small compared with the loss being insured against, and the company pays out to the few who actually suffer that ____ . The arrangement only functions if losses are largely ____ : a flood that damages ten thousand homes at once can overwhelm an insurer in a way that ten thousand separate house fires would not. Insurers therefore buy their own cover from reinsurers, spreading the risk across the world. Climate change complicates this model, because events once treated as rare are becoming both more frequent and more ____ .": "保險的運作方式是把風險集中起來分攤。每位客戶支付的保費，相對於所投保的損失而言金額很小，而保險公司則賠付給少數真正遭受該 ____ 的人。這種安排只有在損失大致上彼此 ____ 時才行得通：一次淹沒一萬戶人家的洪水，可能讓保險公司難以承受，而一萬起各自獨立的住宅火災則不會。因此，保險公司會向再保險公司投保，把風險分散到全世界。氣候變遷使這套模式變得複雜，因為過去被視為罕見的事件，如今不僅越來越頻繁，也越來越 ____ 。",
+    "The company pays the few who suffer the event being insured against, which the sentence has just called a loss. A premium is what customers pay in.": "保險公司賠付給少數遭受所保事故的人，而這句話前面已經把它稱為 loss（損失）。premium（保費）是客戶繳交的錢。",
+    "The contrast is between one flood hitting ten thousand homes together and ten thousand unrelated fires, so the model needs losses that are independent of each other.": "這裡的對比是一次洪水同時侵襲一萬戶人家，與一萬起互不相關的火災，所以這套模式需要的是彼此 independent（獨立）的損失。",
+    "A flood damaging many homes at once is the example of losses that arrive together, so the worry is that events are becoming more correlated as well as more frequent.": "一次洪水損害許多住宅，正是損失同時發生的例子，所以令人擔憂的是這類事件除了更頻繁之外，也變得更加 correlated（相關聯）。"
+   },
+   "type": "rw_fib"
+  },
+  {
+   "id": "M1RWFIB0004",
+   "title": "Hydrogen fuel",
+   "parts": [
+    "Hydrogen burns without producing carbon dioxide, which makes it an appealing fuel, but almost all of it is currently ",
+    " from natural gas in a process that releases large amounts of that same gas. Hydrogen made by splitting water with renewable electricity avoids this problem, although it remains ",
+    " than the conventional kind. A further difficulty is storage: hydrogen has a high energy content by weight but a very low one by ",
+    ", so it must be compressed or cooled to extremely low temperatures. For this reason, most analysts expect it to be used where batteries are impractical, such as in steelmaking and shipping, rather than as a general ",
+    " for petrol."
+   ],
+   "gaps": [
+    {
+     "o": [
+      "produced",
+      "imported",
+      "burned",
+      "measured"
+     ],
+     "a": "produced"
+    },
+    {
+     "o": [
+      "dearer",
+      "cleaner",
+      "older",
+      "rarer"
+     ],
+     "a": "dearer"
+    },
+    {
+     "o": [
+      "volume",
+      "weight",
+      "design",
+      "distance"
+     ],
+     "a": "volume"
+    },
+    {
+     "o": [
+      "replacement",
+      "container",
+      "advantage",
+      "reminder"
+     ],
+     "a": "replacement"
+    }
+   ],
+   "why": [
+    "The sentence describes how hydrogen is made today, from natural gas, so it is produced from it. “imported” and “burned” do not describe manufacture.",
+    "The contrast with “avoids this problem” needs a drawback, and cost is the standard one: it remains dearer. “cleaner” would not be a disadvantage.",
+    "The sentence contrasts energy “by weight” with the opposite measure, which is by volume, and explains why hydrogen must be compressed.",
+    "Being used only where batteries fail, rather than everywhere, makes it not a general replacement for petrol. A container or reminder makes no sense here."
+   ],
+   "zh": {
+    "Hydrogen burns without producing carbon dioxide, which makes it an appealing fuel, but almost all of it is currently ____ from natural gas in a process that releases large amounts of that same gas. Hydrogen made by splitting water with renewable electricity avoids this problem, although it remains ____ than the conventional kind. A further difficulty is storage: hydrogen has a high energy content by weight but a very low one by ____ , so it must be compressed or cooled to extremely low temperatures. For this reason, most analysts expect it to be used where batteries are impractical, such as in steelmaking and shipping, rather than as a general ____ for petrol.": "氫燃燒時不會產生二氧化碳，這使它成為一種有吸引力的燃料，但目前幾乎所有的氫都是以天然氣 ____ 的，而這個過程會釋放大量同樣的氣體。用再生能源電力分解水所製造的氫可以避免這個問題，不過它仍然比傳統方式製造的氫更 ____ 。另一個困難是儲存：氫以重量計的能量含量很高，但以 ____ 計卻非常低，所以必須加壓或冷卻到極低的溫度。因此，大多數分析師預期它會被用在電池不切實際的領域，例如煉鋼和航運，而不是全面 ____ 汽油。",
+    "The sentence describes how hydrogen is made today, from natural gas, so it is produced from it. “imported” and “burned” do not describe manufacture.": "這句話描述的是今天氫的製造方式，也就是以天然氣 produced（製造）。imported 和 burned 都無法描述製造過程。",
+    "The contrast with “avoids this problem” needs a drawback, and cost is the standard one: it remains dearer. “cleaner” would not be a disadvantage.": "與「可以避免這個問題」形成對比，需要一個缺點，而成本是最典型的缺點：它仍然比較 dearer（昂貴）。cleaner 並不是缺點。",
+    "The sentence contrasts energy “by weight” with the opposite measure, which is by volume, and explains why hydrogen must be compressed.": "這句話把「以重量計」的能量與相反的衡量方式對比，也就是以 volume（體積）計，並解釋了為什麼氫必須加壓。",
+    "Being used only where batteries fail, rather than everywhere, makes it not a general replacement for petrol. A container or reminder makes no sense here.": "只在電池行不通的地方使用、而不是到處使用，表示它不是汽油的全面 replacement（替代品）。container 或 reminder 在這裡都說不通。"
+   },
+   "type": "rw_fib"
+  },
+  {
+   "id": "M1RWFIB0005",
+   "title": "Better forecasts",
+   "parts": [
+    "Weather forecasting has improved more than most people notice. A five-day forecast today is about as ",
+    " as a one-day forecast was in 1980. Three developments explain the change. Satellites now supply continuous observations over oceans, where measurements were once almost entirely ",
+    ". Computing power allows models to divide the atmosphere into far smaller boxes. And forecasters run the same model many times from slightly different starting points, which shows how ",
+    " each prediction is rather than offering a single answer. Beyond about ten days, however, the atmosphere remains chaotic, and no increase in computing power will ",
+    " that limit."
+   ],
+   "gaps": [
+    {
+     "o": [
+      "accurate",
+      "expensive",
+      "frequent",
+      "detailed"
+     ],
+     "a": "accurate"
+    },
+    {
+     "o": [
+      "absent",
+      "routine",
+      "accurate",
+      "costly"
+     ],
+     "a": "absent"
+    },
+    {
+     "o": [
+      "certain",
+      "recent",
+      "popular",
+      "complex"
+     ],
+     "a": "certain"
+    },
+    {
+     "o": [
+      "remove",
+      "reach",
+      "extend",
+      "measure"
+     ],
+     "a": "remove"
+    }
+   ],
+   "why": [
+    "The comparison is about forecast quality across decades, so a five-day forecast is now as accurate as a one-day forecast then.",
+    "Satellites gave continuous observations over oceans, where data had previously been almost entirely absent. “routine” would mean there was no gap to fill.",
+    "Running a model many times from slightly different starts shows the confidence in a forecast, that is, how certain it is.",
+    "Chaos sets a hard limit that more computing cannot remove. You cannot “measure away” a limit, and “extend” would mean forecasts could go further."
+   ],
+   "zh": {
+    "Weather forecasting has improved more than most people notice. A five-day forecast today is about as ____ as a one-day forecast was in 1980. Three developments explain the change. Satellites now supply continuous observations over oceans, where measurements were once almost entirely ____ . Computing power allows models to divide the atmosphere into far smaller boxes. And forecasters run the same model many times from slightly different starting points, which shows how ____ each prediction is rather than offering a single answer. Beyond about ten days, however, the atmosphere remains chaotic, and no increase in computing power will ____ that limit.": "天氣預報的進步比大多數人察覺到的還要多。今天的五日預報，大約和 1980 年的一日預報一樣 ____ 。有三項發展可以解釋這個改變。衛星現在能持續觀測海洋，而過去那裡的觀測資料幾乎完全 ____ 。運算能力讓模型能把大氣切分成小得多的網格。而且預報人員會用略有不同的起始條件，把同一個模型跑很多次，這顯示出每個預測有多 ____ ，而不是只給出單一答案。然而，超過大約十天之後，大氣仍然是混沌的，再多的運算能力也無法 ____ 這個限制。",
+    "The comparison is about forecast quality across decades, so a five-day forecast is now as accurate as a one-day forecast then.": "這裡比較的是數十年來預報的品質，所以今天的五日預報和當年的一日預報一樣 accurate（準確）。",
+    "Satellites gave continuous observations over oceans, where data had previously been almost entirely absent. “routine” would mean there was no gap to fill.": "衛星提供了海洋上的連續觀測，而那裡過去幾乎完全 absent（沒有）資料。routine 表示本來就沒有空缺需要填補。",
+    "Running a model many times from slightly different starts shows the confidence in a forecast, that is, how certain it is.": "用略有不同的起始條件把模型跑很多次，顯示的是對預報的信心程度，也就是它有多 certain（確定）。",
+    "Chaos sets a hard limit that more computing cannot remove. You cannot “measure away” a limit, and “extend” would mean forecasts could go further.": "混沌設下了一個再多運算能力也無法 remove（消除）的硬限制。你無法「測量掉」一個限制，而 extend 則表示預報可以延伸得更遠。"
+   },
+   "type": "rw_fib"
+  },
+  {
+   "id": "M1MCMAR0001",
+   "passage": "Mangroves are among the few trees that can live in salt water, and they do so by a combination of filtering and excretion: some species block most of the salt at the root, while others push it out through their leaves, which can be seen glittering with crystals at low tide. Their tangled roots trap sediment, and over time this builds new land rather than simply holding the existing shore in place. The forests they form are now recognised as one of the most efficient carbon stores on the planet, holding several times as much carbon per hectare as tropical rainforest, most of it locked in waterlogged mud rather than in wood. They also shelter the young of many commercially important fish, which is why fishing communities often notice the loss of a mangrove belt before scientists record it. Despite this, mangroves have been cleared faster than most forest types, largely for shrimp ponds and coastal building. Replanting schemes have had mixed results: seedlings planted in the wrong tidal zone, or in areas where the flow of fresh water has been altered, frequently die within two years. Ecologists increasingly argue that restoring water flow and allowing natural regrowth produces better results than planting alone.",
+   "q": "Which of the following are stated in the passage?",
+   "o": [
+    "Mangroves deal with salt in more than one way.",
+    "Mangrove mud stores more carbon per hectare than rainforest.",
+    "Mangrove loss is usually recorded by scientists before local fishers notice it.",
+    "Most mangrove clearance has been for timber.",
+    "Planting seedlings alone is often not enough to restore a mangrove forest."
+   ],
+   "a": [
+    0,
+    1,
+    4
+   ],
+   "why": [
+    "Stated: some species block salt at the root and others excrete it through the leaves.",
+    "Stated: mangrove forests hold several times as much carbon per hectare as tropical rainforest.",
+    "The passage says the opposite, that fishing communities often notice the loss before scientists record it.",
+    "The passage gives shrimp ponds and coastal building as the main reasons, not timber.",
+    "Stated: seedlings often die within two years, and ecologists argue that restoring water flow works better than planting alone."
+   ],
+   "zh": {
+    "Mangroves are among the few trees that can live in salt water, and they do so by a combination of filtering and excretion: some species block most of the salt at the root, while others push it out through their leaves, which can be seen glittering with crystals at low tide. Their tangled roots trap sediment, and over time this builds new land rather than simply holding the existing shore in place. The forests they form are now recognised as one of the most efficient carbon stores on the planet, holding several times as much carbon per hectare as tropical rainforest, most of it locked in waterlogged mud rather than in wood. They also shelter the young of many commercially important fish, which is why fishing communities often notice the loss of a mangrove belt before scientists record it. Despite this, mangroves have been cleared faster than most forest types, largely for shrimp ponds and coastal building. Replanting schemes have had mixed results: seedlings planted in the wrong tidal zone, or in areas where the flow of fresh water has been altered, frequently die within two years. Ecologists increasingly argue that restoring water flow and allowing natural regrowth produces better results than planting alone.": "紅樹林是少數能在鹹水中生存的樹木之一，牠們靠著過濾與排出兩種方式並用來做到這點：有些種類在根部就擋住大部分鹽分，有些則把鹽從葉片排出，退潮時可以看到葉面上閃著鹽的結晶。牠們盤根錯節的根系會攔住泥沙，久而久之造出新的陸地，而不只是把原有的海岸固定住。牠們形成的森林如今被視為地球上效率最高的碳庫之一，每公頃儲存的碳是熱帶雨林的好幾倍，而且大部分鎖在浸水的泥中，而不是在木材裡。牠們也庇護許多具經濟價值魚類的幼魚，這就是為什麼漁村往往比科學家更早察覺一片紅樹林帶的消失。儘管如此，紅樹林被砍除的速度比大多數森林類型都快，主要是為了養蝦池和海岸開發。復育計畫的成效不一：種在錯誤潮間帶、或種在淡水流動已被改變的區域的樹苗，常常兩年內就死亡。生態學家越來越主張，恢復水流並讓森林自然再生，效果比單靠種樹更好。",
+    "Which of the following are stated in the passage?": "下列哪些內容在文章中有提到？",
+    "Mangroves deal with salt in more than one way.": "紅樹林處理鹽分的方式不只一種。",
+    "Mangrove mud stores more carbon per hectare than rainforest.": "紅樹林的泥土每公頃儲存的碳比雨林還多。",
+    "Mangrove loss is usually recorded by scientists before local fishers notice it.": "紅樹林的消失通常是科學家先記錄到，之後當地漁民才察覺。",
+    "Most mangrove clearance has been for timber.": "紅樹林大多是為了取得木材而被砍除。",
+    "Planting seedlings alone is often not enough to restore a mangrove forest.": "單靠種植樹苗往往不足以復育一片紅樹林。",
+    "Stated: some species block salt at the root and others excrete it through the leaves.": "文中有提到：有些種類在根部擋住鹽分，有些則透過葉片把鹽排出。",
+    "Stated: mangrove forests hold several times as much carbon per hectare as tropical rainforest.": "文中有提到：紅樹林每公頃儲存的碳是熱帶雨林的好幾倍。",
+    "The passage says the opposite, that fishing communities often notice the loss before scientists record it.": "文章說的正好相反：漁村往往比科學家更早察覺紅樹林的消失。",
+    "The passage gives shrimp ponds and coastal building as the main reasons, not timber.": "文章把養蝦池和海岸開發列為主要原因，而不是木材。",
+    "Stated: seedlings often die within two years, and ecologists argue that restoring water flow works better than planting alone.": "文中有提到：樹苗常在兩年內死亡，而生態學家主張恢復水流比單靠種樹更有效。"
+   },
+   "type": "mcq_multi_r"
+  },
+  {
+   "id": "M1MCMAR0002",
+   "passage": "City centres are routinely several degrees warmer than the countryside around them, an effect first described in London two hundred years ago and now measured in almost every large city. The causes are well understood. Dark roofs and asphalt absorb sunlight that vegetation would have reflected or used; buildings trap heat in narrow streets and release it slowly at night; and vehicles, air conditioners and industry add heat directly. The difference is therefore largest not at noon but a few hours after sunset, when open ground has cooled and the city has not. The consequences fall unevenly. Districts with the least tree cover tend to be the poorest, and during heatwaves they record the highest rates of illness and death. Air conditioning protects those who have it while making the street outside hotter, which has led some researchers to describe it as a private solution with a public cost. Remedies are not technically difficult: painting roofs white, planting street trees, and keeping parks and water channels open all measurably reduce peak temperatures, and trees do so while also providing shade at street level. The obstacles are mainly budgets and maintenance, since young street trees need watering for several years before they contribute much.",
+   "q": "Which of the following are stated in the passage?",
+   "o": [
+    "The temperature gap between a city and its surroundings peaks in the early evening rather than at midday.",
+    "The urban heat island effect was first described in the last fifty years.",
+    "Areas with fewer trees tend to suffer more during heatwaves.",
+    "Air conditioning raises the temperature outside the buildings it cools.",
+    "Painting roofs white has been shown to have no measurable effect."
+   ],
+   "a": [
+    0,
+    2,
+    3
+   ],
+   "why": [
+    "Stated: the difference is largest a few hours after sunset, when open ground has cooled and the city has not.",
+    "The passage says the effect was first described in London two hundred years ago.",
+    "Stated: districts with the least tree cover are usually the poorest and record the highest heatwave illness and death rates.",
+    "Stated: air conditioning protects those who have it while making the street outside hotter.",
+    "The passage lists white roofs among measures that measurably reduce peak temperatures."
+   ],
+   "zh": {
+    "City centres are routinely several degrees warmer than the countryside around them, an effect first described in London two hundred years ago and now measured in almost every large city. The causes are well understood. Dark roofs and asphalt absorb sunlight that vegetation would have reflected or used; buildings trap heat in narrow streets and release it slowly at night; and vehicles, air conditioners and industry add heat directly. The difference is therefore largest not at noon but a few hours after sunset, when open ground has cooled and the city has not. The consequences fall unevenly. Districts with the least tree cover tend to be the poorest, and during heatwaves they record the highest rates of illness and death. Air conditioning protects those who have it while making the street outside hotter, which has led some researchers to describe it as a private solution with a public cost. Remedies are not technically difficult: painting roofs white, planting street trees, and keeping parks and water channels open all measurably reduce peak temperatures, and trees do so while also providing shade at street level. The obstacles are mainly budgets and maintenance, since young street trees need watering for several years before they contribute much.": "市中心的氣溫通常比周圍鄉間高上好幾度，這個現象兩百年前首次在倫敦被描述，如今幾乎每座大城市都測量得到。成因已經相當清楚。深色屋頂和柏油吸收了原本會被植物反射或利用的陽光；建築物把熱困在狹窄的街道中，並在夜間緩慢釋放；而車輛、冷氣和工業則直接增加熱量。因此，溫差最大的時候不是中午，而是日落後幾個小時，此時空曠的土地已經冷卻，城市卻還沒有。後果分布得並不平均。樹木覆蓋最少的區域往往也是最貧窮的區域，而在熱浪期間，這些地方的患病率和死亡率最高。冷氣保護了擁有它的人，同時卻讓外面的街道更熱，因此有些研究者形容它是一種由公眾付出代價的私人解方。補救措施在技術上並不困難：把屋頂漆成白色、種植行道樹、保留公園和水道，都能明顯降低高溫峰值，而樹木還能同時在街道層面提供遮蔭。主要的障礙在於預算和維護，因為年輕的行道樹需要澆水好幾年，才能發揮明顯作用。",
+    "Which of the following are stated in the passage?": "下列哪些內容在文章中有提到？",
+    "The temperature gap between a city and its surroundings peaks in the early evening rather than at midday.": "城市與周圍地區的溫差在傍晚達到最高，而不是中午。",
+    "The urban heat island effect was first described in the last fifty years.": "都市熱島效應是在最近五十年內才首次被描述。",
+    "Areas with fewer trees tend to suffer more during heatwaves.": "樹木較少的地區在熱浪期間受害較重。",
+    "Air conditioning raises the temperature outside the buildings it cools.": "冷氣會使它所冷卻的建築物外面的氣溫升高。",
+    "Painting roofs white has been shown to have no measurable effect.": "把屋頂漆成白色已被證明沒有可測量的效果。",
+    "Stated: the difference is largest a few hours after sunset, when open ground has cooled and the city has not.": "文中有提到：溫差在日落後幾個小時最大，因為空曠土地已經冷卻，城市卻還沒有。",
+    "The passage says the effect was first described in London two hundred years ago.": "文章說這個現象兩百年前就在倫敦被描述過。",
+    "Stated: districts with the least tree cover are usually the poorest and record the highest heatwave illness and death rates.": "文中有提到：樹木覆蓋最少的區域通常最貧窮，熱浪期間的患病與死亡率也最高。",
+    "Stated: air conditioning protects those who have it while making the street outside hotter.": "文中有提到：冷氣保護了擁有它的人，同時讓外面的街道更熱。",
+    "The passage lists white roofs among measures that measurably reduce peak temperatures.": "文章把白色屋頂列為能明顯降低高溫峰值的措施之一。"
+   },
+   "type": "mcq_multi_r"
+  },
+  {
+   "id": "M1RP0001",
+   "order": [
+    "Tall buildings were impractical before the lift, because few people would climb more than five or six flights of stairs.",
+    "Hoists already existed, but a snapped rope sent the platform to the bottom, so no passenger would ride one.",
+    "In 1854, Elisha Otis stood on a raised platform at a New York fair and ordered the rope to be cut.",
+    "A spring-loaded catch gripped the guide rails, the platform dropped a few centimetres, and the crowd saw it hold.",
+    "Within thirty years the safety lift had made the first skyscrapers worth building."
+   ],
+   "why": [
+    "The opener. It states the problem the rest of the paragraph solves and names nobody.",
+    "“Hoists already existed, but” answers the problem just raised and explains why lifts were not yet used.",
+    "The demonstration follows the fear it was designed to answer, and names Otis in full for the first time.",
+    "“A spring-loaded catch” describes what happened when the rope was cut in the previous sentence.",
+    "The closer. “Within thirty years” looks past the demonstration to its consequence."
+   ],
+   "zh": {
+    "Tall buildings were impractical before the lift, because few people would climb more than five or six flights of stairs.": "在升降機出現之前，高樓並不實用，因為很少有人願意爬超過五、六層樓梯。",
+    "Hoists already existed, but a snapped rope sent the platform to the bottom, so no passenger would ride one.": "當時已經有起重裝置，但只要纜繩斷裂，平台就會直墜到底，所以沒有乘客願意搭乘。",
+    "In 1854, Elisha Otis stood on a raised platform at a New York fair and ordered the rope to be cut.": "1854 年，伊萊沙・奧的斯站在紐約一場博覽會的高台上，下令把纜繩砍斷。",
+    "A spring-loaded catch gripped the guide rails, the platform dropped a few centimetres, and the crowd saw it hold.": "彈簧式卡榫緊咬住導軌，平台只往下掉了幾公分，群眾親眼看見它停住了。",
+    "Within thirty years the safety lift had made the first skyscrapers worth building.": "不到三十年，安全升降機就讓最早的摩天大樓變得值得興建。",
+    "Tall buildings were impractical before the lift, because few people would climb more than five or six flights of stairs. — The opener. It states the problem the rest of the paragraph solves and names nobody.": "在升降機出現之前，高樓並不實用，因為很少有人願意爬超過五、六層樓梯。——開頭句。它陳述了後文要解決的問題，而且沒有提到任何人。",
+    "Hoists already existed, but a snapped rope sent the platform to the bottom, so no passenger would ride one. — “Hoists already existed, but” answers the problem just raised and explains why lifts were not yet used.": "當時已經有起重裝置，但只要纜繩斷裂，平台就會直墜到底，所以沒有乘客願意搭乘。——\"Hoists already existed, but\" 回應剛提出的問題，並說明為什麼當時還沒有人使用升降機。",
+    "In 1854, Elisha Otis stood on a raised platform at a New York fair and ordered the rope to be cut. — The demonstration follows the fear it was designed to answer, and names Otis in full for the first time.": "1854 年，伊萊沙・奧的斯站在紐約一場博覽會的高台上，下令把纜繩砍斷。——這場示範接在它所要化解的恐懼之後，並首次完整說出奧的斯的名字。",
+    "A spring-loaded catch gripped the guide rails, the platform dropped a few centimetres, and the crowd saw it hold. — “A spring-loaded catch” describes what happened when the rope was cut in the previous sentence.": "彈簧式卡榫緊咬住導軌，平台只往下掉了幾公分，群眾親眼看見它停住了。——\"A spring-loaded catch\" 描述的是上一句纜繩被砍斷後發生的事。",
+    "Within thirty years the safety lift had made the first skyscrapers worth building. — The closer. “Within thirty years” looks past the demonstration to its consequence.": "不到三十年，安全升降機就讓最早的摩天大樓變得值得興建。——結尾句。\"Within thirty years\" 把視角推到示範之後，說明它的影響。"
+   },
+   "type": "reorder"
+  },
+  {
+   "id": "M1RP0002",
+   "order": [
+    "Before the nineteenth century, a lighthouse was little more than a fire or a lamp behind a mirror, and its light was easily lost in haze.",
+    "Augustin Fresnel realised that the useful part of a lens is its surface, and that the glass behind it could be cut away.",
+    "His design used concentric rings of prisms to bend almost all of the lamp's light into a single horizontal beam.",
+    "The first installation, on the French coast in 1823, could be seen more than thirty kilometres out to sea.",
+    "Versions of the lens were still guiding ships a century and a half later."
+   ],
+   "why": [
+    "The opener. It sets up the problem that the rest of the paragraph solves, and names no one.",
+    "It introduces Fresnel in full and states his insight, which the next sentence calls “His design”.",
+    "“His design” refers back to the insight just described and explains how it worked.",
+    "“The first installation” follows the description of the design and gives the result in practice.",
+    "The closer. “a century and a half later” looks beyond the story and closes it."
+   ],
+   "zh": {
+    "Before the nineteenth century, a lighthouse was little more than a fire or a lamp behind a mirror, and its light was easily lost in haze.": "在十九世紀以前，燈塔不過是一團火或一盞放在鏡子前的燈，它的光在霧氣中很容易就消失無蹤。",
+    "Augustin Fresnel realised that the useful part of a lens is its surface, and that the glass behind it could be cut away.": "奧古斯丁・菲涅耳意識到，透鏡真正有用的部分是它的表面，後面的玻璃其實可以削去。",
+    "His design used concentric rings of prisms to bend almost all of the lamp's light into a single horizontal beam.": "他的設計用一圈圈同心的稜鏡，把燈光幾乎全部折射成一道水平光束。",
+    "The first installation, on the French coast in 1823, could be seen more than thirty kilometres out to sea.": "第一座採用這種設計的燈塔於 1823 年設在法國海岸，在三十公里以外的海面上都看得見。",
+    "Versions of the lens were still guiding ships a century and a half later.": "一個半世紀之後，這種透鏡的各種版本仍在為船隻指引方向。",
+    "Before the nineteenth century, a lighthouse was little more than a fire or a lamp behind a mirror, and its light was easily lost in haze. — The opener. It sets up the problem that the rest of the paragraph solves, and names no one.": "在十九世紀以前，燈塔不過是一團火或一盞放在鏡子前的燈，它的光在霧氣中很容易就消失無蹤。——開頭句。它提出了後文要解決的問題，而且沒有提到任何人名。",
+    "Augustin Fresnel realised that the useful part of a lens is its surface, and that the glass behind it could be cut away. — It introduces Fresnel in full and states his insight, which the next sentence calls “His design”.": "奧古斯丁・菲涅耳意識到，透鏡真正有用的部分是它的表面，後面的玻璃其實可以削去。——它完整introduce了菲涅耳並說明他的想法，而下一句正是以 \"His design\" 指稱它。",
+    "His design used concentric rings of prisms to bend almost all of the lamp's light into a single horizontal beam. — “His design” refers back to the insight just described and explains how it worked.": "他的設計用一圈圈同心的稜鏡，把燈光幾乎全部折射成一道水平光束。——\"His design\" 指回剛剛描述的那個想法，並說明它如何運作。",
+    "The first installation, on the French coast in 1823, could be seen more than thirty kilometres out to sea. — “The first installation” follows the description of the design and gives the result in practice.": "第一座採用這種設計的燈塔於 1823 年設在法國海岸，在三十公里以外的海面上都看得見。——\"The first installation\" 接在設計的說明之後，給出實際的成果。",
+    "Versions of the lens were still guiding ships a century and a half later. — The closer. “a century and a half later” looks beyond the story and closes it.": "一個半世紀之後，這種透鏡的各種版本仍在為船隻指引方向。——結尾句。\"a century and a half later\" 把視角拉到故事之外，作為收尾。"
+   },
+   "type": "reorder"
+  },
+  {
+   "id": "M1RP0003",
+   "order": [
+    "The Eiffel Tower was built as a temporary exhibit for the world fair of 1889 and was to be dismantled twenty years later.",
+    "Many Parisian writers and artists signed a petition against it, calling the structure a useless monstrosity.",
+    "As the deadline approached, its builder pointed out that no other structure in the city stood so high above the rooftops.",
+    "Antennas installed at the top proved able to reach ships far out in the Atlantic, and the army argued for keeping it.",
+    "The tower it had been fashionable to despise survived because it was useful, and has stood ever since."
+   ],
+   "why": [
+    "The opener. It introduces the tower and the deadline that the rest of the paragraph turns on.",
+    "The objection follows the introduction, and “it” refers to the tower just named.",
+    "“As the deadline approached” refers back to the twenty-year limit set in the first sentence.",
+    "The antennas are the answer to the argument about height made in the previous sentence.",
+    "The closer. “had been fashionable to despise” looks back at the petition and gives the outcome."
+   ],
+   "zh": {
+    "The Eiffel Tower was built as a temporary exhibit for the world fair of 1889 and was to be dismantled twenty years later.": "艾菲爾鐵塔是為 1889 年世界博覽會興建的臨時展品，原本預定在二十年後拆除。",
+    "Many Parisian writers and artists signed a petition against it, calling the structure a useless monstrosity.": "許多巴黎的作家與藝術家連署反對，稱這座建築是一個毫無用處的怪物。",
+    "As the deadline approached, its builder pointed out that no other structure in the city stood so high above the rooftops.": "隨著期限逼近，它的建造者指出，城裡沒有任何其他建築高出屋頂這麼多。",
+    "Antennas installed at the top proved able to reach ships far out in the Atlantic, and the army argued for keeping it.": "安裝在塔頂的天線被證明能連上遠在大西洋上的船隻，軍方因此主張保留它。",
+    "The tower it had been fashionable to despise survived because it was useful, and has stood ever since.": "這座一度被視為理所當然該鄙視的鐵塔，因為有用而留了下來，並從此屹立至今。",
+    "The Eiffel Tower was built as a temporary exhibit for the world fair of 1889 and was to be dismantled twenty years later. — The opener. It introduces the tower and the deadline that the rest of the paragraph turns on.": "艾菲爾鐵塔是為 1889 年世界博覽會興建的臨時展品，原本預定在二十年後拆除。——開頭句。它引出鐵塔本身，以及後文所圍繞的那個期限。",
+    "Many Parisian writers and artists signed a petition against it, calling the structure a useless monstrosity. — The objection follows the introduction, and “it” refers to the tower just named.": "許多巴黎的作家與藝術家連署反對，稱這座建築是一個毫無用處的怪物。——反對的聲音接在引言之後，而 \"it\" 指的是剛提到的鐵塔。",
+    "As the deadline approached, its builder pointed out that no other structure in the city stood so high above the rooftops. — “As the deadline approached” refers back to the twenty-year limit set in the first sentence.": "隨著期限逼近，它的建造者指出，城裡沒有任何其他建築高出屋頂這麼多。——\"As the deadline approached\" 指回第一句所設下的二十年期限。",
+    "Antennas installed at the top proved able to reach ships far out in the Atlantic, and the army argued for keeping it. — The antennas are the answer to the argument about height made in the previous sentence.": "安裝在塔頂的天線被證明能連上遠在大西洋上的船隻，軍方因此主張保留它。——天線正是回應前一句關於高度的論點。",
+    "The tower it had been fashionable to despise survived because it was useful, and has stood ever since. — The closer. “had been fashionable to despise” looks back at the petition and gives the outcome.": "這座一度被視為理所當然該鄙視的鐵塔，因為有用而留了下來，並從此屹立至今。——結尾句。\"had been fashionable to despise\" 回顧了那份連署，並給出結果。"
+   },
+   "type": "reorder"
+  },
+  {
+   "id": "M1RFIB0001",
+   "title": "The metric system",
+   "parts": [
+    "The metric system was created during the French Revolution, when reformers wanted units belonging to no king and no ",
+    ". The metre was defined as one ten-millionth of the distance from the pole to the equator, which surveyors spent seven years trying to ",
+    ". Adoption was slow: shopkeepers went on using the old units for ",
+    ", and both were allowed. Today its definitions depend not on the planet but on constants of ",
+    "."
+   ],
+   "ans": [
+    "region",
+    "measure",
+    "decades",
+    "nature"
+   ],
+   "bank": [
+    "region",
+    "measure",
+    "decades",
+    "nature",
+    "reason",
+    "invent",
+    "minutes",
+    "memory"
+   ],
+   "why": [
+    "Units belonging to no king and no region are units that are not local to anyone, which is what the reformers wanted.",
+    "Surveyors spent seven years trying to measure that distance, which is what defines the metre. You cannot “invent” a distance that already exists.",
+    "The old units stayed in use long after the reform, so the period is decades, not minutes.",
+    "Modern definitions rest on physical constants, which the passage calls constants of nature."
+   ],
+   "zh": {
+    "The metric system was created during the French Revolution, when reformers wanted units belonging to no king and no ____ . The metre was defined as one ten-millionth of the distance from the pole to the equator, which surveyors spent seven years trying to ____ . Adoption was slow: shopkeepers went on using the old units for ____ , and both were allowed. Today its definitions depend not on the planet but on constants of ____ .": "公制是在法國大革命期間創立的，當時的改革者希望有一套不屬於任何國王、也不屬於任何 ____ 的單位。公尺被定義為從極點到赤道距離的千萬分之一，測量人員花了七年時間試圖 ____ 這個長度。推行的速度很慢：店家繼續使用舊單位長達數 ____ ，兩種單位因此並行。如今它的定義取決的不是地球，而是 ____ 的常數。",
+    "Units belonging to no king and no region are units that are not local to anyone, which is what the reformers wanted.": "不屬於任何國王、也不屬於任何 region（地區）的單位，就是不專屬於任何人的單位，這正是改革者所希望的。",
+    "Surveyors spent seven years trying to measure that distance, which is what defines the metre. You cannot “invent” a distance that already exists.": "測量人員花了七年時間試圖 measure（測量）那段距離，而這段距離定義了公尺。你無法「發明」一段本來就存在的距離。",
+    "The old units stayed in use long after the reform, so the period is decades, not minutes.": "舊單位在改革後仍使用了很久，所以這段期間是數 decades（十年），而不是幾分鐘。",
+    "Modern definitions rest on physical constants, which the passage calls constants of nature.": "現代的定義建立在物理常數上，文中稱之為 constants of nature（自然界的常數）。"
+   },
+   "type": "r_fib"
+  },
+  {
+   "id": "M1RFIB0002",
+   "title": "Built for the desert",
+   "parts": [
+    "A camel’s hump stores fat rather than water, a more useful ",
+    " in a desert because fat can be broken down for energy. Water is saved in other ways. A camel tolerates a body temperature that ",
+    " by six degrees, so it sweats far less than most mammals. Its nostrils recover moisture from each ",
+    ", and its blood cells swell without bursting when it drinks, letting it take in a hundred litres in a few ",
+    "."
+   ],
+   "ans": [
+    "arrangement",
+    "varies",
+    "breath",
+    "minutes"
+   ],
+   "bank": [
+    "arrangement",
+    "varies",
+    "breath",
+    "minutes",
+    "accident",
+    "falls",
+    "meal",
+    "weeks"
+   ],
+   "why": [
+    "Storing fat instead of water is described as more useful, so the noun refers to the design or arrangement, not an accident.",
+    "A temperature that varies by six degrees explains why the camel sweats less. “falls by six degrees” would not describe a daily range.",
+    "Nostrils recover moisture from air leaving the body, that is, from each breath rather than each meal.",
+    "Drinking a hundred litres happens very quickly once water is found, so the period is minutes, not weeks."
+   ],
+   "zh": {
+    "A camel’s hump stores fat rather than water, a more useful ____ in a desert because fat can be broken down for energy. Water is saved in other ways. A camel tolerates a body temperature that ____ by six degrees, so it sweats far less than most mammals. Its nostrils recover moisture from each ____ , and its blood cells swell without bursting when it drinks, letting it take in a hundred litres in a few ____ .": "駱駝的駝峰儲存的是脂肪而不是水，這在沙漠中是更有用的 ____ ，因為脂肪可以分解產生能量。水則以其他方式節省下來。駱駝能忍受體溫 ____ 達六度，所以牠流的汗遠比大多數哺乳動物少。牠的鼻孔會從每一次 ____ 中回收水分，而牠喝水時血球可以膨脹而不會破裂，使牠能在幾 ____ 內喝下一百公升的水。",
+    "Storing fat instead of water is described as more useful, so the noun refers to the design or arrangement, not an accident.": "儲存脂肪而不是水被形容為更有用，所以這個名詞指的是這種構造或 arrangement（安排），而不是意外。",
+    "A temperature that varies by six degrees explains why the camel sweats less. “falls by six degrees” would not describe a daily range.": "體溫 varies（變動）達六度，解釋了為什麼駱駝流的汗較少。falls by six degrees 無法描述一天之內的變化幅度。",
+    "Nostrils recover moisture from air leaving the body, that is, from each breath rather than each meal.": "鼻孔從離開身體的空氣中回收水分，也就是從每一次 breath（呼吸）中，而不是每一餐。",
+    "Drinking a hundred litres happens very quickly once water is found, so the period is minutes, not weeks.": "一旦找到水，喝下一百公升的水會發生得非常快，所以這段時間是幾 minutes（分鐘），而不是幾週。"
+   },
+   "type": "r_fib"
+  },
+  {
+   "id": "M1RFIB0003",
+   "title": "Predicting eclipses",
+   "parts": [
+    "Solar eclipses once caused panic, but they follow a pattern that ancient astronomers were able to ",
+    ". They repeat in a cycle of about eighteen years, the saros, because the sun, moon and Earth return to almost the same ",
+    ". Babylonian records allowed predictions centuries before anyone understood the ",
+    " of the solar system. Today the refinement is precision: astronomers can state the path of an eclipse to within a few ",
+    " and a few seconds."
+   ],
+   "ans": [
+    "detect",
+    "alignment",
+    "geometry",
+    "kilometres"
+   ],
+   "bank": [
+    "detect",
+    "alignment",
+    "geometry",
+    "kilometres",
+    "ignore",
+    "distance",
+    "history",
+    "degrees"
+   ],
+   "why": [
+    "Ancient astronomers noticed the repeating pattern, so they were able to detect it rather than ignore it.",
+    "The cycle repeats because the three bodies return to nearly the same alignment, that is, the same arrangement in a line.",
+    "Understanding how the bodies move in space is understanding the geometry of the solar system; its history would not help predict eclipses.",
+    "A path on the ground is stated in kilometres, and the sentence pairs this with seconds of time."
+   ],
+   "zh": {
+    "Solar eclipses once caused panic, but they follow a pattern that ancient astronomers were able to ____ . They repeat in a cycle of about eighteen years, the saros, because the sun, moon and Earth return to almost the same ____ . Babylonian records allowed predictions centuries before anyone understood the ____ of the solar system. Today the refinement is precision: astronomers can state the path of an eclipse to within a few ____ and a few seconds.": "日食曾經引起恐慌，但它遵循著一種古代天文學家能夠 ____ 的規律。它大約每十八年重複出現一次，稱為「沙羅週期」，因為太陽、月球和地球會回到幾乎相同的 ____ 。巴比倫人的紀錄讓人們早在了解太陽系的 ____ 之前好幾個世紀，就能做出預測。今天的改良在於精確度：天文學家能把日食的路徑說到只差幾 ____ 、時間只差幾秒。",
+    "Ancient astronomers noticed the repeating pattern, so they were able to detect it rather than ignore it.": "古代天文學家注意到了這種重複出現的規律，所以他們能夠 detect（察覺）它，而不是忽略它。",
+    "The cycle repeats because the three bodies return to nearly the same alignment, that is, the same arrangement in a line.": "這個週期之所以重複，是因為三個天體回到幾乎相同的 alignment（排列），也就是同樣的連線位置。",
+    "Understanding how the bodies move in space is understanding the geometry of the solar system; its history would not help predict eclipses.": "了解這些天體在空間中如何運行，就是了解太陽系的 geometry（幾何關係）；它的歷史無助於預測日食。",
+    "A path on the ground is stated in kilometres, and the sentence pairs this with seconds of time.": "地面上的路徑以 kilometres（公里）表示，而這句話把它與時間的秒數並列。"
+   },
+   "type": "r_fib"
+  },
+  {
+   "id": "M1RFIB0004",
+   "title": "Fingerprints",
+   "parts": [
+    "Fingerprints have identified people for a century, and no two have been found to be ",
+    ". Their value in court depends on how a match is ",
+    ". A print left at a scene is usually partial, and for most of the twentieth century examiners declared a match without stating any margin of ",
+    ". Recent studies show that examiners can be influenced by what they know about a suspect, so laboratories now ",
+    " case details from the examiner."
+   ],
+   "ans": [
+    "identical",
+    "judged",
+    "error",
+    "withhold"
+   ],
+   "bank": [
+    "identical",
+    "judged",
+    "error",
+    "withhold",
+    "invisible",
+    "copied",
+    "interest",
+    "collect"
+   ],
+   "why": [
+    "No two prints are the same, so the missing word is identical. Prints are certainly not invisible.",
+    "The sentence turns from the prints themselves to the process of deciding a match, that is, how it is judged.",
+    "Declaring a match “without stating any margin of …” refers to a margin of error, the standard phrase in measurement.",
+    "Because knowledge about a suspect can bias an examiner, laboratories withhold case details from them. Collecting details would increase the bias."
+   ],
+   "zh": {
+    "Fingerprints have identified people for a century, and no two have been found to be ____ . Their value in court depends on how a match is ____ . A print left at a scene is usually partial, and for most of the twentieth century examiners declared a match without stating any margin of ____ . Recent studies show that examiners can be influenced by what they know about a suspect, so laboratories now ____ case details from the examiner.": "指紋被用來辨識身分已有一個多世紀，而且從未發現過兩枚完全 ____ 的指紋。它在法庭上的價值取決於比對結果是如何 ____ 的。現場留下的指紋通常並不完整，而在二十世紀的大部分時間裡，鑑識人員宣布比對相符時，卻沒有說明任何 ____ 範圍。近期研究顯示，鑑識人員可能受到自己已知的嫌犯資訊影響，所以實驗室現在會對進行比對的人 ____ 案件細節。",
+    "No two prints are the same, so the missing word is identical. Prints are certainly not invisible.": "沒有兩枚指紋是一樣的，所以缺少的字是 identical（完全相同）。指紋當然不是看不見的。",
+    "The sentence turns from the prints themselves to the process of deciding a match, that is, how it is judged.": "這句話從指紋本身轉向判定是否相符的過程，也就是它是如何被 judged（判定）的。",
+    "Declaring a match “without stating any margin of …” refers to a margin of error, the standard phrase in measurement.": "宣布相符卻「沒有說明任何…範圍」指的是 margin of error（誤差範圍），這是測量上的標準用語。",
+    "Because knowledge about a suspect can bias an examiner, laboratories withhold case details from them. Collecting details would increase the bias.": "由於關於嫌犯的資訊可能使鑑識人員產生偏見，實驗室會對他們 withhold（不提供）案件細節。收集細節只會加深偏見。"
+   },
+   "type": "r_fib"
+  },
+  {
+   "id": "M1RFIB0005",
+   "title": "Living light",
+   "parts": [
+    "Most light in the ocean is not made by the sun. Below a few hundred metres the only illumination comes from living things, and perhaps three ",
+    " of deep-sea animals produce it. Bioluminescence gives off light with almost no ",
+    ", which is why it is called cold light. Animals use it to attract prey, to find a ",
+    " and to escape. Because the light is faint, biologists must let their eyes ",
+    " for twenty minutes to see it."
+   ],
+   "ans": [
+    "quarters",
+    "heat",
+    "mate",
+    "adjust"
+   ],
+   "bank": [
+    "quarters",
+    "heat",
+    "mate",
+    "adjust",
+    "hundreds",
+    "sound",
+    "shell",
+    "hurry"
+   ],
+   "why": [
+    "“three …” followed by a fraction of deep-sea animals means three quarters. “three hundreds” is not English.",
+    "Cold light is light produced with almost no heat, which the next clause explains.",
+    "The list of uses is attracting prey, finding a mate and escaping, all reasons an animal signals.",
+    "In near darkness, eyes must adjust before faint light becomes visible, which is why it takes twenty minutes."
+   ],
+   "zh": {
+    "Most light in the ocean is not made by the sun. Below a few hundred metres the only illumination comes from living things, and perhaps three ____ of deep-sea animals produce it. Bioluminescence gives off light with almost no ____ , which is why it is called cold light. Animals use it to attract prey, to find a ____ and to escape. Because the light is faint, biologists must let their eyes ____ for twenty minutes to see it.": "海洋中大部分的光並不是太陽發出的。在水深幾百公尺以下，唯一的光源來自生物，而深海動物中或許有四分之三 ____ 會發光。生物發光放出的光幾乎不帶 ____ ，這就是為什麼它被稱為冷光。動物用它來吸引獵物、尋找 ____ ，以及逃生。由於這種光很微弱，生物學家必須讓眼睛 ____ 二十分鐘才能看見它。",
+    "“three …” followed by a fraction of deep-sea animals means three quarters. “three hundreds” is not English.": "「three …」後面接著深海動物的某個比例，意思是 three quarters（四分之三）。three hundreds 不是正確的英文。",
+    "Cold light is light produced with almost no heat, which the next clause explains.": "冷光是指幾乎不放出 heat（熱）的光，下一個子句對此做了說明。",
+    "The list of uses is attracting prey, finding a mate and escaping, all reasons an animal signals.": "這串用途包括吸引獵物、尋找 mate（配偶）和逃生，都是動物發出訊號的原因。",
+    "In near darkness, eyes must adjust before faint light becomes visible, which is why it takes twenty minutes.": "在接近全黑的環境中，眼睛必須先 adjust（適應），微弱的光才會變得可見，這就是為什麼需要二十分鐘。"
+   },
+   "type": "r_fib"
+  },
+  {
+   "id": "M1MCSAR0001",
+   "passage": "Why zebras are striped has been argued over for more than a century. Camouflage was the usual answer: at a distance, or in moving herds, the pattern was said to confuse a lion. Tests of that idea have not gone well. Lions hunt largely at night and see poorly by day, and computer models of predator vision suggest the stripes are visible at closer range than a plain coat would be. A second theory, that the pattern helps zebras recognise each other, does not explain why other grazing animals manage without it. The strongest current evidence concerns flies. Biting flies carry disease, and across Africa the striping of zebra populations matches the distribution of those flies more closely than it matches temperature, predator numbers or herd size. Field experiments have since shown that horses wearing striped coats are approached by flies as often as plain horses but land on them far less: the flies fail to slow down properly and simply bump into the animal. That does not prove the flies drove the pattern's evolution, but it does explain the striping better than the older accounts do.",
+   "q": "What is the author's view of the fly theory?",
+   "o": [
+    "It has been proved beyond doubt that flies caused zebras to evolve stripes.",
+    "It is currently the best supported explanation, although not conclusive.",
+    "It is less convincing than the camouflage explanation.",
+    "It applies only to horses and not to zebras."
+   ],
+   "why": [
+    "The last sentence says explicitly that the evidence does not prove the flies drove the pattern's evolution.",
+    "This matches the closing sentence: the fly theory explains the striping better than the older accounts, but is not proof.",
+    "The author reports that tests of camouflage have not gone well, so the camouflage account is treated as weaker.",
+    "The horse experiments are given as evidence about the effect of stripes, not as a limit on where the theory applies."
+   ],
+   "a": 1,
+   "zh": {
+    "Why zebras are striped has been argued over for more than a century. Camouflage was the usual answer: at a distance, or in moving herds, the pattern was said to confuse a lion. Tests of that idea have not gone well. Lions hunt largely at night and see poorly by day, and computer models of predator vision suggest the stripes are visible at closer range than a plain coat would be. A second theory, that the pattern helps zebras recognise each other, does not explain why other grazing animals manage without it. The strongest current evidence concerns flies. Biting flies carry disease, and across Africa the striping of zebra populations matches the distribution of those flies more closely than it matches temperature, predator numbers or herd size. Field experiments have since shown that horses wearing striped coats are approached by flies as often as plain horses but land on them far less: the flies fail to slow down properly and simply bump into the animal. That does not prove the flies drove the pattern's evolution, but it does explain the striping better than the older accounts do.": "斑馬為什麼有條紋，已經爭論了一個多世紀。以往常見的答案是偽裝：據說在遠處或在移動的獸群中，這種花紋會讓獅子看不清楚。然而，檢驗這個想法的結果並不理想。獅子多半在夜間獵食，白天視力不佳，而模擬掠食者視覺的電腦模型顯示，條紋在較近距離時反而比純色毛皮更明顯。第二種理論認為這種花紋有助於斑馬彼此辨認，但它無法解釋為什麼其他草食動物沒有條紋也能辦到。目前最有力的證據與蒼蠅有關。吸血蠅會傳播疾病，而在整個非洲，斑馬族群的條紋分布與這些蒼蠅的分布吻合的程度，高於與氣溫、掠食者數量或族群規模的吻合程度。之後的野外實驗顯示，披上條紋外衣的馬被蒼蠅接近的次數與一般馬匹相同，但蒼蠅停落在牠們身上的次數卻少得多：這些蒼蠅無法順利減速，只是直接撞上動物。這並不能證明蒼蠅推動了這種花紋的演化，但它確實比舊有的說法更能解釋條紋的存在。",
+    "What is the author's view of the fly theory?": "作者對「蒼蠅理論」的看法是什麼？",
+    "It has been proved beyond doubt that flies caused zebras to evolve stripes.": "已經毫無疑問地證明蒼蠅使斑馬演化出條紋。",
+    "It is currently the best supported explanation, although not conclusive.": "它是目前證據最充分的解釋，不過尚未有定論。",
+    "It is less convincing than the camouflage explanation.": "它不如偽裝的解釋有說服力。",
+    "It applies only to horses and not to zebras.": "它只適用於馬，而不適用於斑馬。",
+    "The last sentence says explicitly that the evidence does not prove the flies drove the pattern's evolution.": "最後一句明確表示，這些證據並不能證明蒼蠅推動了這種花紋的演化。",
+    "This matches the closing sentence: the fly theory explains the striping better than the older accounts, but is not proof.": "這與結尾句相符：蒼蠅理論比舊說法更能解釋條紋，但並不是證明。",
+    "The author reports that tests of camouflage have not gone well, so the camouflage account is treated as weaker.": "作者說檢驗偽裝理論的結果並不理想，所以偽裝的說法被視為較弱。",
+    "The horse experiments are given as evidence about the effect of stripes, not as a limit on where the theory applies.": "馬匹實驗是用來說明條紋的效果，而不是限定這個理論的適用範圍。"
+   },
+   "type": "mcq_single_r"
+  },
+  {
+   "id": "M1MCSAR0002",
+   "passage": "Students who take notes on a laptop record more words than students writing by hand, and in a well-known study they also performed worse on questions that required them to explain what they had heard. The usual interpretation is that typing is fast enough to allow a transcript, whereas a slow hand forces the writer to summarise, and summarising is itself a form of learning. The finding has been repeated often enough to enter teaching guidance, but it is narrower than it is usually made to sound. Later replications have produced smaller effects, and in several the difference disappeared once students were told to write in their own words rather than transcribe. The medium, in other words, may matter less than the instruction. Handwriting also carries costs that the original study did not weigh: notes cannot be searched, shared or corrected easily, and students with motor or visual difficulties may be excluded altogether. A more defensible conclusion is that the goal is to process material while hearing it, and that any tool which encourages transcription makes that harder.",
+   "q": "What conclusion does the author reach?",
+   "o": [
+    "Laptops should be banned from lectures.",
+    "What matters most is whether students process the material rather than transcribe it.",
+    "Handwritten notes are always superior for learning.",
+    "The original study has been shown to be fraudulent."
+   ],
+   "why": [
+    "The passage never recommends a ban, and it lists real costs of handwriting.",
+    "This matches the final sentence: the goal is to process material while listening, and any tool encouraging transcription makes that harder.",
+    "The author says the effect shrank in later replications and that handwriting has its own costs, so “always superior” overstates it.",
+    "The passage says the finding was repeated and later replicated with smaller effects, which is not a claim of fraud."
+   ],
+   "a": 1,
+   "zh": {
+    "Students who take notes on a laptop record more words than students writing by hand, and in a well-known study they also performed worse on questions that required them to explain what they had heard. The usual interpretation is that typing is fast enough to allow a transcript, whereas a slow hand forces the writer to summarise, and summarising is itself a form of learning. The finding has been repeated often enough to enter teaching guidance, but it is narrower than it is usually made to sound. Later replications have produced smaller effects, and in several the difference disappeared once students were told to write in their own words rather than transcribe. The medium, in other words, may matter less than the instruction. Handwriting also carries costs that the original study did not weigh: notes cannot be searched, shared or corrected easily, and students with motor or visual difficulties may be excluded altogether. A more defensible conclusion is that the goal is to process material while hearing it, and that any tool which encourages transcription makes that harder.": "用筆電做筆記的學生記下的字數比手寫的學生多，而在一項著名研究中，他們在需要解釋所聽內容的題目上表現也較差。常見的解讀是，打字快到足以抄下逐字稿，而手寫速度慢則迫使書寫者去摘要，而摘要本身就是一種學習。這個發現被重複驗證的次數多到已寫進教學指引，但它的適用範圍其實比一般說法窄得多。後來的重複研究得到的效果較小，而在其中幾項研究中，只要告訴學生用自己的話寫、而不要抄寫，差異就消失了。換句話說，媒介的重要性可能不如指示來得大。手寫也有原始研究沒有衡量的代價：筆記無法搜尋、分享，也不容易修改，而有動作或視覺困難的學生甚至可能完全被排除在外。比較站得住腳的結論是：目標在於一邊聽一邊處理內容，而任何鼓勵抄寫的工具都會讓這件事更難做到。",
+    "What conclusion does the author reach?": "作者得到什麼結論？",
+    "Laptops should be banned from lectures.": "應該禁止在課堂上使用筆電。",
+    "What matters most is whether students process the material rather than transcribe it.": "最重要的是學生是否處理了內容，而不是只把它抄下來。",
+    "Handwritten notes are always superior for learning.": "手寫筆記對學習而言永遠比較好。",
+    "The original study has been shown to be fraudulent.": "原始研究已被證明造假。",
+    "The passage never recommends a ban, and it lists real costs of handwriting.": "文章從未建議禁用筆電，還列出了手寫確實存在的代價。",
+    "This matches the final sentence: the goal is to process material while listening, and any tool encouraging transcription makes that harder.": "這與最後一句相符：目標是一邊聽一邊處理內容，而任何鼓勵抄寫的工具都會讓這件事更難。",
+    "The author says the effect shrank in later replications and that handwriting has its own costs, so “always superior” overstates it.": "作者說後來的重複研究效果變小，而且手寫本身也有代價，所以「永遠比較好」說得太滿。",
+    "The passage says the finding was repeated and later replicated with smaller effects, which is not a claim of fraud.": "文章說這個發現被重複驗證過，後來的研究也得到較小的效果，這並不是在指控造假。"
+   },
+   "type": "mcq_single_r"
+  },
+  {
+   "id": "M1SST0001",
+   "voice": "m",
+   "title": "Lecture: the cost of noise",
+   "text": "When we list environmental threats to health, we usually think of air pollution first. Noise deserves a place on the same list. The World Health Organization estimates that in Western Europe alone, environmental noise costs over a million healthy life years annually, mostly through sleep disturbance and cardiovascular disease. The mechanism is not simply annoyance. Even when a sleeper does not wake, a passing lorry produces a measurable rise in heart rate and stress hormones, and over years this pattern is associated with higher blood pressure. Children are affected differently: studies near airports have found delays in reading development that correlate with aircraft noise at school, and the effect persists after controlling for family income. What makes noise unusual as a pollutant is how cheap the remedies are. Quieter road surfaces, lower night-time speed limits, and simple changes to flight paths deliver measurable benefits at a fraction of the cost of the health effects they prevent. The main obstacle is that noise leaves no residue, so the harm is easy to discount.",
+   "keys": [
+    "noise belongs with air pollution as an environmental health threat",
+    "WHO: over a million healthy life years lost yearly in Western Europe",
+    "sleeping bodies still react: raised heart rate and stress hormones, then blood pressure",
+    "children near airports show delayed reading development, independent of income",
+    "remedies are cheap: quieter surfaces, night speed limits, flight paths; harm is discounted because noise leaves no residue"
+   ],
+   "model": "The lecturer argued that noise is a serious health threat alongside air pollution, costing Western Europe over a million healthy life years each year. Sleepers who do not wake still show raised heart rates and stress hormones, which is linked to high blood pressure, and children near airports read less well regardless of income. Remedies are cheap, but noise leaves no residue, so the harm is discounted.",
+   "zh": {
+    "noise belongs with air pollution as an environmental health threat": "噪音和空氣污染一樣，都是環境對健康的威脅",
+    "WHO: over a million healthy life years lost yearly in Western Europe": "世界衛生組織：光是西歐每年就損失超過一百萬個健康生命年",
+    "sleeping bodies still react: raised heart rate and stress hormones, then blood pressure": "即使沒有醒來，睡眠中的身體仍會反應：心跳加快、壓力荷爾蒙上升，進而影響血壓",
+    "children near airports show delayed reading development, independent of income": "機場附近的兒童閱讀發展遲緩，且與家庭收入無關",
+    "remedies are cheap: quieter surfaces, night speed limits, flight paths; harm is discounted because noise leaves no residue": "解決方法很便宜：較安靜的路面、夜間速限、航道調整；由於噪音不留痕跡，其危害容易被低估",
+    "The lecturer argued that noise is a serious health threat alongside air pollution, costing Western Europe over a million healthy life years each year. Sleepers who do not wake still show raised heart rates and stress hormones, which is linked to high blood pressure, and children near airports read less well regardless of income. Remedies are cheap, but noise leaves no residue, so the harm is discounted.": "講者主張，噪音和空氣污染一樣是嚴重的健康威脅，每年使西歐損失超過一百萬個健康生命年。即使沒有醒來，睡眠中的人心跳仍會加快、壓力荷爾蒙上升，這與高血壓有關，而機場附近的兒童無論家庭收入如何，閱讀能力都較差。補救方法很便宜，但噪音不會留下痕跡，因此其危害容易被低估。",
+    "When we list environmental threats to health, we usually think of air pollution first. Noise deserves a place on the same list. The World Health Organization estimates that in Western Europe alone, environmental noise costs over a million healthy life years annually, mostly through sleep disturbance and cardiovascular disease. The mechanism is not simply annoyance. Even when a sleeper does not wake, a passing lorry produces a measurable rise in heart rate and stress hormones, and over years this pattern is associated with higher blood pressure. Children are affected differently: studies near airports have found delays in reading development that correlate with aircraft noise at school, and the effect persists after controlling for family income. What makes noise unusual as a pollutant is how cheap the remedies are. Quieter road surfaces, lower night-time speed limits, and simple changes to flight paths deliver measurable benefits at a fraction of the cost of the health effects they prevent. The main obstacle is that noise leaves no residue, so the harm is easy to discount.": "當我們列舉環境對健康的威脅時，通常會先想到空氣污染。噪音也應該被列在同一份清單上。世界衛生組織估計，光是在西歐，環境噪音每年就造成超過一百萬個健康生命年的損失，主要是透過睡眠干擾和心血管疾病。其作用機制不只是讓人心煩而已。即使睡覺的人沒有醒來，一輛經過的貨車仍會使心跳和壓力荷爾蒙出現可測量的上升，而多年下來，這種模式與較高的血壓有關。兒童受到的影響則不同：機場附近的研究發現，學校所在地的飛機噪音與閱讀發展遲緩有關，而且在控制家庭收入之後，這個效應依然存在。噪音作為一種污染物的特別之處，在於補救措施有多便宜。較安靜的路面、較低的夜間速限，以及對航道做些簡單的調整，都能以遠低於其所避免之健康損害的成本，帶來可衡量的效益。主要的障礙在於，噪音不會留下任何殘留物，所以它造成的傷害很容易被輕忽。"
+   },
+   "type": "sst"
+  },
+  {
+   "id": "M1MCMAL0001",
+   "text": "Before the railways, every town in Britain kept its own time, set by the sun. Oxford was about five minutes behind London, Bristol about ten, and nobody minded, because nobody could travel fast enough for the difference to matter. The railway changed that almost overnight. A timetable printed in London was useless in Bristol if the two cities disagreed about what hour it was, and there were accidents caused by trains on the same line running to different clocks. The Great Western Railway therefore adopted London time across its network in 1840, and other companies followed. For some years many towns kept two times at once: the station clock showed railway time while the town hall showed local time, and some clocks were fitted with two minute hands. Resistance was not trivial, since a town's time was a matter of civic pride, and there were court cases turning on which time a legal deadline referred to. Parliament did not make Greenwich time the legal standard until 1880, forty years after the railways had effectively imposed it. The same pattern repeated internationally. The global system of time zones was agreed at a conference in 1884, and again it was driven by transport and telegraph companies rather than by astronomers, who were quite content with local time for their own purposes.",
+   "q": "Which of the following are true according to the speaker?",
+   "o": [
+    "Before the railways, British towns set their clocks by the sun.",
+    "Parliament made Greenwich time the legal standard before the railway companies adopted it.",
+    "Some clocks were built with two minute hands.",
+    "Astronomers led the campaign for a global system of time zones.",
+    "Disagreements about time reached the courts."
+   ],
+   "a": [
+    0,
+    2,
+    4
+   ],
+   "zh": {
+    "Which of the following are true according to the speaker?": "根據講者所說，下列哪些是正確的？",
+    "Before the railways, British towns set their clocks by the sun.": "在鐵路出現之前，英國城鎮是依太陽校準時鐘的。",
+    "Parliament made Greenwich time the legal standard before the railway companies adopted it.": "國會在鐵路公司採用之前，就已把格林威治時間定為法定標準。",
+    "Some clocks were built with two minute hands.": "有些時鐘被裝上了兩根分針。",
+    "Astronomers led the campaign for a global system of time zones.": "天文學家主導了推動全球時區系統的行動。",
+    "Disagreements about time reached the courts.": "關於時間的爭議曾鬧上法院。",
+    "Before the railways, every town in Britain kept its own time, set by the sun. Oxford was about five minutes behind London, Bristol about ten, and nobody minded, because nobody could travel fast enough for the difference to matter. The railway changed that almost overnight. A timetable printed in London was useless in Bristol if the two cities disagreed about what hour it was, and there were accidents caused by trains on the same line running to different clocks. The Great Western Railway therefore adopted London time across its network in 1840, and other companies followed. For some years many towns kept two times at once: the station clock showed railway time while the town hall showed local time, and some clocks were fitted with two minute hands. Resistance was not trivial, since a town's time was a matter of civic pride, and there were court cases turning on which time a legal deadline referred to. Parliament did not make Greenwich time the legal standard until 1880, forty years after the railways had effectively imposed it. The same pattern repeated internationally. The global system of time zones was agreed at a conference in 1884, and again it was driven by transport and telegraph companies rather than by astronomers, who were quite content with local time for their own purposes.": "在鐵路出現之前，英國每個城鎮都有自己的時間，依太陽來校準。牛津比倫敦慢約五分鐘，布里斯托慢約十分鐘，而沒有人在意，因為沒有人能移動得快到讓這個差異產生影響。鐵路幾乎在一夜之間改變了這一切。如果兩個城市對現在幾點各有說法，在倫敦印製的時刻表到了布里斯托就毫無用處，而且還發生過同一條路線上的列車依照不同時鐘行駛而造成的事故。因此，大西部鐵路公司於 1840 年在整個路網採用倫敦時間，其他公司也跟進。有好幾年的時間，許多城鎮同時存在兩種時間：車站的時鐘顯示鐵路時間，市政廳的時鐘顯示當地時間，有些時鐘甚至裝上了兩根分針。反對的聲音並不小，因為一個城鎮的時間關乎地方榮譽，法院也出現過以「某個法定期限指的是哪一種時間」為爭點的案件。國會直到 1880 年才把格林威治時間定為法定標準，那已是鐵路實質上強制推行它的四十年後。同樣的模式在國際上重演。全球時區系統在 1884 年的一場會議中達成協議，而推動它的同樣是運輸與電報公司，而不是天文學家——天文學家對於自己的用途，其實相當滿意於使用當地時間。"
+   },
+   "type": "l_mcq_multi"
+  },
+  {
+   "id": "M1MCMAL0002",
+   "text": "I want to talk today about why so many teenagers are tired, because the usual explanation, that they stay up late by choice, turns out to be only part of the story. At puberty the timing of the body clock shifts later by one to three hours. The hormone that signals the onset of sleep is released later in the evening and clears later in the morning, so a teenager told to go to bed at ten is often being asked to sleep at a time when the body is still alert. This is not a habit acquired from phones; the same shift has been measured in adolescents in communities with no electric light, and it reverses in the early twenties. The practical problem is that school start times have not moved. A number of districts in the United States have now delayed the start of secondary school by an hour, and the results have been consistent: students sleep about thirty minutes longer on average, attendance improves, and road accidents among teenage drivers fall. Test scores rise a little, though less than campaigners hoped. The main obstacles are not educational but logistical, since school buses, sports fixtures and parents' working hours are all built around the existing timetable, and changing one school affects every other.",
+   "q": "Which of the following are stated in the lecture?",
+   "o": [
+    "The teenage body clock shifts later by one to three hours at puberty.",
+    "The shift is caused mainly by the use of phones at night.",
+    "Delaying school start times has increased average sleep by about half an hour.",
+    "Road accidents involving teenage drivers fell where start times were delayed.",
+    "Test scores rose far more than campaigners had expected."
+   ],
+   "a": [
+    0,
+    2,
+    3
+   ],
+   "zh": {
+    "Which of the following are stated in the lecture?": "下列哪些內容在講座中有提到？",
+    "The teenage body clock shifts later by one to three hours at puberty.": "青春期時，青少年的生理時鐘會往後移一到三個小時。",
+    "The shift is caused mainly by the use of phones at night.": "這種偏移主要是由夜間使用手機造成的。",
+    "Delaying school start times has increased average sleep by about half an hour.": "延後上課時間讓平均睡眠增加了大約半小時。",
+    "Road accidents involving teenage drivers fell where start times were delayed.": "在延後上課時間的地區，青少年駕駛的交通事故減少了。",
+    "Test scores rose far more than campaigners had expected.": "考試成績的提升幅度遠遠超出倡議者的預期。",
+    "I want to talk today about why so many teenagers are tired, because the usual explanation, that they stay up late by choice, turns out to be only part of the story. At puberty the timing of the body clock shifts later by one to three hours. The hormone that signals the onset of sleep is released later in the evening and clears later in the morning, so a teenager told to go to bed at ten is often being asked to sleep at a time when the body is still alert. This is not a habit acquired from phones; the same shift has been measured in adolescents in communities with no electric light, and it reverses in the early twenties. The practical problem is that school start times have not moved. A number of districts in the United States have now delayed the start of secondary school by an hour, and the results have been consistent: students sleep about thirty minutes longer on average, attendance improves, and road accidents among teenage drivers fall. Test scores rise a little, though less than campaigners hoped. The main obstacles are not educational but logistical, since school buses, sports fixtures and parents' working hours are all built around the existing timetable, and changing one school affects every other.": "今天我想談的是，為什麼有這麼多青少年總是很累，因為一般的解釋——說他們是自己選擇熬夜——結果只說中了一部分。進入青春期後，生理時鐘的時間會往後移一到三個小時。啟動睡意的荷爾蒙在晚上較晚才分泌，早上也較晚才代謝掉，所以要一個青少年十點上床睡覺，往往是要求他在身體仍然清醒的時間入睡。這並不是手機養成的習慣；在沒有電燈的社群中，青少年身上也測得到同樣的時間偏移，而且這種偏移在二十出頭時會自行回復。實際的問題在於，學校的上課時間並沒有跟著改變。美國有一些學區已經把中學的上課時間延後一小時，結果相當一致：學生平均多睡約三十分鐘，出席率提高，青少年駕駛的交通事故也減少。考試成績略有提升，不過幅度比倡議者期望的小。主要的阻礙不在教育層面，而在後勤層面，因為校車、球賽賽程和家長的工作時間，全都是依照現有的時間表安排的，而改變一所學校就會牽動其他每一所學校。"
+   },
+   "type": "l_mcq_multi"
+  },
+  {
+   "id": "M1LFIB0001",
+   "title": "Ice cores",
+   "parts": [
+    "Ice cores drilled in Antarctica give us a direct record of past climates. Snow that falls on the ice sheet never melts, so each year's layer is buried and compressed, trapping bubbles of ancient ",
+    ". By counting the layers, scientists can ",
+    " the ice with reasonable precision, and by analysing the trapped gas they can measure the carbon dioxide of the time. The deepest cores reach back about eight hundred thousand years, covering eight cycles of glaciation. What the record shows is that carbon dioxide and temperature have moved together, and that today's ",
+    " are far above anything in that period. Drilling teams now hope to recover ice more than a million years ",
+    "."
+   ],
+   "ans": [
+    "air",
+    "date",
+    "levels",
+    "old"
+   ],
+   "zh": {
+    "Ice cores drilled in Antarctica give us a direct record of past climates. Snow that falls on the ice sheet never melts, so each year's layer is buried and compressed, trapping bubbles of ancient ____ . By counting the layers, scientists can ____ the ice with reasonable precision, and by analysing the trapped gas they can measure the carbon dioxide of the time. The deepest cores reach back about eight hundred thousand years, covering eight cycles of glaciation. What the record shows is that carbon dioxide and temperature have moved together, and that today's ____ are far above anything in that period. Drilling teams now hope to recover ice more than a million years ____ .": "在南極鑽取的冰芯，為我們提供了過去氣候的直接紀錄。落在冰原上的雪永遠不會融化，所以每一年的雪層都會被掩埋、壓縮，把古老的 ____ 封成氣泡。透過數算這些層次，科學家可以相當精確地為冰 ____ ，而分析封存的氣體則能測出當時的二氧化碳含量。最深的冰芯可以回溯約八十萬年，涵蓋八個冰期循環。這份紀錄顯示的是：二氧化碳與氣溫始終同步變化，而今天的 ____ 遠高於那段期間的任何時候。鑽探團隊現在希望能取得超過一百萬年 ____ 的冰。",
+    "Ice cores drilled in Antarctica give us a direct record of past climates. Snow that falls on the ice sheet never melts, so each year's layer is buried and compressed, trapping bubbles of ancient air. By counting the layers, scientists can date the ice with reasonable precision, and by analysing the trapped gas they can measure the carbon dioxide of the time. The deepest cores reach back about eight hundred thousand years, covering eight cycles of glaciation. What the record shows is that carbon dioxide and temperature have moved together, and that today's levels are far above anything in that period. Drilling teams now hope to recover ice more than a million years old.": "在南極鑽取的冰芯，為我們提供了過去氣候的直接紀錄。落在冰原上的雪永遠不會融化，所以每一年的雪層都會被掩埋、壓縮，把古老的空氣封成氣泡。透過數算這些層次，科學家可以相當精確地為冰定年，而分析封存的氣體則能測出當時的二氧化碳含量。最深的冰芯可以回溯約八十萬年，涵蓋八個冰期循環。這份紀錄顯示的是：二氧化碳與氣溫始終同步變化，而今天的濃度遠高於那段期間的任何時候。鑽探團隊現在希望能取得超過一百萬年之久的冰。"
+   },
+   "type": "l_fib"
+  },
+  {
+   "id": "M1LFIB0002",
+   "title": "Foxes in the city",
+   "parts": [
+    "Foxes began moving into British cities in the 1930s, as suburbs with large gardens spread outwards. A city fox lives in a much smaller ",
+    " than a country one, because food is easier to find, though it is not usually the rubbish bins that people ",
+    " : studies of stomach contents show earthworms, insects and food deliberately put out by residents. Urban foxes are not tame, but they are less ",
+    " of people, which is why they are seen so often in daylight. Their numbers are limited less by disease than by the availability of places to ",
+    " undisturbed."
+   ],
+   "ans": [
+    "territory",
+    "expect",
+    "wary",
+    "breed"
+   ],
+   "zh": {
+    "Foxes began moving into British cities in the 1930s, as suburbs with large gardens spread outwards. A city fox lives in a much smaller ____ than a country one, because food is easier to find, though it is not usually the rubbish bins that people ____ : studies of stomach contents show earthworms, insects and food deliberately put out by residents. Urban foxes are not tame, but they are less ____ of people, which is why they are seen so often in daylight. Their numbers are limited less by disease than by the availability of places to ____ undisturbed.": "狐狸從 1930 年代開始進入英國的城市，當時擁有大片庭院的郊區正不斷向外擴張。城市裡的狐狸活動的 ____ 比鄉下的狐狸小得多，因為食物比較容易找到，不過牠們吃的通常並不是人們 ____ 的垃圾桶：胃容物研究顯示裡面是蚯蚓、昆蟲，以及居民刻意放出來的食物。都市狐狸並不溫馴，但牠們對人比較不那麼 ____ ，這就是為什麼白天經常看得到牠們。限制牠們數量的，與其說是疾病，不如說是能安心 ____ 的地點是否足夠。",
+    "Foxes began moving into British cities in the 1930s, as suburbs with large gardens spread outwards. A city fox lives in a much smaller territory than a country one, because food is easier to find, though it is not usually the rubbish bins that people expect : studies of stomach contents show earthworms, insects and food deliberately put out by residents. Urban foxes are not tame, but they are less wary of people, which is why they are seen so often in daylight. Their numbers are limited less by disease than by the availability of places to breed undisturbed.": "狐狸從 1930 年代開始進入英國的城市，當時擁有大片庭院的郊區正不斷向外擴張。城市裡的狐狸活動的領域比鄉下的狐狸小得多，因為食物比較容易找到，不過牠們吃的通常並不是人們預期的垃圾桶：胃容物研究顯示裡面是蚯蚓、昆蟲，以及居民刻意放出來的食物。都市狐狸並不溫馴，但牠們對人比較不那麼警戒，這就是為什麼白天經常看得到牠們。限制牠們數量的，與其說是疾病，不如說是能安心繁殖的地點是否足夠。"
+   },
+   "type": "l_fib"
+  },
+  {
+   "id": "M1HCS0001",
+   "text": "When a honeybee colony grows too large for its hive, it divides. The old queen leaves with about half the workers, and they gather in a cluster on a branch while scout bees search for a new home. The scouts return and dance to report what they have found, and the length of the dance reflects how good the site is. A scout that has seen a poor site is easily persuaded to go and look at a better one, and over a few hours the dancing converges on a single choice. Only then does the swarm fly. Beekeepers often describe a swarm as a colony in crisis, but it is better understood as reproduction: the colony is making a copy of itself.",
+   "q": "Which summary best represents the recording?",
+   "o": [
+    "A swarm is how a colony reproduces: scouts report on possible homes by dancing, the colony converges on one site, and only then does it move.",
+    "A swarm forms because the colony is starving and its queen has died, which is why beekeepers treat it as an emergency.",
+    "Scout bees choose a new home individually, so a swarm usually splits between several sites.",
+    "The length of a scout's dance shows how far away a site is rather than how good it is."
+   ],
+   "a": 0,
+   "zh": {
+    "Which summary best represents the recording?": "哪一個摘要最能代表這段錄音？",
+    "A swarm is how a colony reproduces: scouts report on possible homes by dancing, the colony converges on one site, and only then does it move.": "分蜂是蜂群繁殖的方式：偵察蜂以舞蹈報告可能的新居，蜂群收斂到單一地點，然後才遷移。",
+    "A swarm forms because the colony is starving and its queen has died, which is why beekeepers treat it as an emergency.": "分蜂之所以發生，是因為蜂群挨餓且蜂后死亡，所以養蜂人把它當成緊急狀況處理。",
+    "Scout bees choose a new home individually, so a swarm usually splits between several sites.": "偵察蜂各自挑選新居，所以蜂群通常會分散到好幾個地點。",
+    "The length of a scout's dance shows how far away a site is rather than how good it is.": "偵察蜂舞蹈的長度顯示的是地點有多遠，而不是有多好。",
+    "When a honeybee colony grows too large for its hive, it divides. The old queen leaves with about half the workers, and they gather in a cluster on a branch while scout bees search for a new home. The scouts return and dance to report what they have found, and the length of the dance reflects how good the site is. A scout that has seen a poor site is easily persuaded to go and look at a better one, and over a few hours the dancing converges on a single choice. Only then does the swarm fly. Beekeepers often describe a swarm as a colony in crisis, but it is better understood as reproduction: the colony is making a copy of itself.": "當一個蜂群大到蜂巢容納不下時，牠們就會分家。老蜂后會帶著大約一半的工蜂離開，聚成一團停在樹枝上，同時偵察蜂出去尋找新的居所。偵察蜂回來後會跳舞報告牠們的發現，而舞蹈的長度反映了那個地點有多好。看過較差地點的偵察蜂，很容易被說服去看看更好的地點，經過幾個小時，所有舞蹈就會收斂到單一選擇上。到那時蜂群才會飛走。養蜂人常把分蜂形容為蜂群陷入危機，但更好的理解方式是：這是繁殖，蜂群正在製造一份自己的複本。"
+   },
+   "type": "hcs"
+  },
+  {
+   "id": "M1HCS0002",
+   "text": "Tidal power is more predictable than wind or sunlight, because the tides are set by the moon and can be calculated decades ahead. A tidal barrage across an estuary holds back water at high tide and releases it through turbines as the tide falls. The engineering is well understood, and one French scheme has been running since 1966. Take-up has nonetheless been slow. Building a barrage is expensive, the output arrives in four bursts a day rather than continuously, and an estuary is usually a feeding ground for wading birds that a barrage would flood. Recent projects have therefore favoured underwater turbines placed in fast currents, which can be installed in stages and do far less damage to the shore.",
+   "q": "Which summary best represents the recording?",
+   "o": [
+    "Tidal energy is predictable and technically proven, but barrages are costly, intermittent and damaging to estuaries, so newer schemes use underwater turbines instead.",
+    "Tidal power has been abandoned because the tides cannot be predicted accurately enough to be useful.",
+    "Barrages are now preferred to underwater turbines because they are cheaper and harm fewer birds.",
+    "The first tidal scheme was built recently, and no tidal power has yet been generated commercially."
+   ],
+   "a": 0,
+   "zh": {
+    "Which summary best represents the recording?": "哪一個摘要最能代表這段錄音？",
+    "Tidal energy is predictable and technically proven, but barrages are costly, intermittent and damaging to estuaries, so newer schemes use underwater turbines instead.": "潮汐能可預測且技術成熟，但堰壩造價高、供電不連續且破壞河口，所以較新的計畫改用水下渦輪機。",
+    "Tidal power has been abandoned because the tides cannot be predicted accurately enough to be useful.": "潮汐發電已被放棄，因為潮汐無法預測到足以實用的程度。",
+    "Barrages are now preferred to underwater turbines because they are cheaper and harm fewer birds.": "堰壩如今比水下渦輪機更受青睞，因為它比較便宜且傷害的鳥類較少。",
+    "The first tidal scheme was built recently, and no tidal power has yet been generated commercially.": "第一座潮汐電廠是最近才建成的，目前尚未有商業發電。",
+    "Tidal power is more predictable than wind or sunlight, because the tides are set by the moon and can be calculated decades ahead. A tidal barrage across an estuary holds back water at high tide and releases it through turbines as the tide falls. The engineering is well understood, and one French scheme has been running since 1966. Take-up has nonetheless been slow. Building a barrage is expensive, the output arrives in four bursts a day rather than continuously, and an estuary is usually a feeding ground for wading birds that a barrage would flood. Recent projects have therefore favoured underwater turbines placed in fast currents, which can be installed in stages and do far less damage to the shore.": "潮汐發電比風力或太陽能更容易預測，因為潮汐由月球決定，可以提前數十年算出。橫跨河口的潮汐堰壩在漲潮時把水攔住，退潮時再讓水通過渦輪機排出。相關工程技術已相當成熟，法國有一座電廠自 1966 年運轉至今。儘管如此，推廣的速度仍然很慢。建造堰壩所費不貲，發電量是一天分四次湧現而不是持續供應，而河口通常是涉禽的覓食地，堰壩會把它淹沒。因此，近期的計畫比較偏好把水下渦輪機放在流速快的水域，它們可以分階段安裝，對海岸的破壞也小得多。"
+   },
+   "type": "hcs"
+  },
+  {
+   "id": "M1MCSAL0001",
+   "text": "Before you leave today, a few words about next month's field trip to the coast. The coach leaves from the main gate at seven, and it will not wait; if you miss it you will have to make your own way there, and the site is an hour from the nearest station. Bring waterproofs and boots with ankle support, because we will be walking on loose rock for most of the day. The department has a small number of boots to lend, but you need to ask this week. Lunch is not provided, and there is no shop within walking distance. Finally, hand in the risk assessment form before Friday, or you will not be allowed on the coach.",
+   "q": "What is the main purpose of this announcement?",
+   "o": [
+    "To explain what students must arrange and bring for the field trip.",
+    "To persuade students to sign up for a trip that is not yet full.",
+    "To announce that the field trip has been cancelled.",
+    "To describe the geology of the coastal site."
+   ],
+   "a": 0,
+   "zh": {
+    "What is the main purpose of this announcement?": "這則公告的主要目的是什麼？",
+    "To explain what students must arrange and bring for the field trip.": "說明學生為了這次實地考察必須安排和攜帶什麼。",
+    "To persuade students to sign up for a trip that is not yet full.": "說服學生報名參加尚未額滿的考察行程。",
+    "To announce that the field trip has been cancelled.": "宣布這次實地考察已經取消。",
+    "To describe the geology of the coastal site.": "描述這個海岸地點的地質。",
+    "Before you leave today, a few words about next month's field trip to the coast. The coach leaves from the main gate at seven, and it will not wait; if you miss it you will have to make your own way there, and the site is an hour from the nearest station. Bring waterproofs and boots with ankle support, because we will be walking on loose rock for most of the day. The department has a small number of boots to lend, but you need to ask this week. Lunch is not provided, and there is no shop within walking distance. Finally, hand in the risk assessment form before Friday, or you will not be allowed on the coach.": "各位今天離開之前，我簡單說明一下下個月到海岸的實地考察。遊覽車七點從正門出發，而且不會等人；錯過了就得自己想辦法前往，而該地點距離最近的車站還有一小時車程。請帶雨具和有護踝的靴子，因為當天大部分時間我們都會走在鬆動的岩石上。系上有少量靴子可以外借，但你必須在這星期提出申請。午餐不提供，附近步行範圍內也沒有商店。最後，請在星期五之前繳交風險評估表，否則你將不能上車。"
+   },
+   "type": "l_mcq_single"
+  },
+  {
+   "id": "M1MCSAL0002",
+   "text": "People are often surprised that a desert which reaches forty degrees in the afternoon can approach freezing before dawn. The reason is not the sand but the air. Water vapour is the main greenhouse gas in the atmosphere, and desert air holds very little of it, so heat radiated by the ground at night escapes to space instead of being absorbed and sent back down. Cloud has the same effect, which is why a cloudy night in any climate is warmer than a clear one. Sand also holds heat poorly compared with soil or rock, so the surface itself cools quickly. Humid regions, by contrast, change temperature slowly, and a tropical coast may vary by only a few degrees between afternoon and dawn.",
+   "q": "According to the speaker, why do deserts cool so sharply at night?",
+   "o": [
+    "Dry air allows heat radiated by the ground to escape into space.",
+    "Sand absorbs cold air from the upper atmosphere after sunset.",
+    "Deserts are usually at high altitude, where the air is thin.",
+    "Wind blows warm air away from the desert during the night."
+   ],
+   "a": 0,
+   "zh": {
+    "According to the speaker, why do deserts cool so sharply at night?": "根據講者所說，沙漠為什麼在夜間降溫這麼劇烈？",
+    "Dry air allows heat radiated by the ground to escape into space.": "乾燥的空氣讓地面輻射出的熱逸散到太空。",
+    "Sand absorbs cold air from the upper atmosphere after sunset.": "沙子在日落後吸收來自高層大氣的冷空氣。",
+    "Deserts are usually at high altitude, where the air is thin.": "沙漠通常位於高海拔，空氣稀薄。",
+    "Wind blows warm air away from the desert during the night.": "夜間有風把溫暖的空氣吹離沙漠。",
+    "People are often surprised that a desert which reaches forty degrees in the afternoon can approach freezing before dawn. The reason is not the sand but the air. Water vapour is the main greenhouse gas in the atmosphere, and desert air holds very little of it, so heat radiated by the ground at night escapes to space instead of being absorbed and sent back down. Cloud has the same effect, which is why a cloudy night in any climate is warmer than a clear one. Sand also holds heat poorly compared with soil or rock, so the surface itself cools quickly. Humid regions, by contrast, change temperature slowly, and a tropical coast may vary by only a few degrees between afternoon and dawn.": "人們常常很驚訝，一座午後高達四十度的沙漠，到了黎明前竟然會接近結冰。原因不在沙子，而在空氣。水蒸氣是大氣中最主要的溫室氣體，而沙漠的空氣含水量極少，所以夜間地面輻射出的熱會逸散到太空，而不是被吸收後再送回地面。雲層也有同樣的作用，這就是為什麼在任何氣候區，有雲的夜晚都比晴朗的夜晚溫暖。沙子保存熱量的能力也比土壤或岩石差，所以地表本身冷卻得很快。相對地，潮濕地區的溫度變化緩慢，熱帶海岸從午後到黎明可能只相差幾度。"
+   },
+   "type": "l_mcq_single"
+  },
+  {
+   "id": "M1SMW0001",
+   "text": "Psychologists studying memory have repeatedly found that the timing of revision matters more than the total amount of it. Reading a chapter four times in one evening feels productive, because the material quickly becomes easy to recognise, but recognition is not recall. When the same four readings are spread over four weeks, with a little forgetting allowed in between, the effort of retrieving what has faded is precisely what strengthens the memory. This is why the best way to prepare for an examination is not to work harder in the final week but to start",
+   "o": [
+    "earlier",
+    "louder",
+    "alone",
+    "later"
+   ],
+   "a": 0,
+   "zh": {
+    "earlier": "較早",
+    "louder": "較大聲",
+    "alone": "獨自",
+    "later": "較晚",
+    "Psychologists studying memory have repeatedly found that the timing of revision matters more than the total amount of it. Reading a chapter four times in one evening feels productive, because the material quickly becomes easy to recognise, but recognition is not recall. When the same four readings are spread over four weeks, with a little forgetting allowed in between, the effort of retrieving what has faded is precisely what strengthens the memory. This is why the best way to prepare for an examination is not to work harder in the final week but to start earlier.": "研究記憶的心理學家一再發現，複習的時間安排比總量更重要。一個晚上把一章讀四遍會讓人覺得很有成效，因為內容很快就變得容易辨認，但辨認並不等於回想。當同樣的四次閱讀分散在四週之內、中間容許稍微遺忘時，把已經淡去的內容重新取回來的努力，正是強化記憶的關鍵。這就是為什麼準備考試最好的方法，不是在最後一週更拚命，而是更早開始。"
+   },
+   "type": "smw"
+  },
+  {
+   "id": "M1SMW0002",
+   "text": "Every flat map of a round planet must distort something. A projection can preserve area, or shape, or direction, but never all three at once, and that is a mathematical fact rather than a failure of cartography. The familiar Mercator projection preserves direction, which made it invaluable for navigation, at the cost of enlarging the land near the poles: on such a map Greenland looks about as large as Africa, although Africa is fourteen times bigger. Choosing a projection is therefore not a technical detail but a",
+   "o": [
+    "compromise",
+    "mistake",
+    "tradition",
+    "measurement"
+   ],
+   "a": 0,
+   "zh": {
+    "compromise": "取捨",
+    "mistake": "錯誤",
+    "tradition": "傳統",
+    "measurement": "測量",
+    "Every flat map of a round planet must distort something. A projection can preserve area, or shape, or direction, but never all three at once, and that is a mathematical fact rather than a failure of cartography. The familiar Mercator projection preserves direction, which made it invaluable for navigation, at the cost of enlarging the land near the poles: on such a map Greenland looks about as large as Africa, although Africa is fourteen times bigger. Choosing a projection is therefore not a technical detail but a compromise.": "每一張把圓形星球畫成平面的地圖，都必定會扭曲某些東西。一種投影法可以保留面積、形狀或方向，但永遠無法三者兼顧，而這是數學上的事實，不是製圖學的失敗。大家熟悉的麥卡托投影保留了方向，因此對航海極為寶貴，代價則是放大了靠近兩極的陸地：在這樣的地圖上，格陵蘭看起來和非洲差不多大，儘管非洲其實大上十四倍。因此，選擇投影法並不是技術細節，而是一種取捨。"
+   },
+   "type": "smw"
+  },
+  {
+   "id": "M1HIW0001",
+   "spoken": "Coral reefs cover less than one per cent of the ocean floor, yet they support about a quarter of all marine species. The structure is built by tiny animals that deposit limestone over thousands of years. When the water becomes too warm, the corals expel the algae that feed them and turn white, a process known as bleaching.",
+   "shown": "Coral reefs cover less than one per cent of the ocean surface, yet they support about a quarter of all marine species. The structure is built by tiny animals that deposit sandstone over thousands of years. When the water becomes too warm, the corals expel the algae that feed them and turn black, a process known as bleaching.",
+   "errors": [
+    11,
+    31,
+    52
+   ],
+   "zh": {
+    "Coral reefs cover less than one per cent of the ocean surface, yet they support about a quarter of all marine species. The structure is built by tiny animals that deposit sandstone over thousands of years. When the water becomes too warm, the corals expel the algae that feed them and turn black, a process known as bleaching.": "珊瑚礁覆蓋的面積不到海面的百分之一，卻支撐著約四分之一的海洋物種。這個結構是由微小的動物經過數千年沉積砂岩而建造出來的。當水溫變得太高時，珊瑚會把供養牠們的藻類排出體外並變黑，這個過程稱為白化。",
+    "Coral reefs cover less than one per cent of the ocean floor, yet they support about a quarter of all marine species. The structure is built by tiny animals that deposit limestone over thousands of years. When the water becomes too warm, the corals expel the algae that feed them and turn white, a process known as bleaching.": "珊瑚礁覆蓋的面積不到海底的百分之一，卻支撐著約四分之一的海洋物種。這個結構是由微小的動物經過數千年沉積石灰岩而建造出來的。當水溫變得太高時，珊瑚會把供養牠們的藻類排出體外並變白，這個過程稱為白化。"
+   },
+   "type": "hiw"
+  },
+  {
+   "id": "M1HIW0002",
+   "spoken": "The university archive holds more than two million photographs, most of them donated by local families. Staff are gradually scanning the collection, but at the current rate the work will take another twenty years. Students are welcome to use the reading room, although the original prints may only be handled with gloves.",
+   "shown": "The university archive holds more than two million paintings, most of them donated by local families. Staff are gradually sorting the collection, but at the current rate the work will take another twenty years. Students are welcome to use the reading room, although the original prints may only be handled with permission.",
+   "errors": [
+    8,
+    19,
+    51
+   ],
+   "zh": {
+    "The university archive holds more than two million paintings, most of them donated by local families. Staff are gradually sorting the collection, but at the current rate the work will take another twenty years. Students are welcome to use the reading room, although the original prints may only be handled with permission.": "大學檔案館收藏了超過兩百萬幅畫作，其中大部分是由當地家庭捐贈的。館員正在逐步整理這批藏品，但依目前的速度，這項工作還需要二十年。歡迎學生使用閱覽室，不過原始相片只能在獲得許可的情況下拿取。",
+    "The university archive holds more than two million photographs, most of them donated by local families. Staff are gradually scanning the collection, but at the current rate the work will take another twenty years. Students are welcome to use the reading room, although the original prints may only be handled with gloves.": "大學檔案館收藏了超過兩百萬張照片，其中大部分是由當地家庭捐贈的。館員正在逐步掃描這批藏品，但依目前的速度，這項工作還需要二十年。歡迎學生使用閱覽室，不過原始相片只能戴手套拿取。"
+   },
+   "type": "hiw"
+  },
+  {
+   "id": "M1WFD0001",
+   "text": "Lecture notes will be uploaded to the website every Friday afternoon.",
+   "zh": {
+    "lecture notes will be uploaded to the website every friday afternoon": "課堂講義每週五下午會上傳到網站。"
+   },
+   "type": "wfd"
+  },
+  {
+   "id": "M1WFD0002",
+   "text": "The committee approved the proposal after a lengthy discussion.",
+   "zh": {
+    "the committee approved the proposal after a lengthy discussion": "委員會經過冗長的討論後通過了該提案。"
+   },
+   "type": "wfd"
+  },
+  {
+   "id": "M1WFD0003",
+   "text": "Research students must submit their progress report before the end of term.",
+   "zh": {
+    "research students must submit their progress report before the end of term": "研究生必須在學期結束前繳交進度報告。"
+   },
+   "type": "wfd"
+  }
+ ]
+}

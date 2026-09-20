@@ -424,6 +424,23 @@ details.reveal .dbody{padding:0 16px 16px;font-size:14.5px;color:var(--muted)}
 .load{display:inline-block;width:13px;height:13px;border:2px solid var(--line-strong);border-top-color:var(--accent);border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px}
 @keyframes sp{to{transform:rotate(360deg)}}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:15px}
+/* mock exam */
+.exlist{display:flex;flex-direction:column;gap:12px}
+.excard{display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:18px 20px}
+.excard .exmain{flex:1;min-width:230px;display:flex;flex-direction:column;gap:6px}
+.exname{font-family:var(--ff-dis);font-size:18px;font-weight:600;letter-spacing:-.015em}
+.exparts{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden;background:var(--surface)}
+.exrow{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:16px;align-items:center;padding:13px 18px;border-top:1px solid var(--line)}
+.exrow:first-child{border-top:0}
+.exrowname{font-weight:700;font-size:14.5px}
+.exbar{position:sticky;top:calc(env(safe-area-inset-top,0px) + 8px);z-index:20;display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:12px 18px;box-shadow:var(--shadow-lift);margin-bottom:18px}
+.exq{font-family:var(--ff-num);font-size:15.5px;font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.expart{display:flex;align-items:center;gap:9px}
+.revrow{border-top:1px solid var(--line)}
+.revrow:first-child{border-top:0}
+.revrow .trow{border-top:0}
+.revbody{padding:0 18px 16px}
+@media (max-width:560px){ .exbar{gap:10px} .exrow{grid-template-columns:minmax(0,1fr) auto;row-gap:4px} }
 </style>
 <style>
 /* base page settings for the standalone build */
@@ -470,8 +487,8 @@ window.addEventListener('error', function (e) {
     <div class="wrap" id="view"></div>
     <footer class="foot">
       <div class="fr">
-        <p><b>Independent practice tool.</b> Not affiliated with, endorsed by, or connected to Pearson. PTE is a trademark of its respective owner.</p>
-        <p><b>Original items.</b> Every passage, lecture, question, answer key, model answer and chart here was generated with AI specifically for this app. Nothing is reproduced from official, retired or third-party test material.</p>
+        <p><b>Independent practice tool.</b> Not affiliated with, endorsed by, or connected to Pearson.</p>
+        <p><b>Original items.</b> Every passage, lecture, question, answer key, model answer and chart here was generated with AI for this app, following the published PTE Academic format and preparation guides. Nothing is reproduced from official, retired or third-party test material.</p>
         <p><b>Check current specifications.</b> Timings, word bands and trait rubrics follow the published PTE Academic format as understood when this was written. Verify the details against the official specification before relying on them.</p>
         <p><b>Practice scores only.</b> The 10&ndash;90 figures are estimates derived from your own attempts. They are not an official result and do not predict one.</p>
       </div>
@@ -548,7 +565,8 @@ const SECTIONS = [
   { id:'reading',   label:'Reading' },
   { id:'listening', label:'Listening' },
   { id:'drill',     label:'Daily Practice' },
-  { id:'saved',     label:'Saved Questions' }
+  { id:'saved',     label:'Saved Questions' },
+  { id:'mock',      label:'Mock Exam' }
 ];
 
 const TASKS = [
@@ -1186,6 +1204,51 @@ let LANG = 'en';
 try { if (localStorage.getItem(LANG_KEY) === 'zh') LANG = 'zh'; } catch(e){}
 
 const ZH = {
+"Mock Exam": "模擬考試",
+"Mock exam": "模擬考試",
+"Sit a full test": "完整考一次",
+"One sitting of 74 questions, in the order and to the timings of the real test. Nothing is marked on screen while you work: you answer, the next question appears, and the report comes at the end.": "一次完整作答 74 題，題目順序與作答時間都比照正式考試。作答過程中畫面上不會顯示任何評分：你作答、下一題出現，報告在最後才給。",
+"Mock questions are used only here, and mock results are kept out of your practice statistics.": "模擬考題只會出現在這裡，模擬考成績也不會計入你的練習統計。",
+"Not started": "尚未開始",
+"In progress": "進行中",
+"Completed": "已完成",
+"Start exam": "開始考試",
+"Resume exam": "繼續考試",
+"View report": "查看報告",
+"Start again": "重新開始",
+"Tap again to erase this attempt": "再按一次即清除這次作答",
+"Answers not marked": "答案尚未評分",
+"Before you begin": "開始之前",
+"Each question is marked after you answer it, but nothing is shown until the end of the exam.": "每一題在你作答後就會評分，但要到考試結束才會顯示結果。",
+"Speaking questions record once. Check your microphone below before you start.": "口說題只錄音一次。開始前請先用下方的工具檢查麥克風。",
+"The reading and listening parts run against one clock. When it runs out, the part ends.": "閱讀與聽力部分共用一個計時器，時間到該部分即結束。",
+"You can leave and come back: your place is kept. Answers still being marked when you close the tab are lost, so try to finish in one sitting.": "你可以離開後再回來，進度會保留。但關閉分頁時仍在評分中的答案會遺失，所以盡量一次考完。",
+"There is an optional ten-minute break after the reading part.": "閱讀部分結束後有十分鐘的休息時間，可自行選擇是否使用。",
+"Begin exam": "開始考試",
+"Back to exams": "返回模擬考試列表",
+"timed per question": "各題分別計時",
+"Part time left": "本部分剩餘時間",
+"Skip question": "略過本題",
+"Start question": "開始本題",
+"The audio plays once and the timer starts when you press Start question.": "按下「開始本題」後，音檔會播放一次，計時同時開始。",
+"The question appears and the timer starts when you press Start question.": "按下「開始本題」後，題目才會出現，計時同時開始。",
+"This question type is not wired up.": "這個題型尚未建置。",
+"Optional break": "休息時間（可自由選擇）",
+"Break": "休息",
+"Continue now": "立即繼續",
+"The real test offers a break of up to ten minutes before the listening part. Stand up, drink some water, and come back — the listening clock only starts with the next question.": "正式考試在聽力部分之前提供最多十分鐘的休息。起身走動、喝點水再回來——聽力的計時要到下一題才開始。",
+"Your report": "你的報告",
+"Overall band": "總分",
+"not marked": "未評分",
+"the examiner could not be reached": "無法連線到 AI 考官",
+"not scored": "不計分",
+"self-marked": "自評",
+"your own judgement of the recording": "你對自己錄音的判斷",
+"Answers and explanations": "答案與解析",
+"This answer is not available to review. Answers can only be shown again in the sitting they were given in.": "這一題的作答無法回顧。作答內容只能在當次考試中重新顯示。",
+"These bands come from this practice exam and are a guide, not a prediction. This result is kept out of your practice statistics.": "這些分數來自這次模擬考，僅供參考，並非預測。此結果不會計入你的練習統計。",
+"The mock exam questions could not be loaded. Check your connection, then open this tab again.": "模擬考題載入失敗。請檢查網路連線後再開啟這個頁籤。",
+"Loading the exam…": "正在載入考題…",
 "Remove from saved": "從收藏中移除",
 "Daily Practice": "每日練習",
 "Today’s practice": "今日練習",
@@ -1550,9 +1613,9 @@ const ZH = {
 "Next item": "下一題",
 "This task type is not wired up.": "此題型尚未啟用。",
 "Independent practice tool.": "獨立練習工具。",
-"Not affiliated with, endorsed by, or connected to Pearson. PTE is a trademark of its respective owner.": "與 Pearson 無任何隸屬、背書或關聯。PTE 為其所有者之商標。",
+"Not affiliated with, endorsed by, or connected to Pearson.": "與 Pearson 無任何隸屬、背書或關聯。",
 "Original items.": "原創題目。",
-"Every passage, lecture, question, answer key, model answer and chart here was generated with AI specifically for this app. Nothing is reproduced from official, retired or third-party test material.": "這裡的每篇文章、講座、題目、答案、範例答案與圖表，皆由 AI 專為本應用程式生成，未轉載任何官方、已停用或第三方的考試資料。",
+"Every passage, lecture, question, answer key, model answer and chart here was generated with AI for this app, following the published PTE Academic format and preparation guides. Nothing is reproduced from official, retired or third-party test material.": "這裡的每篇文章、講座、題目、答案、範例答案與圖表，皆依照公開的 PTE Academic 題型格式與備考指南，由 AI 專為本應用程式生成，未轉載任何官方、已停用或第三方的考試資料。",
 "Check current specifications.": "請查閱最新規格。",
 "Timings, word bands and trait rubrics follow the published PTE Academic format as understood when this was written. Verify the details against the official specification before relying on them.": "計時、字數範圍與評分指標依撰寫時所了解的 PTE Academic 公開格式設定。使用前請對照官方規格確認細節。",
 "Practice scores only.": "僅為練習分數。",
@@ -1564,6 +1627,14 @@ const earlyZh = flag => (flag ? ' · 初步估計' : '');
 
 /* strings the app builds from numbers or names */
 const ZH_RULES = [
+  [/^Question (\d+) of (\d+)$/, m => '第 ' + m[1] + ' 題，共 ' + m[2] + ' 題'],
+  [/^(\d+) questions · about 2 hours$/, m => m[1] + ' 題 · 約 2 小時'],
+  [/^(\d+) questions$/, m => m[1] + ' 題'],
+  [/^Overall band (\d+)$/, m => '總分 ' + m[1]],
+  [/^(\d+)% of the marks available$/, m => '取得可得分數的 ' + m[1] + '%'],
+  [/^(\d+) of (\d+) questions marked · (\d+) min$/, m => '已評分 ' + m[1] + '/' + m[2] + ' 題 · ' + m[3] + ' 分鐘'],
+  [/^ (\d+) answers? still to be marked\. Marks that were lost when the tab closed stay unmarked and are left out of the bands\.$/,
+     m => ' 還有 ' + m[1] + ' 題等待評分。關閉分頁時遺失的評分會維持未評分，並且不列入分數計算。'],
   [/^Last (week|month): (\d+) · (▲|▼) (\d+)$/, m => (m[1] === 'week' ? '上週：' : '上月：') + m[2] + ' · ' + m[3] + ' ' + m[4]],
   [/^Last (week|month): (\d+) · no change$/, m => (m[1] === 'week' ? '上週：' : '上月：') + m[2] + ' · 持平'],
   [/^(\d+) of (\d+) questions attempted · best (\d+)$/, m => '已做 ' + m[1] + '/' + m[2] + ' 題 · 最佳 ' + m[3]],
@@ -1573,7 +1644,7 @@ const ZH_RULES = [
   [/^Content (\d+)\/(\d+) · Pronunciation (\d+)\/5 · Oral Fluency (\d+)\/5$/, m => '內容 ' + m[1] + '/' + m[2] + ' · 發音 ' + m[3] + '/5 · 口語流暢度 ' + m[4] + '/5'],
   [/^(\d+) word errors? \(replaced, left out or added\)\.$/, m => m[1] + ' 個字有誤（替換、遺漏或多加）。'],
   [/^(\d+) of (\d+) words repeated in sequence\.$/, m => m[2] + ' 個字中，有 ' + m[1] + ' 個字按順序複述。'],
-  [/^ID ([A-Z]+\d{4})$/, m => '題號 ' + m[1]],
+  [/^ID ((?:M\d+)?[A-Z]+\d{4})$/, m => '題號 ' + m[1]],
   [/^Item (\d+) of (\d+)$/, m => '第 ' + m[1] + ' 題，共 ' + m[2] + ' 題'],
   [/^(\d+) attempts? · best (\d+)$/, m => m[1] + ' 次練習 · 最佳 ' + m[2]],
   [/^based on (\d+)% of the section( · early estimate)?$/, m => '依據本部分 ' + m[1] + '% 的題型' + earlyZh(m[2])],
@@ -2579,6 +2650,20 @@ RUN.speak = ctx => {
 
   const selfCheck = (info) => {
     stopAudio();
+    if (ctx.mock){
+      if (canHearRecording(task, info)) markRecording(ctx, info).runMark();
+      else {
+        // no AI marking of audio in this build: the candidate rates their own recording
+        const rate = (label, p) => h('button', { cls:'btn', text:label, onclick:() => ctx.finish(p,
+          resultCard({ pct:p, label:'self-marked', sub:'your own judgement of the recording' })) });
+        host.append(h('div', { cls:'card', style:'margin-top:16px' },
+          h('div', { cls:'eyebrow', style:'margin-bottom:8px', text:'How did that go?' }),
+          h('div', { cls:'row' }, rate('Fluent, no hesitation', 90), rate('A few stumbles', 65), rate('Struggled', 38))));
+        return;
+      }
+      if (ctx.onSubmit) ctx.onSubmit();
+      return;
+    }
     const box = h('div', { cls:'card', style:'margin-top:16px;display:flex;flex-direction:column;gap:14px' });
     if (info && info.measured && task.silence){
       if (!info.spoke) box.append(h('div', { cls:'notice', style:'border-color:var(--rose);color:var(--rose)', text:'No speech was picked up at all. In the real test this is marked as unattempted.' }));
@@ -2735,7 +2820,7 @@ function markRecording(ctx, info){
   const node = h('div', { style:'display:flex;flex-direction:column;gap:10px' },
     h('div', { cls:'row' }, btn),
     h('div', { cls:'small faint', text:'Your recording is sent to an AI model for marking and is not stored.' }), out);
-  btn.addEventListener('click', async () => {
+  async function runMark(){
     btn.disabled = true;
     out.replaceChildren(h('div', { cls:'notice' }, h('span', { cls:'load' }), ' Examiner is listening to your recording…'));
     try {
@@ -2809,7 +2894,9 @@ function markRecording(ctx, info){
       out.replaceChildren(h('div', { cls:'notice', text: aiCopy(e && e.code) }));
       btn.disabled = false;
     }
-  });
+  }
+  btn.addEventListener('click', runMark);
+  node.runMark = runMark;   // the mock exam marks without showing the button
   return node;
 }
 
@@ -2873,6 +2960,7 @@ RUN.swt = ctx => {
 
   async function go(){
     clock.stop(); submit.disabled = true; ta.disabled = true;
+    if (ctx.onSubmit) ctx.onSubmit();
     const text = ta.value.trim(), w = words(text).length, s = sentences(text);
     const form = (w >= 5 && w <= 75 && s <= 1) ? 1 : 0;
     out.replaceChildren(h('div', { cls:'notice' }, h('span', { cls:'load' }), ' Examiner is marking against the four traits…'));
@@ -2899,6 +2987,8 @@ RUN.swt = ctx => {
     const contentZero = (traits || []).some(t => /^content$/i.test(String(t.name)) && Number(t.score) === 0);
     const p = (form === 0 || contentZero) ? 0 : pct(tot, max);
     if (traits) out.replaceChildren();
+    // nothing is shown during a mock, so an answer the examiner never saw must not pass as a form-only score
+    if (ctx.mock && !traits) return ctx.finish(null, resultCard({ pct:0, label:'not marked', sub:'the examiner could not be reached' }));
     ctx.finish(p, resultCard({ pct:p, sub: tot + ' / ' + max + ' marks', traits:all, good:good,
       fix: fix || (form ? null : ['Rewrite it as a single sentence joined with "although", "which" or a semicolon.']),
       model:item.model }));
@@ -2930,6 +3020,7 @@ RUN.essay = ctx => {
 
   async function go(){
     clock.stop(); submit.disabled = true; ta.disabled = true;
+    if (ctx.onSubmit) ctx.onSubmit();
     const text = ta.value.trim(), w = words(text).length;
     if (w < 40){ out.replaceChildren(h('div', { cls:'notice', text:'Too short to mark. Write at least a paragraph and try again.' }));
       ctx.finish(0, resultCard({ pct:0, label:'not attempted', sub:w + ' words' })); return; }
@@ -2960,6 +3051,8 @@ RUN.essay = ctx => {
       h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'One sentence, rewritten' }),
       h('div', { cls:'small', text:String(rewrite) })) : null;
     if (traits) out.replaceChildren();
+    // nothing is shown during a mock, so an answer the examiner never saw must not pass as a form-only score
+    if (ctx.mock && !traits) return ctx.finish(null, resultCard({ pct:0, label:'not marked', sub:'the examiner could not be reached' }));
     ctx.finish(p, resultCard({ pct:p, sub: tot + ' / ' + max + ' marks', traits:all, good:good, fix:fix, extra:extra }));
   }
   submit.addEventListener('click', go);
@@ -2990,6 +3083,7 @@ RUN.sst = ctx => {
 
   async function go(){
     clock.stop(); stopAudio(); submit.disabled = true; ta.disabled = true;
+    if (ctx.onSubmit) ctx.onSubmit();
     const text = ta.value.trim(), w = words(text).length;
     const form = (w >= 50 && w <= 70) ? 2 : (w >= 40 && w <= 100 ? 1 : 0);
     out.replaceChildren(h('div', { cls:'notice' }, h('span', { cls:'load' }), ' Examiner is marking your summary…'));
@@ -3017,6 +3111,8 @@ RUN.sst = ctx => {
       h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'Points you left out' }),
       h('ul', { cls:'tips' }, missed.map(x => h('li', { text:x })))) : null;
     if (traits) out.replaceChildren();
+    // nothing is shown during a mock, so an answer the examiner never saw must not pass as a form-only score
+    if (ctx.mock && !traits) return ctx.finish(null, resultCard({ pct:0, label:'not marked', sub:'the examiner could not be reached' }));
     ctx.finish(p, resultCard({ pct:p, sub: tot + ' / ' + max + ' marks', traits:all, good:good, fix:fix, extra:extra, model:item.model }));
   }
   submit.addEventListener('click', go);
@@ -3891,6 +3987,338 @@ function loadExtraQuestions(){
   return Promise.race([get, timeout]);
 }
 
+/* ============================ mock exam ============================
+   A full-length sitting: every question of a real test, in the real order and to the
+   real timings, with nothing marked on screen until the end. Mock questions live in
+   their own file with their own IDs (M1RA0001), are never added to the practice bank,
+   and nothing answered here reaches the practice history, its scores or its statistics. */
+const MOCKS = [{ id:'M1', name:'Mock Exam 1', url:'data/mock1.json', count:74 }];
+const MOCK_KEY = 'pte-score-lab/mock/v1';
+const PART_MIN = { 2:32, 3:30 };        // reading and listening run against one clock, as in the real test
+const BREAK_MIN = 10;                   // the optional break offered after the reading part
+const MOCK_SKILLS = ['speaking', 'writing', 'reading', 'listening'];
+let mockBank = {};                      // exam id -> [{ task, item }] in exam order
+let mockShots = {};                     // question ID -> the marked answer, held for this sitting's report
+let mockSaves = {};
+try { mockSaves = JSON.parse(localStorage.getItem(MOCK_KEY) || '{}') || {}; } catch(e){ mockSaves = {}; }
+function saveMock(){ try { localStorage.setItem(MOCK_KEY, JSON.stringify(mockSaves)); } catch(e){} }
+const mockOf = id => MOCKS.filter(m => m.id === id)[0] || MOCKS[0];
+
+function loadMock(m){
+  if (mockBank[m.id]) return Promise.resolve(mockBank[m.id]);
+  if (!window.fetch) return Promise.resolve(null);
+  return fetch(m.url, { cache:'no-cache' }).then(r => r.ok ? r.json() : null).then(d => {
+    const rows = d && Array.isArray(d.questions) ? d.questions : [];
+    const out = [];
+    rows.forEach(q => {
+      const task = TASK_BY_ID[q.type];
+      if (!task){ console.warn('mock: no question type called', q.type, 'for', q.id); return; }
+      const item = Object.assign({}, q);
+      delete item.zh; delete item.type;
+      if (item.turns && !item.text) item.text = item.turns.map(x => x.who + ': ' + x.text).join(' ');
+      if (q.zh && typeof q.zh === 'object') Object.keys(q.zh).forEach(en => { ZHC[zkey(en)] = String(q.zh[en]); });
+      out.push({ task, item });
+    });
+    mockBank[m.id] = out.length ? out : null;
+    return mockBank[m.id];
+  }).catch(() => null);
+}
+
+/* Every question of a real sitting is here in its real proportion, so a plain mean
+   over the answered questions already carries the exam's own weighting. */
+function mockScores(id){
+  const s = mockSaves[id], list = mockBank[id] || [];
+  const rows = list.filter(q => !q.task.unscored).map(q => ({ q, mk: s.marks[q.item.id] }));
+  const scored = rows.filter(r => r.mk && r.mk.p != null);
+  const avg = xs => xs.length ? Math.round(xs.reduce((a, b) => a + b, 0) / xs.length) : null;
+  const skills = {};
+  MOCK_SKILLS.forEach(k => { skills[k] = avg(scored.filter(r => r.q.task.skills.indexOf(k) >= 0).map(r => r.mk.p)); });
+  return { overall: avg(scored.map(r => r.mk.p)), skills, scored: scored.length, total: rows.length };
+}
+
+function viewMock(){
+  const stage = state.route.stage;
+  if (!stage) return mockList();
+  const m = mockOf(state.route.exam);
+  if (mockBank[m.id]) return mockStage(m, stage);
+  view.replaceChildren(h('div', { cls:'empty' }, h('span', { cls:'load' }), ' Loading the exam…'));
+  const want = state.route;
+  loadMock(m).then(list => {
+    if (state.route !== want) return;                 // the user moved on while it was loading
+    if (!list) return view.replaceChildren(h('div', { cls:'notice', text:'The mock exam questions could not be loaded. Check your connection, then open this tab again.' }));
+    mockStage(m, stage);
+  });
+}
+function mockStage(m, stage){
+  if (stage === 'brief') return mockBrief(m);
+  if (stage === 'run')   return mockQuestion(m);
+  if (stage === 'break') return mockBreak(m);
+  return mockReport(m);
+}
+
+/* ---------- the list of exams ---------- */
+function mockList(){
+  const cards = MOCKS.map(m => {
+    const s = mockSaves[m.id], r = s && s.done ? s.result : null;
+    const state_ = !s ? 'Not started' : s.done ? 'Completed' : 'In progress';
+    const line = !s ? m.count + ' questions · about 2 hours'
+      : s.done ? (r && r.overall != null ? 'Overall band ' + pteOf(r.overall) : 'Answers not marked')
+      : 'Question ' + Math.min(s.pos + 1, m.count) + ' of ' + m.count;
+    const row = h('div', { cls:'row' });
+    if (s && !s.done){
+      row.append(h('button', { cls:'btn primary', text:'Resume exam', onclick:() => go({ view:'mock', stage:'run', exam:m.id }) }));
+    } else if (s && s.done){
+      row.append(h('button', { cls:'btn primary', text:'View report', onclick:() => go({ view:'mock', stage:'report', exam:m.id }) }));
+    } else {
+      row.append(h('button', { cls:'btn primary', text:'Start exam', onclick:() => mockStart(m) }));
+    }
+    if (s) row.append(restartButton(m));
+    return h('div', { cls:'excard' },
+      h('div', { cls:'exmain' },
+        h('div', { cls:'spread' },
+          h('div', { cls:'exname', text:m.name }),
+          h('span', { cls:'pill' + (s && s.done ? ' good' : s ? ' warn' : ''), text: state_ })),
+        h('div', { cls:'small muted', text: line })),
+      row);
+  });
+  view.replaceChildren(
+    h('div', { cls:'hero' },
+      h('div', { cls:'eyebrow', text:'Mock exam' }),
+      h('h1', { cls:'h1', style:'margin-top:6px', text:'Sit a full test' }),
+      h('p', { cls:'muted', style:'margin-top:8px;max-width:64ch', text:'One sitting of 74 questions, in the order and to the timings of the real test. Nothing is marked on screen while you work: you answer, the next question appears, and the report comes at the end.' })),
+    h('div', { cls:'exlist' }, cards),
+    h('div', { cls:'notice', style:'margin-top:18px', text:'Mock questions are used only here, and mock results are kept out of your practice statistics.' }));
+}
+/* the app's usual two-tap confirmation, so nothing is erased by one stray click */
+function restartButton(m){
+  const b = h('button', { cls:'btn ghost sm', text:'Start again' });
+  let armed = false;
+  b.addEventListener('click', () => {
+    if (!armed){ armed = true; b.textContent = 'Tap again to erase this attempt'; b.classList.add('primary'); return; }
+    mockStart(m);
+  });
+  return b;
+}
+function mockStart(m){
+  (mockBank[m.id] || []).forEach(q => { delete mockShots[q.item.id]; });
+  mockSaves[m.id] = { exam:m.id, started: Date.now(), pos:0, marks:{}, ends:{}, done:0 };
+  saveMock();
+  go({ view:'mock', stage:'brief', exam:m.id });
+}
+
+/* ---------- what to expect, and a microphone check ---------- */
+function mockBrief(m){
+  const list = mockBank[m.id];
+  const parts = [1, 2, 3].map(p => {
+    const n = list.filter(q => q.task.part === p).length;
+    return h('div', { cls:'exrow' },
+      h('div', { cls:'exrowname', text: PART_NAME[p] }),
+      h('div', { cls:'small muted', text: n + ' questions' }),
+      h('div', { cls:'small mono muted', text: PART_MIN[p] ? PART_MIN[p] + ' min' : 'timed per question' }));
+  });
+  const begin = h('button', { cls:'btn primary', text:'Begin exam' });
+  begin.addEventListener('click', () => go({ view:'mock', stage:'run', exam:m.id }));
+  view.replaceChildren(
+    h('div', { cls:'wshead' },
+      h('div', { cls:'crumbs' }, h('button', { text:'Mock Exam', onclick:() => go({ view:'mock' }) }), h('span', { text:'/' }), h('span', { text:m.name })),
+      h('h1', { cls:'h1', style:'font-size:clamp(22px,3.4vw,29px)', text:'Before you begin' })),
+    h('div', { cls:'exparts' }, parts),
+    h('ul', { cls:'tips', style:'margin:18px 0 22px' },
+      ['Each question is marked after you answer it, but nothing is shown until the end of the exam.',
+       'Speaking questions record once. Check your microphone below before you start.',
+       'The reading and listening parts run against one clock. When it runs out, the part ends.',
+       'You can leave and come back: your place is kept. Answers still being marked when you close the tab are lost, so try to finish in one sitting.',
+       'There is an optional ten-minute break after the reading part.'].map(t => h('li', { text:t }))),
+    micTester(),
+    h('div', { cls:'row' }, begin,
+      h('button', { cls:'btn ghost', text:'Back to exams', onclick:() => go({ view:'mock' }) })));
+}
+
+/* ---------- one question ---------- */
+function mockQuestion(m){
+  const s = mockSaves[m.id], list = mockBank[m.id];
+  if (!s || s.done) return go({ view:'mock' });
+  if (s.pos >= list.length) return mockFinish(m);
+  const q = list[s.pos], task = q.task, item = q.item, part = task.part;
+  if (PART_MIN[part] && !s.ends[part]){ s.ends[part] = Date.now() + PART_MIN[part] * 60000; saveMock(); }
+
+  const body = h('div', {});
+  let moved = false;
+  const advance = () => {
+    if (moved) return; moved = true;
+    clearTimers(); stopAudio(); releaseMic();
+    s.pos++; saveMock();
+    if (s.pos >= list.length) return mockFinish(m);
+    // the break sits between the reading and listening parts
+    if (task.part === 2 && list[s.pos].task.part === 3) return go({ view:'mock', stage:'break', exam:m.id });
+    go({ view:'mock', stage:'run', exam:m.id });
+  };
+  const store = (p, card) => {
+    s.marks[item.id] = { t: task.id, p: p == null ? null : Math.round(p) };
+    if (s.done) s.result = mockScores(m.id);
+    saveMock();
+    try { if (card) body.append(card); mockShots[item.id] = snapshotOf(body); } catch(e){}
+    // a mark that lands after the exam ends still belongs in the report
+    if (state.route.view === 'mock' && state.route.stage === 'report') render();
+  };
+
+  const skip = h('button', { cls:'btn sm', text:'Skip question' });
+  skip.addEventListener('click', () => { if (!(item.id in s.marks)) store(0, null); advance(); });
+  const bar = h('div', { cls:'exbar' },
+    h('div', {},
+      h('div', { cls:'clocklab', text: PART_NAME[part] }),
+      h('div', { cls:'exq', text:'Question ' + (s.pos + 1) + ' of ' + list.length })),
+    partClock(m, s, part),
+    h('div', { cls:'row', style:'margin-left:auto' }, xlateButton('q'), skip));
+
+  const head = h('div', { cls:'wshead' },
+    h('div', { cls:'spread' },
+      h('h1', { cls:'h1', style:'font-size:clamp(20px,3vw,26px)', text:task.name }),
+      h('span', { cls:'pill mono', translate:'no', text:'ID ' + item.id })),
+    h('div', { cls:'brief' }, h('b', { text:'Task. ' }), task.brief));
+
+  const ctx = { task, item, idx: s.pos, host: body, mock: true,
+    onSubmit: advance,                       // AI-marked answers are sent, then the exam moves on
+    finish(p, card){ store(p, card); advance(); } };
+
+  view.replaceChildren(bar, head, body);
+  const run = () => (RUN[task.kind] || (() => body.append(h('div', { cls:'notice', text:'This question type is not wired up.' }))))(ctx);
+  // a question with audio or a recording needs one tap before it can play, as in practice
+  if (TIMED_KINDS.includes(task.kind) || task.audio){
+    const begin = h('button', { cls:'btn primary', text:'Start question' });
+    const gate = h('div', { cls:'gate' },
+      h('p', { cls:'muted', text: task.audio || task.kind === 'sst'
+        ? 'The audio plays once and the timer starts when you press Start question.'
+        : 'The question appears and the timer starts when you press Start question.' }),
+      h('div', { cls:'row' }, begin));
+    begin.addEventListener('click', () => { gate.remove(); run(); });
+    body.append(gate);
+  } else run();
+}
+function partClock(m, s, part){
+  if (!PART_MIN[part]) return null;
+  const left = () => Math.max(0, Math.round((s.ends[part] - Date.now()) / 1000));
+  const t = h('div', { cls:'clock mono', text: mmss(left()) });
+  const tick = setInterval(() => {
+    const l = left();
+    t.textContent = mmss(l);
+    t.classList.toggle('low', l <= 120);
+    if (l <= 0){ clearInterval(tick); mockPartOut(m, part); }
+  }, 1000);
+  timers.push(tick);
+  return h('div', { cls:'expart' }, h('div', { cls:'clocklab', text:'Part time left' }), t);
+}
+/* the part's clock has run out: whatever is left in it goes down unanswered */
+function mockPartOut(m, part){
+  const s = mockSaves[m.id], list = mockBank[m.id];
+  while (s.pos < list.length && list[s.pos].task.part === part){
+    const q = list[s.pos];
+    if (!(q.item.id in s.marks)) s.marks[q.item.id] = { t: q.task.id, p: 0, out: true };
+    s.pos++;
+  }
+  saveMock(); stopAudio(); clearTimers(); releaseMic();
+  if (s.pos >= list.length) return mockFinish(m);
+  if (part === 2) return go({ view:'mock', stage:'break', exam:m.id });
+  go({ view:'mock', stage:'run', exam:m.id });
+}
+
+/* ---------- the optional break ---------- */
+function mockBreak(m){
+  const on = h('button', { cls:'btn primary', text:'Continue now' });
+  on.addEventListener('click', () => go({ view:'mock', stage:'run', exam:m.id }));
+  const c = makeClock(BREAK_MIN * 60, 'Break', () => go({ view:'mock', stage:'run', exam:m.id }));
+  view.replaceChildren(
+    h('div', { cls:'wshead' }, h('h1', { cls:'h1', style:'font-size:clamp(22px,3.4vw,29px)', text:'Optional break' })),
+    c.node,
+    h('p', { cls:'muted', style:'max-width:60ch', text:'The real test offers a break of up to ten minutes before the listening part. Stand up, drink some water, and come back — the listening clock only starts with the next question.' }),
+    h('div', { cls:'row', style:'margin-top:18px' }, on));
+  c.start();
+}
+
+function mockFinish(m){
+  const s = mockSaves[m.id];
+  s.done = Date.now();
+  s.result = mockScores(m.id);
+  saveMock();
+  go({ view:'mock', stage:'report', exam:m.id });
+}
+
+/* ---------- the report ---------- */
+function mockReport(m){
+  const s = mockSaves[m.id], list = mockBank[m.id];
+  if (!s || !s.done) return go({ view:'mock' });
+  const r = mockScores(m.id);
+  s.result = r; saveMock();
+  const pending = r.total - r.scored;
+  const mins = Math.max(1, Math.round((s.done - s.started) / 60000));
+
+  const skills = h('div', { cls:'areas' }, MOCK_SKILLS.map(k => {
+    const p = r.skills[k];
+    return h('div', { cls:'area', style:'cursor:default' },
+      h('div', { cls:'an', style:'pointer-events:none', text: skillLabel(k) }),
+      tint(h('div', { cls:'av', text: p == null ? '—' : String(pteOf(p)) }), p),
+      h('div', { cls:'small faint', text: p == null ? 'not marked' : p + '% of the marks available' }));
+  }));
+
+  const rows = [1, 2, 3].map(part => {
+    const qs = list.map((q, i) => ({ q, i })).filter(x => x.q.task.part === part);
+    return h('div', { cls:'revpart' },
+      h('div', { cls:'eyebrow', style:'margin:18px 0 8px', text: PART_NAME[part] }),
+      h('div', { cls:'tlist' }, qs.map(x => reviewRow(x.q, x.i, s))));
+  });
+
+  view.replaceChildren(
+    h('div', { cls:'wshead' },
+      h('div', { cls:'crumbs' }, h('button', { text:'Mock Exam', onclick:() => go({ view:'mock' }) }), h('span', { text:'/' }), h('span', { text:m.name })),
+      h('div', { cls:'spread' },
+        h('h1', { cls:'h1', style:'font-size:clamp(22px,3.4vw,29px)', text:'Your report' }),
+        h('div', { cls:'row' }, xlateButton('a'), restartButton(m)))),
+    h('div', { cls:'card', style:'display:flex;flex-direction:column;gap:14px' },
+      h('div', { cls:'spread' },
+        h('div', {},
+          h('div', { cls:'eyebrow', text:'Overall band' }),
+          tint(h('div', { cls:'bigscore', text: r.overall == null ? '—' : String(pteOf(r.overall)) }), r.overall)),
+        h('div', { cls:'small muted', text: r.scored + ' of ' + r.total + ' questions marked · ' + mins + ' min' })),
+      scaleWidget(r.overall == null ? null : pteOf(r.overall))),
+    pending ? h('div', { cls:'notice', style:'margin-top:14px' },
+      h('span', { cls:'load' }), ' ' + pending + ' answer' + (pending === 1 ? '' : 's') + ' still to be marked. Marks that were lost when the tab closed stay unmarked and are left out of the bands.') : null,
+    h('div', { style:'margin-top:18px' }, skills),
+    h('div', { cls:'estnote', style:'margin-top:16px' },
+      h('b', { text:'Estimate only. ' }), 'These bands come from this practice exam and are a guide, not a prediction. This result is kept out of your practice statistics.'),
+    h('div', { cls:'eyebrow', style:'margin:26px 0 0', text:'Answers and explanations' }),
+    h('div', {}, rows),
+    h('div', { cls:'row', style:'margin-top:22px' },
+      h('button', { cls:'btn', text:'Back to exams', onclick:() => go({ view:'mock' }) })));
+}
+function reviewRow(q, i, s){
+  const mk = s.marks[q.item.id], shot = mockShots[q.item.id];
+  const p = mk && mk.p != null ? mk.p : null;
+  const open = h('div', { cls:'revbody', hidden:true });
+  const b = h('button', { cls:'trow' },
+    h('div', { cls:'tnum mono', text: String(i + 1) }),
+    h('div', {},
+      h('div', { cls:'tname', text: q.task.name }),
+      h('div', { cls:'tbrief' }, h('span', { cls:'mono', translate:'no', text: q.item.id }),
+        mk && mk.out ? h('span', { text:' · out of time' }) : null)),
+    h('div', { cls:'tmeter' },
+      h('span', { cls:'pill' + (p == null ? '' : ' ' + band(p)),
+        text: q.task.unscored ? 'not scored' : p == null ? 'not marked' : p + '%' })));
+  b.addEventListener('click', () => {
+    if (!open.hidden){ open.hidden = true; return; }
+    if (!open.childElementCount){
+      if (shot){
+        const box = h('div', { cls:'lastshot' });
+        box.innerHTML = shot;
+        open.append(box);
+      } else open.append(h('div', { cls:'notice', text:'This answer is not available to review. Answers can only be shown again in the sitting they were given in.' }));
+      const ts = transcriptBlock(q.task, q.item);
+      if (ts) open.append(ts);
+    }
+    open.hidden = false;
+  });
+  return h('div', { cls:'revrow' }, b, open);
+}
+
 /* ============================ boot ============================ */
 function render(){
   paintNav();
@@ -3899,6 +4327,7 @@ function render(){
   else if (v === 'home') viewHome();
   else if (v === 'drill') viewDrill();
   else if (v === 'saved') viewSaved();
+  else if (v === 'mock') viewMock();
   else viewSection(v);
 }
 window.addEventListener('pagehide', () => { stopAudio(); releaseMic(); });

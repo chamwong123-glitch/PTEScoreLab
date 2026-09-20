@@ -38,6 +38,15 @@ Every question — built-in or in this table — has an ID made of its question 
 
 The table holds 300 questions, split in proportion to how often each type appears in a real test. Update these columns whenever questions are added.
 
+## Mock exams
+
+`mock1.json` holds Mock Exam 1: 74 questions in the order a real sitting uses. It is loaded only when the Mock Exam tab opens.
+
+- Mock IDs carry the exam number in front of the type prefix, e.g. `M1RA0001`, and live in their own numbering that starts at 0001 for each type.
+- Mock questions are **only** used in the mock exam: they are never added to the practice bank, and a mock result never reaches the practice history or its statistics.
+- Each record also carries `type`, the app's question-type id (`read_aloud`, `rw_fib`, …), since the ID prefix is not the practice one.
+- Records use the same fields and the same `zh` translation object as the table above.
+
 ## Record fields
 
 Records use the same fields as the built-in questions. **Audio is not stored as sound files**: the app reads the text aloud with the device's British voices, so a listening question's script is its audio, and the transcript shown after answering is built from the same text.
