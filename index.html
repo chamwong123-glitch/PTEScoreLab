@@ -470,7 +470,7 @@ window.addEventListener('error', function (e) {
     <div class="wrap" id="view"></div>
     <footer class="foot">
       <div class="fr">
-        <p><b>Independent practice tool.</b> Not affiliated with, endorsed by, or connected to Pearson. PTE and PTE Academic are trademarks of their respective owners and are used here only to describe the test this tool prepares for.</p>
+        <p><b>Independent practice tool.</b> Not affiliated with, endorsed by, or connected to Pearson. PTE is a trademark of its respective owner.</p>
         <p><b>Original items.</b> Every passage, lecture, question, answer key, model answer and chart here was generated with AI specifically for this app. Nothing is reproduced from official, retired or third-party test material.</p>
         <p><b>Check current specifications.</b> Timings, word bands and trait rubrics follow the published PTE Academic format as understood when this was written. Verify the details against the official specification before relying on them.</p>
         <p><b>Practice scores only.</b> The 10&ndash;90 figures are estimates derived from your own attempts. They are not an official result and do not predict one.</p>
@@ -548,7 +548,6 @@ const SECTIONS = [
   { id:'reading',   label:'Reading' },
   { id:'listening', label:'Listening' },
   { id:'drill',     label:'Daily Practice' },
-  { id:'progress',  label:'Progress' },
   { id:'saved',     label:'Saved Questions' }
 ];
 
@@ -1358,7 +1357,6 @@ const ZH = {
 "Writing": "寫作",
 "Reading": "閱讀",
 "Listening": "聽力",
-"Progress": "進度",
 "Practice": "練習",
 "Part 1 · Speaking & Writing": "第一部分 · 口說與寫作",
 "Part 2 · Reading": "第二部分 · 閱讀",
@@ -1409,8 +1407,7 @@ const ZH = {
 "Your recording": "你的錄音",
 "Recording is not supported in this view. The timer still runs — speak aloud against it.": "此畫面不支援錄音。計時仍會進行——請跟著時間大聲說出來。",
 "In the real test, the recording stops if you have not started speaking within 7 seconds, or if you pause for more than 3 seconds once you have started. Here it only warns you.": "在正式考試中，若 7 秒內還沒開始說話，或開始說話後停頓超過 3 秒，錄音就會結束。這裡只會提醒你。",
-"this attempt": "本次作答",
-"estimated band": "預估分數",
+"of the marks available for this question": "本題總分中所得的比例",
 "on target": "達標",
 "close": "接近",
 "needs work": "待加強",
@@ -1543,14 +1540,8 @@ const ZH = {
 "Communicative skill": "溝通技能",
 "Part average": "平均分數",
 "Nothing attempted yet": "尚未作答",
-"Nothing logged yet. Finish one task and it will appear here.": "尚無記錄。完成一題後就會顯示在這裡。",
-"Start with Write from Dictation": "從聽寫（Write from Dictation）開始",
 "Clear history": "清除記錄",
 "Tap again to erase everything": "再點一次以清除全部",
-"Estimated overall band · weighted by the real test": "預估總分 · 依正式考試加權",
-"Latest 24 questions": "最近作答的 24 題",
-"By part": "各部分",
-"Weakest task types first": "最弱題型優先",
 "previous item": "上一題",
 "next item": "下一題",
 "Task.": "任務。",
@@ -1559,7 +1550,7 @@ const ZH = {
 "Next item": "下一題",
 "This task type is not wired up.": "此題型尚未啟用。",
 "Independent practice tool.": "獨立練習工具。",
-"Not affiliated with, endorsed by, or connected to Pearson. PTE and PTE Academic are trademarks of their respective owners and are used here only to describe the test this tool prepares for.": "與 Pearson 無任何隸屬、背書或關聯。PTE 與 PTE Academic 為其各自所有者之商標，此處僅用於說明本工具所針對的考試。",
+"Not affiliated with, endorsed by, or connected to Pearson. PTE is a trademark of its respective owner.": "與 Pearson 無任何隸屬、背書或關聯。PTE 為其所有者之商標。",
 "Original items.": "原創題目。",
 "Every passage, lecture, question, answer key, model answer and chart here was generated with AI specifically for this app. Nothing is reproduced from official, retired or third-party test material.": "這裡的每篇文章、講座、題目、答案、範例答案與圖表，皆由 AI 專為本應用程式生成，未轉載任何官方、已停用或第三方的考試資料。",
 "Check current specifications.": "請查閱最新規格。",
@@ -1633,7 +1624,6 @@ const ZH_RULES = [
   [/^(\d+) of (\d+) words captured$/, m => m[2] + ' 個字中聽寫出 ' + m[1] + ' 個'],
   [/^(\d+) of (\d+) adjacent pairs correct$/, m => m[2] + ' 組相鄰段落中答對 ' + m[1] + ' 組'],
   [/^Band (\d+), below 65$/, m => '分數 ' + m[1] + '，低於 65'],
-  [/^(\d+) tried$/, m => '練習 ' + m[1] + ' 次'],
   [/^British English · (.+)$/, m => '英式英語 · ' + (ZH[m[1]] || m[1].replace(/^(\d+) female, (\d+) male$/, '$1 女 $2 男'))]
 ];
 
@@ -2489,10 +2479,7 @@ function resultCard(o){
   const head = h('div', { cls:'rhead' },
     h('div', {},
       h('div', { cls:'bigscore', text: o.pct + '%' }),
-      h('div', { cls:'eyebrow', style:'margin-top:4px', text:'this attempt' })),
-    h('div', {},
-      h('div', { cls:'bigscore', style:'color:var(--accent)', text: String(pteOf(o.pct)) }),
-      h('div', { cls:'eyebrow', style:'margin-top:4px', text:'estimated band' })),
+      h('div', { cls:'eyebrow', style:'margin-top:4px', text:'of the marks available for this question' })),
     h('div', { style:'margin-left:auto;display:flex;flex-direction:column;gap:6px;align-items:flex-end' },
       h('span', { cls:'pill ' + band(o.pct), text: o.label || (pteOf(o.pct) >= 79 ? 'on target' : pteOf(o.pct) >= 58 ? 'close' : 'needs work') }),
       o.sub ? h('span', { cls:'small muted', text:o.sub }) : null,
@@ -3618,6 +3605,14 @@ function compareLine(now, before, unit){
     text: 'Last ' + unit + ': ' + before + ' · ' + (d > 0 ? '▲ ' + d : d < 0 ? '▼ ' + (-d) : 'no change') });
 }
 function statsBlock(){
+  const clear = h('button', { cls:'btn ghost sm', text:'Clear history' });
+  let armed = false;
+  clear.addEventListener('click', () => {
+    if (!armed){ armed = true; clear.textContent = 'Tap again to erase everything'; clear.classList.add('primary'); return; }
+    state.attempts = []; state.done = {}; lastShots = {};
+    try { localStorage.removeItem(DONE_KEY); localStorage.removeItem(LAST_KEY); localStorage.removeItem(PRACTICE_KEY); } catch(e){}
+    persist(); paintNav(); render();
+  });
   const win = statsWindow();
   const seg = h('div', { cls:'seg', role:'group', 'aria-label':'Statistics period' },
     [['week', 'This week'], ['month', 'This month'], ['all', 'To date']].map(([id, label]) => {
@@ -3640,7 +3635,9 @@ function statsBlock(){
       statTile(cur.days, 'days practised', compareLine(cur.days, prev.days, win))];
   }
   return h('div', {},
-    h('div', { cls:'spread', style:'margin-bottom:10px' }, h('div', { cls:'eyebrow', text:'Practice record' }), seg),
+    h('div', { cls:'spread', style:'margin-bottom:10px' },
+      h('div', { cls:'eyebrow', text:'Practice record' }),
+      h('div', { cls:'row' }, seg, clear)),
     h('div', { cls:'tiles' }, tiles));
 }
 
@@ -3790,55 +3787,6 @@ function viewDrill(){
     rows);
 }
 
-/* --- progress --- */
-function viewProgress(){
-  if (!state.attempts.length){
-    view.replaceChildren(h('div', { cls:'hero' }, h('h1', { cls:'h1', text:'Progress' })),
-      h('div', { cls:'card empty' }, h('p', { text:'Nothing logged yet. Finish one task and it will appear here.' }),
-        h('div', { cls:'row', style:'justify-content:center;margin-top:14px' },
-          h('button', { cls:'btn primary', text:'Start with Write from Dictation', onclick:() => openTask('wfd', startIndex(TASK_BY_ID.wfd)) }))));
-    return;
-  }
-  const last = state.attempts.slice(-24);
-  const spark = h('div', { cls:'spark' }, last.map(a => tint(h('i', {
-    style:'height:' + Math.max(4, a.p) + '%', title: a.p + '%' }), a.p, true)));
-  const bySec = PARTS().map(s => ({ s, a: partStats(s.id).avg }));
-  const rows = TASKS.map(t => ({ t, a: avgFor(attemptsFor(t.id)), n: attemptsFor(t.id).length }))
-    .filter(x => x.n).sort((x,y) => x.a - y.a);
-  const clear = h('button', { cls:'btn ghost sm', text:'Clear history' });
-  let armed = false;
-  clear.addEventListener('click', () => {
-    if (!armed){ armed = true; clear.textContent = 'Tap again to erase everything'; clear.classList.add('primary'); return; }
-    state.attempts = []; persist(); paintNav(); render();
-  });
-  view.replaceChildren(
-    h('div', { cls:'hero' },
-      h('div', { cls:'eyebrow', text:'Estimated overall band · weighted by the real test' }),
-      h('h1', { cls:'h1', style:'margin-top:6px', text: String(overallBand()) }),
-      scaleWidget(overallBand())),
-    h('div', { cls:'grid2' },
-      h('div', { cls:'card' }, h('div', { cls:'eyebrow', style:'margin-bottom:10px', text:'Latest 24 questions' }), spark),
-      h('div', { cls:'card' }, h('div', { cls:'eyebrow', style:'margin-bottom:10px', text:'By part' }),
-        h('div', { style:'display:flex;flex-direction:column;gap:9px' }, bySec.map(x => h('div', {},
-          h('div', { cls:'spread', style:'margin-bottom:3px' },
-            h('span', { cls:'small', text:x.s.label }),
-            tint(h('span', { cls:'small mono', text: x.a == null ? '–' : String(pteOf(x.a)) }), x.a, false)),
-          h('div', { cls:'bar', style:'width:100%' }, tint(h('i', { style:'width:' + (x.a || 0) + '%' }), x.a, true))))))),
-    h('div', { style:'height:22px' }),
-    h('div', { cls:'spread', style:'margin-bottom:10px' },
-      h('div', { cls:'eyebrow', text:'Weakest task types first' }), clear),
-    h('div', { cls:'hist' }, rows.map(r => {
-      const el = h('div', { cls:'hrow' },
-        h('span', { text:r.t.name }),
-        h('span', { cls:'small mono faint', text: r.n + ' tried' }),
-        tint(h('span', { cls:'mono', style:'font-weight:600', text: String(pteOf(r.a)) }), r.a, false));
-      el.style.cursor = 'pointer';
-      el.addEventListener('click', () => openTask(r.t.id, startIndex(r.t)));
-      return el;
-    })));
-}
-
-/* --- task workspace --- */
 function openTask(taskId, idx, from){
   go({ view:'task', taskId, idx: idx || 0, from: from || TASK_BY_ID[taskId].skills[0] });
 }
@@ -3950,7 +3898,6 @@ function render(){
   if (v === 'task') viewTask();
   else if (v === 'home') viewHome();
   else if (v === 'drill') viewDrill();
-  else if (v === 'progress') viewProgress();
   else if (v === 'saved') viewSaved();
   else viewSection(v);
 }
