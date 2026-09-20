@@ -1204,6 +1204,10 @@ let LANG = 'en';
 try { if (localStorage.getItem(LANG_KEY) === 'zh') LANG = 'zh'; } catch(e){}
 
 const ZH = {
+"How these scores are worked out": "這些分數是怎麼算出來的",
+"Skill: those question-type scores, weighted by how often each type appears in a real test. Types you have not tried are left out, which is what the coverage figure reports.": "單項分數：把各題型的分數，依該題型在正式考試中出現的頻率加權計算。尚未練習的題型不列入計算，這也就是涵蓋率所顯示的內容。",
+"Overall: the same weighting across every question type, each counted once, so a type that scores two skills is not counted twice. It is not the average of the four skills.": "總分：以相同的加權方式涵蓋所有題型，每種題型只計一次，因此同時計入兩個單項的題型不會被重複計算。總分並不是四個單項分數的平均。",
+"Every figure is the share of the marks you earned, shown on the 10–90 scale.": "每個數字都是你取得的分數比例，並換算成 10–90 分的級距顯示。",
 "Mock Exam": "模擬考試",
 "Mock exam": "模擬考試",
 "Sit a full test": "完整考一次",
@@ -1627,6 +1631,10 @@ const earlyZh = flag => (flag ? ' · 初步估計' : '');
 
 /* strings the app builds from numbers or names */
 const ZH_RULES = [
+  [/^Question type: the average of your last (\d+) different questions of that type\. Repeating a question adds nothing — only its latest attempt counts\.$/,
+     m => '題型分數：取你最近 ' + m[1] + ' 題不同題目的平均。重複作答同一題不會加分，只採計最新一次的成績。'],
+  [/^Each question type scores on your last (\d+) different questions; the skill and overall figures weight those by how often each type appears in the exam\.$/,
+     m => '每種題型的分數取自你最近 ' + m[1] + ' 題不同題目；單項與總分則依各題型在考試中出現的頻率加權計算。'],
   [/^Question (\d+) of (\d+)$/, m => '第 ' + m[1] + ' 題，共 ' + m[2] + ' 題'],
   [/^(\d+) questions · about 2 hours$/, m => m[1] + ' 題 · 約 2 小時'],
   [/^(\d+) questions$/, m => m[1] + ' 題'],
@@ -3754,11 +3762,26 @@ function viewHome(){
     h('div', { cls:'spread', style:'margin-bottom:10px' },
       h('div', { cls:'eyebrow', text:'Where you stand — open a part for its task types' }),
       h('button', { cls:'btn sm', text:'Open today’s practice', onclick:() => go({ view:'drill' }) })),
+    h('p', { cls:'small faint', style:'margin:-2px 0 12px;max-width:66ch',
+      text:'Each question type scores on your last ' + RECENT + ' different questions; the skill and overall figures weight those by how often each type appears in the exam.' }),
     areaCards(),
     h('div', { style:'height:18px' }),
     h('div', { cls:'estnote' },
       h('b', { text:'Estimate only. ' }),
-      'These scores come from your practice here and are a guide, not a prediction. Your actual PTE score may be higher or lower.'));
+      'These scores come from your practice here and are a guide, not a prediction. Your actual PTE score may be higher or lower.'),
+    scoreNotes());
+}
+
+/* how the figures on this page are arrived at, in four lines */
+function scoreNotes(){
+  return h('details', { cls:'reveal', style:'margin-top:14px' },
+    h('summary', { text:'How these scores are worked out' }),
+    h('div', { cls:'dbody' }, h('ul', { cls:'tips' }, [
+      'Question type: the average of your last ' + RECENT + ' different questions of that type. Repeating a question adds nothing — only its latest attempt counts.',
+      'Skill: those question-type scores, weighted by how often each type appears in a real test. Types you have not tried are left out, which is what the coverage figure reports.',
+      'Overall: the same weighting across every question type, each counted once, so a type that scores two skills is not counted twice. It is not the average of the four skills.',
+      'Every figure is the share of the marks you earned, shown on the 10–90 scale.'
+    ].map(t => h('li', { text:t })))));
 }
 
 function streak(){
