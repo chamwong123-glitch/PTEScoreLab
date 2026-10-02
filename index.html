@@ -237,7 +237,7 @@ button,input,select,textarea{font:inherit;color:inherit}
   .bhead,.brow{grid-template-columns:minmax(0,1fr) 44px 3.7em;gap:10px}
 }
 
-/* daily drill list */
+/* question lists: a run, a report, a review */
 .tlist{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden;background:var(--surface)}
 .trow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;padding:14px 18px;border:0;border-top:1px solid var(--line);background:none;text-align:left;cursor:pointer;color:inherit;width:100%;font:inherit;transition:background .14s}
 .trow:first-child{border-top:0}
@@ -306,9 +306,9 @@ textarea.resp.short{min-height:92px}
 .gapslot.ok{border-bottom-color:var(--good);background:var(--good-soft);color:var(--ink)}
 .gapslot.no{border-bottom-color:var(--rose);background:var(--rose-soft);color:var(--ink)}
 .bank{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
-.chip{border:1px solid var(--line-strong);background:var(--surface);border-radius:var(--r-pill);padding:6px 15px;cursor:pointer;font-size:14px;font-weight:600;transition:background .13s,border-color .13s}
-.chip:hover{background:var(--surface-2);border-color:var(--accent)}
-.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.chip,.pickchip{border:1px solid var(--line-strong);background:var(--surface);border-radius:var(--r-pill);padding:6px 15px;cursor:pointer;font-size:14px;font-weight:600;transition:background .13s,border-color .13s}
+.chip:hover,.pickchip:hover{background:var(--surface-2);border-color:var(--accent)}
+.chip[aria-pressed="true"],.pickchip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
 .chip.used{opacity:.3;pointer-events:none;text-decoration:line-through}
 .hw{cursor:pointer;border-radius:5px;padding:0 2px;border:0;background:none;font:inherit;color:inherit}
 .hw:hover{background:var(--surface-3)}
@@ -435,6 +435,9 @@ details.reveal .dbody{padding:0 16px 16px;font-size:14.5px;color:var(--muted)}
 .exrowname{font-weight:700;font-size:14.5px}
 .exbar{position:sticky;top:calc(env(safe-area-inset-top,0px) + 8px);z-index:20;display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:12px 18px;box-shadow:var(--shadow-lift);margin-bottom:18px}
 .exq{font-family:var(--ff-num);font-size:15.5px;font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.range{flex:1;min-width:150px;accent-color:var(--accent);height:24px;cursor:pointer}
+.range:disabled{opacity:.4;cursor:not-allowed}
+.runn{font-family:var(--ff-num);font-size:28px;font-weight:500;letter-spacing:-.04em;font-variant-numeric:tabular-nums;min-width:2.2ch;text-align:right}
 .expart{display:flex;align-items:center;gap:9px}
 .revrow{border-top:1px solid var(--line)}
 .revrow:first-child{border-top:0}
@@ -564,7 +567,7 @@ const SECTIONS = [
   { id:'writing',   label:'Writing' },
   { id:'reading',   label:'Reading' },
   { id:'listening', label:'Listening' },
-  { id:'drill',     label:'Daily Practice' },
+  { id:'run',       label:'Question Run' },
   { id:'mock',      label:'Mock Exam' },
   { id:'saved',     label:'Saved Questions' }
 ];
@@ -1162,9 +1165,52 @@ TASKS.forEach(t => {
   t.items.forEach(i => { if (i.turns) i.text = i.turns.map(x => x.who + ': ' + x.text).join(' '); });
 });
 const PART_NAME = { 1:'Part 1 · Speaking & Writing', 2:'Part 2 · Reading', 3:'Part 3 · Listening' };
+const SKILL_IDS = ['speaking', 'writing', 'reading', 'listening'];
 const skillLabel = id => (SECTIONS.find(s => s.id === id) || { label:id }).label;
 
 const TASK_BY_ID = Object.fromEntries(TASKS.map(t => [t.id, t]));
+
+
+/* ---------- how hard a question is ----------
+   Every question carries a rating worked out from the question itself, so questions added
+   later are rated on the same scale as the ones already here. It combines three things:
+   what the question type demands, how long this question is against the median for its type,
+   and how much long-word vocabulary it carries. */
+const LEVEL_BASE = {
+  short_question:0, personal_intro:1, repeat_sentence:1, wfd:1, read_aloud:2, smw:2, rts:2,
+  l_mcq_single:2, hcs:2, l_fib:2, mcq_single_r:3, r_fib:3, rw_fib:3, hiw:3, describe_image:3,
+  mcq_multi_r:4, l_mcq_multi:4, reorder:4, retell_lecture:4, sgd:4, swt:4, sst:5, essay:5
+};
+const LEVELS = ['Easy', 'Medium', 'Hard'];
+function levelText(item){
+  return item.text || item.passage || item.spoken || (item.parts ? item.parts.join(' ') : '')
+    || (item.order ? item.order.join(' ') : '') || (item.turns ? item.turns.map(t => t.text).join(' ') : '')
+    || item.prompt || item.q || item.caption || '';
+}
+function medianLen(task){
+  if (task._med == null){
+    const ns = task.items.map(i => words(levelText(i)).length).sort((a, b) => a - b);
+    task._med = ns.length ? ns[Math.floor(ns.length / 2)] : 0;
+  }
+  return task._med;
+}
+function levelOf(task, item){
+  const w = words(levelText(item));
+  const med = medianLen(task);
+  let s = LEVEL_BASE[task.id] == null ? 2 : LEVEL_BASE[task.id];
+  if (med){
+    if (w.length > med * 1.15) s += 1;
+    else if (w.length < med * 0.85) s -= 1;
+  }
+  const long = w.filter(x => x.replace(/[^A-Za-z]/g, '').length >= 9).length / Math.max(1, w.length);
+  if (long > 0.17) s += 1; else if (long < 0.08) s -= 1;
+  return s <= 1 ? LEVELS[0] : s <= 3 ? LEVELS[1] : LEVELS[2];
+}
+const LEVEL_CLS = { Easy:'good', Medium:'warn', Hard:'bad' };
+function levelPill(task, item){
+  const v = levelOf(task, item);
+  return h('span', { cls:'pill ' + LEVEL_CLS[v], title:'Difficulty', text: v });
+}
 
 /* ============================ appearance ============================ */
 const SKINS = [
@@ -1204,6 +1250,31 @@ let LANG = 'en';
 try { if (localStorage.getItem(LANG_KEY) === 'zh') LANG = 'zh'; } catch(e){}
 
 const ZH = {
+"Easy": "簡單",
+"Medium": "中等",
+"Hard": "困難",
+"Difficulty": "難度",
+"not answered": "未作答",
+"Set finished": "本組已完成",
+"These bands come from the questions in this set alone. Every answer also counts towards your practice record.": "這些分數僅來自本組題目。每一個作答同樣會計入你的練習紀錄。",
+"Question Run": "流水刷題",
+"Work through a random set": "隨機抽題，一次刷完",
+"Pick how many questions you want and which parts to draw from. The app shuffles the question types and takes a question at random from each in turn. Nothing is marked on screen while you work: the answers and explanations come at the end, as in a mock exam.": "選擇你要做幾題，以及要從哪些部分抽題。系統會把題型打亂，輪流從每個題型中隨機抽一題。作答過程中畫面上不會顯示評分：答案與解析會在最後一次給你，就像模擬考一樣。",
+"How many questions": "題目數量",
+"Draw from these parts": "抽題範圍",
+"Pick at least one part to draw from.": "請至少選擇一個抽題範圍。",
+"Start the run": "開始刷題",
+"All": "全選",
+"Continue the run": "繼續刷題",
+"Discard this run": "放棄這次刷題",
+"Tap again to discard": "再按一次即放棄",
+"Next question": "下一題",
+"See your results": "查看結果",
+"Leave the run": "離開本次刷題",
+"Set finished": "本組已完成",
+"Run another set": "再刷一組",
+"Back to dashboard": "返回總覽",
+"Start a question run": "開始流水刷題",
 "How these scores are worked out": "這些分數是怎麼算出來的",
 "Skill: those question-type scores, weighted by how often each type appears in a real test. Types you have not tried are left out, which is what the coverage figure reports.": "單項分數：把各題型的分數，依該題型在正式考試中出現的頻率加權計算。尚未練習的題型不列入計算，這也就是涵蓋率所顯示的內容。",
 "Overall: the same weighting across every question type, each counted once, so a type that scores two skills is not counted twice. It is not the average of the four skills.": "總分：以相同的加權方式涵蓋所有題型，每種題型只計一次，因此同時計入兩個單項的題型不會被重複計算。總分並不是四個單項分數的平均。",
@@ -1254,14 +1325,6 @@ const ZH = {
 "The mock exam questions could not be loaded. Check your connection, then open this tab again.": "模擬考題載入失敗。請檢查網路連線後再開啟這個頁籤。",
 "Loading the exam…": "正在載入考題…",
 "Remove from saved": "從收藏中移除",
-"Daily Practice": "每日練習",
-"Today’s practice": "今日練習",
-"Open today’s practice": "開啟今日練習",
-"Chosen for you: question types scoring below 65 come first, then the ones you have not practised for longest, using questions you have not tried yet where possible. Fixed for the day.": "為你挑選：分數低於 65 的題型優先，其次是最久沒有練習的題型，並盡量選擇你還沒做過的題目。當天固定不變。",
-"Not practised yet": "尚未練習",
-"Practised longest ago": "最久沒有練習",
-"New question": "新題目",
-"Lowest score so far": "目前分數最低的題目",
 "This week": "本週",
 "This month": "本月",
 "To date": "累計",
@@ -1631,6 +1694,10 @@ const earlyZh = flag => (flag ? ' · 初步估計' : '');
 
 /* strings the app builds from numbers or names */
 const ZH_RULES = [
+  [/^(\d+) of (\d+) questions answered · (\d+) min$/, m => '已作答 ' + m[1] + '/' + m[2] + ' 題 · ' + m[3] + ' 分鐘'],
+  [/^Drawing from (\d+) questions across (\d+) question types\.$/, m => '將從 ' + m[2] + ' 種題型、共 ' + m[1] + ' 題中抽題。'],
+  [/^(\d+) of (\d+) questions answered$/, m => '已作答 ' + m[1] + '/' + m[2] + ' 題'],
+  [/^band (\d+)$/, m => '分數 ' + m[1]],
   [/^Question type: the average of your last (\d+) different questions of that type\. Repeating a question adds nothing — only its latest attempt counts\.$/,
      m => '題型分數：取你最近 ' + m[1] + ' 題不同題目的平均。重複作答同一題不會加分，只採計最新一次的成績。'],
   [/^Each question type scores on your last (\d+) different questions; the skill and overall figures weight those by how often each type appears in the exam\.$/,
@@ -2658,7 +2725,7 @@ RUN.speak = ctx => {
 
   const selfCheck = (info) => {
     stopAudio();
-    if (ctx.mock){
+    if (ctx.quiet){
       if (canHearRecording(task, info)) markRecording(ctx, info).runMark();
       else {
         // no AI marking of audio in this build: the candidate rates their own recording
@@ -2995,8 +3062,8 @@ RUN.swt = ctx => {
     const contentZero = (traits || []).some(t => /^content$/i.test(String(t.name)) && Number(t.score) === 0);
     const p = (form === 0 || contentZero) ? 0 : pct(tot, max);
     if (traits) out.replaceChildren();
-    // nothing is shown during a mock, so an answer the examiner never saw must not pass as a form-only score
-    if (ctx.mock && !traits) return ctx.finish(null, resultCard({ pct:0, label:'not marked', sub:'the examiner could not be reached' }));
+    // nothing is shown while marking is withheld, so an answer the examiner never saw must not pass as a form-only score
+    if (ctx.quiet && !traits) return ctx.finish(null, resultCard({ pct:0, label:'not marked', sub:'the examiner could not be reached' }));
     ctx.finish(p, resultCard({ pct:p, sub: tot + ' / ' + max + ' marks', traits:all, good:good,
       fix: fix || (form ? null : ['Rewrite it as a single sentence joined with "although", "which" or a semicolon.']),
       model:item.model }));
@@ -3059,8 +3126,8 @@ RUN.essay = ctx => {
       h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'One sentence, rewritten' }),
       h('div', { cls:'small', text:String(rewrite) })) : null;
     if (traits) out.replaceChildren();
-    // nothing is shown during a mock, so an answer the examiner never saw must not pass as a form-only score
-    if (ctx.mock && !traits) return ctx.finish(null, resultCard({ pct:0, label:'not marked', sub:'the examiner could not be reached' }));
+    // nothing is shown while marking is withheld, so an answer the examiner never saw must not pass as a form-only score
+    if (ctx.quiet && !traits) return ctx.finish(null, resultCard({ pct:0, label:'not marked', sub:'the examiner could not be reached' }));
     ctx.finish(p, resultCard({ pct:p, sub: tot + ' / ' + max + ' marks', traits:all, good:good, fix:fix, extra:extra }));
   }
   submit.addEventListener('click', go);
@@ -3119,8 +3186,8 @@ RUN.sst = ctx => {
       h('div', { cls:'eyebrow', style:'margin-bottom:6px', text:'Points you left out' }),
       h('ul', { cls:'tips' }, missed.map(x => h('li', { text:x })))) : null;
     if (traits) out.replaceChildren();
-    // nothing is shown during a mock, so an answer the examiner never saw must not pass as a form-only score
-    if (ctx.mock && !traits) return ctx.finish(null, resultCard({ pct:0, label:'not marked', sub:'the examiner could not be reached' }));
+    // nothing is shown while marking is withheld, so an answer the examiner never saw must not pass as a form-only score
+    if (ctx.quiet && !traits) return ctx.finish(null, resultCard({ pct:0, label:'not marked', sub:'the examiner could not be reached' }));
     ctx.finish(p, resultCard({ pct:p, sub: tot + ' / ' + max + ' marks', traits:all, good:good, fix:fix, extra:extra, model:item.model }));
   }
   submit.addEventListener('click', go);
@@ -3714,7 +3781,8 @@ function statsBlock(){
   clear.addEventListener('click', () => {
     if (!armed){ armed = true; clear.textContent = 'Tap again to erase everything'; clear.classList.add('primary'); return; }
     state.attempts = []; state.done = {}; lastShots = {};
-    try { localStorage.removeItem(DONE_KEY); localStorage.removeItem(LAST_KEY); localStorage.removeItem(PRACTICE_KEY); } catch(e){}
+    try { localStorage.removeItem(DONE_KEY); localStorage.removeItem(LAST_KEY); localStorage.removeItem(RUN_KEY); } catch(e){}
+    runState = null;
     persist(); paintNav(); render();
   });
   const win = statsWindow();
@@ -3761,7 +3829,7 @@ function viewHome(){
     h('div', { style:'height:26px' }),
     h('div', { cls:'spread', style:'margin-bottom:10px' },
       h('div', { cls:'eyebrow', text:'Where you stand — open a part for its task types' }),
-      h('button', { cls:'btn sm', text:'Open today’s practice', onclick:() => go({ view:'drill' }) })),
+      h('button', { cls:'btn sm', text:'Start a question run', onclick:() => go({ view:'run' }) })),
     h('p', { cls:'small faint', style:'margin:-2px 0 12px;max-width:66ch',
       text:'Each question type scores on your last ' + RECENT + ' different questions; the skill and overall figures weight those by how often each type appears in the exam.' }),
     areaCards(),
@@ -3831,79 +3899,198 @@ const SECTION_NOTE = {
   listening:'The largest skill, and the one that reaches furthest. Beyond the Part 3 question types, Repeat Sentence, Re-tell Lecture, Summarize Group Discussion and Answer Short Question all score Listening from inside Part 1.'
 };
 
-/* --- daily practice ---
-   Six questions, chosen once a day and kept for the day:
-   1. question types whose band is below 65, weakest first;
-   2. then the question types practised longest ago (never practised counts as longest);
-   and within each type, a question never attempted if there is one, otherwise the one
-   with the lowest score so far. */
-const PRACTICE_KEY = 'pte-score-lab/practice/v1';
-const WEAK_BAND = 65, PRACTICE_SIZE = 6;
-function typeBand(t){ const a = avgFor(attemptsFor(t.id)); return a == null ? null : pteOf(a); }
-function lastPractised(t){ return t.items.reduce((m, it) => Math.max(m, state.done[it.id] || 0), 0); }
-function pickQuestion(t){
-  const fresh = t.items.find(it => !(it.id in state.done));
-  if (fresh) return { itemId: fresh.id, fresh: true };
-  const scoreOf = id => { const r = state.attempts.find(a => a.t === t.id && a.i === id); return r ? r.p : 101; };
-  let best = t.items[0];
-  t.items.forEach(it => {
-    const s = scoreOf(it.id), sb = scoreOf(best.id);
-    if (s < sb || (s === sb && (state.done[it.id] || 0) < (state.done[best.id] || 0))) best = it;
-  });
-  return { itemId: best.id, fresh: false };
+/* ============================ question run ============================
+   A set of questions drawn at random and worked through back to back. The user picks
+   how many and which parts to draw from; the app shuffles the question types it may use
+   and takes a random question from each in turn, so a long type like Repeat Sentence
+   cannot swamp the set. Each question runs exactly as it does in practice — marks and
+   feedback included — and every answer counts towards the practice record as usual. */
+const RUN_KEY = 'pte-score-lab/run/v1';
+const RUN_MAX = 50;          // longest run the slider offers
+let runState = null;
+try { runState = JSON.parse(localStorage.getItem(RUN_KEY) || 'null'); } catch(e){ runState = null; }
+if (runState && !Array.isArray(runState.ids)) runState = null;
+function saveRun(){
+  try { runState ? localStorage.setItem(RUN_KEY, JSON.stringify(runState)) : localStorage.removeItem(RUN_KEY); } catch(e){}
 }
-function buildPractice(){
-  const types = TASKS.filter(t => !t.unscored && t.items.length);
-  const weak = types.filter(t => { const b = typeBand(t); return b != null && b < WEAK_BAND; })
-    .sort((a, b) => typeBand(a) - typeBand(b));
-  // ties (for example, types never practised) rotate through the three parts of the test
-  const spread = {};
-  [1, 2, 3].map(pt => types.filter(t => t.part === pt)).forEach(g => g.forEach((t, k) => { spread[t.id] = k * 3 + t.part; }));
-  const rest = types.filter(t => weak.indexOf(t) < 0)
-    .sort((a, b) => (lastPractised(a) - lastPractised(b)) || (spread[a.id] - spread[b.id]));
-  return weak.map(t => ({ t, why: 'weak' })).concat(rest.map(t => ({ t, why: lastPractised(t) ? 'due' : 'new' })))
-    .slice(0, PRACTICE_SIZE)
-    .map(x => Object.assign({ taskId: x.t.id, why: x.why, band: typeBand(x.t) }, pickQuestion(x.t)));
-}
-function drillSet(){
-  const today = localDay(Date.now());
-  let saved = null;
-  try { saved = JSON.parse(localStorage.getItem(PRACTICE_KEY) || 'null'); } catch(e){}
-  if (!saved || saved.day !== today || !Array.isArray(saved.picks) || !saved.picks.length){
-    saved = { day: today, picks: buildPractice() };
-    try { localStorage.setItem(PRACTICE_KEY, JSON.stringify(saved)); } catch(e){}
+const runPrefs = { n: 10, skills: SKILL_IDS.slice() };
+
+const runTypes = skills => TASKS.filter(t => !t.unscored && t.items.length && t.skills.some(s => skills.indexOf(s) >= 0));
+const runPoolSize = skills => runTypes(skills).reduce((n, t) => n + t.items.length, 0);
+/* round-robin over the eligible types, in a random order, taking a random question each time */
+function runPick(n, skills){
+  const bags = shuffle(runTypes(skills)).map(t => ({ t, left: shuffle(t.items) }));
+  const out = [];
+  while (out.length < n && bags.some(b => b.left.length)){
+    for (const b of bags){
+      if (!b.left.length) continue;
+      out.push({ t: b.t.id, i: b.left.pop().id });
+      if (out.length >= n) break;
+    }
   }
-  return saved.picks.map(p => {
-    const t = TASK_BY_ID[p.taskId], idx = t ? t.items.findIndex(it => it.id === p.itemId) : -1;
-    return idx < 0 ? null : Object.assign({}, p, { idx });
-  }).filter(Boolean);
+  return out;
 }
-function viewDrill(){
-  const set = drillSet();
-  const today = localDay(Date.now());
-  const doneToday = p => state.attempts.some(a => a.t === p.taskId && a.i === p.itemId && localDay(a.ts) === today);
-  const n = set.filter(doneToday).length, total = set.length;
-  const reason = p => p.why === 'weak' ? 'Band ' + p.band + ', below 65' : p.why === 'new' ? 'Not practised yet' : 'Practised longest ago';
-  const rows = h('div', { cls:'tlist' }, set.map((p, i) => {
-    const t = TASK_BY_ID[p.taskId], ok = doneToday(p);
-    const b = h('button', { cls:'trow' },
-      h('div', { cls:'tnum mono', text: ok ? '✓' : String(i + 1) }),
-      h('div', {}, h('div', { cls:'tname', text:t.name }),
-        h('div', { cls:'tbrief' }, h('span', { text: PART_NAME[t.part] }), ' · ', h('span', { cls:'mono', translate:'no', text: p.itemId })),
-        h('div', { cls:'tbrief' }, h('span', { text: reason(p) }), ' · ', h('span', { text: p.fresh ? 'New question' : 'Lowest score so far' }))),
-      h('div', { cls:'tmeter' }, h('span', { cls:'pill' + (ok ? ' good' : ''), text: ok ? 'done' : 'to do' })));
-    b.addEventListener('click', () => openTask(p.taskId, p.idx, 'drill'));
-    return b;
-  }));
+
+function runStart(n, skills){
+  runState = { started: Date.now(), skills: skills.slice(), ids: runPick(n, skills), pos: 0, marks: {} };
+  saveRun();
+  runOpen();
+}
+function runOpen(){
+  while (runState && runState.pos < runState.ids.length){
+    const q = runState.ids[runState.pos], t = TASK_BY_ID[q.t];
+    const idx = t ? t.items.findIndex(it => it.id === q.i) : -1;
+    if (idx >= 0) return openTask(q.t, idx, 'run');
+    runState.pos++; saveRun();          // a question that is no longer in the bank
+  }
+  go({ view:'run' });
+}
+function runAdvance(){
+  if (!runState) return go({ view:'run' });
+  runState.pos++; saveRun();
+  if (runState.pos >= runState.ids.length) return go({ view:'run' });
+  runOpen();
+}
+const runDone = () => !!runState && runState.pos >= runState.ids.length;
+
+function viewRun(){
+  if (!runState) return runSetup();
+  if (runDone()) return runReport();
+  runProgress();
+}
+
+/* ---------- choose the length and the parts ---------- */
+function runSetup(){
+  const paint = () => {
+    const pool = runPoolSize(runPrefs.skills), types = runTypes(runPrefs.skills).length;
+    const top = Math.min(RUN_MAX, pool);
+    runPrefs.n = Math.min(runPrefs.n, top);
+    const count = h('div', { cls:'runn mono', text: String(runPrefs.n) });
+    const slider = h('input', { type:'range', cls:'range', min:'0', max:String(top), step:'1',
+      value:String(runPrefs.n), disabled: !top, 'aria-label':'Number of questions' });
+    const sizes = h('div', { cls:'row', style:'gap:16px' }, slider, count);
+    const chips = h('div', { cls:'bank', style:'margin-top:0' }, SKILL_IDS.map(id => {
+      const on = runPrefs.skills.indexOf(id) >= 0;
+      const c = h('button', { cls:'pickchip', type:'button', 'aria-pressed': String(on), text: skillLabel(id) });
+      c.addEventListener('click', () => {
+        const k = runPrefs.skills.indexOf(id);
+        if (k >= 0) runPrefs.skills.splice(k, 1); else runPrefs.skills.push(id);
+        paint();
+      });
+      return c;
+    }));
+    const all = h('button', { cls:'btn ghost sm', text:'All', disabled: runPrefs.skills.length === SKILL_IDS.length });
+    all.addEventListener('click', () => { runPrefs.skills = SKILL_IDS.slice(); paint(); });
+    chips.append(all);
+    const start = h('button', { cls:'btn primary', text:'Start the run', disabled: !runPrefs.n });
+    start.addEventListener('click', () => runStart(runPrefs.n, runPrefs.skills));
+    // dragging only changes the number, so the rest of the page is left alone
+    slider.addEventListener('input', () => {
+      runPrefs.n = Number(slider.value);
+      count.textContent = slider.value;
+      start.disabled = !runPrefs.n;
+    });
+    view.replaceChildren(
+      h('div', { cls:'hero' },
+        h('div', { cls:'eyebrow', text:'Question Run' }),
+        h('h1', { cls:'h1', style:'margin-top:6px', text:'Work through a random set' }),
+        h('p', { cls:'muted', style:'margin-top:8px;max-width:62ch', text:'Pick how many questions you want and which parts to draw from. The app shuffles the question types and takes a question at random from each in turn. Nothing is marked on screen while you work: the answers and explanations come at the end, as in a mock exam.' })),
+      h('div', { cls:'card', style:'display:flex;flex-direction:column;gap:20px' },
+        h('div', {},
+          h('div', { cls:'eyebrow', style:'margin-bottom:8px', text:'How many questions' }), sizes),
+        h('div', {},
+          h('div', { cls:'eyebrow', style:'margin-bottom:8px', text:'Draw from these parts' }), chips,
+          h('p', { cls:'small faint', style:'margin-top:10px',
+            text: pool ? 'Drawing from ' + pool + ' questions across ' + types + ' question types.' : 'Pick at least one part to draw from.' })),
+        h('div', { cls:'row' }, start)));
+  };
+  paint();
+}
+
+/* ---------- a run already under way ---------- */
+function runProgress(){
+  const n = runState.ids.length, at = runState.pos;
+  const go_ = h('button', { cls:'btn primary', text:'Continue the run' });
+  go_.addEventListener('click', runOpen);
   view.replaceChildren(
     h('div', { cls:'hero' },
-      h('div', { cls:'eyebrow', text: new Date().toLocaleDateString(LANG === 'zh' ? 'zh-TW' : undefined, { weekday:'long', day:'numeric', month:'long' }) }),
-      h('h1', { cls:'h1', style:'margin-top:6px', text:'Today’s practice' }),
-      h('p', { cls:'muted', style:'margin-top:8px;max-width:60ch', text:'Chosen for you: question types scoring below 65 come first, then the ones you have not practised for longest, using questions you have not tried yet where possible. Fixed for the day.' }),
+      h('div', { cls:'eyebrow', text:'Question Run' }),
+      h('h1', { cls:'h1', style:'margin-top:6px', text:'Question ' + (at + 1) + ' of ' + n }),
       h('div', { cls:'row', style:'margin-top:12px' },
-        h('div', { cls:'bar', style:'width:180px' }, h('i', { style:'width:' + pct(n, total || 1) + '%' })),
-        h('span', { cls:'small mono muted', text: n + '/' + total }))),
-    rows);
+        h('div', { cls:'bar', style:'width:180px' }, h('i', { style:'width:' + pct(at, n) + '%' })),
+        h('span', { cls:'small mono muted', text: at + '/' + n }))),
+    h('div', { cls:'row' }, go_, runDiscardButton()),
+    h('div', { cls:'tlist', style:'margin-top:22px' }, runState.ids.slice(0, at).map((q, i) => {
+      const t = TASK_BY_ID[q.t];
+      const item = t && t.items.filter(x => x.id === q.i)[0];
+      const shot = lastShots[q.i];
+      return t && item ? reviewRow(t, item, i, { p: runState.marks[q.i] }, shot && shot.html) : null;
+    }).filter(Boolean)));
+}
+function runDiscardButton(){
+  const b = h('button', { cls:'btn ghost', text:'Discard this run' });
+  let armed = false;
+  b.addEventListener('click', () => {
+    if (!armed){ armed = true; b.textContent = 'Tap again to discard'; b.classList.add('primary'); return; }
+    runState = null; saveRun(); render();
+  });
+  return b;
+}
+
+/* ---------- what the set came to ---------- */
+/* the same arithmetic the mock exam uses, over the questions in this set */
+function runScores(){
+  const rows = runState.ids.map(q => ({ t: TASK_BY_ID[q.t], p: runState.marks[q.i] })).filter(x => x.t);
+  const scored = rows.filter(x => x.p != null);
+  const avg = xs => xs.length ? Math.round(xs.reduce((a, b) => a + b, 0) / xs.length) : null;
+  const skills = {};
+  SKILL_IDS.forEach(k => { skills[k] = avg(scored.filter(x => x.t.skills.indexOf(k) >= 0).map(x => x.p)); });
+  return { overall: avg(scored.map(x => x.p)), skills, scored: scored.length, total: rows.length };
+}
+function runReport(){
+  const r = runScores();
+  const mins = Math.max(1, Math.round((Date.now() - runState.started) / 60000));
+  const again = h('button', { cls:'btn primary', text:'Run another set' });
+  again.addEventListener('click', () => { runState = null; saveRun(); render(); });
+
+  const skills = h('div', { cls:'areas' }, SKILL_IDS.map(k => {
+    const p = r.skills[k];
+    return h('div', { cls:'area', style:'cursor:default' },
+      h('div', { cls:'an', style:'pointer-events:none', text: skillLabel(k) }),
+      tint(h('div', { cls:'av', text: p == null ? '—' : String(pteOf(p)) }), p),
+      h('div', { cls:'small faint', text: p == null ? 'not answered' : p + '% of the marks available' }));
+  }));
+
+  const rows = runState.ids.map((q, i) => {
+    const t = TASK_BY_ID[q.t];
+    if (!t) return null;
+    const item = t.items.filter(x => x.id === q.i)[0];
+    if (!item) return null;
+    const shot = lastShots[q.i];
+    return reviewRow(t, item, i, { p: runState.marks[q.i] }, shot && shot.html);
+  }).filter(Boolean);
+
+  view.replaceChildren(
+    h('div', { cls:'wshead' },
+      h('div', { cls:'crumbs' }, h('button', { text:'Question Run', onclick:() => { runState = null; saveRun(); render(); } }),
+        h('span', { text:'/' }), h('span', { text:'Set finished' })),
+      h('div', { cls:'spread' },
+        h('h1', { cls:'h1', style:'font-size:clamp(22px,3.4vw,29px)', text:'Your report' }),
+        h('div', { cls:'row' }, xlateButton('a'), again))),
+    h('div', { cls:'card', style:'display:flex;flex-direction:column;gap:14px' },
+      h('div', { cls:'spread' },
+        h('div', {},
+          h('div', { cls:'eyebrow', text:'Overall band' }),
+          tint(h('div', { cls:'bigscore', text: r.overall == null ? '—' : String(pteOf(r.overall)) }), r.overall)),
+        h('div', { cls:'small muted', text: r.scored + ' of ' + r.total + ' questions answered · ' + mins + ' min' })),
+      scaleWidget(r.overall == null ? null : pteOf(r.overall))),
+    h('div', { style:'margin-top:18px' }, skills),
+    h('div', { cls:'estnote', style:'margin-top:16px' },
+      h('b', { text:'Estimate only. ' }), 'These bands come from the questions in this set alone. Every answer also counts towards your practice record.'),
+    h('div', { cls:'eyebrow', style:'margin:26px 0 8px', text:'Answers and explanations' }),
+    h('div', { cls:'tlist' }, rows),
+    h('div', { cls:'row', style:'margin-top:22px' },
+      h('button', { cls:'btn ghost', text:'Back to dashboard', onclick:() => go({ view:'home' }) })));
 }
 
 function openTask(taskId, idx, from){
@@ -3915,9 +4102,16 @@ function viewTask(){
   const { taskId, idx, from } = state.route;
   const task = TASK_BY_ID[taskId];
   const item = task.items[idx];
-  const backLabel = from === 'drill' ? 'Today’s practice' : SECTIONS.find(s => s.id === from).label;
+  const backLabel = SECTIONS.find(s => s.id === from).label;
   const backBtn = h('button', { text: backLabel, onclick:() => go({ view: from }) });
-  const pager = h('div', { cls:'row' },
+  const inRun = from === 'run' && runState && !runDone() ? runState : null;
+  const pager = inRun
+    ? h('div', { cls:'row' }, h('span', { cls:'small mono muted', text:'Question ' + (inRun.pos + 1) + ' of ' + inRun.ids.length }),
+        h('button', { cls:'btn sm', text:'Skip question', onclick:() => {
+          if (!(item.id in inRun.marks)){ inRun.marks[item.id] = 0; saveRun(); }
+          runAdvance();
+        } }))
+    : h('div', { cls:'row' },
     h('button', { cls:'btn sm', text:'◀', 'aria-label':'previous item', disabled: idx === 0,
       onclick:() => openTask(taskId, idx - 1, from) }),
     h('span', { cls:'small mono muted', text:'Item ' + (idx+1) + ' of ' + task.items.length }),
@@ -3933,6 +4127,7 @@ function viewTask(){
       h('span', { cls:'pill acc', text:'scores ' + task.skills.map(skillLabel).join(' + ') }),
       h('span', { cls:'pill', text: PART_NAME[task.part] }),
       h('span', { cls:'pill mono', text: 'ID ' + item.id }),
+      levelPill(task, item),
       h('span', { cls:'pill', text: task.count + ' in the real test' }),
       task.time ? h('span', { cls:'pill', text: (task.time/60) + ' min' }) : null,
       (task.rec && task.kind === 'speak') ? h('span', { cls:'pill', text: task.rec + ' s recording' }) : null,
@@ -3943,17 +4138,27 @@ function viewTask(){
     h('details', { cls:'reveal' }, h('summary', { text:'How this item is actually scored' }),
       h('div', { cls:'dbody' }, h('ul', { cls:'tips' }, task.tips.map(t => h('li', { text:t }))))));
 
-  const ctx = { task, item, idx, host: body, finish(p, card){
+  const ctx = { task, item, idx, host: body, quiet: !!inRun,
+    onSubmit: inRun ? runAdvance : null,     // an answer sent for marking does not hold up the set
+    finish(p, card){
     clearTimers(); stopAudio();
     if (!task.unscored) record(task.id, item.id, p);
+    if (inRun){ inRun.marks[item.id] = p == null ? null : Math.round(p); saveRun(); }
     const ts = transcriptBlock(task, item);
     if (ts) (card.querySelector('.rbody') || card).append(ts);
     body.append(card);
     rememberAttempt(item.id, p, body);
-    const nav = h('div', { cls:'row', style:'margin-top:16px' },
-      h('button', { cls:'btn primary', text:'Try this item again', onclick:() => openTask(taskId, idx, from) }),
-      idx < task.items.length - 1 ? h('button', { cls:'btn', text:'Next item', onclick:() => openTask(taskId, idx + 1, from) }) : null,
-      h('button', { cls:'btn ghost', text:'Back to ' + backLabel, onclick:() => go({ view: from }) }));
+    // the marked answer is kept for the report at the end, not shown now
+    if (inRun) return runAdvance();
+    const nav = inRun
+      ? h('div', { cls:'row', style:'margin-top:16px' },
+          h('button', { cls:'btn primary', text: inRun.pos + 1 < inRun.ids.length ? 'Next question' : 'See your results', onclick: runAdvance }),
+          h('button', { cls:'btn', text:'Try this item again', onclick:() => openTask(taskId, idx, from) }),
+          h('button', { cls:'btn ghost', text:'Leave the run', onclick:() => go({ view: from }) }))
+      : h('div', { cls:'row', style:'margin-top:16px' },
+          h('button', { cls:'btn primary', text:'Try this item again', onclick:() => openTask(taskId, idx, from) }),
+          idx < task.items.length - 1 ? h('button', { cls:'btn', text:'Next item', onclick:() => openTask(taskId, idx + 1, from) }) : null,
+          h('button', { cls:'btn ghost', text:'Back to ' + backLabel, onclick:() => go({ view: from }) }));
     body.append(nav);
     card.scrollIntoView({ behavior:'smooth', block:'nearest' });
   }};
@@ -4019,7 +4224,6 @@ const MOCKS = [{ id:'M1', name:'Mock Exam 1', url:'data/mock1.json', count:74 }]
 const MOCK_KEY = 'pte-score-lab/mock/v1';
 const PART_MIN = { 2:32, 3:30 };        // reading and listening run against one clock, as in the real test
 const BREAK_MIN = 10;                   // the optional break offered after the reading part
-const MOCK_SKILLS = ['speaking', 'writing', 'reading', 'listening'];
 let mockBank = {};                      // exam id -> [{ task, item }] in exam order
 let mockShots = {};                     // question ID -> the marked answer, held for this sitting's report
 let mockSaves = {};
@@ -4055,7 +4259,7 @@ function mockScores(id){
   const scored = rows.filter(r => r.mk && r.mk.p != null);
   const avg = xs => xs.length ? Math.round(xs.reduce((a, b) => a + b, 0) / xs.length) : null;
   const skills = {};
-  MOCK_SKILLS.forEach(k => { skills[k] = avg(scored.filter(r => r.q.task.skills.indexOf(k) >= 0).map(r => r.mk.p)); });
+  SKILL_IDS.forEach(k => { skills[k] = avg(scored.filter(r => r.q.task.skills.indexOf(k) >= 0).map(r => r.mk.p)); });
   return { overall: avg(scored.map(r => r.mk.p)), skills, scored: scored.length, total: rows.length };
 }
 
@@ -4197,10 +4401,11 @@ function mockQuestion(m){
   const head = h('div', { cls:'wshead' },
     h('div', { cls:'spread' },
       h('h1', { cls:'h1', style:'font-size:clamp(20px,3vw,26px)', text:task.name }),
-      h('span', { cls:'pill mono', translate:'no', text:'ID ' + item.id })),
+      h('div', { cls:'row' }, levelPill(task, item),
+        h('span', { cls:'pill mono', translate:'no', text:'ID ' + item.id }))),
     h('div', { cls:'brief' }, h('b', { text:'Task. ' }), task.brief));
 
-  const ctx = { task, item, idx: s.pos, host: body, mock: true,
+  const ctx = { task, item, idx: s.pos, host: body, quiet: true,
     onSubmit: advance,                       // AI-marked answers are sent, then the exam moves on
     finish(p, card){ store(p, card); advance(); } };
 
@@ -4275,7 +4480,7 @@ function mockReport(m){
   const pending = r.total - r.scored;
   const mins = Math.max(1, Math.round((s.done - s.started) / 60000));
 
-  const skills = h('div', { cls:'areas' }, MOCK_SKILLS.map(k => {
+  const skills = h('div', { cls:'areas' }, SKILL_IDS.map(k => {
     const p = r.skills[k];
     return h('div', { cls:'area', style:'cursor:default' },
       h('div', { cls:'an', style:'pointer-events:none', text: skillLabel(k) }),
@@ -4287,7 +4492,7 @@ function mockReport(m){
     const qs = list.map((q, i) => ({ q, i })).filter(x => x.q.task.part === part);
     return h('div', { cls:'revpart' },
       h('div', { cls:'eyebrow', style:'margin:18px 0 8px', text: PART_NAME[part] }),
-      h('div', { cls:'tlist' }, qs.map(x => reviewRow(x.q, x.i, s))));
+      h('div', { cls:'tlist' }, qs.map(x => reviewRow(x.q.task, x.q.item, x.i, s.marks[x.q.item.id], mockShots[x.q.item.id]))));
   });
 
   view.replaceChildren(
@@ -4303,8 +4508,8 @@ function mockReport(m){
           tint(h('div', { cls:'bigscore', text: r.overall == null ? '—' : String(pteOf(r.overall)) }), r.overall)),
         h('div', { cls:'small muted', text: r.scored + ' of ' + r.total + ' questions marked · ' + mins + ' min' })),
       scaleWidget(r.overall == null ? null : pteOf(r.overall))),
-    pending ? h('div', { cls:'notice', style:'margin-top:14px' },
-      h('span', { cls:'load' }), ' ' + pending + ' answer' + (pending === 1 ? '' : 's') + ' still to be marked. Marks that were lost when the tab closed stay unmarked and are left out of the bands.') : null,
+    h('div', {}, pending ? h('div', { cls:'notice', style:'margin-top:14px' },
+      h('span', { cls:'load' }), ' ' + pending + ' answer' + (pending === 1 ? '' : 's') + ' still to be marked. Marks that were lost when the tab closed stay unmarked and are left out of the bands.') : null),
     h('div', { style:'margin-top:18px' }, skills),
     h('div', { cls:'estnote', style:'margin-top:16px' },
       h('b', { text:'Estimate only. ' }), 'These bands come from this practice exam and are a guide, not a prediction. This result is kept out of your practice statistics.'),
@@ -4313,8 +4518,8 @@ function mockReport(m){
     h('div', { cls:'row', style:'margin-top:22px' },
       h('button', { cls:'btn', text:'Back to exams', onclick:() => go({ view:'mock' }) })));
 }
-function reviewRow(q, i, s){
-  const mk = s.marks[q.item.id], shot = mockShots[q.item.id];
+function reviewRow(task, item, i, mk, shot){
+  const q = { task, item };
   const p = mk && mk.p != null ? mk.p : null;
   const open = h('div', { cls:'revbody', hidden:true });
   const b = h('button', { cls:'trow' },
@@ -4322,6 +4527,7 @@ function reviewRow(q, i, s){
     h('div', {},
       h('div', { cls:'tname', text: q.task.name }),
       h('div', { cls:'tbrief' }, h('span', { cls:'mono', translate:'no', text: q.item.id }),
+        ' · ', h('span', { text: levelOf(q.task, q.item) }),
         mk && mk.out ? h('span', { text:' · out of time' }) : null)),
     h('div', { cls:'tmeter' },
       h('span', { cls:'pill' + (p == null ? '' : ' ' + band(p)),
@@ -4348,7 +4554,7 @@ function render(){
   const v = state.route.view;
   if (v === 'task') viewTask();
   else if (v === 'home') viewHome();
-  else if (v === 'drill') viewDrill();
+  else if (v === 'run') viewRun();
   else if (v === 'saved') viewSaved();
   else if (v === 'mock') viewMock();
   else viewSection(v);
