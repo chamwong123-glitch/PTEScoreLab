@@ -1250,6 +1250,33 @@ let LANG = 'en';
 try { if (localStorage.getItem(LANG_KEY) === 'zh') LANG = 'zh'; } catch(e){}
 
 const ZH = {
+"credit on this device": "本裝置的餘額",
+"This device has an access key, but the balance could not be read just now.": "這台裝置有一組存取金鑰，但目前讀不到餘額。",
+"Your access key": "你的存取金鑰",
+"Write this down. It is what your credit is held against, and anyone with it can spend the balance.": "請把它抄下來。你的餘額是記在這組金鑰上的，任何拿到它的人都能動用這筆餘額。",
+"Credit": "餘額",
+"Waiting for Stripe to confirm the payment…": "正在等待 Stripe 確認付款…",
+"Full access": "完整版",
+"One payment, no subscription": "一次付費，無需訂閱",
+"Pay once and the AI examiner, the mock exams and the full question bank stay open on this device. There is nothing to cancel and no recurring charge.": "付費一次，AI 考官、模擬考與完整題庫就會在這台裝置上持續開放。沒有需要取消的訂閱，也不會重複扣款。",
+"one-off": "單次付費",
+"You choose": "由你決定金額",
+"Paid once. There is nothing to cancel and no recurring charge.": "一次付清。沒有需要取消的訂閱，也不會重複扣款。",
+"You choose what to pay at checkout. Paid once.": "付款金額由你在結帳時決定，一次付清。",
+"Every question type, with answers and explanations": "所有題型，含答案與解析",
+"AI examiner marking for speaking and writing": "口說與寫作由 AI 考官評分",
+"Full-length mock exams with a band report": "完整長度的模擬考與分數報告",
+"Your practice record and saved questions": "你的練習紀錄與收藏題目",
+"Pay with card": "以信用卡付款",
+"Payment is taken by Stripe on their own page. This app never sees your card details.": "付款由 Stripe 在他們自己的頁面上處理，本應用程式不會看到你的卡片資料。",
+"Opening the payment page…": "正在開啟付款頁面…",
+"The payment page could not be opened. Check your connection and try again.": "無法開啟付款頁面。請檢查網路連線後再試一次。",
+"Get full access": "購買完整版",
+"Thank you — payment received": "感謝你，款項已收到",
+"Payment cancelled": "付款已取消",
+"Stripe has confirmed your payment and sent a receipt to your email. Keep that email: it is proof of purchase if you ever need to restore access.": "Stripe 已確認你的付款，並寄出收據到你的電子信箱。請保留那封信：日後若需要恢復使用權限，它就是購買證明。",
+"Nothing has been charged. You can pick up where you left off, or try again whenever you like.": "沒有扣任何款項。你可以接著原本的進度繼續，也可以隨時再試一次。",
+"Try again": "再試一次",
 "Easy": "簡單",
 "Medium": "中等",
 "Hard": "困難",
@@ -1902,7 +1929,65 @@ function xlNote(btn, msg){
   n.textContent = msg;
 }
 const XL_LABEL = { q:'譯 翻譯題目', a:'譯 翻譯解說' };
-/* Saved translations only: shown on the first click, hidden on the next. */
+/* ---------- translations fetched when there is nothing saved ----------
+   Questions carry their Traditional Chinese with them, but the AI examiner's comments are
+   written as you answer, so no translation exists for them. Pressing 譯 sends just those
+   lines for translation and keeps what comes back, so hiding and showing it again, or
+   reopening the same saved answer, costs nothing. */
+const ZHL_KEY = 'pte-score-lab/zh-live/v1';
+const ZHL_MAX = 400;
+let ZHL = {};
+try { ZHL = JSON.parse(localStorage.getItem(ZHL_KEY) || '{}') || {}; } catch(e){ ZHL = {}; }
+const savedZh = k => (ZHC[k] != null ? ZHC[k] : ZHL[k]);
+function keepZh(en, zh){
+  ZHL[en] = zh;
+  const ks = Object.keys(ZHL);
+  if (ks.length > ZHL_MAX) ks.slice(0, ks.length - ZHL_MAX).forEach(k => { delete ZHL[k]; });
+  try { localStorage.setItem(ZHL_KEY, JSON.stringify(ZHL)); } catch(e){}
+}
+const canTranslate = () => !!(MARK_URL || (window.claude && window.claude.use));
+async function translateLines(lines){
+  const prompt = 'Translate each numbered line into Traditional Chinese as written in Taiwan.\n' +
+    'These are an examiner\u2019s comments on a language test answer. Keep the meaning exact and the tone plain and direct. ' +
+    'Leave numbers, scores, question-type names and any words quoted from the candidate in English.\n' +
+    'Reply with only JSON of this shape: {"t":["<line 1>","<line 2>"]}, with exactly ' + lines.length +
+    ' entries, in the same order as the lines below.\n\n' +
+    lines.map((s, i) => (i + 1) + '. ' + s).join('\n');
+  const s = await ensureSample();
+  const r = s ? await s.json(prompt, { modelTier:'default', cache:{ gcTime: 86400000 } })
+              : await markRemote('translate', prompt);
+  if (!r || !Array.isArray(r.t) || r.t.length !== lines.length) throw { code:'invalid_json' };
+  return r.t;
+}
+async function liveTranslate(kind, btn, els){
+  const lines = els.map(el => plainText(el));
+  xlNote(btn, '正在翻譯考官評語…');
+  // a few short batches rather than one long request, so the first lines appear sooner
+  const batches = [];
+  let cur = [], size = 0;
+  els.forEach((el, i) => {
+    if (cur.length && (cur.length >= 10 || size + lines[i].length > 4000)){ batches.push(cur); cur = []; size = 0; }
+    cur.push(i); size += lines[i].length;
+  });
+  if (cur.length) batches.push(cur);
+  let done = 0;
+  for (const batch of batches){
+    try {
+      const zhs = await translateLines(batch.map(i => lines[i]));
+      batch.forEach((i, k) => {
+        const zh = String(zhs[k] || '').trim();
+        if (!zh) return;
+        keepZh(zkey(lines[i]), zh);
+        if (btn.dataset.on === '1' && els[i].isConnected && !els[i].dataset.zh) putZh(els[i], zh, kind);
+        done++;
+      });
+    } catch(e){ break; }
+  }
+  const note = btn.nextElementSibling;
+  if (note && note.classList.contains('xlnote')) note.remove();
+  if (!done) xlNote(btn, '目前無法翻譯這段評語，請稍後再試。');
+}
+/* Saved translations first; anything with no saved translation is sent for one. */
 function translateContent(kind, btn){
   const view = document.getElementById('view');
   view.querySelectorAll('.zh[data-k="' + kind + '"]').forEach(z => z.remove());
@@ -1911,12 +1996,14 @@ function translateContent(kind, btn){
   if (note && note.classList.contains('xlnote')) note.remove();
   if (btn.dataset.on === '1'){ btn.dataset.on = ''; btn.textContent = XL_LABEL[kind]; return; }
   let n = 0;
+  const missing = [];
   segmentsFor(kind).forEach(el => {
-    const z = ZHC[zkey(plainText(el))];
-    if (z){ putZh(el, z, kind); n++; }
+    const z = savedZh(zkey(plainText(el)));
+    if (z){ putZh(el, z, kind); n++; } else missing.push(el);
   });
   btn.dataset.on = '1'; btn.textContent = '譯 隱藏翻譯';
-  if (!n) xlNote(btn, '這裡沒有需要翻譯的內容。');
+  if (missing.length && canTranslate()) liveTranslate(kind, btn, missing);
+  else if (!n) xlNote(btn, '這裡沒有需要翻譯的內容。');
 }
 function xlateButton(kind){
   const b = h('button', { cls:'btn sm xlate', type:'button', translate:'no' }, XL_LABEL[kind]);
@@ -3829,7 +3916,9 @@ function viewHome(){
     h('div', { style:'height:26px' }),
     h('div', { cls:'spread', style:'margin-bottom:10px' },
       h('div', { cls:'eyebrow', text:'Where you stand — open a part for its task types' }),
-      h('button', { cls:'btn sm', text:'Start a question run', onclick:() => go({ view:'run' }) })),
+      h('div', { cls:'row' },
+        BUY_ENABLED ? h('button', { cls:'btn sm primary', text:'Get full access', onclick:() => go({ view:'buy' }) }) : null,
+        h('button', { cls:'btn sm', text:'Start a question run', onclick:() => go({ view:'run' }) }))),
     h('p', { cls:'small faint', style:'margin:-2px 0 12px;max-width:66ch',
       text:'Each question type scores on your last ' + RECENT + ' different questions; the skill and overall figures weight those by how often each type appears in the exam.' }),
     areaCards(),
@@ -4548,6 +4637,171 @@ function reviewRow(task, item, i, mk, shot){
   return h('div', { cls:'revrow' }, b, open);
 }
 
+/* ---------- the access key and what it is worth ----------
+   Credit is held by the Worker; this only remembers the key and shows what the Worker says.
+   Nothing here can change a balance, which is the point. */
+const KEY_STORE = 'pte-score-lab/key/v1';
+let accessKey = null, credit = null;      // credit: { balance, access_until } as last reported
+try { accessKey = localStorage.getItem(KEY_STORE) || null; } catch(e){}
+function setKey(k){
+  accessKey = k || null;
+  try { k ? localStorage.setItem(KEY_STORE, k) : localStorage.removeItem(KEY_STORE); } catch(e){}
+}
+const workerAt = p => MARK_URL.replace(/\/$/, '') + p;
+async function loadCredit(){
+  if (!accessKey || !MARK_URL) return null;
+  try {
+    const r = await fetch(workerAt('/account'), { method:'POST', headers:{ 'Content-Type':'application/json' },
+      body: JSON.stringify({ key: accessKey }) });
+    const d = await r.json();
+    credit = r.ok && d && d.balance != null ? d : null;
+  } catch(e){ credit = null; }
+  return credit;
+}
+const creditText = c => c == null ? null
+  : new Intl.NumberFormat(LANG === 'zh' ? 'zh-TW' : 'en', { style:'currency', currency: (priceSeen && priceSeen.currency) || 'AUD' })
+      .format(c.balance / 100);
+
+/* after paying, the webhook may take a second or two to arrive */
+async function waitForCredit(onChange){
+  const was = credit ? credit.balance : -1;
+  for (let i = 0; i < 6; i++){
+    await loadCredit();
+    if (credit && credit.balance !== was) break;
+    await new Promise(r => setTimeout(r, 1200));
+  }
+  onChange();
+}
+/* ============================ full access ============================
+   A one-off purchase, taken on Stripe's own payment page: the card never reaches this app and
+   the Stripe keys live only in the marking Worker, which creates the session and receives the
+   receipt. Paying does not yet unlock anything, so the offer stays hidden until it does —
+   set BUY_ENABLED to true on the day access is actually gated. */
+const BUY_ENABLED = false;
+let priceSeen = null;                    // { amount, currency } once the Worker has told us
+const money = p => p && p.amount != null
+  ? new Intl.NumberFormat(LANG === 'zh' ? 'zh-TW' : 'en', { style:'currency', currency: p.currency || 'USD' })
+      .format(p.amount / 100)
+  : null;
+
+async function fetchPrice(){
+  if (priceSeen || !MARK_URL) return priceSeen;
+  try {
+    const r = await fetch(MARK_URL.replace(/\/$/, '') + '/price');
+    const d = await r.json();
+    if (r.ok && d && d.amount != null) priceSeen = d;
+  } catch(e){}
+  return priceSeen;
+}
+async function startCheckout(btn, out){
+  btn.disabled = true;
+  out.replaceChildren(h('div', { cls:'notice' }, h('span', { cls:'load' }), ' Opening the payment page…'));
+  try {
+    const r = await fetch(workerAt('/create-checkout-session'), { method:'POST',
+      headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({ key: accessKey }) });
+    const d = await r.json();
+    if (!r.ok || !d || !d.url) throw 0;
+    if (d.key) setKey(d.key);                            // the account this payment will land in
+    location.href = d.url;                               // Stripe's hosted payment page
+  } catch(e){
+    btn.disabled = false;
+    out.replaceChildren(h('div', { cls:'notice', text:'The payment page could not be opened. Check your connection and try again.' }));
+  }
+}
+
+/* what this device already holds, if anything */
+function balanceLine(){
+  const box = h('div', {});
+  if (!accessKey) return box;
+  const show = () => box.replaceChildren(credit
+    ? h('div', { cls:'notice' }, h('b', { text: creditText(credit) }), ' ',
+        h('span', { text:'credit on this device' }), ' · ',
+        h('span', { cls:'mono small', translate:'no', text: accessKey }))
+    : h('div', { cls:'notice', text:'This device has an access key, but the balance could not be read just now.' }));
+  show();
+  loadCredit().then(show);
+  return box;
+}
+
+function viewBuy(){
+  const out = h('div', {});
+  /* A fixed price shows its figure. A price the buyer names shows the suggested amount, or the
+     floor if there is one, and the sentence underneath changes to match. */
+  const priceLabel = p => !p ? '—'
+    : p.amount != null ? money(p)
+    : money({ amount: p.preset != null ? p.preset : p.minimum, currency: p.currency }) || 'You choose';
+  const priceNote = p => !p || p.amount != null ? 'Paid once. There is nothing to cancel and no recurring charge.'
+    : p.minimum != null ? 'You choose what to pay at checkout, from ' + money({ amount: p.minimum, currency: p.currency }) + ' upwards. Paid once.'
+    : 'You choose what to pay at checkout. Paid once.';
+  const amount = h('div', { cls:'bigscore', text: priceLabel(priceSeen) });
+  const note = h('p', { cls:'small muted', text: priceNote(priceSeen) });
+  const buy = h('button', { cls:'btn primary', text:'Pay with card' });
+  buy.addEventListener('click', () => startCheckout(buy, out));
+  if (!priceSeen) fetchPrice().then(p => {
+    if (!p) return;
+    amount.textContent = priceLabel(p);
+    note.textContent = priceNote(p);
+    if (LANG === 'zh') translateTree(note);
+  });
+  view.replaceChildren(
+    h('div', { cls:'hero' },
+      h('div', { cls:'eyebrow', text:'Full access' }),
+      h('h1', { cls:'h1', style:'margin-top:6px', text:'One payment, no subscription' }),
+      h('p', { cls:'muted', style:'margin-top:8px;max-width:60ch', text:'Pay once and the AI examiner, the mock exams and the full question bank stay open on this device. There is nothing to cancel and no recurring charge.' })),
+    h('div', { cls:'card', style:'display:flex;flex-direction:column;gap:16px' },
+      h('div', {},
+        h('div', { cls:'spread' }, amount, h('span', { cls:'pill', text:'one-off' })),
+        note),
+      h('ul', { cls:'tips' }, ['Every question type, with answers and explanations',
+        'AI examiner marking for speaking and writing', 'Full-length mock exams with a band report',
+        'Your practice record and saved questions'].map(t => h('li', { text:t }))),
+      h('div', { cls:'row' }, buy),
+      h('p', { cls:'small faint', text:'Payment is taken by Stripe on their own page. This app never sees your card details.' }),
+      balanceLine(),
+      out),
+    h('div', { cls:'row', style:'margin-top:18px' },
+      h('button', { cls:'btn ghost', text:'Back to dashboard', onclick:() => go({ view:'home' }) })));
+}
+
+/* where Stripe sends the buyer back to */
+function viewPaid(){
+  const ok = state.route.paid === 'success';
+  const got = h('div', {});
+  if (ok && accessKey){
+    const show = () => got.replaceChildren(
+      h('div', { cls:'card', style:'display:flex;flex-direction:column;gap:10px' },
+        h('div', { cls:'eyebrow', text:'Your access key' }),
+        h('div', { cls:'bigscore mono', style:'font-size:26px', translate:'no', text: accessKey }),
+        h('p', { cls:'small muted', text:'Write this down. It is what your credit is held against, and anyone with it can spend the balance.' }),
+        credit ? h('div', { cls:'spread' }, h('span', { cls:'eyebrow', text:'Credit' }),
+                   h('b', { text: creditText(credit) }))
+               : h('div', { cls:'notice' }, h('span', { cls:'load' }), ' Waiting for Stripe to confirm the payment…')));
+    show();
+    waitForCredit(show);
+  }
+  view.replaceChildren(
+    h('div', { cls:'hero' },
+      h('div', { cls:'eyebrow', text:'Full access' }),
+      h('h1', { cls:'h1', style:'margin-top:6px', text: ok ? 'Thank you — payment received' : 'Payment cancelled' }),
+      h('p', { cls:'muted', style:'margin-top:8px;max-width:60ch', text: ok
+        ? 'Stripe has confirmed your payment and sent a receipt to your email. Keep that email: it is proof of purchase if you ever need to restore access.'
+        : 'Nothing has been charged. You can pick up where you left off, or try again whenever you like.' })),
+    got,
+    h('div', { cls:'row', style:'margin-top:18px' },
+      h('button', { cls:'btn primary', text:'Back to dashboard', onclick:() => go({ view:'home' }) }),
+      ok ? null : h('button', { cls:'btn', text:'Try again', onclick:() => go({ view:'buy' }) })));
+}
+
+/* Stripe returns to ...?checkout=success&session_id=..., which is tidied away once read */
+function checkoutReturn(){
+  let q;
+  try { q = new URLSearchParams(location.search); } catch(e){ return null; }
+  const paid = q.get('checkout');
+  if (paid !== 'success' && paid !== 'cancelled') return null;
+  try { history.replaceState(null, '', location.pathname); } catch(e){}
+  return { view:'paid', paid };
+}
+
 /* ============================ boot ============================ */
 function render(){
   paintNav();
@@ -4557,12 +4811,16 @@ function render(){
   else if (v === 'run') viewRun();
   else if (v === 'saved') viewSaved();
   else if (v === 'mock') viewMock();
+  else if (v === 'buy') viewBuy();
+  else if (v === 'paid') viewPaid();
   else viewSection(v);
 }
 window.addEventListener('pagehide', () => { stopAudio(); releaseMic(); });
 paintSkins();
 paintLangs();
 startI18n();
+const backFromStripe = checkoutReturn();
+if (backFromStripe) state.route = backFromStripe;
 loadExtraQuestions().then(render, render);
 window.__pteBooted = true;
 </script>
