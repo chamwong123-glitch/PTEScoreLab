@@ -1250,23 +1250,43 @@ let LANG = 'en';
 try { if (localStorage.getItem(LANG_KEY) === 'zh') LANG = 'zh'; } catch(e){}
 
 const ZH = {
-"credit on this device": "本裝置的餘額",
-"This device has an access key, but the balance could not be read just now.": "這台裝置有一組存取金鑰，但目前讀不到餘額。",
-"Your access key": "你的存取金鑰",
-"Write this down. It is what your credit is held against, and anyone with it can spend the balance.": "請把它抄下來。你的餘額是記在這組金鑰上的，任何拿到它的人都能動用這筆餘額。",
+"Every question in the bank, not the first three of each type": "題庫全部題目，而非每種題型的前三題",
+"Not unlocked": "尚未解鎖",
+"Unlocking…": "正在解鎖…",
+"Not enough credit for that yet. Top up and try again.": "餘額還不夠，請先儲值後再試一次。",
+"That did not go through. Try again in a moment.": "這次沒有成功，請稍後再試。",
+"You have run out of credit, so this answer was not marked. Top up to carry on.": "你的餘額已用完，這份作答尚未評分。請儲值後繼續。",
+"Sign in to have your speaking and writing marked.": "請登入後，才能為你的口說與寫作評分。",
+"Sign in": "登入",
+"Your credit, your access and your practice record belong to the account, so they follow you between devices. Practice itself never needs one.": "你的餘額、使用權限與練習紀錄都屬於這個帳號，因此會跟著你在不同裝置之間移動。練習本身則完全不需要帳號。",
+"Email me a code": "寄驗證碼給我",
+"6-digit code": "六位數驗證碼",
+"Continue with Google": "使用 Google 繼續",
+"or": "或",
+"Enter the email address you want to sign in with.": "請輸入你要用來登入的電子郵件地址。",
+"Sending a code…": "正在寄送驗證碼…",
+"Check your email for a six-digit code. It is good for ten minutes.": "請查看你的電子郵件，裡面有一組六位數驗證碼，十分鐘內有效。",
+"A code was just sent. Wait a moment before asking for another.": "剛剛才寄出一組驗證碼，請稍候再要求重寄。",
+"That code could not be sent. Check the address and try again.": "無法寄出驗證碼。請檢查地址後再試一次。",
+"Checking…": "正在確認…",
+"That code has expired. Ask for another.": "這組驗證碼已過期，請重新索取。",
+"That code was not right. Check it and try again.": "驗證碼不正確，請確認後再試一次。",
+"Sign out": "登出",
+"credit": "餘額",
+"Signed in, but the balance could not be read just now.": "已登入，但目前讀不到餘額。",
+"Your account": "你的帳號",
 "Credit": "餘額",
 "Waiting for Stripe to confirm the payment…": "正在等待 Stripe 確認付款…",
 "Full access": "完整版",
-"One payment, no subscription": "一次付費，無需訂閱",
-"Pay once and the AI examiner, the mock exams and the full question bank stay open on this device. There is nothing to cancel and no recurring charge.": "付費一次，AI 考官、模擬考與完整題庫就會在這台裝置上持續開放。沒有需要取消的訂閱，也不會重複扣款。",
-"one-off": "單次付費",
+"Top up your credit": "儲值",
+"Credit sits on your account and is spent as you go: on a period of full access, and on AI marking when you ask for it. Nothing recurring, nothing to cancel, and it works on any device you sign in to.": "餘額存放在你的帳號中，隨用隨扣：可用於一段期間的完整使用權限，也可用於你要求的 AI 評分。沒有訂閱、不必取消，而且在任何你登入的裝置上都能使用。",
+"top-up": "儲值",
 "You choose": "由你決定金額",
-"Paid once. There is nothing to cancel and no recurring charge.": "一次付清。沒有需要取消的訂閱，也不會重複扣款。",
-"You choose what to pay at checkout. Paid once.": "付款金額由你在結帳時決定，一次付清。",
-"Every question type, with answers and explanations": "所有題型，含答案與解析",
+"Added to your balance in one payment.": "一次付款，直接加入你的餘額。",
+"You choose how much to add at checkout.": "要儲值多少，由你在結帳時決定。",
 "AI examiner marking for speaking and writing": "口說與寫作由 AI 考官評分",
 "Full-length mock exams with a band report": "完整長度的模擬考與分數報告",
-"Your practice record and saved questions": "你的練習紀錄與收藏題目",
+"Your practice record, saved questions and credit on any device you sign in to": "在任何你登入的裝置上，都能使用你的練習紀錄、收藏題目與餘額",
 "Pay with card": "以信用卡付款",
 "Payment is taken by Stripe on their own page. This app never sees your card details.": "付款由 Stripe 在他們自己的頁面上處理，本應用程式不會看到你的卡片資料。",
 "Opening the payment page…": "正在開啟付款頁面…",
@@ -1274,7 +1294,7 @@ const ZH = {
 "Get full access": "購買完整版",
 "Thank you — payment received": "感謝你，款項已收到",
 "Payment cancelled": "付款已取消",
-"Stripe has confirmed your payment and sent a receipt to your email. Keep that email: it is proof of purchase if you ever need to restore access.": "Stripe 已確認你的付款，並寄出收據到你的電子信箱。請保留那封信：日後若需要恢復使用權限，它就是購買證明。",
+"Stripe has confirmed your payment and added the credit to your account. Sign in with the same email on any device to use it.": "Stripe 已確認你的付款，並把餘額加入你的帳號。在任何裝置上用同一個電子郵件登入即可使用。",
 "Nothing has been charged. You can pick up where you left off, or try again whenever you like.": "沒有扣任何款項。你可以接著原本的進度繼續，也可以隨時再試一次。",
 "Try again": "再試一次",
 "Easy": "簡單",
@@ -1282,7 +1302,6 @@ const ZH = {
 "Hard": "困難",
 "Difficulty": "難度",
 "not answered": "未作答",
-"Set finished": "本組已完成",
 "These bands come from the questions in this set alone. Every answer also counts towards your practice record.": "這些分數僅來自本組題目。每一個作答同樣會計入你的練習紀錄。",
 "Question Run": "流水刷題",
 "Work through a random set": "隨機抽題，一次刷完",
@@ -1313,7 +1332,6 @@ const ZH = {
 "Mock questions are used only here, and mock results are kept out of your practice statistics.": "模擬考題只會出現在這裡，模擬考成績也不會計入你的練習統計。",
 "Not started": "尚未開始",
 "In progress": "進行中",
-"Completed": "已完成",
 "Start exam": "開始考試",
 "Resume exam": "繼續考試",
 "View report": "查看報告",
@@ -1344,8 +1362,6 @@ const ZH = {
 "not marked": "未評分",
 "the examiner could not be reached": "無法連線到 AI 考官",
 "not scored": "不計分",
-"self-marked": "自評",
-"your own judgement of the recording": "你對自己錄音的判斷",
 "Answers and explanations": "答案與解析",
 "This answer is not available to review. Answers can only be shown again in the sitting they were given in.": "這一題的作答無法回顧。作答內容只能在當次考試中重新顯示。",
 "These bands come from this practice exam and are a guide, not a prediction. This result is kept out of your practice statistics.": "這些分數來自這次模擬考，僅供參考，並非預測。此結果不會計入你的練習統計。",
@@ -1518,9 +1534,6 @@ const ZH = {
 "Part 1 · Speaking & Writing": "第一部分 · 口說與寫作",
 "Part 2 · Reading": "第二部分 · 閱讀",
 "Part 3 · Listening": "第三部分 · 聽力",
-"Orchid theme": "蘭紫主題",
-"Slate theme": "石板藍主題",
-"AI examiner marking is not available in this version yet. Everything else — timing, recording and all the auto-marked question types — works here, and the model answer below still applies.": "此版本尚未提供 AI 考官評分。其他功能——計時、錄音以及所有自動評分題型——在這裡都能使用，下方的範例答案仍可參考。",
 "Scoring failed because of a temporary service problem. Try again.": "服務暫時發生問題，評分失敗。請再試一次。",
 "Ready": "就緒",
 "Play audio": "播放音訊",
@@ -1682,7 +1695,6 @@ const ZH = {
 "Tap a paragraph, then tap another to swap their places. Marks are awarded for each correctly ordered adjacent pair.": "點一個段落，再點另一個段落，兩者就會交換位置。每一組順序正確的相鄰段落可得一分。",
 "The correct order, and the cue that fixes each sentence": "正確順序，以及確定每個句子位置的線索",
 "Correct order": "正確順序",
-"Find the opener first — it names its subject in full with no backward reference — then chain the rest on pronouns and repeated nouns.": "先找出開頭句——它會完整點出主題，而且不指涉前文——再依代名詞和重複出現的名詞把其餘句子串起來。",
 "Task type": "題型",
 "Avg band": "平均分數",
 "Start with one task and get a real score on it.": "從一題開始，取得實際分數。",
@@ -1713,6 +1725,10 @@ const ZH = {
 "Check current specifications.": "請查閱最新規格。",
 "Timings, word bands and trait rubrics follow the published PTE Academic format as understood when this was written. Verify the details against the official specification before relying on them.": "計時、字數範圍與評分指標依撰寫時所了解的 PTE Academic 公開格式設定。使用前請對照官方規格確認細節。",
 "Practice scores only.": "僅為練習分數。",
+"Orchid theme": "蘭紫主題",
+"Slate theme": "石板藍主題",
+"AI examiner marking is not available in this version yet. Everything else — timing, recording and all the auto-marked question types — works here, and the model answer below still applies.": "此版本尚未提供 AI 考官評分。其他功能——計時、錄音以及所有自動評分題型——在這裡都能使用，下方的範例答案仍可參考。",
+"Find the opener first — it names its subject in full with no backward reference — then chain the rest on pronouns and repeated nouns.": "先找出開頭句——它會完整點出主題，而且不指涉前文——再依代名詞和重複出現的名詞把其餘句子串起來。",
 "The 10–90 figures are estimates derived from your own attempts. They are not an official result and do not predict one.": "10–90 的分數是根據你自己的練習估算而來，並非正式成績，也不代表對正式成績的預測。"
 };
 const zhOf = s => (ZH[s] != null ? ZH[s] : s);
@@ -1721,6 +1737,21 @@ const earlyZh = flag => (flag ? ' · 初步估計' : '');
 
 /* strings the app builds from numbers or names */
 const ZH_RULES = [
+  [/^(\d+) questions · part of full access$/, m => m[1] + ' 題 · 完整版內容'],
+  [/^\+(\d+) with full access$/, m => '完整版再開 ' + m[1] + ' 題'],
+  [/^Full access opens (\d+) more questions in this type\.$/,
+     m => '完整版可再解鎖本題型的 ' + m[1] + ' 題。'],
+  [/^Full access opens (\d+) more questions to draw from\.$/,
+     m => '完整版可再解鎖 ' + m[1] + ' 題供抽選。'],
+  [/^Unlock (\d+) days for (.+)$/, m => '以 ' + m[2] + ' 解鎖 ' + m[1] + ' 天'],
+  [/^(\d+) days left$/, m => '剩餘 ' + m[1] + ' 天'],
+  [/^(.+) credit$/, m => '餘額 ' + m[1]],
+  [/^Unlocking opens every question type and the mock exams\. AI marking is charged separately at (.+) each, and you have (\d+) free to try\.$/,
+     m => '解鎖後可使用所有題型與模擬考。AI 評分另外計費，每次 ' + m[1] + '，你還有 ' + m[2] + ' 次免費試用。'],
+  [/^Unlocking opens every question type and the mock exams\. AI marking is charged separately at (.+) each\.$/,
+     m => '解鎖後可使用所有題型與模擬考。AI 評分另外計費，每次 ' + m[1] + '。'],
+  [/^You choose how much to add at checkout, from (.+) upwards\.$/,
+     m => '要儲值多少由你在結帳時決定，最低 ' + m[1] + '。'],
   [/^(\d+) of (\d+) questions answered · (\d+) min$/, m => '已作答 ' + m[1] + '/' + m[2] + ' 題 · ' + m[3] + ' 分鐘'],
   [/^Drawing from (\d+) questions across (\d+) question types\.$/, m => '將從 ' + m[2] + ' 種題型、共 ' + m[1] + ' 題中抽題。'],
   [/^(\d+) of (\d+) questions answered$/, m => '已作答 ' + m[1] + '/' + m[2] + ' 題'],
@@ -2074,14 +2105,35 @@ function markDone(id){
   state.done[id] = Date.now();
   try { localStorage.setItem(DONE_KEY, JSON.stringify(state.done)); } catch(e){}
 }
-const doneCount = t => t.items.filter(it => it.id in state.done).length;
+/* ---------- what is open without full access ----------
+   Three questions of every type are open to anyone; the rest of the bank and the mock exams
+   come with a month of access. The whole bank still ships inside this page, so this is a
+   courtesy rather than a lock. The half that is actually enforced lives in the Worker, which
+   charges for AI marking and answers only to a signed-in account.
+   BUY_ENABLED is the switch: while it is false nothing is held back. */
+const FREE_PER_TYPE = 3;
+let session = null;      // the signed token, read from its store further down
+let me = null;           // { email, balance, access_until, ... } as last reported by the Worker
+const accessActive = () => !!(me && me.access_until && me.access_until * 1000 > Date.now());
+const walled = () => BUY_ENABLED && !accessActive();
+const openItems = t => walled() ? t.items.slice(0, FREE_PER_TYPE) : t.items;
+const lockedCount = t => t.items.length - openItems(t).length;
+/* the same invitation wherever something is held back */
+function lockNote(text){
+  return h('div', { cls:'notice', style:'margin-top:14px;display:flex;flex-wrap:wrap;gap:12px;align-items:center' },
+    h('span', { text }),
+    h('button', { cls:'btn sm primary', text:'Get full access', onclick:() => go({ view:'buy' }) }));
+}
+
+const doneCount = t => openItems(t).filter(it => it.id in state.done).length;
 /* a question type opens at its earliest ID not yet attempted;
    once all have been tried, at the one attempted longest ago */
 function startIndex(t){
-  const k = t.items.findIndex(it => !(it.id in state.done));
+  const items = openItems(t);
+  const k = items.findIndex(it => !(it.id in state.done));
   if (k >= 0) return k;
   let best = 0;
-  t.items.forEach((it, i) => { if (state.done[it.id] < state.done[t.items[best].id]) best = i; });
+  items.forEach((it, i) => { if (state.done[it.id] < state.done[items[best].id]) best = i; });
   return best;
 }
 function record(taskId, itemId, p){
@@ -2105,7 +2157,7 @@ function toggleSaved(id){
   try { localStorage.setItem(SAVED_KEY, JSON.stringify(state.saved)); } catch(e){}
   paintNav();
 }
-const savedOf = t => t.items.map((it, idx) => ({ it, idx })).filter(x => isSaved(x.it.id));
+const savedOf = t => openItems(t).map((it, idx) => ({ it, idx })).filter(x => isSaved(x.it.id));
 const savedCount = () => TASKS.reduce((n, t) => n + savedOf(t).length, 0);
 /* ---------- last attempt on each question, kept for reviewing saved questions ----------
    A read-only copy of the question as it stood after marking: the answer given, the marks,
@@ -2208,7 +2260,9 @@ const AI_COPY = {
   offline:'Could not reach the AI examiner. Check your connection and try again.',
   timeout:'The AI examiner took too long to reply. Try again.',
   out_of_credit:'AI marking is paused for now. Try again later.',
-  audio_unreadable:'Your recording could not be prepared for marking. Record the task again.'
+  audio_unreadable:'Your recording could not be prepared for marking. Record the task again.',
+  low_balance:'You have run out of credit, so this answer was not marked. Top up to carry on.',
+  signed_out:'Sign in to have your speaking and writing marked.'
 };
 const aiCopy = code => (code === 'not_granted' && !(window.claude && window.claude.use))
   ? 'AI examiner marking is not available in this version yet. Everything else \u2014 timing, recording and all the auto-marked question types \u2014 works here, and the model answer below still applies.'
@@ -3727,7 +3781,7 @@ function partStats(id){
   const w = weighted(ts);
   return { ts, att, avg: w.pct, coverage: w.coverage,
            tried: ts.filter(t => attemptsFor(t.id).length).length,
-           items: ts.reduce((n,t) => n + t.items.length, 0) };
+           items: ts.reduce((n,t) => n + openItems(t).length, 0) };
 }
 
 /* dashboard: the four parts of the exam, one row */
@@ -3758,9 +3812,10 @@ function taskBoard(id){
       h('div', {},
         h('div', { cls:'bn' }, t.name,
           t.unscored ? h('span', { cls:'also warm', text:'unscored' })
-                     : also.map(k => h('span', { cls:'also', text:'+ ' + skillLabel(k) }))),
+                     : also.map(k => h('span', { cls:'also', text:'+ ' + skillLabel(k) })),
+          lockedCount(t) ? h('span', { cls:'also warm', text:'+' + lockedCount(t) + ' with full access' }) : null),
         h('div', { cls:'bt', text: t.unscored ? t.brief : (n
-          ? doneCount(t) + ' of ' + t.items.length + ' questions attempted · best ' + pteOf(bestFor(t.id))
+          ? doneCount(t) + ' of ' + openItems(t).length + ' questions attempted · best ' + pteOf(bestFor(t.id))
           : t.brief) })),
       t.unscored ? null : a);
     row.addEventListener('click', () => openTask(t.id, startIndex(t)));
@@ -4004,11 +4059,12 @@ function saveRun(){
 }
 const runPrefs = { n: 10, skills: SKILL_IDS.slice() };
 
-const runTypes = skills => TASKS.filter(t => !t.unscored && t.items.length && t.skills.some(s => skills.indexOf(s) >= 0));
-const runPoolSize = skills => runTypes(skills).reduce((n, t) => n + t.items.length, 0);
+const runTypes = skills => TASKS.filter(t => !t.unscored && openItems(t).length && t.skills.some(s => skills.indexOf(s) >= 0));
+const runPoolSize = skills => runTypes(skills).reduce((n, t) => n + openItems(t).length, 0);
+const runLocked = skills => runTypes(skills).reduce((n, t) => n + lockedCount(t), 0);
 /* round-robin over the eligible types, in a random order, taking a random question each time */
 function runPick(n, skills){
-  const bags = shuffle(runTypes(skills)).map(t => ({ t, left: shuffle(t.items) }));
+  const bags = shuffle(runTypes(skills)).map(t => ({ t, left: shuffle(openItems(t)) }));
   const out = [];
   while (out.length < n && bags.some(b => b.left.length)){
     for (const b of bags){
@@ -4028,7 +4084,7 @@ function runStart(n, skills){
 function runOpen(){
   while (runState && runState.pos < runState.ids.length){
     const q = runState.ids[runState.pos], t = TASK_BY_ID[q.t];
-    const idx = t ? t.items.findIndex(it => it.id === q.i) : -1;
+    const idx = t ? openItems(t).findIndex(it => it.id === q.i) : -1;
     if (idx >= 0) return openTask(q.t, idx, 'run');
     runState.pos++; saveRun();          // a question that is no longer in the bank
   }
@@ -4091,7 +4147,9 @@ function runSetup(){
           h('div', { cls:'eyebrow', style:'margin-bottom:8px', text:'Draw from these parts' }), chips,
           h('p', { cls:'small faint', style:'margin-top:10px',
             text: pool ? 'Drawing from ' + pool + ' questions across ' + types + ' question types.' : 'Pick at least one part to draw from.' })),
-        h('div', { cls:'row' }, start)));
+        h('div', { cls:'row' }, start),
+        runLocked(runPrefs.skills)
+          ? lockNote('Full access opens ' + runLocked(runPrefs.skills) + ' more questions to draw from.') : null));
   };
   paint();
 }
@@ -4190,7 +4248,8 @@ const TIMED_KINDS = ['speak', 'swt', 'essay', 'sst'];
 function viewTask(){
   const { taskId, idx, from } = state.route;
   const task = TASK_BY_ID[taskId];
-  const item = task.items[idx];
+  const items = openItems(task);
+  const item = items[idx];
   const backLabel = SECTIONS.find(s => s.id === from).label;
   const backBtn = h('button', { text: backLabel, onclick:() => go({ view: from }) });
   const inRun = from === 'run' && runState && !runDone() ? runState : null;
@@ -4203,8 +4262,8 @@ function viewTask(){
     : h('div', { cls:'row' },
     h('button', { cls:'btn sm', text:'◀', 'aria-label':'previous item', disabled: idx === 0,
       onclick:() => openTask(taskId, idx - 1, from) }),
-    h('span', { cls:'small mono muted', text:'Item ' + (idx+1) + ' of ' + task.items.length }),
-    h('button', { cls:'btn sm', text:'▶', 'aria-label':'next item', disabled: idx === task.items.length - 1,
+    h('span', { cls:'small mono muted', text:'Item ' + (idx+1) + ' of ' + items.length }),
+    h('button', { cls:'btn sm', text:'▶', 'aria-label':'next item', disabled: idx === items.length - 1,
       onclick:() => openTask(taskId, idx + 1, from) }));
 
   const body = h('div', {});
@@ -4225,7 +4284,9 @@ function viewTask(){
       xlateButton('q')),
     h('div', { cls:'brief' }, h('b', { text:'Task. ' }), task.brief),
     h('details', { cls:'reveal' }, h('summary', { text:'How this item is actually scored' }),
-      h('div', { cls:'dbody' }, h('ul', { cls:'tips' }, task.tips.map(t => h('li', { text:t }))))));
+      h('div', { cls:'dbody' }, h('ul', { cls:'tips' }, task.tips.map(t => h('li', { text:t }))))),
+    (lockedCount(task) && idx === items.length - 1)
+      ? lockNote('Full access opens ' + lockedCount(task) + ' more questions in this type.') : null);
 
   const ctx = { task, item, idx, host: body, quiet: !!inRun,
     onSubmit: inRun ? runAdvance : null,     // an answer sent for marking does not hold up the set
@@ -4246,7 +4307,7 @@ function viewTask(){
           h('button', { cls:'btn ghost', text:'Leave the run', onclick:() => go({ view: from }) }))
       : h('div', { cls:'row', style:'margin-top:16px' },
           h('button', { cls:'btn primary', text:'Try this item again', onclick:() => openTask(taskId, idx, from) }),
-          idx < task.items.length - 1 ? h('button', { cls:'btn', text:'Next item', onclick:() => openTask(taskId, idx + 1, from) }) : null,
+          idx < items.length - 1 ? h('button', { cls:'btn', text:'Next item', onclick:() => openTask(taskId, idx + 1, from) }) : null,
           h('button', { cls:'btn ghost', text:'Back to ' + backLabel, onclick:() => go({ view: from }) }));
     body.append(nav);
     card.scrollIntoView({ behavior:'smooth', block:'nearest' });
@@ -4377,7 +4438,7 @@ function mockList(){
   const cards = MOCKS.map(m => {
     const s = mockSaves[m.id], r = s && s.done ? s.result : null;
     const state_ = !s ? 'Not started' : s.done ? 'Completed' : 'In progress';
-    const line = !s ? m.count + ' questions · about 2 hours'
+    const line = !s ? m.count + (walled() ? ' questions · part of full access' : ' questions · about 2 hours')
       : s.done ? (r && r.overall != null ? 'Overall band ' + pteOf(r.overall) : 'Answers not marked')
       : 'Question ' + Math.min(s.pos + 1, m.count) + ' of ' + m.count;
     const row = h('div', { cls:'row' });
@@ -4385,6 +4446,8 @@ function mockList(){
       row.append(h('button', { cls:'btn primary', text:'Resume exam', onclick:() => go({ view:'mock', stage:'run', exam:m.id }) }));
     } else if (s && s.done){
       row.append(h('button', { cls:'btn primary', text:'View report', onclick:() => go({ view:'mock', stage:'report', exam:m.id }) }));
+    } else if (walled()){
+      row.append(h('button', { cls:'btn primary', text:'Get full access', onclick:() => go({ view:'buy' }) }));
     } else {
       row.append(h('button', { cls:'btn primary', text:'Start exam', onclick:() => mockStart(m) }));
     }
@@ -4637,41 +4700,175 @@ function reviewRow(task, item, i, mk, shot){
   return h('div', { cls:'revrow' }, b, open);
 }
 
-/* ---------- the access key and what it is worth ----------
-   Credit is held by the Worker; this only remembers the key and shows what the Worker says.
+/* ---------- what the account is worth ----------
+   Credit is held by the Worker; this only shows what the Worker reports.
    Nothing here can change a balance, which is the point. */
-const KEY_STORE = 'pte-score-lab/key/v1';
-let accessKey = null, credit = null;      // credit: { balance, access_until } as last reported
-try { accessKey = localStorage.getItem(KEY_STORE) || null; } catch(e){}
-function setKey(k){
-  accessKey = k || null;
-  try { k ? localStorage.setItem(KEY_STORE, k) : localStorage.removeItem(KEY_STORE); } catch(e){}
-}
 const workerAt = p => MARK_URL.replace(/\/$/, '') + p;
-async function loadCredit(){
-  if (!accessKey || !MARK_URL) return null;
-  try {
-    const r = await fetch(workerAt('/account'), { method:'POST', headers:{ 'Content-Type':'application/json' },
-      body: JSON.stringify({ key: accessKey }) });
-    const d = await r.json();
-    credit = r.ok && d && d.balance != null ? d : null;
-  } catch(e){ credit = null; }
-  return credit;
-}
 const creditText = c => c == null ? null
   : new Intl.NumberFormat(LANG === 'zh' ? 'zh-TW' : 'en', { style:'currency', currency: (priceSeen && priceSeen.currency) || 'AUD' })
       .format(c.balance / 100);
 
 /* after paying, the webhook may take a second or two to arrive */
 async function waitForCredit(onChange){
-  const was = credit ? credit.balance : -1;
+  const was = me ? me.balance : -1;
   for (let i = 0; i < 6; i++){
-    await loadCredit();
-    if (credit && credit.balance !== was) break;
+    await loadMe();
+    onChange();
+    if (me && me.balance !== was) return;
     await new Promise(r => setTimeout(r, 1200));
   }
-  onChange();
 }
+/* ---------- signing in ----------
+   Practice needs no account: everything works unsigned, kept on this device. An account exists
+   so that credit, access and progress belong to a person rather than to a browser. The token is
+   signed by the Worker and only says who and until when; the app cannot forge or extend it. */
+const TOKEN_STORE = 'pte-score-lab/token/v1';
+try { session = localStorage.getItem(TOKEN_STORE) || null; } catch(e){}
+function setSession(t){
+  session = t || null;
+  try { t ? localStorage.setItem(TOKEN_STORE, t) : localStorage.removeItem(TOKEN_STORE); } catch(e){}
+  if (!t) me = null;
+}
+const authHeaders = () => session ? { 'Authorization': 'Bearer ' + session } : {};
+
+async function loadMe(){
+  if (!session || !MARK_URL) return null;
+  try {
+    const r = await fetch(workerAt('/me'), { headers: authHeaders() });
+    if (r.status === 401){ setSession(null); return null; }   // expired or revoked
+    const d = await r.json();
+    me = r.ok && d && d.email ? d : null;
+  } catch(e){}
+  return me;
+}
+/* Google sends the browser back with the token in the fragment, which never reaches a server */
+function sessionFromHash(){
+  let h = '';
+  try { h = location.hash || ''; } catch(e){ return false; }
+  const m = h.match(/token=([^&]+)/);
+  if (!m) return false;
+  setSession(decodeURIComponent(m[1]));
+  try { history.replaceState(null, '', location.pathname + location.search); } catch(e){}
+  return true;
+}
+
+/* what the account can spend it on */
+const dayMs = 86400000;
+const accessLeft = () => accessActive() ? Math.ceil((me.access_until * 1000 - Date.now()) / dayMs) : 0;
+const centsText = c => c == null ? '' : new Intl.NumberFormat(LANG === 'zh' ? 'zh-TW' : 'en',
+  { style:'currency', currency: (priceSeen && priceSeen.currency) || 'AUD' }).format(c / 100);
+
+/* buy a month with credit already on the account */
+function accessCard(){
+  const box = h('div', {});
+  if (!session) return box;
+  const out = h('div', {});
+  const paint = () => {
+    if (!me) return box.replaceChildren();
+    const cost = me.access_cents == null ? 1500 : me.access_cents;
+    const days = me.access_days == null ? 30 : me.access_days;
+    const buy = h('button', { cls:'btn primary', text:'Unlock ' + days + ' days for ' + centsText(cost) });
+    buy.addEventListener('click', async () => {
+      buy.disabled = true;
+      out.replaceChildren(h('div', { cls:'notice' }, h('span', { cls:'load' }), ' Unlocking…'));
+      try {
+        const r = await fetch(workerAt('/buy-access'), { method:'POST', headers: authHeaders() });
+        const d = await r.json().catch(() => null);
+        if (!r.ok) throw d || {};
+        await loadMe(); out.replaceChildren(); paint();
+      } catch(d){
+        buy.disabled = false;
+        out.replaceChildren(h('div', { cls:'notice', text: d && d.error === 'low_balance'
+          ? 'Not enough credit for that yet. Top up and try again.'
+          : 'That did not go through. Try again in a moment.' }));
+      }
+    });
+    box.replaceChildren(h('div', { cls:'card', style:'display:flex;flex-direction:column;gap:12px' },
+      h('div', { cls:'spread' },
+        h('div', {},
+          h('div', { cls:'eyebrow', text:'Full access' }),
+          h('div', { style:'font-size:17px', text: accessActive()
+            ? accessLeft() + ' days left' : 'Not unlocked' })),
+        h('div', { cls:'small muted', text: centsText(me.balance) + ' credit' })),
+      h('p', { cls:'small muted', text: 'Unlocking opens every question type and the mock exams. AI marking is charged separately at ' +
+        centsText(me.mark_cents == null ? 10 : me.mark_cents) + ' each' +
+        (me.free_marks > 0 ? ', and you have ' + me.free_marks + ' free to try.' : '.') }),
+      h('div', { cls:'row' }, buy), out));
+  };
+  paint();
+  loadMe().then(paint);
+  return box;
+}
+
+/* the sign-in panel: an email, then the six digits that arrive in it */
+function signInCard(after){
+  const box = h('div', { cls:'card', style:'display:flex;flex-direction:column;gap:14px' });
+  const out = h('div', {});
+  const email = h('input', { cls:'gapin', type:'email', style:'width:min(320px,100%);text-align:left;padding:9px 12px',
+    placeholder:'you@example.com', autocomplete:'email' });
+  const code = h('input', { cls:'gapin', type:'text', inputmode:'numeric', maxlength:'6',
+    style:'width:160px;text-align:left;padding:9px 12px', placeholder:'6-digit code' });
+  const send = h('button', { cls:'btn primary', text:'Email me a code' });
+  const verify = h('button', { cls:'btn primary', text:'Sign in' });
+  const step2 = h('div', { cls:'row', style:'display:none' }, code, verify);
+  const google = h('button', { cls:'btn', text:'Continue with Google' });
+  google.addEventListener('click', () => { location.href = workerAt('/auth/google'); });
+
+  send.addEventListener('click', async () => {
+    const addr = email.value.trim();
+    if (!addr || addr.indexOf('@') < 0) return out.replaceChildren(h('div', { cls:'notice', text:'Enter the email address you want to sign in with.' }));
+    send.disabled = true;
+    out.replaceChildren(h('div', { cls:'notice' }, h('span', { cls:'load' }), ' Sending a code…'));
+    try {
+      const r = await fetch(workerAt('/auth/code'), { method:'POST', headers:{ 'Content-Type':'application/json' },
+        body: JSON.stringify({ email: addr }) });
+      const d = await r.json().catch(() => null);
+      if (!r.ok) throw d || {};
+      step2.style.display = '';
+      out.replaceChildren(h('div', { cls:'notice', text:'Check your email for a six-digit code. It is good for ten minutes.' }));
+      code.focus();
+    } catch(d){
+      out.replaceChildren(h('div', { cls:'notice', text: d && d.error === 'too_soon'
+        ? 'A code was just sent. Wait a moment before asking for another.'
+        : 'That code could not be sent. Check the address and try again.' }));
+    }
+    setTimeout(() => { send.disabled = false; }, 3000);
+  });
+
+  verify.addEventListener('click', async () => {
+    verify.disabled = true;
+    out.replaceChildren(h('div', { cls:'notice' }, h('span', { cls:'load' }), ' Checking…'));
+    try {
+      const r = await fetch(workerAt('/auth/verify'), { method:'POST', headers:{ 'Content-Type':'application/json' },
+        body: JSON.stringify({ email: email.value.trim(), code: code.value.trim() }) });
+      const d = await r.json().catch(() => null);
+      if (!r.ok || !d || !d.token) throw d || {};
+      setSession(d.token);
+      await loadMe();
+      if (after) after();
+    } catch(d){
+      verify.disabled = false;
+      out.replaceChildren(h('div', { cls:'notice', text: d && d.error === 'code_expired'
+        ? 'That code has expired. Ask for another.'
+        : 'That code was not right. Check it and try again.' }));
+    }
+  });
+
+  box.append(
+    h('div', {},
+      h('div', { cls:'eyebrow', style:'margin-bottom:5px', text:'Sign in' }),
+      h('p', { cls:'muted small', text:'Your credit, your access and your practice record belong to the account, so they follow you between devices. Practice itself never needs one.' })),
+    h('div', { cls:'row' }, email, send), step2, out,
+    h('div', { cls:'row' }, h('span', { cls:'small faint', text:'or' }), google));
+  return box;
+}
+
+function signOutButton(){
+  const b = h('button', { cls:'btn ghost sm', text:'Sign out' });
+  b.addEventListener('click', () => { setSession(null); render(); });
+  return b;
+}
+
 /* ============================ full access ============================
    A one-off purchase, taken on Stripe's own payment page: the card never reaches this app and
    the Stripe keys live only in the marking Worker, which creates the session and receives the
@@ -4698,10 +4895,9 @@ async function startCheckout(btn, out){
   out.replaceChildren(h('div', { cls:'notice' }, h('span', { cls:'load' }), ' Opening the payment page…'));
   try {
     const r = await fetch(workerAt('/create-checkout-session'), { method:'POST',
-      headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({ key: accessKey }) });
+      headers: Object.assign({ 'Content-Type':'application/json' }, authHeaders()), body: '{}' });
     const d = await r.json();
     if (!r.ok || !d || !d.url) throw 0;
-    if (d.key) setKey(d.key);                            // the account this payment will land in
     location.href = d.url;                               // Stripe's hosted payment page
   } catch(e){
     btn.disabled = false;
@@ -4709,17 +4905,16 @@ async function startCheckout(btn, out){
   }
 }
 
-/* what this device already holds, if anything */
+/* what the signed-in account holds */
 function balanceLine(){
   const box = h('div', {});
-  if (!accessKey) return box;
-  const show = () => box.replaceChildren(credit
-    ? h('div', { cls:'notice' }, h('b', { text: creditText(credit) }), ' ',
-        h('span', { text:'credit on this device' }), ' · ',
-        h('span', { cls:'mono small', translate:'no', text: accessKey }))
-    : h('div', { cls:'notice', text:'This device has an access key, but the balance could not be read just now.' }));
+  if (!session) return box;
+  const show = () => box.replaceChildren(me
+    ? h('div', { cls:'notice' }, h('b', { text: creditText(me) }), ' ', h('span', { text:'credit' }), ' · ',
+        h('span', { cls:'small', translate:'no', text: me.email }), ' ', signOutButton())
+    : h('div', { cls:'notice', text:'Signed in, but the balance could not be read just now.' }));
   show();
-  loadCredit().then(show);
+  loadMe().then(show);
   return box;
 }
 
@@ -4730,13 +4925,15 @@ function viewBuy(){
   const priceLabel = p => !p ? '—'
     : p.amount != null ? money(p)
     : money({ amount: p.preset != null ? p.preset : p.minimum, currency: p.currency }) || 'You choose';
-  const priceNote = p => !p || p.amount != null ? 'Paid once. There is nothing to cancel and no recurring charge.'
-    : p.minimum != null ? 'You choose what to pay at checkout, from ' + money({ amount: p.minimum, currency: p.currency }) + ' upwards. Paid once.'
-    : 'You choose what to pay at checkout. Paid once.';
+  const priceNote = p => !p || p.amount != null ? 'Added to your balance in one payment.'
+    : p.minimum != null ? 'You choose how much to add at checkout, from ' + money({ amount: p.minimum, currency: p.currency }) + ' upwards.'
+    : 'You choose how much to add at checkout.';
   const amount = h('div', { cls:'bigscore', text: priceLabel(priceSeen) });
   const note = h('p', { cls:'small muted', text: priceNote(priceSeen) });
   const buy = h('button', { cls:'btn primary', text:'Pay with card' });
   buy.addEventListener('click', () => startCheckout(buy, out));
+  // a top-up has to land in an account, so that comes first
+  const pay = session ? h('div', { cls:'row' }, buy) : signInCard(() => go({ view:'buy' }));
   if (!priceSeen) fetchPrice().then(p => {
     if (!p) return;
     amount.textContent = priceLabel(p);
@@ -4746,19 +4943,20 @@ function viewBuy(){
   view.replaceChildren(
     h('div', { cls:'hero' },
       h('div', { cls:'eyebrow', text:'Full access' }),
-      h('h1', { cls:'h1', style:'margin-top:6px', text:'One payment, no subscription' }),
-      h('p', { cls:'muted', style:'margin-top:8px;max-width:60ch', text:'Pay once and the AI examiner, the mock exams and the full question bank stay open on this device. There is nothing to cancel and no recurring charge.' })),
+      h('h1', { cls:'h1', style:'margin-top:6px', text:'Top up your credit' }),
+      h('p', { cls:'muted', style:'margin-top:8px;max-width:60ch', text:'Credit sits on your account and is spent as you go: on a period of full access, and on AI marking when you ask for it. Nothing recurring, nothing to cancel, and it works on any device you sign in to.' })),
     h('div', { cls:'card', style:'display:flex;flex-direction:column;gap:16px' },
       h('div', {},
-        h('div', { cls:'spread' }, amount, h('span', { cls:'pill', text:'one-off' })),
+        h('div', { cls:'spread' }, amount, h('span', { cls:'pill', text:'top-up' })),
         note),
-      h('ul', { cls:'tips' }, ['Every question type, with answers and explanations',
+      h('ul', { cls:'tips' }, ['Every question in the bank, not the first three of each type',
         'AI examiner marking for speaking and writing', 'Full-length mock exams with a band report',
-        'Your practice record and saved questions'].map(t => h('li', { text:t }))),
-      h('div', { cls:'row' }, buy),
+        'Your practice record, saved questions and credit on any device you sign in to'].map(t => h('li', { text:t }))),
+      pay,
       h('p', { cls:'small faint', text:'Payment is taken by Stripe on their own page. This app never sees your card details.' }),
       balanceLine(),
       out),
+    h('div', { style:'margin-top:16px' }, accessCard()),
     h('div', { cls:'row', style:'margin-top:18px' },
       h('button', { cls:'btn ghost', text:'Back to dashboard', onclick:() => go({ view:'home' }) })));
 }
@@ -4767,15 +4965,13 @@ function viewBuy(){
 function viewPaid(){
   const ok = state.route.paid === 'success';
   const got = h('div', {});
-  if (ok && accessKey){
+  if (ok && session){
     const show = () => got.replaceChildren(
       h('div', { cls:'card', style:'display:flex;flex-direction:column;gap:10px' },
-        h('div', { cls:'eyebrow', text:'Your access key' }),
-        h('div', { cls:'bigscore mono', style:'font-size:26px', translate:'no', text: accessKey }),
-        h('p', { cls:'small muted', text:'Write this down. It is what your credit is held against, and anyone with it can spend the balance.' }),
-        credit ? h('div', { cls:'spread' }, h('span', { cls:'eyebrow', text:'Credit' }),
-                   h('b', { text: creditText(credit) }))
-               : h('div', { cls:'notice' }, h('span', { cls:'load' }), ' Waiting for Stripe to confirm the payment…')));
+        h('div', { cls:'eyebrow', text:'Your account' }),
+        h('div', { style:'font-size:17px', translate:'no', text: me ? me.email : '' }),
+        me ? h('div', { cls:'spread' }, h('span', { cls:'eyebrow', text:'Credit' }), h('b', { text: creditText(me) }))
+           : h('div', { cls:'notice' }, h('span', { cls:'load' }), ' Waiting for Stripe to confirm the payment…')));
     show();
     waitForCredit(show);
   }
@@ -4784,7 +4980,7 @@ function viewPaid(){
       h('div', { cls:'eyebrow', text:'Full access' }),
       h('h1', { cls:'h1', style:'margin-top:6px', text: ok ? 'Thank you — payment received' : 'Payment cancelled' }),
       h('p', { cls:'muted', style:'margin-top:8px;max-width:60ch', text: ok
-        ? 'Stripe has confirmed your payment and sent a receipt to your email. Keep that email: it is proof of purchase if you ever need to restore access.'
+        ? 'Stripe has confirmed your payment and added the credit to your account. Sign in with the same email on any device to use it.'
         : 'Nothing has been charged. You can pick up where you left off, or try again whenever you like.' })),
     got,
     h('div', { cls:'row', style:'margin-top:18px' },
@@ -4819,6 +5015,8 @@ window.addEventListener('pagehide', () => { stopAudio(); releaseMic(); });
 paintSkins();
 paintLangs();
 startI18n();
+sessionFromHash();                      // a Google sign-in lands here with its token
+if (session) loadMe().then(a => { if (a && state.route.view !== 'task') render(); });
 const backFromStripe = checkoutReturn();
 if (backFromStripe) state.route = backFromStripe;
 loadExtraQuestions().then(render, render);
